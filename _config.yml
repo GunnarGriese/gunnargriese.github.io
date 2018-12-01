@@ -1,2 +1,3 @@
 name: Gunnar Griese, Digital Analyst
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
