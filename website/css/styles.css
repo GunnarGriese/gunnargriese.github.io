@@ -1,0 +1,297 @@
+html body {
+  font: 300 14px "Lato", sans-serif;
+  color: #666756;
+  background: #fff;
+  padding-bottom: 70px;
+  background-image: rgb(211,211,211);
+ }
+
+ div {
+    display: block;
+}
+
+#menu {
+	font-size: 23px;
+/*    color: #fff;*/
+/*    width: 5%;*/
+/*    cursor: pointer;*/
+}
+/*.n {
+ 	line-height: 18px;
+ 	 padding-top: 9px;
+     padding-bottom: 9px;
+}*/
+#nav-logo {
+    margin-left: -50px;
+    color: #D3D3D3;
+    font-size: 1.5em;
+}
+
+#extended-nav {
+    padding: 0 30px;
+    background: #283e4a;
+    border-top: none;
+    box-shadow: none;
+    height: 52px;
+}
+
+/*The color of navbar links*/
+a {
+	color: #c7d1d8;
+}
+
+/*The color of navar burger*/
+.navbar-toggle .icon-bar {
+    background-color: #c7d1d8;
+}
+
+.title-row {
+	padding-top: 75px;
+	border: none;
+	border-bottom: 1px solid #c7d1d8;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.bg-1 {
+	background: #fff;
+}
+
+.name {
+	margin: 0;
+	font-size: 4.286em;
+}
+
+.text-thin {
+    color: #283e4a;
+	font-weight: 100;
+}
+
+.description {
+	color: #283e4a;
+	margin: 5px;
+	font-size: 1.429em;
+	text-align: right;
+	font-weight: 400;
+	opacity: 0.8;
+	padding-bottom: 10px;
+	}
+
+.nav-wrapper {
+    float: right;
+    color: #283e4a;		
+}
+
+
+.recent-projects {
+	color: #283e4a;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding-top: 15px;
+	padding-left: 10px;
+	font-weight: 350;
+	text-align: left;
+	font-size: 1.8em;
+}
+
+.personal-description {
+	color: #283e4a;
+	letter-spacing: 1px;
+	padding-top: 20px;
+	padding-left: 15px;
+	font-weight: 300;
+	text-align: left;
+	font-size: 1.2em;
+}
+
+.projects-row {
+   padding-top: 30px;
+   padding-bottom: 10px;
+
+}
+
+.row {
+   padding-bottom: 25px;
+
+}
+
+.project {
+	text-align: left;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.050);
+	border-radius: 25px;
+	height:  180px;
+	width: 370px;
+}
+
+.project:hover {
+    transform: scale(1.03);  /*(150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    opacity: 0.7;
+    }
+
+.project-img {
+	float:left;
+	width: 40%;
+	padding-left: 10px;
+    max-height: 160px;
+    padding-top: 30px;
+}
+
+
+.project-description {
+
+	position: absolute;
+    top: 12%;
+    left: 45%;
+    bottom: 15%;
+	overflow: hidden;
+    text-align: left;
+    min-height: 1px;
+    padding-top: 20px;
+    padding-right: 20px;
+    margin-bottom: : 30px;
+	font-size: 1.250em;
+	color: #304e5f;
+	font-weight: 450;
+
+}
+
+.social-icons {
+	float: right;
+	transform: scale(0.55);
+}
+
+/*Filter stuff*/
+#myBtnContainer {
+	padding-bottom: 20px;
+}
+.col-sm-4 {
+    display: none; /* Hide all elements by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+    display: block;
+}
+
+/* Style the buttons */
+#filter-btn {
+/*  border: 0.3px solid #304e5f;*/
+  border: none;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.02), 0 2px 5px 0 rgba(0,0,0,0.019);
+  color: #304e5f;
+  outline: 0.5px;
+  padding: 12px 16px;
+  background-color: white !important;
+  cursor: pointer;	
+}
+
+/* Add a grey background color on mouse-over */
+#filter-btn:hover {
+  background-color: #ddd !important;
+}
+
+/* Add a dark background color to the active button */
+#filter-btn.active {
+/*  background-color: #666;*/
+	box-shadow: 0 4px 2px 0 rgba(0,0,0,0.08), 0 4px 10px 0 rgba(0,0,0,0.08);
+    color: #283e4a;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+
+
+	.project {
+		transform: scale(0.85);
+		margin-bottom: 0px;
+		margin-top: 0px;
+	}
+	.projects-row {
+        margin-bottom: 0px;
+        margin-top: 0px;
+
+}
+}
+
+@media only screen and (max-width: 996px) and (min-width: 768px) {
+
+	.name {
+		transform: scale(0.9);
+	}
+
+	.project {	
+		transform: scale(0.65);
+	}
+
+	.projects-row {
+        margin-bottom: 0px;
+        margin-right: 30px;
+        text-align: left;
+     }
+
+	.row {
+	    margin-right: 60px;
+	    margin-left: -80px;
+	    padding-bottom: 0px;
+		}
+
+	.logo {
+		transform: scale(0.9);
+	}
+
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	.name {
+		font-size: 2.785em;
+		text-align: left;
+	}
+
+	.description {
+		font-size: 0.857em;
+		text-align: left;
+		padding-bottom: 10px;
+		}
+
+
+	.social-icons {
+		transform: scale(0.5);
+		float: left;
+	}
+
+
+	.project {
+		transform: scale(1.03);
+		text-align: left;
+		padding-top: 10px;
+		margin-bottom: 30px;
+	}
+
+	.projects-row {
+        margin-bottom: 20px;
+
+}
+	
+/*	.project-img {
+		    padding-top: 0px;
+			transform: scale(0.8);
+	}
+
+	.project-description {
+			transform: scale(0.9);
+			    left: 55%;*/
+	}
+
+	.logo {
+		transform: scale(0.7);
+		float: left;
+	}
+
+	.nav-text {
+		display: inline-block
+	}
+
+}
