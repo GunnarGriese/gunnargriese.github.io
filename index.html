@@ -7,6 +7,18 @@
         dataLayer = [];
     </script>
 
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+        });
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
