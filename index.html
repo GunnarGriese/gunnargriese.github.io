@@ -14,9 +14,10 @@
             window.dataLayer.push(arguments);
         }
         gtag('consent', 'default', {
-            ad_storage: 'denied',
+            ad_storage: 'granted',
             analytics_storage: 'granted'
         });
+        gtag('set', 'url_passthrough', false);
     </script>
 
     <!-- Google Tag Manager -->
