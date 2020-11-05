@@ -7,6 +7,42 @@
         dataLayer = [];
     </script>
 
+    <script>
+        function parseHttpHeaders(req) {
+            var headers = req.getAllResponseHeaders().split('\r\n');
+            return headers.reduce(function(acc, current, i) {
+                var parts = current.split(': ');
+                acc[parts[0]] = parts[1];
+                return acc;
+            }, {});
+        }
+
+        function hashCode(s) {
+            for (var i = 0, h = 0; i < s.length; i++)
+                h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+            return h;
+        }
+
+        function getSessionExpiry(url) {
+            var req = new XMLHttpRequest();
+            req.timeout = 5000;
+            req.open('HEAD', url, true);
+            req.onload = function() {
+                obj = parseHttpHeaders(this);
+                asid = hashCode(obj.expires);
+                //var asid = 1234;
+                dataLayer = window.dataLayer || []
+                dataLayer.push({
+                    'event': 'asid_ready',
+                    'asid': asid
+                });
+            }
+            req.send();
+        }
+
+        getSessionExpiry('https://storage.googleapis.com/anonymous-tracking/pixel3.png');
+    </script>
+
     <script data-cookieconsent="ignore">
         window.dataLayer = window.dataLayer || [];
 
