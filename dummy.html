@@ -43,6 +43,27 @@
         getSessionExpiry('https://storage.googleapis.com/anonymous-tracking/pixel3.png');
     </script>
 
+    <script data-cookieconsent="ignore">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+
+            dataLayer.push(arguments);
+
+        }
+
+        gtag("consent", "default", {
+
+            ad_storage: "denied",
+
+            analytics_storage: "denied",
+
+            wait_for_update: 500
+
+        });
+
+        gtag("set", "ads_data_redaction", true);
+    </script>
 
 
     <!-- Google Tag Manager -->
