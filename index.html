@@ -45,25 +45,17 @@
     </script> -->
 
     <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
+        (function() {
+            if (gtag) {
+                var analyticsConsent = CookieInformation.getConsentGivenFor('cookie_cat_statistic') ? "granted" : "denied";
+                var adsConsent = CookieInformation.getConsentGivenFor('cookie_cat_marketing') ? "granted" : "denied";
 
-        function gtag() {
-
-            dataLayer.push(arguments);
-
-        }
-
-        gtag("consent", "default", {
-
-            ad_storage: "denied",
-
-            analytics_storage: "denied",
-
-            wait_for_update: 500
-
-        });
-
-        gtag("set", "ads_data_redaction", true);
+                gtag("consent", "default", {
+                    "analytics_storage": analyticsConsent,
+                    "ad_storage": adsConsent
+                });
+            }
+        })();
     </script>
 
     <!-- Google Tag Manager -->
