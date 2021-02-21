@@ -6,65 +6,7 @@
     <script>
         dataLayer = [];
     </script>
-    <!-- anti-flicker snippet (recommended)  -->
-    <!--  <style>
-        .async-hide {
-            opacity: 0 !important
-        }
-    </style> -->
-    <!-- <script>
-        (function(a, s, y, n, c, h, i, d, e) {
-            s.className += ' ' + y;
-            h.start = 1 * new Date;
-            h.end = i = function() {
-                s.className = s.className.replace(RegExp(' ?' + y), '')
-            };
-            (a[n] = a[n] || []).hide = h;
-            setTimeout(function() {
-                i();
-                h.end = null
-            }, c);
-            h.timeout = c;
-        })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {
-            'OPT-NCS68KR': true
-        });
-    </script> -->
-    <!-- OPTIMIZE -->
-    <!--<script src="https://www.googleoptimize.com/optimize.js?id=OPT-NCS68KR"></script>-->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPGT2XR6BX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-HPGT2XR6BX', {
-            'currency': 'USD'
-        });
-    </script> -->
-    <!--     <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-143775840-1', 'auto', {
-            'transportUrl': 'https://gtm.gunnargriese.com', // Input field
-            'storage': 'none' // Input field
-        });
-        //ga('require', 'ec');
-        ga('require', 'OPT-NCS68KR'); // Google Optimize Container ID
-    </script> -->
     <script>
         // Consent mode (beta).
         window.dataLayer = window.dataLayer || [];
@@ -79,9 +21,6 @@
             'wait_for_update': 50
         });
     </script>
-
-
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" type="text/javascript" data-blockingmode="auto"></script>
 
     <!--Google Tag Manager-->
     <script data-cookieconsent="ignore">
@@ -100,59 +39,6 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
     </script>
-    <!--End Google Tag Manager -->
-
-    <!-- <script>
-        function parseHttpHeaders(req) {
-            var headers = req.getAllResponseHeaders().split('\r\n');
-            return headers.reduce(function(acc, current, i) {
-                var parts = current.split(': ');
-                acc[parts[0]] = parts[1];
-                return acc;
-            }, {});
-        }
-
-        function hashCode(s) {
-            for (var i = 0, h = 0; i < s.length; i++)
-                h = Math.imul(31, h) + s.charCodeAt(i) | 0;
-            return h;
-        }
-
-        function getSessionExpiry(url) {
-            var req = new XMLHttpRequest();
-            req.timeout = 5000;
-            req.open('HEAD', url, true);
-            req.onload = function() {
-                obj = parseHttpHeaders(this);
-                asid = hashCode(obj.expires);
-                //var asid = 1234;
-                dataLayer = window.dataLayer || []
-                dataLayer.push({
-                    'event': 'asid_ready',
-                    'asid': asid
-                });
-            }
-            req.send();
-        }
-
-        getSessionExpiry('https://storage.googleapis.com/anonymous-tracking/pixel3.png');
-    </script> -->
-    <!-- ALLER MEDIA SOLUTION
-    <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        var analyticsConsent = Cookiebot.consent.statistics ? "granted" : "denied";
-        var adsConsent = Cookiebot.consent.marketing ? "granted" : "denied";
-
-        gtag("consent", "default", {
-            "analytics_storage": analyticsConsent,
-            "ad_storage": adsConsent
-        });
-    </script>-->
 
 
     <title>Gunnar Griese - Data Science & Analytics Portfolio</title>
@@ -346,9 +232,6 @@
 
         </div>
         <!--projects-->
-        <!--dummy link-->
-        <a href="/dummy">dummy link</a>
-        <!--dummy link-->
         <div class="fixed-bottom">
             <p class="text-center">Made with <i class="icon ion-heart"></i> in Copenhagen</p>
         </div>
@@ -356,160 +239,6 @@
     </div>
     <!--container-->
     <script src="js/filter.js"></script>
-    <script>
-        window.dataLayer.push({
-            event: "checkout",
-            ecommerce: {
-                checkout: {
-                    actionField: {
-                        step: 2,
-                        option: "Ikke valgt"
-                    },
-                    products: [{
-                        name: "Mørksejfilet",
-                        id: "5026357",
-                        price: 125,
-                        brand: undefined,
-                        category: "Kød & fisk / Fileter",
-                        quantity: 5,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0800000000#Kød og fisk ;0800300000#Fisk og skaldyr, fersk;0800300002#Fileter"
-                    }, {
-                        name: "Kokosmælk øko.",
-                        id: "5028718",
-                        price: 15.26,
-                        brand: undefined,
-                        category: "Kolonial / Asiatisk",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "1000000000#Tørvarer;1000100000#Verdensmad;1000100001#Asiatisk"
-                    }, {
-                        name: "Sambal oelek",
-                        id: "5005704",
-                        price: 49,
-                        brand: undefined,
-                        category: "Kolonial / Saucer fra verdens køkkener",
-                        quantity: 2,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "1000000000#Tørvarer;1000100000#Verdensmad;1000100003#Saucer fra verdens køkkener"
-                    }, {
-                        name: "Koriander øko.",
-                        id: "5027932",
-                        price: 40,
-                        brand: undefined,
-                        category: "Grønt / Krydderurter",
-                        quantity: 2,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400100000#Grønt;0400100009#Krydderurter"
-                    }, {
-                        name: "Gulerødder limfjords",
-                        id: "3001016",
-                        price: 13,
-                        brand: "Limfjorden",
-                        category: "Grønt / Gulerødder - Rodfrugter",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400100000#Grønt;0400100007#Gulerødder / Rodfrugter"
-                    }, {
-                        name: "Piskefløde øko.",
-                        id: "102655",
-                        price: 10.95,
-                        brand: "Naturmælk",
-                        category: "Køl / Piskefløde",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0100000000#Køl1;0100700000#Mælk, smør og æg;0100700008#Piskefløde"
-                    }, {
-                        name: "Baby spinat øko.",
-                        id: "5021833",
-                        price: 15,
-                        brand: undefined,
-                        category: "Grønt / Snit Salat",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400100000#Grønt;0400100014#Snit Salat"
-                    }, {
-                        name: "Kardemomme (stødt) øko.",
-                        id: "5019546",
-                        price: 18.95,
-                        brand: undefined,
-                        category: "Kolonial / Krydderier",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "1000000000#Tørvarer;1002200000#Krydderier;1002200003#Krydderier"
-                    }, {
-                        name: "Karry (mediumstærk) øko.",
-                        id: "5015442",
-                        price: 18.95,
-                        brand: undefined,
-                        category: "Kolonial / Krydderiblandinger",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "1000000000#Tørvarer;1002200000#Krydderier;1002200002#Krydderiblandinger"
-                    }, {
-                        name: "Hvidløg i net",
-                        id: "5001643",
-                        price: 30,
-                        brand: undefined,
-                        category: "Grønt / Løg",
-                        quantity: 2,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400100000#Grønt;0400100012#Løg"
-                    }, {
-                        name: "Ingefær øko.",
-                        id: "5016560",
-                        price: 28,
-                        brand: undefined,
-                        category: "Grønt / Fin Grønt",
-                        quantity: 2,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400100000#Grønt;0400100005#Fin Grønt"
-                    }, {
-                        name: "Kaffir limeblade",
-                        id: "5015155",
-                        price: 19.95,
-                        brand: undefined,
-                        category: "Kolonial / Asiatisk",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "1000000000#Tørvarer;1000100000#Verdensmad;1000100001#Asiatisk"
-                    }, {
-                        name: "Lime",
-                        id: "2301095",
-                        price: 5,
-                        brand: undefined,
-                        category: "Grønt / Citrus Frugt",
-                        quantity: 1,
-                        variant: "opskriftsprodukt",
-                        dimension32: "302578e0-478e-44e4-8921-25e9fc05549e",
-                        dimension41: "0400000000#Frugt/grønt;0400200000#Frugt og bær ;0400200007#Citrus Frugt"
-                    }, {
-                        name: "Hellefiskfilet",
-                        id: "5026364",
-                        price: 179.85,
-                        brand: undefined,
-                        category: "Kød & fisk / Fileter",
-                        quantity: 3,
-                        variant: "opskriftsprodukt",
-                        dimension32: "9c8fb188-3515-41d6-a8aa-4489550ee631",
-                        dimension41: "0800000000#Kød og fisk ;0800300000#Fisk og skaldyr, fersk;0800300002#Fileter"
-                    }]
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
