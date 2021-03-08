@@ -36,6 +36,41 @@
     </script>
     <!--End Google Tag Manager -->
 
+    <!-- START TEST DL PUSH -->
+    <script>
+        dataLayer.push({
+            'ecommerce': {
+                'purchase': {
+                    'actionField': {
+                        'id': 'T12345',
+                        'affiliation': 'Online Store',
+                        'revenue': '35.43'
+                    },
+                    'products': [{
+                        'name': 'HP toner 125A Gul', // HP product
+                        'id': 'HPCB542A',
+                        'price': '1049.00',
+                        'brand': 'HP',
+                        'quantity': 1
+                    }, {
+                        'name': 'Donut Friday Scented T-Shirt', // NON-HP product
+                        'id': '67890',
+                        'price': '33.75',
+                        'brand': 'Google',
+                        'quantity': 1
+                    }, {
+                        'name': 'HP27fw 27 skjerm (sølv)', // HP product
+                        'id': '67890',
+                        'price': '2995.00',
+                        'brand': 'HP',
+                        'quantity': 2
+                    }]
+                }
+            }
+        });
+    </script>
+    <!-- END TEST DL PUSH -->
+
     <!-- START CONSENT MODE -->
     <!--              <script data-cookieconsent="ignore">
         window.dataLayer = window.dataLayer || [];
