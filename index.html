@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
+    <!-- START TRACKING-->
     <script>
         dataLayer = [];
     </script>
@@ -39,206 +39,121 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
     </script>
-
+    <!-- END TRACKING -->
 
     <title>Gunnar Griese - Data Science & Analytics Portfolio</title>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="img/gunnargriese.ico" />
     <meta name="author" content="Gunnar Griese">
     <meta name="description" content="Personal website from Gunnar Griese showcasing projects related to Data Science, Analytics, Data Visualization & Machine Learning">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Compiled and minified CSS BS 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library 3.3.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Compiled BS 3.3.7 -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-    <!-- To Do: Update Bootstrap-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Social Media -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.10.1/bootstrap-social.css" rel="stylesheet">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-    <!-- Custom CSS-->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQ9XXH"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQ9XXH"
+            height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <main>
-        <!-- 		FIXED NAVBAR-->
-        <nav class="navbar navbar-dark bg-primary" id="extended-nav">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header navbar-dark bg-primary">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        				<span class="sr-only">Toggle navigation</span>
-        				<span class="icon-bar"></span>
-        				<span class="icon-bar"></span>
-        				<span class="icon-bar"></span>
-      				</button>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="https://www.linkedin.com/in/Gunnar-griese-634669a0/">About</a></li>
-                        <li><a href="https://medium.com/@Gunnargriese">Blog</a></li>
-                        <li><a href="https://www.linkedin.com/in/Gunnar-griese-634669a0/">Contact</a></li>
-                    </ul>
-                    <div class="social-icons">
-                        <a onclick="" class="btn btn-social-icon btn-lg btn-linkedin" href="https://www.linkedin.com/in/Gunnar-griese-634669a0/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        <a onclick="" class="btn btn-social-icon btn-lg btn-github" href="https://github.com/GunnarGriese" target="_blank"><i class="fa fa-github"></i></a>
-                        <a onclick="" class="btn btn-social-icon btn-lg btn-medium" href="https://medium.com/@Gunnargriese" target="_blank"><i class="fa fa-medium"></i></a>
-                        <!--  <a onclick="" class="btn btn-social-icon btn-lg btn-twitter" href="https://twitter.com/IoannisBreier" target="_blank"><i class="fa fa-twitter"></i></a>
-			        	<a onclick="" class="btn btn-social-icon btn-lg btn-medium" href="https://medium.com/@ioanniskbreier" target="_blank"><i class="fa fa-medium"></i></a> -->
-                    </div>
-                    <!--social-icons-->
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#"></a>
-                        </li>
-                </div>
-                <!-- /.navbar-collapse -->
-
+    <!-- START NAV-->
+    <nav id="navbar" class="nav">
+        <img class="nav-logo" src="img/logo.png" alt="logo">
+        <ul class="nav-list">
+            <li>
+                <a href="#welcome-section">About</a>
+            </li>
+            <li>
+                <a href="#projects">Work</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- END NAV-->
+    <!-- START WELCOME -->
+    <section id="welcome-section" class="welcome-section">
+        <div class="welcome-grid">
+            <img class="welcome-image" src="img/gunnargriese2.jpg" alt="Gunnar Griese">
+            <div>
+                <h1>Gunnar Griese</h1>
+                <p> Copenhagen-based analytics consultant & tech enthusiast.</p>
             </div>
-            <!-- /.container-fluid -->
-        </nav>
-
-        <!-- PORTRAIT AND NAME -->
-        <div class="container">
-            <nav class="navbar navbar-default title-row bg-1">
-                <div class="navbar-header logo">
-                    <img alt="Gunnar Griese Portrait" src="img/gunnargriese_v2.jpg" width=150 class="img-rounded">
-                </div>
-                <!-- portrait -->
-                <div class="nav-wrapper nav-text">
-                    <h1 class="name text-thin">Gunnar Griese</h1>
-                    <h3 class="description">Digital Analyst & Data Scientist</h3>
-                </div>
-                <!-- name & title -->
-            </nav>
-            <h3 class="recent-projects">About me</h3>
-
-            <h4 class="personal-description">
-                Hi there, I am Gunnar Griese. I specialise in digital analytics and consider myself an aspiring analyst of the digital world.
-                <br> I would love you to follow me on my <a href="https://medium.com/@Gunnargriese" target="_blank">journey</a>. Feel free to accompany and contact me!
-            </h4>
-
-
-            <h3 class="recent-projects">Recent Projects</h3>
-            <div id="myBtnContainer">
-
-                <button class="btn" id="filter-btn" onclick="filterSelection('all')"> Show all </button>
-                <button class="btn" id="filter-btn" onclick="filterSelection('python')"> Python </button>
-                <button class="btn" id="filter-btn" onclick="filterSelection('ml')"> Machine Learning </button>
-                <button class="btn" id="filter-btn" onclick="filterSelection('cloud')"> Google Cloud </button>
-                <button class="btn" id="filter-btn" onclick="filterSelection('sql')"> SQL </button>
-                <button class="btn" id="filter-btn" onclick="filterSelection('viz')"> Data Visualization </button>
-
-            </div>
-
-            <div class="row projects-row">
-
-                <div class="col-sm-4 python">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/google-search-console" target="_blank" id="project-search-console"><img src="img/python_package.png" class="img-rounded project-img" alt="Python wrapper for Google Search Console API"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/google-search-console" target="_blank" id="project-search-console">Creating my very own python wrapper for the Google Search Console API</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-                <div class="col-sm-4 python cloud sql viz">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/kleiderkreisel_scraper" target="_blank" id="project-kleiderkreisel-scraper"><img src="img/kleiderkreisel_dashboard.png" class="img-rounded project-img" alt="Dashboard visualising results from web scraping with Cloud Functions"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/kleiderkreisel_scraper" target="_blank" id="project-kleiderkreisel-scraper"> Web scraper crawling kleiderkreisel.de product pages using Google Cloud Platform</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-                <div class="col-sm-4 python ml viz">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/disaster-response-pipeline" target="_blank" id="project-disaster-response"><img src="img/app_screenshot.png" class="img-rounded project-img" alt="Flask App utilising NLP Machine Learning pipeline"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/disaster-response-pipeline" target="_blank" id="project-disaster-response">End-to-end NLP pipeline from data preprocessing to model deployment</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-            </div>
-            <!--row-->
-
-            <div class="row projects-row">
-
-                <div class="col-sm-4 python ml">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/ibm-recommendations" target="_blank" id="project-ibm-recommendations"><img src="img/recommender-system.jpg" class="img-rounded project-img" alt="Implementing various recommender systems for articles"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/ibm-recommendations" target="_blank" id="project-ibm-recommendations"> Implementing various recommender systems for articles on IBM Watson platform</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-
-                <div class="col-sm-4 python ml viz cloud">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/data-science-blog-post" target="_blank" id="project-ds-blog-post"><img src="img/ga-world-map-v2.png" class="img-rounded project-img" alt="World Map Stored in Cloud Storage showing revenue per country"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/data-science-blog-post" target="_blank" id="project-ds-blog-post">Analysing and Predicting Google Analytics Sample Data for E-Commerce</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-                <div class="col-sm-4 python viz cloud">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/oauth-app" target="_blank" id="project-ds-flask-app"><img src="img/flask.png" class="img-rounded project-img" alt="Flask App for App Engine"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/oauth-app" target="_blank" id="project-ds-blog-post">Flask App to authenticate to Google Services and display data</a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-            </div>
-            <!--row-->
-
-            <div class="row projects-row">
-
-                <div class="col-sm-4 python">
-                    <div class="project">
-                        <a href="https://github.com/GunnarGriese/ga-tools" target="_blank" id="project-ga-tools"><img src="img/ga_icon.png" class="img-rounded project-img" alt="Scripts and programs to automate cumbersome Google Analytics tasks"></a>
-                        <a class="project-description" href="https://github.com/GunnarGriese/ga-tools" target="_blank" id="project-ga-tools"> Collection of programs to automate cumbersome Google Analytics tasks </a>
-                    </div>
-                    <!--project-->
-                </div>
-                <!--column-->
-
-            </div>
-            <!--row-->
-
         </div>
-        <!--row-->
-
-
+    </section>
+    <!-- END WELCOME -->
+    <!-- START PROJECTS -->
+    <section id="projects" class="projects">
+        <h2 class="projects-section-header">These are some of my free-time projects</h2>
+        <div class="projects-grid">
+            <a href="https://iihnordic.com/blog/gtm-server-side-tagging-better-data-more-control/" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/gtm-server-side.png" alt="GTM Server-Side project">
+                <p class="project-title">
+                    <span class="code">Reflections on GTM Server Side
+                    </span>
+                </p>
+            </a>
+            <a href="https://github.com/GunnarGriese/oauth-app" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/flask-app.png" alt="Flask OAuth app project">
+                <p class="project-title">
+                    <span class="code">Flask App for Google Services</span>
+                </p>
+            </a>
+            <a href="https://github.com/GunnarGriese/oauth-app" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/crawler.png" alt="Web Crawler project">
+                <p class="project-title">
+                    <span class="code">GCP-powered Web Crawler</span>
+                </p>
+            </a>
+            <a href="https://github.com/GunnarGriese/google-search-console" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/python_gsc.png" alt="Python GSC project">
+                <p class="project-title">
+                    <span class="code">Python Wrapper for GSC API</span>
+                </p>
+            </a>
+            <a href="https://github.com/GunnarGriese/data-science-blog-post" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/ga-prediction.png" alt="GA prediction project">
+                <p class="project-title">
+                    <span class="code">Analysing GA raw data</span>
+                </p>
+            </a>
+            <a href="https://github.com/GunnarGriese/disaster-response-pipeline" target="_blank" class="project project-tile">
+                <img class="project-image" src="img/nlp-processing.png" alt="NLP processing project">
+                <p class="project-title">
+                    <span class="code">End-to-End NLP Processing</span>
+                </p>
+            </a>
         </div>
-        <!--projects-->
-        <div class="fixed-bottom">
-            <p class="text-center">Made with <i class="icon ion-heart"></i> in Copenhagen</p>
+    </section>
+    <!-- END PROJECTS -->
+    <!-- START CONTACT -->
+    <section id="contact" class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-section-header">
+                <h2>Drop me a message...</h2>
+                <p>if you're up for talking analytics!</p>
+            </div>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/gunnar-griese-634669a0/" target="_blank" class="btn contact-details" id="profile-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:gunnar@iihnordic.com" target="_blank" class="btn contact-details">
+                    <i class="fas fa-paper-plane"></i>
+                </a>
+                <a href="https://medium.com/@gunnargriese" target="_blank" class="btn contact-details">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a href="https://github.com/GunnarGriese" target="_blank" class="btn contact-details" id="profile-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
         </div>
-    </main>
-    </div>
-    <!--container-->
-    <script src="js/filter.js"></script>
+    </section>
+    <!-- END CONTACT -->
 </body>
 
 </html>
