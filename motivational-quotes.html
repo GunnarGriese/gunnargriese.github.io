@@ -34,19 +34,36 @@
     </script>
     <!--End Google Tag Manager -->
     <style>
+        @import url(https://fonts.googleapis.com/css?family=Khula:700);
         body {
-            font-family: 'Roboto', sans-serif;
-            padding-top: 4rem;
-            text-align: center;
+            background: #111;
         }
         
-        .footer {
-            position: fixed;
-            left: 0;
+        .hidden {
+            opacity: 0;
+        }
+        
+        .console-container {
+            font-family: Khula;
+            font-size: 4em;
+            text-align: center;
+            height: 200px;
+            width: 600px;
+            display: block;
+            position: absolute;
+            color: white;
+            top: 0;
             bottom: 0;
-            width: 98%;
-            text-align: right;
-            font-size: 100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .console-underscore {
+            display: inline-block;
+            position: relative;
+            top: -0.14em;
+            left: 10px;
         }
     </style>
 
@@ -58,7 +75,9 @@
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="container">
-        <h1 style="color:white">Hi. I will become a quote.</h1>
+        <div class='console-container'><span id='text'></span>
+            <div class='console-underscore' id='console'>&#95;</div>
+        </div>
         <br>
         <h2 style="color:white">I will become an author.</h2>
         <br>
