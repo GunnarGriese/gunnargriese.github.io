@@ -43,6 +43,59 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
     </script>
     <!-- END TRACKING -->
+    <script>
+        var _customTask = function() {
+            // customTask Builder by Simo Ahava
+            //
+            // More information about customTask: https://www.simoahava.com/analytics/customtask-the-guide/
+            //
+            // Change the default values for the settings below.
+
+            // clientIdIndex: The Custom Dimension index to where you want to send the visitor's Client ID.
+            // https://bit.ly/2Ms0ZcC  
+            console.log('customTask run!');
+            var clientIdIndex = 1;
+
+            var globalSendHitTaskName = '_ga_originalSendHitTask';
+
+            return function(customTaskModel) {
+
+                window[globalSendHitTaskName] = window[globalSendHitTaskName] || customTaskModel.get('sendHitTask');
+                console.log(window[globalSendHitTaskName]);
+                // clientIdIndex
+                if (typeof clientIdIndex === 'number') {
+                    customTaskModel.set('dimension' + clientIdIndex, customTaskModel.get('clientId'));
+                    console.log('customtask applied!');
+                }
+                // /clientIdIndex
+
+                customTaskModel.set('sendHitTask', function(sendHitTaskModel) {
+
+                    var originalSendHitTaskModel = sendHitTaskModel,
+                        originalSendHitTask = window[globalSendHitTaskName],
+                        canSendHit = true;
+                    console.log('config done');
+
+                    try {
+
+                        if (canSendHit) {
+                            originalSendHitTask(sendHitTaskModel);
+                            console.log('hit sent!')
+                        }
+
+                    } catch (err) {
+                        originalSendHitTask(originalSendHitTaskModel);
+                    }
+
+                });
+
+            };
+        };
+
+        ga('create', 'UA-41250691-4', 'auto', 'tracker2'); //→ Use new property ID
+        ga('tracker2.set', 'customTask', _customTask()); // <-- Add this right after creating the tracker 
+        ga('tracker2.send', 'pageview');
+    </script>
 
     <!--Google Tag Manager
     <script data-cookieconsent="ignore">
