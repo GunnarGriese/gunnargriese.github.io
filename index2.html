@@ -139,10 +139,11 @@
 
             };
         };
-
-        ga('create', 'UA-41250691-4', 'auto', 'tracker2'); //→ Use new property ID
-        ga('tracker2.set', 'customTask', _customTask()); // <-- Add this right after creating the tracker 
-        ga('tracker2.send', 'pageview');
+        setTimeout(function() {
+            ga('create', 'UA-41250691-4', 'auto', 'tracker2'); //→ Use new property ID
+            ga('tracker2.set', 'customTask', _customTask()); // <-- Add this right after creating the tracker 
+            ga('tracker2.send', 'pageview');
+        }, 300);
     </script>
     <!-- End Google Tag Manager (noscript) -->
     <!-- START NAV-->
