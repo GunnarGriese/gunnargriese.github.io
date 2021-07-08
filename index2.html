@@ -42,15 +42,16 @@
     <script data-cookieconsent="ignore">
         window.addEventListener('CookiebotOnAccept', function() {
 
-            if (Cookiebot.consent.necessary) {
+            if (Cookiebot.consent.statistics) {
+                console.log('Updating consent mode');
                 gtag("consent", "default", {
                     analytics_storage: "granted"
                 });
-                gtag('event', 'page_view', {
-                    'send_to': 'anonymous'
-                });
-
             }
+            console.log('Sending page view');
+            gtag('event', 'page_view', {
+                'send_to': 'anonymous'
+            });
 
         });
     </script>
