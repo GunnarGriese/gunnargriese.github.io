@@ -22,38 +22,37 @@
         //gtag("set", "ads_data_redaction", true);
     </script>
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" data-blockingmode="auto" type="text/javascript"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1234-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1234-1', {
+            'groups': 'standard'
+        });
+        gtag('config', 'UA-1234-2', {
+            'groups': 'anonymous',
+            'send_page_view': false
+        });
+    </script>
     <script>
         window.addEventListener('CookiebotOnAccept', function() {
 
-            if (Cookiebot.consent.statistics) {
+            if (Cookiebot.consent.necessary) {
                 gtag("consent", "default", {
                     analytics_storage: "granted"
                 });
-                ga('create', 'UA-1234-1', 'auto', 'standardTracker');
-                ga('create', {
-                    trackingId: 'UA-1234-2',
-                    cookieDomain: 'auto',
-                    cookieName: 'anonymousGa',
-                    name: 'anonymousTracker',
+                gtag('event', 'page_view', {
+                    'send_to': 'anonymous'
                 });
-                ga('standardTracker.send', 'pageview');
-                ga('anonymousTracker.send', 'pageview');
+
             }
 
         });
-    </script>
-    <script data-cookieconsent="ignore">
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     </script>
 
     <!--  Google Tag Manager
