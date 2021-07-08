@@ -29,6 +29,15 @@
                 gtag("consent", "default", {
                     analytics_storage: "granted"
                 });
+                ga('create', 'UA-1234-1', 'auto', 'standardTracker');
+                ga('create', {
+                    trackingId: 'UA-1234-2',
+                    cookieDomain: 'auto',
+                    cookieName: 'anonymousGa',
+                    name: 'anonymousTracker',
+                });
+                ga('standardTracker.send', 'pageview');
+                ga('anonymousTracker.send', 'pageview');
             }
 
         });
@@ -45,16 +54,6 @@
             a.src = g;
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-1234-1', 'auto', 'standardTracker');
-        ga('create', {
-            trackingId: 'UA-1234-2',
-            cookieDomain: 'auto',
-            cookieName: 'anonymousGa',
-            name: 'anonymousTracker',
-        });
-        ga('standardTracker.send', 'pageview');
-        ga('anonymousTracker.send', 'pageview');
     </script>
 
     <!--  Google Tag Manager
