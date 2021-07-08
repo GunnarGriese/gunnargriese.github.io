@@ -22,8 +22,8 @@
         //gtag("set", "ads_data_redaction", true);
     </script>
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" data-blockingmode="auto" type="text/javascript"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1234-1"></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1234-1" data-cookieconsent="ignore"></script>
+    <script data-cookieconsent="ignore">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -39,7 +39,7 @@
             'send_page_view': false
         });
     </script>
-    <script>
+    <script data-cookieconsent="ignore">
         window.addEventListener('CookiebotOnAccept', function() {
 
             if (Cookiebot.consent.necessary) {
