@@ -3,62 +3,8 @@
 
 <head>
     <!-- START TRACKING-->
+    <!-- Google Tag Manager -->
     <script>
-        dataLayer = [];
-    </script>
-
-    <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-
-        }
-        gtag("consent", "default", {
-            ad_storage: "denied",
-            analytics_storage: "denied",
-            wait_for_update: 500
-        });
-        //gtag("set", "ads_data_redaction", true);
-    </script>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" data-blockingmode="auto" type="text/javascript"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1234-1" data-cookieconsent="ignore"></script>
-    <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            window.dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-1234-1', {
-            'groups': 'standard'
-        });
-        gtag('config', 'UA-1234-2', {
-            'transport_url': 'https://gtm.gunnargriese.com',
-            'groups': 'anonymous',
-            'send_page_view': false
-        });
-    </script>
-    <script data-cookieconsent="ignore">
-        window.addEventListener('CookiebotOnAccept', function() {
-
-            if (Cookiebot.consent.statistics) {
-                console.log('Updating consent mode');
-                gtag("consent", "default", {
-                    analytics_storage: "granted"
-                });
-            }
-            console.log('Sending page view');
-            gtag('event', 'page_view', {
-                'send_to': 'anonymous'
-            });
-
-        });
-    </script>
-
-    <!--  Google Tag Manager
-    <script data-cookieconsent="ignore">
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -72,9 +18,11 @@
             j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
+        })(window, document, 'script', 'dataLayer', 'GTM-MLQDJ2F');
     </script>
-   END TRACKING -->
+    <!-- End Google Tag Manager -->
+    <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" data-blockingmode="auto" type="text/javascript"></script> -->
+
 
     <title>Gunnar Griese - Data Science & Analytics Portfolio</title>
     <meta charset="utf-8">
@@ -87,67 +35,6 @@
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <!-- <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQ9XXH"
-            height="0" width="0" style="display:none;visibility:hidden">
-        </iframe>
-    </noscript>
-    <script>
-        var _customTask = function() {
-            // customTask Builder by Simo Ahava
-            //
-            // More information about customTask: https://www.simoahava.com/analytics/customtask-the-guide/
-            //
-            // Change the default values for the settings below.
-
-            // clientIdIndex: The Custom Dimension index to where you want to send the visitor's Client ID.
-            // https://bit.ly/2Ms0ZcC  
-            console.log('customTask run!');
-            var clientIdIndex = 1;
-
-            var globalSendHitTaskName = '_ga_originalSendHitTask';
-
-            return function(customTaskModel) {
-
-                window[globalSendHitTaskName] = window[globalSendHitTaskName] || customTaskModel.get('sendHitTask');
-                console.log(window[globalSendHitTaskName]);
-                // clientIdIndex
-                if (typeof clientIdIndex === 'number') {
-                    customTaskModel.set('dimension' + clientIdIndex, customTaskModel.get('clientId'));
-                    console.log('customtask applied!');
-                }
-                // /clientIdIndex
-
-                customTaskModel.set('sendHitTask', function(sendHitTaskModel) {
-
-                    var originalSendHitTaskModel = sendHitTaskModel,
-                        originalSendHitTask = window[globalSendHitTaskName],
-                        canSendHit = true;
-                    console.log('config done');
-
-                    try {
-
-                        if (canSendHit) {
-                            originalSendHitTask(sendHitTaskModel);
-                            console.log('hit sent!')
-                        }
-
-                    } catch (err) {
-                        originalSendHitTask(originalSendHitTaskModel);
-                    }
-
-                });
-
-            };
-        };
-        setTimeout(function() {
-            ga('create', 'UA-41250691-4', 'auto', 'tracker2'); //→ Use new property ID
-            ga('tracker2.set', 'customTask', _customTask()); // <-- Add this right after creating the tracker 
-            ga('tracker2.send', 'pageview');
-        }, 300);
-    </script> -->
-    <!-- End Google Tag Manager (noscript) -->
     <!-- START NAV-->
     <nav id="navbar" class="nav">
         <!-- <img class="nav-logo" src="img/logo.png" alt="logo"> -->
