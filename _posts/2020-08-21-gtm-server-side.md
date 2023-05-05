@@ -2,8 +2,8 @@
 title: GTM Server-Side Tagging – Better Data & More Control
 author: gunnar
 date: 2020-08-21 15:24:15 +0200
-categories: [GTM Server-Side]
-tags: [gtm]
+categories: [GTM]
+tags: [gtm server-side]
 comments: false
 ---
 
