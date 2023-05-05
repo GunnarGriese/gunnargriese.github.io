@@ -8,7 +8,7 @@ Hi, I'm Gunnar Griese. I'm the Tech Lead for the Implementation Engineering team
 
 Based in Copenhagen/Denmark, I'm passionate about sharing my knowledge with others. On my personal website, you'll find insightful content that demystifies complex topics, focusing on digital analytics, digital marketing, web development, and the Google Cloud Platform.
 
-![Gunnar Griese](/assets/img/avatar/google-event.jpeg){: width="700" height="525" }
+![Gunnar Griese](/assets/img/avatar/google-event.jpeg){: width="500" height="375" }
 
 Whether you're seeking advice on Google Analytics, Google Tag Manager, or simply curious about the latest trends in digital marketing, you've come to the right place. Feel free to contact me through the various channels listed on my website.
 
