@@ -6,7 +6,7 @@ order: 4
 
 Hi, I'm Gunnar Griese. I'm the Tech Lead for the Implementation Engineering team at IIH Nordic, where I work with Google Analytics (GA), Google Tag Manager (GTM), and the Google Cloud Platform (GCP). With proficiency in JavaScript, SQL, and Python, I'm always exploring new ways to optimize the Google tech stack and maximize efficiency for businesses.
 
-Based in Copenhagen/Denmark, I'm passionate about sharing my knowledge with others. On my personal website, you'll find insightful content that demystifies complex topics, focusing on digital analytics, digital marketing, web development, and the Google Cloud Platform.
+Based in Copenhagen/Denmark, I'm passionate about sharing my knowledge with others. That's why I am happy to teach the course "Technical Digital Analytics" at IHM Business School in Malmö, where I introduce the students into the inner workings of GA and GTM. On my personal website, you'll find insightful content that demystifies complex topics, focusing on digital analytics, digital marketing, web development, and the Google Cloud Platform.
 
 ![Gunnar Griese](/assets/img/avatar/google-event.jpeg){: width="400" height="300" }
 
