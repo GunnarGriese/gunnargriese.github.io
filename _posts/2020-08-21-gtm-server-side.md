@@ -42,7 +42,7 @@ GTM Server-side tagging translates to a new “Server” container running on an
 
 While the well-known concept of tags, triggers, and variables work as they used to on client-side GTM containers, the newly introduced “clients” is the glue between the devices sending requests and the container logic. The client can receive and claim requests (and data sent with it), parses them into one or more events, routes data to be processed in the container (tags, triggers, and variables), and returns an HTTP response to the requesting device.
 
-### 2.2 Gain Data Control and Flexibility
+### Gain Data Control and Flexibility
 
 What is different about this approach than tracking based on client-side Javascript and pixels, is that you have full control and gain flexibility over how the data is processed until you send it to third-party tools (enabling hit validation, PII controls, etc.). In fact, since the GTM server (https://gtm.example.com) is associated with the same domain as your website (https://example.com), every interaction between them is considered to be a first-party data exchange by the user’s browser.
 
