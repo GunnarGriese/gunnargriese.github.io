@@ -34,12 +34,11 @@
             event: 'page_view',
             page_meta: {
                 layout: '{{ page.layout }}',
-                page_title: '{{ page.title }}',
+                page_title: '{{ site.title }}',
                 page_location: '{{ site.url }}',
                 published_at: '{{ page.date | date_to_xmlschema }}',
             },
             environment: '{{ jekyll.environment }}',
-            locale: '{{ include.lang }}',
         })
     </script>
 
