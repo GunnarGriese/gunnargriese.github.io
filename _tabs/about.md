@@ -4,5 +4,10 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Hi, I'm Gunnar Griese. I'm the Tech Lead for the Implementation Engineering team at IIH Nordic, where I work with Google Analytics (GA), Google Tag Manager (GTM), and the Google Cloud Platform (GCP). With proficiency in JavaScript, SQL, and Python, I'm always exploring new ways to optimize the Google tech stack and maximize efficiency for businesses.
+
+Based in Copenhagen/Denmark, I'm passionate about sharing my knowledge with others. On my personal website, you'll find insightful content that demystifies complex topics, focusing on digital analytics, digital marketing, web development, and the Google Cloud Platform.
+
+Whether you're seeking advice on Google Analytics, Google Tag Manager, or simply curious about the latest trends in digital marketing, you've come to the right place. Feel free to contact me through the various channels listed on my website.
+
+In my spare time, I do all kind of sports, dive into historical topics, and I try to keep up to date with the latest trends of our industry. I'm also available for speaking engagements at conferences and seminars, so don't hesitate to reach out if you're in need of an expert speaker in the field of digital analytics.
