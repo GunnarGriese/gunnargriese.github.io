@@ -37,7 +37,10 @@
                 page_title: document.title,
                 page_location: document.URL,
                 published_at: '{{ page.date | date_to_xmlschema }}',
-                author: '{{ page.author }}',
+            },
+            author: {
+                name: '{{ page.author }}',
+                url: '{{ page.author_url }}',
             },
             environment: '{{ jekyll.environment }}',
         })
