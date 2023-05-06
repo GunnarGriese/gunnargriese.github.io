@@ -34,7 +34,7 @@
             event: 'page_view',
             page_meta: {
                 layout: '{{ page.layout }}',
-                page_title: '{{ site.title }}',
+                page_title: document.title,
                 page_location: document.URL,
                 published_at: '{{ page.date | date_to_xmlschema }}',
                 author: '{{ page.author }}',
