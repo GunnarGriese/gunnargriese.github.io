@@ -14,9 +14,9 @@ Take for example below graph, where we compare the number of pageviews per hour 
 ![ga4-bq-views](/assets/img/timestamp-conversions/ga4-vs-bq-views.png)
 _Source: Own dataset_
 
-## Understanding the Microsecond Timestamp in GA4
+## Understanding GA4's Microsecond Timestamp in BigQuery
 
-Within the architecture of GA4, the `event_timestamp` is expressed in microseconds, diving even deeper into time granularity than seconds can. Originating from the Unix epoch — a fixed point in time starting from January 1, 1970 — this timestamp captures the moment an event is logged on GA4's servers. In essence, every event is timestamped with microscopic precision (with a slight delay given the amount of time it takes the event to reach the GA4 server), offering analysts a detailed temporal footprint of all user activities.
+Within the raw data export to BigQuery, GA4´s `event_timestamp` is expressed in microseconds, diving even deeper into time granularity than seconds can. Originating from the Unix epoch — a fixed point in time starting from January 1, 1970 — this timestamp captures the moment an event is logged on GA4's servers. In essence, every event is timestamped with microscopic precision (with a slight delay given the amount of time it takes the event to reach the GA4 server), offering analysts a detailed temporal footprint of all user activities.
 
 To put it into context, 1 second is divided into 1,000,000 microseconds. Having this level of precision makes sense in the context of digital analytics, where events often occur in rapid succession. Additionally, UTC serves as the world's time standard, ensuring a consistent reference point across global systems. By combining the precision of microseconds with the universality of UTC, GA4 can capture and standardize events with great accuracy.
 
@@ -29,7 +29,7 @@ GA4's BigQuery export schema provides the following time-related fields:
 
 _Source: https://support.google.com/analytics/answer/7029846?hl=en_
 
-While the `event_date` is expressed in the property's timezone, the `event_timestamp` is expressed in UTC. This is important to keep in mind when working with the data and can result in weird discrepancies when comparing them using them in their raw form:
+While the `event_date` is expressed in the property's timezone, the `event_timestamp` is expressed in UTC. This is important to keep in mind when working with the data and can result in unexpected discrepancies when comparing them using them in their raw form:
 
 ```sql
 SELECT
@@ -52,7 +52,9 @@ ORDER BY
   2 ASC
 ```
 
-The query above obtains the `event_date` and `event_timestamp` from the GA4 BQ export schema, converting the `event_timestamp` to a date format. We achieve this by first applying BQ's [`TIMESTAMP_MICROS` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_micros) to the `event_timestamp` column. The resulting TIMESTAMP value is then passed into BQ Standard SQL's powerful [`EXTRACT` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#extract), which allows us to extract a various parts of the input timestamp (e.g., DAY, MONTH, YEAR, etc.). In this case, we extract the date from the timestamp using `EXTRACT(date FROM TIMESTAMP_MICROS(event_timestamp))`. This results in a date format that matches the `event_date` format (YYYYMMDD), allowing us to compare the two fields.
+The query above obtains the `event_date` and `event_timestamp` from the GA4 BQ export schema, converting the `event_timestamp` to a date format. We achieve this by first applying BQ's [`TIMESTAMP_MICROS` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#timestamp_micros) to the `event_timestamp` column. The resulting TIMESTAMP value is then passed into BQ Standard SQL's [`EXTRACT` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions#extract), which allows us to extract various parts of the input timestamp (e.g., HOUR, DAY, DAYOFWEEK, MONTH, YEAR, etc.).
+
+In this case, we extract the date from the timestamp using `EXTRACT(date FROM TIMESTAMP_MICROS(event_timestamp))`. This results in a date format that matches the `event_date` format (YYYYMMDD), allowing us to compare the two fields.
 
 The conversion process applied to GA4 data can lead to confusing results though:
 
@@ -67,7 +69,14 @@ As you can see, it appears that the `event_timestamp` of certain events is one d
 
 ### The GA4 Timestamp Conversion Process in BigQuery
 
-Luckily for us, the `EXTRACT` function allows us to adjust the `event_timestamp` to the property's timezone by adding the `AT TIME ZONE` clause. This clause allows us to convert the `event_timestamp` to any timezone (see a list of all available time zones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), which in this case is UTC+2 (Denmark/Copenhagen). The resulting query looks like this:
+Luckily for us, the `EXTRACT` function allows us to adjust the `event_timestamp` to the property's timezone by adding the `AT TIME ZONE` clause. To obtain the right property timezone for our query, we can look at the GA4 property settings in the GA4 interface:
+
+![ga4-timezone-settings](/assets/img/timestamp-conversions/ga4-timezone-settings.png)
+_Admin > Property Settings > Reporting time zone_
+
+Adding the timezone to the timestamp conversion process allows us to convert the `event_timestamp` to any timezone (see a list of all available time zones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), which in this case is UTC+2 (Denmark/Copenhagen).
+
+Hence, after adding the `AT TIME ZONE` clause the resulting query looks like this:
 
 ```sql
 SELECT
@@ -85,14 +94,19 @@ ORDER BY
   1 asc
 ```
 
-To obtain the right property timezone for our query, we can look at the GA4 property settings in the GA4 interface:
+## Practical Example
 
-![ga4-timezone-settings](/assets/img/timestamp-conversions/ga4-timezone-settings.png)
-_Admin > Property Settings > Reporting time zone_
-
-## Practical Implementation
+Now that we understand the conversion process, let's apply it to a practical example to illustrate the importance of correct timestamp conversion. In this case, we'll be looking at the `event_timestamp` in BigQuery and extract the `DAY`and the `HOUR` before and after adjusting it to the property's timezone.
 
 ![heatmap-views](/assets/img/timestamp-conversions/heatmap-views.png)
 _Source: Public GA4 BQ dataset_
 
+The heatmap above shows the number of pageviews per day and hour for a GA4 property. As you can see, the heatmap is divided into two parts: the left side shows the `event_timestamp` before adjusting it to the property's timezone, while the right side shows the `event_timestamp` after adjusting it to the property's timezone. The difference between the two is quite significant, as the heatmap on the left shows a lot of activity in the early morning hours (8.00 - 9.00), while the heatmap on the right shows the peak of pageviews to happen later in the morning (10.00 - 11.00).
+
+Making decisions based on the heatmap on the left could lead to incorrect conclusions, and result in you missing out on valuable insights. For example, you might decide to run a campaign at 8.00 in the morning to target users who are active at that time. However, if you look at the heatmap on the right, you'll see that the peak of pageviews happens later in the morning (10.00 - 11.00), meaning that you might be missing out on valuable traffic by running your campaign at 8.00 in the morning.
+
 ## Conclusion
+
+As shown in this artice, adjusting the `event_timestamp` for its property's timezone is paramount when working with GA4 raw data in BigQuery. In general, I recommend using the `event_timestamp` for all time-related analyses and make sure to adjust it to the property's timezone using the `AT TIME ZONE` clause. This will ensure that you're working with the correct time values and avoid any unexpected discrepancies.
+
+I hope you find this article useful and that it helps you understand the GA4 timestamp conversion process a bit better and leads to more accurate analyses.
