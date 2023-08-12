@@ -85,7 +85,7 @@ ORDER BY
   1 asc
 ```
 
-To obtain the right property timezone, we can look at the GA4 property settings in the GA4 interface:
+To obtain the right property timezone for our query, we can look at the GA4 property settings in the GA4 interface:
 
 ![ga4-timezone-settings](/assets/img/timestamp-conversions/ga4-timezone-settings.png)
 _Admin > Property Settings > Reporting time zone_
