@@ -7,7 +7,7 @@ tags: [ga4, bigquery]
 comments: true
 ---
 
-Navigating the intricacies of data in GA4’s raw-data has its own hurdles. A good example is the `event_timestamp`, which is logged in microseconds and set in Coordinated Universal Time (UTC). While this standardized approach ensures consistency, it doesn't always align with the real-world context of events, especially when trying to make the BQ data match the data obtained from the GA4 UI. Hence, converting this timestamp to a property's respective timezone becomes an important step for analysts. Without this conversion, analysts might misinterpret the timing of user interactions, leading to potential inaccuracies in data-driven decision-making.
+Navigating the intricacies of data in GA4’s raw-data has its own hurdles. A good example is the `event_timestamp` which is logged in microseconds and set in Coordinated Universal Time (UTC). While this standardized approach ensures consistency, it does not always align with the real-world context of events, especially when trying to make the BQ data match the data obtained from the GA4 UI. Hence, converting this timestamp to a property's respective timezone becomes an important step for analysts. Without this conversion, analysts might misinterpret the timing of user interactions, leading to potential inaccuracies in data-driven decision-making.
 
 Take for example below graph, where we compare the number of pageviews per hour between the GA4 UI and BQ. The data from the GA4 UI is based on the property's timezone, while the data from BQ is based on UTC. As a result, the data from BQ is shifted by 2 hours, leading to a discrepancy between the two datasets. This is because the property's timezone is set to UTC+2 (Denmark/Copenhagen), while the data from BQ per default is set to UTC.
 
@@ -65,7 +65,7 @@ The conversion process applied to GA4 data can lead to confusing results though:
 | 2023-07-02 | **2023-07-02** | 24        |
 | 2023-07-03 | 2023-07-03     | 186       |
 
-As you can see, it appears that the `event_timestamp` of certain events is one day behind the `event_date` for July 2nd. This is because the `event_timestamp` is expressed in UTC, while the `event_date` is expressed in the property's timezone. As a result, the `event_timestamp` for July 2nd is actually July 1st at 22:00:00 UTC. This is because the property's timezone is set to UTC+2 (Denmark/Copenhagen), meaning that the `event_timestamp` is 2 hours behind the `event_date`. So, our GA4 events seem to be time travelling, but in reality, it's just a matter of timezone conversion.
+As you can see, it appears that the `event_timestamp` of certain events is one day behind the `event_date` for July 2nd. Again, this is because the `event_timestamp` is expressed in UTC, while the `event_date` is expressed in the property's timezone. As a result, the `event_timestamp` for July 2nd is actually July 1st at 22:00:00 UTC. This is because the property's timezone is set to UTC+2 (Denmark/Copenhagen), meaning that the `event_timestamp` is 2 hours behind the `event_date`. So, our GA4 events seem to be time travelling, but in reality, it's just a matter of timezone conversion.
 
 ### The GA4 Timestamp Conversion Process in BigQuery
 
@@ -101,12 +101,12 @@ Now that we understand the conversion process, let's apply it to a practical exa
 ![heatmap-views](/assets/img/timestamp-conversions/heatmap-views.png)
 _Source: Public GA4 BQ dataset_
 
-The heatmap above shows the number of pageviews per day and hour for a GA4 property. As you can see, the heatmap is divided into two parts: the left side shows the `event_timestamp` **before** adjusting it to the property's timezone, while the right side shows the `event_timestamp` **after** adjusting it to the property's timezone. The difference between the two is quite significant, as the heatmap on the left shows a lot of activity in the early morning hours (8.00 - 9.00), while the heatmap on the right shows the peak of pageviews to happen later in the morning (10.00 - 11.00).
+The heatmap above shows the number of pageviews per day and hour for a GA4 property. As you can see, the heatmap is divided into two parts: the left side shows the `event_timestamp` **before** adjusting it to the property's timezone, while the right side shows the `event_timestamp` **after** adjusting it to the property's timezone. The difference between the two is quite significant, as the heatmap on the left shows a lot of activity in the early morning hours (8.00 - 9.00), while the heatmap on the right shows the peak of pageviews to happen later in the morning (10.00 - 11.00). Keep in mind that depending on your property's selected time zone the effects on your decision-making process might be even more severe.
 
 Making decisions based on the heatmap on the left could lead to incorrect conclusions, and result in you missing out on valuable insights. For example, you might decide to run a campaign at 8.00 in the morning to target users who are active at that time. However, if you look at the heatmap on the right, you'll see that the peak of pageviews happens later in the morning (10.00 - 11.00), meaning that you might be missing out on valuable traffic simply by running your campaign too early throughout the day.
 
 ## Conclusion
 
-As shown in this artice, adjusting the `event_timestamp` for its property's timezone is paramount when working with GA4 raw data in BigQuery. In general, I recommend using the `event_timestamp` for all time-related analyses and make sure to adjust it to the property's timezone using the `AT TIME ZONE` clause. This will ensure that you're working with the correct time values and avoid any unexpected discrepancies.
+As shown in this artice, adjusting the `event_timestamp` for its property's timezone is paramount when working with GA4 raw data in BigQuery. In general, I recommend using the `event_timestamp` for all time-related analyses and making sure to adjust it to the property's timezone using the `AT TIME ZONE` clause. This will ensure that you're working with the correct time values and avoid any unexpected discrepancies.
 
-I hope you find this article useful and that it helps you understand the GA4 timestamp conversion process a bit better and leads to more accurate analyses.
+I hope you find this article useful and that it'll help you understand the GA4 timestamp conversion process a bit better and lead to more accurate analyses.
