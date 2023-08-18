@@ -16,7 +16,7 @@ _Source: Own dataset_
 
 ## Understanding GA4's Microsecond Timestamp in BigQuery
 
-Within the raw data export to BigQuery, GA4´s `event_timestamp` is expressed in microseconds, diving even deeper into time granularity than seconds can. Originating from the Unix epoch — a fixed point in time starting from January 1, 1970 — this timestamp captures the moment an event is logged on GA4's servers. In essence, every event is timestamped with microscopic precision (with a slight delay given the amount of time it takes the event to reach the GA4 server), offering analysts a detailed temporal footprint of all user activities.
+Within the raw data export to BigQuery, GA4´s `event_timestamp` is expressed in microseconds. Originating from the Unix epoch — a fixed point in time starting from January 1, 1970 — this timestamp captures the moment an event is logged on GA4's servers. In essence, every event is timestamped with microscopic precision (with a slight delay given the amount of time it takes the event to reach the GA4 server), offering analysts a detailed temporal footprint of all user activities.
 
 To put it into context, 1 second is divided into 1,000,000 microseconds. Having this level of precision makes sense in the context of digital analytics, where events often occur in rapid succession. Additionally, UTC serves as the world's time standard, ensuring a consistent reference point across global systems. By combining the precision of microseconds with the universality of UTC, GA4 can capture and standardize events with great accuracy.
 
