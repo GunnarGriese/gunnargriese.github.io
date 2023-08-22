@@ -20,6 +20,10 @@ Within the raw data export to BigQuery, GA4´s `event_timestamp` is expressed in
 
 In essence, every event is timestamped with microscopic precision (with a slight delay given the amount of time it takes the event to reach the GA4 server), offering analysts a detailed temporal footprint of all user activities. Additionally, UTC serves as the world's time standard, ensuring a consistent reference point across global systems. By combining the precision of microseconds with the universality of UTC, GA4 can capture and standardize events with great accuracy.
 
+> Be aware that the `event_timestamp` in BigQuery does **not** equal the time the event occured on the user's device. It is the time the incoming event is processed by GA4 servers.
+>
+> Additionally, keep in mind that GA4's tracking library attempts to batch events together. The events in a given batch share the same `event_timestamp` and as of now there is no way to tell in which order these originally occured. Read more about this phenomenon and how to tackle it [here](https://www.teamsimmer.com/2023/01/12/how-do-i-access-the-individual-timestamp-of-a-ga4-event/).
+
 GA4's BigQuery export schema provides the following time-related fields:
 
 | Field name      | Data type | Description                                                                                  |
