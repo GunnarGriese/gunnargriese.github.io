@@ -64,7 +64,7 @@ In general, server-side tracking can remove the processing burden from a given b
 
 ### Smooth Integration to the Google Cloud Platform
 
-Furthermore, because the GTM container is executed in Google’s cloud integrations, other GCP resources like BigQuery, ML Engine, and Cloud Functions will most likely be integrated soon. This will open up a lot of possibilities for advanced use cases involving machine learning and event-based analytics.
+Furthermore, because the GTM container is executed in Google’s cloud integrations, other GCP resources like BigQuery, ML Engine, and Cloud Functions will most likely be integrated soon. This will open up a lot of possibilities for advanced use cases involving machine learning and (event-based analytics)[https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/].
 
 Once this new GTM feature moves out of the beta phase after being improved based on feature requests and active community members’ contributions, even more possibilities will be available, significantly changing tracking implementations based on GTM.
 
