@@ -7,7 +7,7 @@ tags: [ga4]
 comments: true
 ---
 
-In my recent article, I explored the potential of GA4 as a core component in crafting a (lightweight Composable CDP)[/posts/ga4-the-cdp-you-didnt-know-you-had/]. One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4's capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4's data collection ensues. As outlined in Google Analytics' (Terms and Conditions)[https://marketingplatform.google.com/about/analytics/terms/us/#:~:text=and%20security%20measures.-,7.%20Privacy.,-You%20will%20not], transmitting PII, be it names, email addresses, or even credit card numbers, is a strict no-no. Through this post, I'll walk you through the nuances of leveraging GA4's client-side data redaction, ensuring your data remains PII-free before reaching Google Analytics. Alongside, we'll also uncover the mechanics behind this feature and explore more methodologies to fortify your data against PII leaks to GA4.
+In my recent article, I explored the potential of GA4 as a core component in crafting a [lightweight Composable CDP](/posts/ga4-the-cdp-you-didnt-know-you-had/). One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4's capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4's data collection ensues. As outlined in Google Analytics' [Terms and Conditions](https://marketingplatform.google.com/about/analytics/terms/us/#:~:text=and%20security%20measures.-,7.%20Privacy.,-You%20will%20not), transmitting PII, be it names, email addresses, or even credit card numbers, is a strict no-no. Through this post, I'll walk you through the nuances of leveraging GA4's client-side data redaction, ensuring your data remains PII-free before reaching Google Analytics. Alongside, we'll also uncover the mechanics behind this feature and explore more methodologies to fortify your data against PII leaks to GA4.
 
 ## GA4 Data Collection under the Hood
 
@@ -32,7 +32,7 @@ This paradigm shift, while presenting its own set of challenges, also unveils de
 
 ## Client-Side Data Redaction in GA4
 
-In Google Analytics 4 (GA4), we now have the flexibility to configure (Data Redaction)[https://support.google.com/analytics/answer/13544947] specifically for Web Data Streams, focusing on predefined text patterns like email addresses and URL query parameters. This feature ("leaked")[https://www.linkedin.com/posts/charlesfarina_a-new-data-redaction-feature-just-rolled-activity-7087161324031414272-YaJG/] two months ago already, when Google's official GA4 demo property was granted access to the feature. However, it was only recently that feature has become available to more and more GA4 users (it appears to be part of a gradual roll-out effort).
+In Google Analytics 4 (GA4), we now have the flexibility to configure [Data Redaction](https://support.google.com/analytics/answer/13544947) specifically for Web Data Streams, focusing on predefined text patterns like email addresses and URL query parameters. This feature []"leaked"](https://www.linkedin.com/posts/charlesfarina_a-new-data-redaction-feature-just-rolled-activity-7087161324031414272-YaJG/) two months ago already, when Google's official GA4 demo property was granted access to the feature. However, it was only recently that feature has become available to more and more GA4 users (it appears to be part of a gradual roll-out effort).
 
 When it comes to email redaction, this feature **operates across the entire GA4 event** on a best-effort basis, ensuring a layer of privacy and security. On the other hand, URL Query Parameters specifically target a select set of event parameters for which GA4 will attempt to redact values of the specified query parameters. The URL query parameter redaction is currently supported for the following event parameters (all URL-related parameters):
 
@@ -138,7 +138,7 @@ Hence, let's have a look at additional approaches that you can use to ensure tha
 
 Other data points like IP addrsses and user-agents might require further treatment as well. Furthermore, the usage of Google Signals might be questionable in some cases.
 
-With GA4, you're empowered with Regional Data Controls that allow you to define the specificity of location and device data you collect from your website users. Opting to disable this collection ensures that city-level location insights (derived from IP addresses) and certain device metadata (dervied from user-agent headers) are redacted even before they reach GA4's servers. For a deeper dive into these controls, visit the official documentation on (Regional Controls & Google Signals)[https://support.google.com/analytics/answer/12017362?hl=en#:~:text=analytics.google.com-,Regional%20controls,-Google%20signals].
+With GA4, you're empowered with Regional Data Controls that allow you to define the specificity of location and device data you collect from your website users. Opting to disable this collection ensures that city-level location insights (derived from IP addresses) and certain device metadata (dervied from user-agent headers) are redacted even before they reach GA4's servers. For a deeper dive into these controls, visit the official documentation on [Regional Controls & Google Signals](https://support.google.com/analytics/answer/12017362?hl=en#:~:text=analytics.google.com-,Regional%20controls,-Google%20signals).
 
 Moreover, GA4 offers advanced configurations, both in gtag.js & GTM web, to fine-tune ad personalization: `allow_google_signals` & `allow_ad_personalization_signals`.
 
@@ -153,7 +153,7 @@ Transformations in a GTM server-side container serve as a powerful tool, grantin
 **HTTP headers, like IP addresses, referers, and user-agents, demand special attention and handling within sGTM.**
 
 ![gtm-ss-transformations](/assets/img/ga4-data-redaction/gtm-ss-transformations.png "GTM Server-Side Transformations")
-_Source: (Official GTM Server-Side Documentation)[https://developers.google.com/tag-platform/tag-manager/server-side/transformations]_
+_Source: [Official GTM Server-Side Documentation](https://developers.google.com/tag-platform/tag-manager/server-side/transformations)_
 
 With transformations, you can:
 
@@ -179,7 +179,7 @@ GA4 provides you with four options to initiate data deletion requests:
 | Delete selected parameters on selected events       | This option deletes registered parameters that you select in the next step across a list of events that you also select in the next step. |
 | Delete selected user properties                     | This option deletes user properties that you select in the next step                                                                      |
 
-\_Source: (Data-deletion requests documentation)[https://support.google.com/analytics/answer/9940393?hl=en#zippy=%2Cin-this-articles]
+_Source: [Data-deletion requests documentation](https://support.google.com/analytics/answer/9940393?hl=en#zippy=%2Cin-this-articles)_
 
 GA4 accommodates the removal of both automatically recorded parameters and those manually registered as custom dimensions. However, it refrains from erasing numeric parameters, text parameters based on trusted internal identifiers, and the preset entries "", "(not set)", and "(data deleted)". **Auto-collected Parameters** can be removed exclusively when you opt to erase all parameters across every event. Analytics can wipe out **custom parameters** tagged as custom dimensions. If you can't spot a specific parameter in the deletion list, it's likely it was never measured initially. Double-check the parameter's name and its registration status before deletion.
 
@@ -187,7 +187,7 @@ It's worth noting: if you've established a custom dimension that sources its dat
 
 ### GA4 User Deletion API
 
-A somewhat related data control in GA4, but one of the lesser known ones is the (User Deletion API) [https://developers.google.com/analytics/devguides/config/userdeletion/v3]. Its impact on your data is more rigorous than for Data Deletion requests, as this API empowers you to facilitate the removal of all data linked to specific user identifiers. So, if any of the aforementioned methods failed and unwanted data slipped through, the User Deletion API serves you as a tool to delete data related to designated user identifiers found in your properties. Initiating these deletion requests is feasible through both Firebase projects and GA properties. To initiate a User Deletion API request, you must specify the user identifier type and the user identifier itself.
+A somewhat related data control in GA4, but one of the lesser known ones is the [User Deletion API](https://developers.google.com/analytics/devguides/config/userdeletion/v3). Its impact on your data is more rigorous than for Data Deletion requests, as this API empowers you to facilitate the removal of all data linked to specific user identifiers. So, if any of the aforementioned methods failed and unwanted data slipped through, the User Deletion API serves you as a tool to delete data related to designated user identifiers found in your properties. Initiating these deletion requests is feasible through both Firebase projects and GA properties. To initiate a User Deletion API request, you must specify the user identifier type and the user identifier itself.
 
 Supported user identifier types include:
 
@@ -212,7 +212,7 @@ _Overview of GA4 Privacy Controls - Own Visualization_
 - In Transit: This is where you scrub data from the GA4 requests before they hit GA4's servers. Here you can configure Regional Data Controls and take advantage of sGTM's Transformations feature.
 - Post-Data Collection: This is where you delete already collected data. Here you can utilize Data Deletion Requests and/or the User Deletion API.
 
-For a complete rundown of all available data controls in GA4, I recommend consulting (this official Google document)[https://support.google.com/analytics/answer/13126616?hl=en], since it offers a central guide to GA4's data practices and controls for protecting the confidentiality and security of data collected by GA. https://support.google.com/analytics/answer/13126616?hl=en
+For a complete rundown of all available data controls in GA4, I recommend consulting [this official Google document](https://support.google.com/analytics/answer/13126616?hl=en), since it offers a central guide to GA4's data practices and controls for protecting the confidentiality and security of data collected by GA.
 
 ## Conclusion
 
