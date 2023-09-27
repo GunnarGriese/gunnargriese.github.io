@@ -71,7 +71,7 @@ It's important to note, however, that this feature is exclusive to Web Data Stre
 Let's have a look at how the Data Redaction feature affects data collection. To do so, we'll use the following example, where I have configured the Data Redaction feature to redact email addresses. I've also configured a GA4 Configuration tag in GTM to send a `page_view` event to GA4. The tag is configured to send the following values for some custom event parameters:
 
 ![gtm-test-values](/assets/img/ga4-data-redaction/gtm-test-values.png "GTM Data Redaction test")
-_GTM test Configuration_
+_GTM Test Configuration_
 
 As you can see, the values represent various combinations of email addresses and strings. The following table shows the values that are sent to GA4, along with the redacted values:
 
@@ -122,7 +122,7 @@ In terms of operation, Data Redaction kicks in **after** Event Modification & Cr
 
 > Data redaction may incorrectly interpret text as an email address and redact the text; for example, if the text includes "@" followed by a top-level domain name (e.g., example.com) it may be incorrectly removed.
 
-Historically, similar data manipulation could be achieved in GTM web by tweaking the `page_location` or leveraging GTM Server-Side (sGTM) transformations. Still, remember that sensitive parameters dispatched via HTTP headers, like IP addresses, referers, and user-agents, demand special attention and handling within sGTM.
+Historically, similar data manipulation could be achieved in your GTM web container by tweaking the `page_location` or leveraging GTM Server-Side (sGTM) transformations. Still, remember that sensitive parameters dispatched via HTTP headers, like IP addresses, referers, and user-agents, demand special attention and handling within sGTM.
 
 While the Data Redaction feature in GA4 offers you greater control over the data collected, it's crucial to understand that this is not a one-size-fits-all solution for ensuring compliance with all laws and regulations. For a comprehensive understanding of best practices and controls for safeguarding data, I strongly recommend working together with your legal department.
 
