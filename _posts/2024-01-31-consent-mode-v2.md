@@ -164,17 +164,17 @@ When the advertiser's implementation meets these conditions, URL passthrough is 
 
 #### Obtain current consent state
 
-To swiftly ascertain the current consent state for any consent type, you can utilize the `getConsentState` method from the Google tag's data layer. Executing the following will return a binary value: 0 indicates no consent (denied), and 1 signifies consent has been granted:
+To quickly ascertain the current consent state for any consent type, you can utilize the `getConsentState` method from the Google tag's global object. Executing the following will return a binary value: 0 indicates no consent (denied), and 1 signifies consent has been granted:
 
 ```javascript
-window.google_tag_data.ics.getConsentState(‘ad_storage’); // Example for ad_storage
+window.google_tag_data.ics.getConsentState("ad_storage"); // Example for ad_storage
 ```
 
 This provides a quick and efficient means of checking user consent in real-time using the pre-defined APIs.
 
 #### Listen for consent state changes
 
-To monitor and respond to changes in user consent for ads and analytics, you can set up a listener using the `addListener` method within the Google tag framework:
+To monitor and respond to changes in user consent for ads and analytics, you can set up a listener using the `addListener` method of the Google tag's object:
 
 ```javascript
 window.google_tag_data.ics.addListener(
@@ -200,7 +200,7 @@ Below, we have a closer look into the specific methods employed by this template
 
 #### Set default consent state
 
-By invoking the `setDefaultConsentState` method from a tag template, a default consent update is pushed to the data layer. GTM processes this update **immediately** after the current event, and any tags triggered by it have finished processing or when the tag processing timeout is reached, whichever comes first. The implementation ensures that the consent update is prioritized and processed in the GTM container before any other items are queued in the data layer. This approach guarantees that user consent preferences are accurately reflected and adhered to across all subsequent tag executions.
+By invoking the `setDefaultConsentState` method from a tag template, the default consent state is pushed to the data layer. GTM processes this update **immediately** after the current event, and any tags triggered by it have finished processing or when the tag processing timeout is reached, whichever comes first. The implementation ensures that the consent update is prioritized and processed in the GTM container before any other items are queued in the data layer. This approach guarantees that user consent preferences are accurately reflected and adhered to across all subsequent tag executions.
 
 ```javascript
 const setDefaultConsentState = require("setDefaultConsentState");
@@ -218,7 +218,7 @@ setDefaultConsentState({
 });
 ```
 
-This prioritization is critical to remember, as it means that this command allows you to bypass the command queue, which the gtag API is subject to. So, if you want to use Consent Mode in conjunction with GTM, I can highly recommend using a GTM template utilizing the respective Sandbox APIs.
+This prioritization is critical to remember, as it means that this command allows you to bypass the command queue, which i.e. the gtag API is subject to. So, if you want to use Consent Mode in conjunction with GTM, I can highly recommend using a GTM template utilizing the respective Sandbox APIs.
 
 Including optional parameters like `wait_for_update` and region offers additional flexibility, allowing for fine-tuned control based on specific timing needs and geographic considerations. These parameters are optional and work as described for the gtag API.
 
@@ -254,7 +254,7 @@ gtagSet("url_passthrough", true);
 
 #### Listen for consent state changes
 
-The `addConsentListener` function is designed to register a listener that triggers whenever there's a change in the consent status of a specified type (e.g., `analytics_storage`), such as shifting from "denied" to "granted" or vice versa. However, it's important to note that this function does not activate if a previously unset consent type is updated to "granted", as an unset state is already considered as "granted".
+The `addConsentListener` function registers a listener that triggers whenever there's a change in the consent status of a specified type (e.g., `analytics_storage`), such as shifting from "denied" to "granted" or vice versa. However, it's important to note that this function does not activate if a previously unset consent type is updated to "granted", as an unset state is already considered as "granted".
 
 ```javascript
 const isConsentGranted = require("isConsentGranted");
@@ -274,7 +274,7 @@ if (!isConsentGranted("ad_storage")) {
 
 Additionally, the `isConsentGranted` function returns "true" if a particular consent type is deemed granted. This status is achieved either when the consent type is explicitly set to 'granted' or when it remains unset. Any other setting for the consent type is interpreted as not granted.
 
-Combining these two functions allows for the creation of a listener that triggers when a particular consent type is granted. This is useful for implementing a fallback mechanism for when a user grants consent for a particular consent type. For example, if a user grants consent for `ad_storage`, the listener can be used to trigger a full pixel send, which is a more robust alternative to the cookieless ping.
+Combining these two functions allows for the creation of a listener that triggers when a particular consent type is granted. This is useful for implementing a fallback mechanism for when a user grants consent for a particular consent type.
 
 ### Using Firebase SDK (app)
 
@@ -440,20 +440,6 @@ The above snippet will print something like this to the console:
 
 ![google-tag-data-consent](/assets/img/consent-mode/google-tag-data-consent.png)
 _Source: Own GTM Setup_
-
-#### google_tag_data.ics.addListener
-
-Interestingly, you can also use the `google_tag_data.ics.addListener` method (equivalent to `addConsentListener` function in GTM Sandbox) to listen for changes in the consent state. Again, allowing you to build other website logic on top of the user's consent preferences using JavaScript.
-
-```javascript
-window.google_tag_data.ics.addListener(["ads", "analytics"], function (event) {
-  console.log(
-    "Consent state for either ads or analytics changed:",
-    event.consentEventId,
-    event.consentPriorityId
-  );
-});
-```
 
 ### Using the Network Tab
 
