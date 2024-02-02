@@ -31,7 +31,7 @@ The following consent types are supported by Consent Mode v2:
 
 The collected signals and additional data points aid in modeling conversions (e.g., for Google Ads and Floodlight) and tracking and modeling user behavior and conversions (for GA4). Consent Mode allows for (limited) data capture in line with user consent preferences through two variants: 'Basic' and 'Advanced.' The 'Basic' variant is the future minimum requirement for advertisers, whereas the 'Advanced' mode allows for fuller use of Google's data modeling capabilities. The 'Advanced' variant enables data collection on websites through more or less complete requests, but without cookies, whenever consent is not given or explicitly denied. The aim is to fill data collection gaps and to provide advertisers with a more complete, modeled picture of their users' behavior. These two options have been available since the initial release of Consent Mode. However, with the latest update, Google increased the focus their presence.
 
-![consent-mode-architecture](../assets/img/consent-mode/consent-mode-architecture.png)
+![consent-mode-architecture](/assets/img/consent-mode/consent-mode-architecture.png)
 _Source: Own Visualization_
 
 Moreover, with Consent Mode v2 two new consent states have been introduced: `ad_user_data` and `ad_personalization`. These two new consent states allow for more granular control over what data is collected, how the data is processed and shared between interconnected GMP tools, like GA, Google Ads, etc.. The new consent states are highly aimed at controlling the data activation processes. In that sense, Consent Mode v2 increasingly becomes a control layer for advertisers for all data collection (=`ad_storage` & `analytics_storage`) and activation mechanisms (`ad_user_data` & `ad_personalization`) in the GMP. From my perspective, this is an aspect that is often time overlooked when discussing Consent Mode v2. Traditionally, the focus is very much focused on the data collection aspect for websites, but Consent Mode v2 is much more than that.
@@ -40,7 +40,7 @@ Moreover, with Consent Mode v2 two new consent states have been introduced: `ad_
 
 When a user lands on a website or uses an app for the first time, the advertiser blocks Google tags and SDKs by default. At this point, the advertiser shares no user data with Google. As we know, the page then presents the user with a consent banner. Now, the user has the autonomy to grant or deny tracking consent (if the setup is correctly implemented...).
 
-![consent-mode-basic-implementation](../assets/img/consent-mode/basic-implementation.png)
+![consent-mode-basic-implementation](/assets/img/consent-mode/basic-implementation.png)
 _Source: Own Visualization of Google source_
 
 Should the user withhold consent, no tracking occurs, no tags are fired, and Google does not receive any data from the user.
@@ -53,7 +53,7 @@ This is most likely the implementation that most advertisers have implemented, a
 Advanced Consent Mode operates under a paradigm where advertisers do not entirely block Google tags and SDKs without user consent. Unlike the Basic Implementation, where consent is a prerequisite for data processing, the Advanced Mode proceeds with data collection regardless of consent. Still, it does not use any cookies in that case.
 When users deny consent, the Advanced Mode employs "cookieless pings". These are regular events/hits sent to Google's servers but do not incorporate regular cookie values. Cookieless pings then allow Google to use these for modeling of granular and aggregated data collection for analytics (Behavioral Modeling) and advertisement performance purposes (Conversion Modeling).
 
-![advanced-implementation](../assets/img/consent-mode/advanced-implementation.png)
+![advanced-implementation](/assets/img/consent-mode/advanced-implementation.png)
 _Source: Own Visualization of Google source_
 
 The advertiser communicates their users' consent states to Google, which determines how Google processes, exposes and uses the data. The reader can infer the exact implication of each consent state on the tags' data collection behavior from the table above.
@@ -193,7 +193,7 @@ Google also included the gtag API functionalities for Consent Mode into GTM's Sa
 
 Consider using Simo Ahava's template for a streamlined implementation of Consent Mode v2. Available [here](<(https://tagmanager.google.com/gallery/#/owners/gtm-templates-simo-ahava/templates/consent-mode)>), this template is ideally suited to orchestrate the Consent Mode implementation.
 
-![simo-gtm-template](../assets/img/consent-mode/simo-gtm-template.png)
+![simo-gtm-template](/assets/img/consent-mode/simo-gtm-template.png)
 _Source: Own GTM Setup_
 
 Below, we have a closer look into the specific methods employed by this template or similar ones, which are a great example for how to utilize them. For more technical details on the APIs see [here](https://developers.google.com/tag-platform/tag-manager/templates/consent-apis).
@@ -374,14 +374,14 @@ When using the GTM Web Preview, you can inspect the consent state in the GTM int
 - **On-page Update** (inferred from update command)
 - **Current State** (consent state applicable to the current event and associated tags)
 
-![gtm-web-consent-state-preview](../assets/img/consent-mode/gtm-web-consent-state.png)
+![gtm-web-consent-state-preview](/assets/img/consent-mode/gtm-web-consent-state.png)
 _Source: Own GTM Setup_
 
 #### GTM Server-Side Preview
 
 For the GTM Server-Side Preview, we are missing a user-friendly interface like the one for the web preview. However, we can inspect the consent state once the GA4 client parses the incoming event data. The event data exposes the consent states as part of the `x-sst-system-properties` object. From here, you can use the consent state to block or allow certain tags from firing based on the user's consent preferences. Or simply pass the consent state to your tags for further analysis downstream.
 
-![gtm-ss-system-properties](../assets/img/consent-mode/gtm-ss-system-properties.png)
+![gtm-ss-system-properties](/assets/img/consent-mode/gtm-ss-system-properties.png)
 _Source: Own GTM Setup_
 
 ### Using the dataLayer object
@@ -390,7 +390,7 @@ Since the gtag API eventually pushes all of its events and data to the data laye
 
 In the dataLayer, you are able to see the `default` and `update` commands, as well as the respective consent states set for each consent type. This is a great way to verify that the consent state is being updated correctly and that the correct consent state is being applied to your tags.
 
-![dataLayer-consent-state](../assets/img/consent-mode/dataLayer-consent-state.png)
+![dataLayer-consent-state](/assets/img/consent-mode/dataLayer-consent-state.png)
 _Source: Own GTM Setup_
 
 > This will only work if you have implemented the consent state using gtag.js. If you have used the GTM Sandbox APIs, you cannot inspect the consent state as described above.
@@ -438,7 +438,7 @@ _Source: [Cookiebot](https://support.cookiebot.com/hc/en-us/articles/36001841338
 
 The above snippet will print something like this to the console:
 
-![google-tag-data-consent](../assets/img/consent-mode/google-tag-data-consent.png)
+![google-tag-data-consent](/assets/img/consent-mode/google-tag-data-consent.png)
 _Source: Own GTM Setup_
 
 #### google_tag_data.ics.addListener
