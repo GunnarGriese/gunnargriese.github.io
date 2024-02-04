@@ -191,7 +191,7 @@ The above code snippet adds a listener for consent states for `ad_storage` and `
 
 Google also included the gtag API functionalities for Consent Mode into GTM's Sandbox APIs, making it possible to build and use native community tags and variable templates in our GTM containers.
 
-Consider using Simo Ahava's template for a streamlined implementation of Consent Mode v2. Available [here](<(https://tagmanager.google.com/gallery/#/owners/gtm-templates-simo-ahava/templates/consent-mode)>), this template is ideally suited to orchestrate the Consent Mode implementation.
+Consider using Simo Ahava's template for a streamlined implementation of Consent Mode v2. Available [here](https://tagmanager.google.com/gallery/#/owners/gtm-templates-simo-ahava/templates/consent-mode), this template is ideally suited to orchestrate the Consent Mode implementation.
 
 ![simo-gtm-template](/assets/img/consent-mode/simo-gtm-template.png)
 _Source: Own GTM Setup_
