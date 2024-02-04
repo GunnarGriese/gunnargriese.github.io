@@ -29,16 +29,16 @@ The following consent types are supported by Consent Mode v2:
 | `personalization_storage` | Enables storage related to personalization, for example, video recommendations                                                        |
 | `security_storage`        | Enables storage related to security such as authentication functionality, fraud prevention, and other user protection                 |
 
-The collected signals and additional data points aid in modeling conversions (e.g., for Google Ads and Floodlight) and tracking and modeling user behavior and conversions (for GA4). Consent Mode allows for (limited) data capture in line with user consent preferences through two variants: 'Basic' and 'Advanced.' The 'Basic' variant is the future minimum requirement for advertisers, whereas the 'Advanced' mode allows for fuller use of Google's data modeling capabilities. The 'Advanced' variant enables data collection on websites through more or less complete requests, but without cookies, whenever consent is not given or explicitly denied. The aim is to fill data collection gaps and to provide advertisers with a more complete, modeled picture of their users' behavior. These two options have been available since the initial release of Consent Mode. However, with the latest update, Google increased the focus their presence.
+The collected signals and additional data points aid in modeling conversions (e.g., for Google Ads and Floodlight) and tracking and modeling user behavior and conversions (for GA4). Consent Mode allows for (limited) data capture in line with user consent preferences through two variants: 'Basic' and 'Advanced.' The 'Basic' variant is the future minimum requirement for advertisers, whereas the 'Advanced' mode allows for fuller use of Google's data modeling capabilities. The 'Advanced' variant enables data collection on websites through more or less complete requests, but without cookies, whenever consent is not given or explicitly denied. The aim is to fill data collection gaps and to provide advertisers with a more complete, modeled picture of their users' behavior. These two options have been available since the initial release of Consent Mode. However, with the latest update, Google increased the focus on their availability.
 
 ![consent-mode-architecture](/assets/img/consent-mode/consent-mode-architecture.png)
 _Source: Own Visualization_
 
-Moreover, with Consent Mode v2 two new consent states have been introduced: `ad_user_data` and `ad_personalization`. These two new consent states allow for more granular control over what data is collected, how the data is processed and shared between interconnected GMP tools, like GA, Google Ads, etc.. The new consent states are highly aimed at controlling the data activation processes. In that sense, Consent Mode v2 increasingly becomes a control layer for advertisers for all data collection (=`ad_storage` & `analytics_storage`) and activation mechanisms (`ad_user_data` & `ad_personalization`) in the GMP. From my perspective, this is an aspect that is often time overlooked when discussing Consent Mode v2. Traditionally, the focus is very much focused on the data collection aspect for websites, but Consent Mode v2 is much more than that.
+Moreover, with Consent Mode v2, two new consent states have been introduced: `ad_user_data` and `ad_personalization`. These two new consent states allow for more granular control over what data is collected and how the data is processed and shared between interconnected GMP tools, like GA, Google Ads, etc. The new consent states highly aim to control the data activation processes. In that sense, Consent Mode v2 increasingly becomes a control layer for advertisers for all data collection (`ad_storage` & `analytics_storage`) and activation mechanisms (`ad_user_data` & `ad_personalization`) in the GMP. This is an aspect that is often overlooked when discussing Consent Mode v2. Traditionally, the focus is very much on the data collection aspect for websites, but Consent Mode v2 is much more than that.
 
 ### Basic Implementation
 
-When a user lands on a website or uses an app for the first time, the advertiser blocks Google tags and SDKs by default. At this point, the advertiser shares no user data with Google. As we know, the page then presents the user with a consent banner. Now, the user has the autonomy to grant or deny tracking consent (if the setup is correctly implemented...).
+When a user lands on a website or uses an app for the first time, the advertiser blocks Google tags and SDKs by default. At this point, the advertiser shares no user data with Google. As we know, the page then presents the user with a consent banner. The user can grant or deny tracking consent (if the setup is correctly implemented…).
 
 ![consent-mode-basic-implementation](/assets/img/consent-mode/basic-implementation.png)
 _Source: Own Visualization of Google source_
@@ -51,18 +51,18 @@ This is most likely the implementation that most advertisers have implemented, a
 ### Advanced Implementation
 
 Advanced Consent Mode operates under a paradigm where advertisers do not entirely block Google tags and SDKs without user consent. Unlike the Basic Implementation, where consent is a prerequisite for data processing, the Advanced Mode proceeds with data collection regardless of consent. Still, it does not use any cookies in that case.
-When users deny consent, the Advanced Mode employs "cookieless pings". These are regular events/hits sent to Google's servers but do not incorporate regular cookie values. Cookieless pings then allow Google to use these for modeling of granular and aggregated data collection for analytics (Behavioral Modeling) and advertisement performance purposes (Conversion Modeling).
+When users deny consent, the Advanced Mode employs "cookieless pings". These are regular events/hits sent to Google's servers but do not incorporate regular cookie values. Cookieless pings then allow Google to use these for modeling granular and aggregated data for analytics (Behavioral Modeling) and advertisement performance purposes (Conversion Modeling).
 
 ![advanced-implementation](/assets/img/consent-mode/advanced-implementation.png)
 _Source: Own Visualization of Google source_
 
-The advertiser communicates their users' consent states to Google, which determines how Google processes, exposes and uses the data. The reader can infer the exact implication of each consent state on the tags' data collection behavior from the table above.
+The advertiser communicates their users' consent states to Google, which determines how Google processes, exposes and uses the data. From the table above, the reader can infer the exact implication of each consent state on the tags' data collection behavior.
 
 The general idea of the Advanced Consent Mode is that even when cookies are not permissible, advertisers can obtain valuable insights in a privacy-conscious manner.
 
 ### Basic vs. Advanced Implementation
 
-To sum it up, the Basic Implementation ensures that no data is collected without consent and utilizes cookies once consent is granted. The Advanced Implementation, on the other hand, additionally allows for data collection without consent, but without cookies in that case. The Advanced Implementation is the only way to collect data without consent that feeds Google's embedded models.
+To summarize, the Basic Implementation ensures that no data is collected without consent and utilizes cookies once consent is granted. The Advanced Implementation, on the other hand, additionally allows for data collection without consent, but without cookies in that case. Advanced Implementation is the only way to collect data that feeds Google's embedded models without consent.
 
 Here are the tradeoffs between advanced and basic implementation for consent mode:
 
@@ -77,11 +77,11 @@ Here are the tradeoffs between advanced and basic implementation for consent mod
 
 _Source: [Advanced vs. basic implementation](https://support.google.com/analytics/answer/9976101?hl=en)_
 
-> DISCLAIMER: While advertisers should adopt the Consent Mode update to ensure remarketing efforts stay efficient, they should not take the choice of whether or not to implement the "Advanced" variant lightly. The "Advanced" mode allows for more data collection, which may benefit campaign performance. However, it might also come with a higher risk of non-compliance with legislation like ePrivacy, which could result in fines and other penalties. Hence, I strongly advocate involving your legal department in making a decision in the aforementioned trade-off.
+> DISCLAIMER: While advertisers should adopt the Consent Mode update to ensure remarketing efforts stay efficient, they should not take the choice of whether or not to implement the "Advanced" variant lightly. The "Advanced" mode allows for more data collection, which may benefit campaign performance. However, it might also come with a higher risk of non-compliance with legislation like ePrivacy, which could result in fines and other penalties. Hence, I strongly advocate involving your legal department in deciding on the abovementioned trade-off.
 
 ## Implications of Adopting Consent Mode v2
 
-With the two additional consent states — `ad_user_data` and `ad_personalization` — Consent Mode v2 allows for enhanced user consent granularity, and gives advertisers tools to directly affect how Google services can [utilize collected data](https://developers.google.com/tag-platform/security/concepts/consent-mode).
+With the two additional consent states — `ad_user_data` and `ad_personalization` — Consent Mode v2 allows for enhanced user consent granularity and gives advertisers tools to directly affect how Google services can [utilize collected data](https://developers.google.com/tag-platform/security/concepts/consent-mode).
 
 The `ad_user_data` consent state governs whether advertisers can send user data to Google for advertising purposes. Denial of this consent has the following implications:
 
@@ -109,7 +109,7 @@ To accurately implement these commands, it's best to adhere to the protocols pro
 
 ### Using gtag.js (web)
 
-The Google tag (gtag.js) is a JavaScript tagging framework and API that allows you to send event data to Google Analytics, Google Ads, and other GMP tools. The gtag.js tagging library uses the global `gtag()` function to send data to Google's servers. The gtag.js library supports Consent Mode v2 natively and allows for the implementation of the two key commands mentioned above.
+The Google tag (gtag.js) is a JavaScript tagging framework and API that allows you to send event data to Google Analytics, Google Ads, and other GMP tools. The gtag.js tagging library uses the global `gtag()` function to send data to Google's servers. The gtag.js library supports Consent Mode v2 natively and allows for implementing the two key commands mentioned above.
 
 #### Set default consent state
 
@@ -126,13 +126,13 @@ window.gtag("consent", "default", {
 });
 ```
 
-By specifying regions in the consent command, you can limit the default behavior of your tags to the specified locations, ensuring compliance with regional data protection regulations. For more nuanced control based on user location, delve into the Geographical IDs documentation to enhance your site's [regional specificity](https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid) in consent management. For those employing an asynchronous CMP, the `wait_for_update` parameter is a valuable tool that dictates the latency before Google tags send out data, allowing the consent state to be updated. This parameter is not necessary for synchronous platforms, where consent determination occurs instantaneously.
+By specifying regions in the consent command, you can limit the default behavior of your tags to the specified locations, ensuring compliance with regional data protection regulations. For more nuanced control based on user location, delve into the Geographical IDs documentation to enhance your site's [regional specificity](https://developers.google.com/analytics/devguides/collection/protocol/v1/geoid) in consent management. For those employing an asynchronous CMP, the `wait_for_update` parameter is a valuable tool that dictates the latency before Google tags send out data, allowing the consent state to be updated. This parameter is unnecessary for synchronous platforms, where consent determination occurs instantaneously.
 
 #### Update consent state
 
 As users navigate a website, they may alter their consent preferences. The Consent Mode implementation should respond to these interactions by utilizing the `update` command to modify the consent status as soon as possible. Maintaining the user's choice throughout their session is equally vital upon obtaining consent. Ensure the `update` command is invoked on subsequent pages to reflect their current consent status accurately.
 
-And remember, it is only necessary to issue updates when there is an actual change in the user's consent status. Most CMPs will automatically issue an update command on every page once the user made a consent decision, though.
+And remember, it is only necessary to issue updates when there is an actual change in the user's consent status. Most CMPs will automatically issue an update command on every page once the user has made a consent decision.
 
 ```javascript
 window.gtag("consent", "update", {
@@ -185,7 +185,7 @@ window.google_tag_data.ics.addListener(
 );
 ```
 
-The above code snippet adds a listener for `ad_storage` and `analytics_storage` consent states. When a change occurs in either consent state, the callback function is executed, logging a message and the event details to the console. This enables real-time tracking and reaction capabilities of user consent preferences within your website or application.
+The above code snippet adds a listener for consent states for `ad_storage` and `analytics_storage`. When a change occurs in either consent state, the callback function is executed, logging a message and the event details to the console. This enables real-time tracking and reaction capabilities of user consent preferences within your website or application.
 
 ### Using Google Tag Manager Sandbox APIs (web)
 
@@ -196,11 +196,11 @@ Consider using Simo Ahava's template for a streamlined implementation of Consent
 ![simo-gtm-template](/assets/img/consent-mode/simo-gtm-template.png)
 _Source: Own GTM Setup_
 
-Below, we have a closer look into the specific methods employed by this template or similar ones, which are a great example for how to utilize them. For more technical details on the APIs see [here](https://developers.google.com/tag-platform/tag-manager/templates/consent-apis).
+Below, we have a closer look into the specific methods employed by this template or similar ones, which are examples of their utilization. For more technical details on the APIs, see [here](https://developers.google.com/tag-platform/tag-manager/templates/consent-apis).
 
 #### Set default consent state
 
-By invoking the `setDefaultConsentState` method from a tag template, the default consent state is pushed to the data layer. GTM processes this update **immediately** after the current event, and any tags triggered by it have finished processing or when the tag processing timeout is reached, whichever comes first. The implementation ensures that the consent update is prioritized and processed in the GTM container before any other items are queued in the data layer. This approach guarantees that user consent preferences are accurately reflected and adhered to across all subsequent tag executions.
+By invoking the `setDefaultConsentState` method from a tag template, the default consent state is pushed to the data layer. GTM processes this update **immediately** after the current event, and any tags triggered by it have finished processing or when the tag processing timeout is reached, whichever comes first. The implementation ensures that the consent update is prioritized and processed in the GTM container before other items are queued in the data layer. This approach guarantees that user consent preferences are accurately reflected and adhered to across all subsequent tag executions.
 
 ```javascript
 const setDefaultConsentState = require("setDefaultConsentState");
@@ -218,7 +218,7 @@ setDefaultConsentState({
 });
 ```
 
-This prioritization is critical to remember, as it means that this command allows you to bypass the command queue, which i.e. the gtag API is subject to. So, if you want to use Consent Mode in conjunction with GTM, I can highly recommend using a GTM template utilizing the respective Sandbox APIs.
+This prioritization is critical to remember, as this command allows you to bypass the command queue, which, i.e., the gtag API is subject to. So, if you want to use Consent Mode with GTM, I recommend using a GTM template utilizing the respective Sandbox APIs.
 
 Including optional parameters like `wait_for_update` and region offers additional flexibility, allowing for fine-tuned control based on specific timing needs and geographic considerations. These parameters are optional and work as described for the gtag API.
 
@@ -274,15 +274,15 @@ if (!isConsentGranted("ad_storage")) {
 
 Additionally, the `isConsentGranted` function returns "true" if a particular consent type is deemed granted. This status is achieved either when the consent type is explicitly set to 'granted' or when it remains unset. Any other setting for the consent type is interpreted as not granted.
 
-Combining these two functions allows for the creation of a listener that triggers when a particular consent type is granted. This is useful for implementing a fallback mechanism for when a user grants consent for a particular consent type.
+Combining these two functions allows for the creation of a listener that triggers when a particular consent type is granted. This is useful for implementing a fallback mechanism for when a user grants consent for a specific type of consent.
 
 ### Using Firebase SDK (app)
 
-The Firebase Analytics SDK library enables you to collect behavioral data from your app for GA4. The [Firebase SDK supports Consent Mode v2](https://developers.google.com/tag-platform/security/guides/app-consent?platform=ios) natively and allows for implementing the two critical commands mentioned before. Regardless, adopting Consent Mode v2 in your app is probably the biggest challenge in the migration process, as very few companies have implemented it so far. But as of March 6th, 2024, it will be mandatory for all advertisers targeting EEA users and wanting to use all GMP functionalities - also for app tracking.
+The Firebase Analytics SDK library enables you to collect behavioral data from your app for GA4. The [Firebase SDK natively supports Consent Mode v2](https://developers.google.com/tag-platform/security/guides/app-consent?platform=ios) and allows for implementing the two critical commands mentioned before. Regardless, adopting Consent Mode v2 in your app is probably the biggest challenge in the migration process, as very few companies have implemented it so far. But as of March 6th, 2024, it will be mandatory for all advertisers targeting EEA users and wanting to use all GMP functionalities - also for app tracking.
 
 #### Set default consent state
 
-As for the web, when integrating the Firebase SDK for app development, configuring the default consent state is crucial for managing user privacy preferences. Out of the box, the app does not establish any consent mode values within an application. To set these defaults, begin by accessing your app's `info.plist` file. Within this file, the app developer introduces consent mode key-value pairs, where each key represents a specific type of consent, and the value indicates the consent state—true for granted consent and false for denied.
+As for the web, when integrating the Firebase SDK for app development, configuring the default consent state is crucial for managing user privacy preferences. Out of the box, the app does not establish any consent mode values within an application. Access your app's `info.plist` file to set these defaults. Within this file, the app developer introduces consent mode key-value pairs, where each key represents a specific type of consent, and the value indicates the consent state—true for granted consent and false for denied.
 To exemplify, if you aim to deny consent by default for all parameters, your `info.plist` should include entries like the following:
 
 ```text
@@ -313,7 +313,7 @@ The Measurement Protocol (MP) is a tool for sending event data directly to Googl
 
 With Consent Mode v2, the MP incorporates a consent attribute explicitly configuring consent types and states within each request. If specific consent parameters are not included in a request, GA4 will default to the consent settings established through online interactions associated with the same client ID or app instance. Hence, setting the attribute via the MP might not be as crucial as it is for websites and apps because it can be inferred from other events.
 
-For example, when sending event data, such as a purchase event, you can specify consent states for different types of data collection and processing through the MP. The following CURL command demonstrates how to include consent attributes for `ad_user_data` and `ad_personalization` within an event payload:
+For example, when sending event data, such as a purchase event, you can specify consent states for data collection and processing through the MP. The following CURL command demonstrates how to include consent attributes for `ad_user_data` and `ad_personalization` within an event payload:
 
 ```text
 curl -X POST 'https://www.google-analytics.com/debug/mp/collect?api_secret=<your-key>&measurement_id=G-XXXXXX' \
@@ -343,7 +343,7 @@ curl -X POST 'https://www.google-analytics.com/debug/mp/collect?api_secret=<your
 
 ### Google APIs
 
-Lastly, let's have a brief look at Google's APIs and how they are affected by Consent Mode v2. APIs are yet another way for advertisers to ingest data into Google's system helping them to enable remarketing use cases (e.g., Customer Match via API upload) or send offline conversions with 1PD (e.g., Enhanced Conversions for Leads). Hence, advertisers must also send users' consent signals for these data points to ensure a comprehensively designed system from Google's perspective.
+Lastly, let's briefly look at Google's APIs and how they are affected by Consent Mode v2. APIs are yet another way for advertisers to ingest data into Google's system, helping them to enable remarketing use cases (e.g., Customer Match via API upload) or send offline conversions with 1PD (e.g., Enhanced Conversions for Leads). Hence, advertisers must also send users' consent signals for these data points to ensure a comprehensively designed system from Google's perspective.
 
 For example, the Google Ads API introduced an update by incorporating the `Consent` object. This object is now a prerequisite for data uploads associated with call conversions, click conversions, Customer Match, and Store Sales, in line with how consent is managed within the remaining ecosystem. Advertisers must now explicitly set consent for each data interaction, as detailed below:
 
@@ -379,7 +379,7 @@ _Source: Own GTM Setup_
 
 #### GTM Server-Side Preview
 
-For the GTM Server-Side Preview, we are missing a user-friendly interface like the one for the web preview. However, we can inspect the consent state once the GA4 client parses the incoming event data. The event data exposes the consent states as part of the `x-sst-system-properties` object. From here, you can use the consent state to block or allow certain tags from firing based on the user's consent preferences. Or simply pass the consent state to your tags for further analysis downstream.
+For the GTM Server-Side Preview, we are missing a user-friendly interface like the one for the web preview. However, we can inspect the consent state once the GA4 client parses the incoming event data. The event data exposes the consent states as part of the `x-sst-system-properties` object. From here, you can use the consent state to block or allow certain tags from firing based on the user's consent preferences. Or pass the consent state to your tags for further analysis downstream.
 
 ![gtm-ss-system-properties](/assets/img/consent-mode/gtm-ss-system-properties.png)
 _Source: Own GTM Setup_
@@ -388,7 +388,7 @@ _Source: Own GTM Setup_
 
 Since the gtag API eventually pushes all of its events and data to the data layer, you can also inspect the consent state directly in the data layer. This is especially useful when you want to validate the consent state without using GTM (e.g., plain JS) or when you want to verify that the consent state is being updated correctly using the browser's console.
 
-In the dataLayer, you are able to see the `default` and `update` commands, as well as the respective consent states set for each consent type. This is a great way to verify that the consent state is being updated correctly and that the correct consent state is being applied to your tags.
+In the dataLayer, you can see the `default` and `update` commands and the respective consent states set for each type. This is a great way to verify that the consent state is being updated correctly and that the correct consent state is being applied to your tags.
 
 ![dataLayer-consent-state](/assets/img/consent-mode/dataLayer-consent-state.png)
 _Source: Own GTM Setup_
@@ -436,18 +436,18 @@ Using the `google_tag_data.ics.entries` object, you can inspect the current cons
 
 _Source: [Cookiebot](https://support.cookiebot.com/hc/en-us/articles/360018413380-Checking-if-Consent-Mode-is-properly-implemented)_
 
-The above snippet will print something like this to the console:
+The above snippet will print something like this to the console. Feel free to modify it as needed to suit your needs:
 
 ![google-tag-data-consent](/assets/img/consent-mode/google-tag-data-consent.png)
 _Source: Own GTM Setup_
 
 ### Using the Network Tab
 
-Obviously, the Network tab is the source of truth when it comes to validating the Consent Mode v2 implementation. It allows you to inspect the requests and responses sent to and from Google's servers - so, the data is actually being dispatched -, and verify that the consent state is being applied correctly to your tags.
+As with every other part of the measurement setup, the Network tab is the source of truth when validating the Consent Mode v2 implementation. It allows you to inspect the requests and responses sent to and from Google's servers - the data that is being dispatched by the browser -and verify that the consent state is being applied correctly to your tags.
 
 #### gcs parameter
 
-The `gcs`parameter has been around since Google Consent Mode v1 and is used to communicate the current consent state for `ad_storage` and `analytics_storage` to Google's servers. So, the consent types signal to Google whether or not cookies have been used while obtaining the event data.
+The `gcs`parameter has been around since Google Consent Mode v1 and is used to communicate the current consent state for `ad_storage` and `analytics_storage` to Google's servers. So, the consent type signals to Google whether or not cookies have been used while obtaining the event data.
 
 The `gcs` parameter is included in the requests sent to Google's servers and contains the current consent state encoded in a binary format:
 
@@ -471,7 +471,7 @@ The `gcd` parameter is the new kid on the block, as it has been introduced with 
 
 `11<ad_storage>1<analytics_storage>1<ad_user_data>1<ad_personalization>5`
 
-Furthermore, the `gcd` parameter does not only contains the information about the current state, but also whether or not the current state was obtained from a default or an update command, or never has been actively set. To convey all of this information in a single parameter, Google uses a base64-encoded format, where each letter represents a specific consent state and command type:
+Furthermore, the `gcd` parameter contains information about the current state and whether or not the current state was obtained from a default or an update command or never has been actively set. To convey all of this information in a single parameter, Google uses a base64-encoded format, where each letter represents a specific consent state and command type:
 
 | Letter | Description                                                                      | Consent Status       | Command Type         | Example      |
 | ------ | -------------------------------------------------------------------------------- | -------------------- | -------------------- | ------------ |
@@ -528,4 +528,4 @@ The two new consent types introduced with Consent Mode v2 are mainly focused on 
 
 However, the introduction of Consent Mode v2 is not without its complexities (as indicated by the length of this blog post). As the advertising system created by Google and its legislation grows in sophistication, the burden of understanding and correctly implementing these new settings falls heavily on those who manage them - the advertisers.
 
-MarTech providers such as Google should make it as simple as possible for advertisers to follow these standards - I think Google needs to give Consent Mode more love and work to do that.
+MarTech providers such as Google should make it as simple as possible for advertisers to follow these standards - Google needs to give Consent Mode more love and work to do that.
