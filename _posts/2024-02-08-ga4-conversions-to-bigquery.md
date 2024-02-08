@@ -224,6 +224,8 @@ The query above could be extended to include multiple properties, eligible perio
 
 While this last approach requires more development effort and maintenance than the previous ones, the benefits are high. With the GA4 Admin API and GCP, we get the complete context of the conversion events and can use this information to build comprehensive reports in BQ, which we can expose to our dashboarding tool of choice.
 
+You can find the complete code as well as detailed deployment instructions for the GCP infrastructure [here](https://github.com/GunnarGriese/ga4-conversions-to-bq/).
+
 # Conclusion
 
 The need for these workarounds stems from many companies trying to replicate the GA4 UI in BQ. At the same time, the BQ schema is not designed to be a 1:1 copy of the GA4 UI. Luckily, with the API-first approach of GA4, GTM SS's flexibility to easily manipulate GA4 events in real-time, or the (almost) unlimited possibilities of GCP, we can build a comprehensive reporting environment in BQ that is tailored to our needs.
@@ -232,4 +234,4 @@ To summarize the reviewed approaches, the manual approach is the most straightfo
 
 The GA4 Admin API and GCP approach is the best way to get the conversion events into BQ. This approach is the most flexible. It's also the most reliable way to get the conversion events into BQ, but it comes at the cost of some development effort and maintenance (which should be minimal).
 
-I hope this post was helpful to you. If you have any questions or feedback, feel free to contact me. You can find the complete code as well as detailed deployment instructions for the GCP infrastructure [here](https://github.com/GunnarGriese/ga4-conversions-to-bq/).
+I hope this post was helpful to you. If you have any questions or feedback, feel free to contact me.
