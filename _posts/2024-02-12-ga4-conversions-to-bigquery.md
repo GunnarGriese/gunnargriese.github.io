@@ -29,7 +29,7 @@ Also note, that GA4 recently introduced a "once per session" conversion method
 After some research, I came up with three different ways to get the information about conversion events into BQ:
 
 ![ga4-conv-to-bq](/assets/img/ga4-conversions-to-bq/ga4-conv-to-bq.png)
-_Source: Own Visualization_
+_Solution Space Own Visualization_
 
 1. **Manual Approach in SQL**: Manually updating a table or the SQL query in BQ with the conversion events and their properties
 2. **Dynamic Approach Using GTM SS**: Using Transformations in Google Tag Manager Server-Side (GTMSS) to add a custom event parameter to the GA4 events indicating whether or not they are conversion events
