@@ -11,7 +11,7 @@ Recently, I found myself in a situation where I needed to use Google Analytics (
 
 The challenge was that the GA4 raw data in BQ does not contain this information, and I had to find a way to get it there. In this post, I will show you different ways to achieve this - including my favorite one.
 
-# The Problem
+## The Problem
 
 As stated above, the events in the GA4 raw data in BQ do not have an event parameter indicating whether or not they are conversion events. You don't believe me? Go ahead, feel free to pull your GA4 data from BQ and check for yourself...
 
@@ -24,7 +24,7 @@ The conversion events are defined in the GA4 property settings in the UI and can
 
 Also note, that GA4 recently introduced a "once per session" conversion method
 
-# The Solution Space
+## The Solution Space
 
 After some research, I came up with three different ways to get the information about conversion events into BQ:
 
@@ -37,7 +37,7 @@ _Solution Space Own Visualization_
 
 Let's look at these approaches in detail to see how they would work.
 
-# Manual Approach in SQL
+## Manual Approach in SQL
 
 Embedding the conversion events in the SQL query is the most straightforward way to get the conversion events into BQ. This approach could be used for properties with infrequently changing conversion events. The actual embedding can be done in many different ways - for example, by using a `WITH` clause, `CASE ... WHEN...` statements or by creating a separate table in BQ.
 
@@ -59,7 +59,7 @@ WHERE
 
 Although this approach appears to be simple to execute at first glance, the obvious downside of it is that you have to update the SQL query every time a conversion event is added, removed or changed. In practice this means that before you can run your SQL query, you have to check if the conversion events have changed and update the SQL query accordingly. This is not only time-consuming but also error-prone. Hence, I cannot recommend this approach in a production scenario.
 
-# Dynamic Approach Using GTM SS
+## Dynamic Approach Using GTM SS
 
 A better way to do this is to use Google Tag Manager (GTM SS) to add a custom event parameter to the GA4 events, indicating whether or not they are conversion events. In this case, we use GA4's tracking library (gtag.js) to flag conversion events with the query parameter `&_c=1` automatically. This parameter is present only for conversion events. It is furthermore exposed in GTM SS's event data in the `x-ga-systems_properties` and will be `true` for any conversion event. We can access this parameter in GTM SS using a custom event data variable, like so:
 
@@ -77,13 +77,13 @@ The ability to enrich, redact, and modify the GA4 events in GTM SS amazes me eve
 
 The proposed setup doesn't require much work or maintenance, and it ensures that whatever conversions are configured in the GA4 UI will be directly available in BQ. This approach even takes care of the variable time component of conversion specifications, as the events will only be flagged as conversions if they are configured as such at the time of the event occurence. Although this approach requires GTM SS, but if you're already using GTM SS, this is a no-brainer. Setting up GTM SS for this purpose might be a massive overkill, though.
 
-# Dynamic Approach Using GA4 Admin API and GCP
+## Dynamic Approach Using GA4 Admin API and GCP
 
 Therefore, I developed another dynamic approach. Here, I use the [GA4 Admin API](https://developers.google.com/analytics/devguides/config/admin/v1) and two more Google Cloud Platform (GCP) services to get the conversion metadata into BQ. It involves using the GA4 Admin API to fetch the conversion events and their properties and then uploading them to BQ via Cloud Functions, which can be repeatedly triggered with Cloud Scheduler. While the initial setup is a tad more complex than the previous approach, it's the most flexible and versatile I could come up with.
 
 > Info: The **GA4 Admin API** allows you to manage GA4 properties and their resources programmatically and Google is still adding new features to it. The API is free to use and has a generous quota, that should be sufficient for most use cases.
 
-## The Setup in GCP
+### The Setup in GCP
 
 For starters, we configure a Cloud Function that utilizes the GA4 Admin API's [properties.conversionEvents.list()](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1beta/properties.conversionEvents/list) method to fetch the conversion metadata for a given GA4 property:
 
@@ -165,7 +165,7 @@ The cost implications of this approach are minimal. The Cloud Function is execut
 
 > DISCLAIMER: A similar mechanism could be built using [**Google Apps Script**](https://www.google.com/script/start/) together with Google Sheets. In that case, the App Script takes on the role of the Cloud Functions and would be triggered by a time-driven trigger to fetch the conversion events from the GA4 Admin API and upload them to the connected Google Sheet. I prefer the Python approach because it's more flexible, but if you need some (non-technical) user input, e.g., to add or remove conversion events, the Google Apps Script approach might be the better choice.
 
-## Usage of Conversion Metadata in BigQuery
+### Usage of Conversion Metadata in BigQuery
 
 Now that we have the conversion metadata in BQ, we can join the GA4 raw data with the conversion events. Given the rich metadata we exported before, we can now incorporate a lot of different metrics into our SQL queries (e.g., conversion value, eligible period, etc.). All of these are helpful to build reports similar to the GA4 UI.
 
@@ -226,7 +226,7 @@ While this last approach requires more development effort and maintenance than t
 
 You can find the complete code as well as detailed deployment instructions for the GCP infrastructure [here](https://github.com/GunnarGriese/ga4-conversions-to-bq/).
 
-# Conclusion
+## Conclusion
 
 The need for these workarounds stems from many companies trying to replicate the GA4 UI in BQ. At the same time, the BQ schema is not designed to be a 1:1 copy of the GA4 UI. Luckily, with the API-first approach of GA4, GTM SS's flexibility to easily manipulate GA4 events in real-time, or the (almost) unlimited possibilities of GCP, we can build a comprehensive reporting environment in BQ that is tailored to our needs.
 
