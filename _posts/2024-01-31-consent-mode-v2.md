@@ -21,10 +21,10 @@ The following consent types are supported by Consent Mode v2:
 
 | Consent Type              | Description                                                                                                                           |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `ad_storage`              | Enables storage, such as cookies (web) or device identifiers (apps), related to advertising.                                          |
+| `ad_storage`              | Enables storage, such as cookies (web) or device identifiers (apps), related to advertising                                           |
 | `ad_user_data`            | **New in v2:** Sets consent for sending user data to Google for online advertising purposes.<br>(Will be inferred from `ad_storage` ) |
-| `ad_personalization`      | **New in v2:** Sets consent for personalized advertising.                                                                             |
-| `analytics_storage`       | Enables storage, such as cookies (web) or device identifiers (apps), related to analytics, for example, visit duration.               |
+| `ad_personalization`      | **New in v2:** Sets consent for personalized advertising                                                                              |
+| `analytics_storage`       | Enables storage, such as cookies (web) or device identifiers (apps), related to analytics, for example, visit duration                |
 | `functionality_storage`   | Enables storage that supports the functionality of the website or app, for example, language settings                                 |
 | `personalization_storage` | Enables storage related to personalization, for example, video recommendations                                                        |
 | `security_storage`        | Enables storage related to security such as authentication functionality, fraud prevention, and other user protection                 |
