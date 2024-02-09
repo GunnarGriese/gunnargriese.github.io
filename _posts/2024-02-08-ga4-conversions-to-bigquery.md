@@ -22,8 +22,6 @@ _Conversion Settings - Own GA4 Property_
 
 The conversion events are defined in the GA4 property settings in the UI and can be adjusted by any team member with `Edit` access to the property at any time. Here is the only place where the information of which event is a conversion is maintained. While this isn't a big deal when you're only dealing with a single GA4 property, keeping your SQL queries and the GA4 settings in sync becomes a real challenge when handling multiple GA4 properties that are managed independently but require some unified reporting.
 
-Also note, that GA4 recently introduced a "once per session" conversion method
-
 ## The Solution Space
 
 After some research, I came up with three different ways to get the information about conversion events into BQ:
