@@ -126,7 +126,7 @@ The core elements of the proposed architecture can be summarized as follows:
 | Visual Audience Builder (and Data Modeling)                          | Drag-and-drop interface to build audiences or segments by combining data from various sources | GA4 Audience Builder                                                                                             |
 | Reverse ETL                                                          | Moving data from the data warehouse to downstream destinations                                | Audience Export API + others (e.g., Hightouch)                                                                   |
 | Data Quality                                                         | Ensure that the data powering their CDPs is not funky                                         | DataPlex, Dataform + others (based on needs)                                                                     |
-| [Data Governance and Privacy Compliance](/posts/ga4-data-redaction/) | Set up governance checks and compliance workflows                                             | GA4 Data Controls + others (based on needs)                                                                      |
+| [Data Governance and Privacy Compliance](/posts/ga4-data-redaction/) | Set up governance checks and compliance workflows                                             | GA4 Data Controls, [Consent Mode](/posts/consent-mode-v2/) + others (based on needs)                             |
 
 _Source: [Composable CDP vs. Packaged CDP](https://databeats.community/p/composable-cdp-vs-packaged-cdp-components) + Own interpretation of available GA4 & GCP features_
 

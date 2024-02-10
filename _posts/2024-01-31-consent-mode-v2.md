@@ -307,6 +307,8 @@ Analytics.setConsent([
 ])
 ```
 
+For more details on how to debug apps using Firebase Analytics, see [here](/posts/firebase-analytics-debugging/).
+
 ### Measurement Protocol
 
 The Measurement Protocol (MP) is a tool for sending event data directly to Google Analytics servers via HTTP requests, enabling enriching web and app interactions with server-side data.

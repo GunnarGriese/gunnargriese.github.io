@@ -65,7 +65,8 @@ To set up Google Analytics tracking using the Firebase SDK, please follow these 
 2. Add your iOS app to the project by providing the app’s bundle ID.
 3. Download and integrate the Firebase SDK into your app by following the official documentation.
 4. Enable GA4 in your Firebase project settings.
-5. Implement event tracking in your app’s code to track specific user actions and app performance.
+5. Add [Consent Mode v2](/posts/consent-mode-v2/) to your app to have full availability of Google's audience capabilities.
+6. Implement event tracking in your app’s code to track specific user actions and app performance.
 
 ### Add Google Tag Manager
 
