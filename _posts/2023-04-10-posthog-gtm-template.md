@@ -3,7 +3,7 @@ title: Unleash the Potential of PostHog Analytics Platform with Google Tag Manag
 author: gunnar
 date: 2023-04-10 08:24:15 +0200
 categories: [GTM]
-tags: [gtm, custom templates, posthog]
+tags: [gtm, custom-templates, posthog]
 comments: false
 ---
 
