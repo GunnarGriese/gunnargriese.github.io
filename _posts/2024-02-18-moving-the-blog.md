@@ -22,4 +22,4 @@ Please stay tuned for more updates as I prepare for the transition. Your thought
 Thank you for being an integral part of this journey up until now!
 
 Warmest regards,
-Gunnar
+<br>Gunnar
