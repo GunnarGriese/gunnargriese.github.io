@@ -13,7 +13,7 @@ I hope this message finds you well and thriving in your digital analytics endeav
 
 For the past year and a half, this blog has been my creative space and outlet to freely share my ideas with you, collect your feedback, and together with you grow along the way. So, thanks to everyone that took part in this little adventure.
 
-In a spirit of growth and evolution, I am excited to announce that the content and mission of this blog will be transitioning to a new home. I am merging with the newly created "Tech Blog" section of my company's website - IIH Nordic. This move represents an opportunity to reach a wider audience and leverage additional resources to bring you even more in-depth analyses, cutting-edge tutorials, and comprehensive guides.
+In a spirit of growth and evolution, I am excited to announce that the content and mission of this blog will be transitioning to a new home. I am merging with the newly created "Tech Blog" section of my employer's website - IIH Nordic. This move represents an opportunity to reach a wider audience and leverage additional resources to bring you even more in-depth analyses, cutting-edge tutorials, and comprehensive guides.
 
 I'll try my very best so that the new "Tech Blog" will continue to embody the spirit of exploration, knowledge-sharing, and community support that has been the hallmark of my efforts here.
 
