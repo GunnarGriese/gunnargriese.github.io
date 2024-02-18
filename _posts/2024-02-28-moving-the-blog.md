@@ -1,5 +1,5 @@
 ---
-title: A New Chapter for My Little Digital Analytics Blog
+title: A New Chapter for My Beloved Digital Analytics Blog
 author: gunnar
 date: 2024-02-28 00:00:01 +0200
 categories: [announcement]
