@@ -11,4 +11,4 @@ Recently, I found myself in a situation where I needed to use Google Analytics (
 
 The challenge was that the GA4 raw data in BQ does not contain this information, and I had to find a way to get it there. In this post, I will show you different ways to achieve this - including my favorite one.
 
-Read the full article on [IIH Nordic's website](https://www.iihnordic.com).
+Read the full article on [IIH Nordic's website](https://iihnordic.com/).

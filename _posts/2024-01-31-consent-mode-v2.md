@@ -13,4 +13,4 @@ This blog post is the product of me penning down my observations and combining t
 
 This blog post can be seen as the technical counterpart of [my previous thoughts on Consent Mode v2](https://iihnordic.com/news/update-of-consent-state-and-its-impact-on-advertisers/?ref=gunnargriese.com) published on the IIH Nordic blog. If you are new to the topic, I recommend reading the previous blog post first to get a better understanding of the topic's context and the implications of Consent Mode v2.
 
-Read the full article on [IIH Nordic's website](https://www.iihnordic.com).
+Read the full article on [IIH Nordic's website](https://iihnordic.com/).
