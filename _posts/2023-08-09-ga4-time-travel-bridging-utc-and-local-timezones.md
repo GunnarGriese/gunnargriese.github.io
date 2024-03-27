@@ -14,4 +14,4 @@ Take for example below graph, where we compare the number of pageviews per hour 
 ![ga4-bq-views](/assets/img/timestamp-conversions/ga4-vs-bq-views.png)
 _Source: Own dataset_
 
-Read the full article on [IIH Nordic's website](https://iihnordic.com/).
+Read the full article on [IIH Nordic's website](https://iihnordic.com/news/ga4-time-travel-bridging-utc-and-local-timezones/).

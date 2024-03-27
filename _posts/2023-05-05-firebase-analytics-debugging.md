@@ -9,4 +9,4 @@ comments: true
 
 Are you a digital analyst looking to implement and debug Google Analytics tracking via Firebase for your mobile iOS apps and have no clue where to start? This blog post is for you! I’ll briefly walk you through the process of setting up Google Analytics tracking using both the Firebase SDK and Google Tag Manager (GTM). Primarily, I’ll cover the most effective debugging tools, including Charles Proxy and David Vallejo's iOS/Android Debugger, to help you achieve accurate and reliable data collection.
 
-Read the full article on [IIH Nordic's website](https://iihnordic.com/).
+Read the full article on [IIH Nordic's website](https://iihnordic.com/news/debugging-google-analytics-tracking-for-mobile-apps/).

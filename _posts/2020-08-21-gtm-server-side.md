@@ -13,4 +13,4 @@ Our ambition is to provide both background information and context to why we thi
 
 The main takeaway is that GTM server-side will increase flexibility and control over your data and enhance the durability and the direct business value of the solution far beyond what is possible with a traditional Google Tag Manager setup.
 
-Read the full article on [IIH Nordic's website](https://iihnordic.com/).
+Read the full article on [IIH Nordic's website](https://iihnordic.com/news/gtm-server-side-tagging-better-data-more-control/).
