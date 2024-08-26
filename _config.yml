@@ -119,7 +119,7 @@ assets:
 pwa:
   enabled: false # the option for PWA feature
 
-paginate: 8
+paginate: 8 # the number of posts in each page
 
 # ------------ The following options are not recommended to be modified ------------------
 
