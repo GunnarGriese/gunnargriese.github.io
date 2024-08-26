@@ -1,5 +1,5 @@
 ---
-title: Who are my users - The Reporting Identity in GA4
+title: Who are my website users? And if so how many? - User IDs & Reporting Identities in GA4
 author: gunnar
 date: 2024-09-01 00:00:01 +0200
 categories: [GA4]
@@ -7,19 +7,18 @@ tags: [ga4]
 comments: true
 ---
 
-![gtm-ss-](/assets/img/ga4-data-quality/gtm-ss-architecture.png)
-_Source: Own Visualization of a sGTM setup powered by GA4_
-
 Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users' interactions with your business and eventually allows you to report on user and session counts as well as associated metrics.
 
-This blog post provides an overview of the Reporting Identity functionality, its quirks in GA4, its usage for your business, and its implications for reporting.
+This blog post provides an overview of the Reporting Identity functionality with a special focus on logged in users, its quirks in GA4, its usage for your business, and its implications for reporting. Eventually, I will try to help you answer the question: "Who are my website users? And if so how many?"
 
 ## What is the Reporting Identity in GA4?
 
-Before we dive into the topic too deeply, let’s establish some common ground and get the definitions straight. The identifiers GA4 uses to unify a user's journey are collectively referred to as **identity spaces**. The identity space(s) used by your Analytics property is called its **reporting identity**. In the following sections you’ll find a description of each of the available identity spaces.
+I hate to hold you off, but before we can dive deeper into the topic, we have to establish some common ground and get the definitions straight:
 
-![usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png)
-_Usage of identity spaces for Blended & Observed reporting identity_
+1. The identifiers GA4 uses to unify a user's journey are collectively referred to as **identity spaces**.
+2. The identity space(s) used by your GA4 property is called its **reporting identity**.
+
+In the following sections you’ll find a description of each of the available identity spaces.
 
 ### User ID - Get to truly know your customers
 
@@ -35,19 +34,19 @@ Google Signals is data from **users signed in to their Google account on their C
 
 ### User-Provided Data - 3rd-party cookie alternative
 
-One of the most recently added functionalities in GA4 is “User-provided data collection". This allows you to send “consented, first-party data from your website to Google Analytics" (s. [here](https://support.google.com/analytics/answer/14077171?hl=en)). Google allows for hashed email addresses, phone numbers, names, and addresses to be sent to their platform. The data you send is then matched with other Google data (primarily browser data from logged-in Chrome users) to improve the accuracy of your measurement data and power capabilities like Enhanced Conversions and Demographics and Interests. I like to think of this method as replacing Google Signals for when Google will eventually phase out 3rd-party cookies - but on steroids.
+One of the most recently added functionalities in GA4 is "User-provided data collection". This allows you to send "consented, first-party data from your website to Google Analytics" (s. [here](https://support.google.com/analytics/answer/14077171?hl=en)). Google allows for hashed email addresses, phone numbers, names, and addresses to be sent to their platform. The data you send is then matched with other Google data (primarily browser data from logged-in Chrome users) to improve the accuracy of your measurement data and power capabilities like Enhanced Conversions and Demographics and Interests. I like to think of this method as replacing Google Signals for when Google will eventually phase out 3rd-party cookies - but on steroids.
 
 Implementing the User-ID feature may not be possible for some websites (e.g., if your website doesn't have a login section). But for other websites, especially e-commerce sites, Google recommends that you set up the User-ID feature along with user-provided data collection to provide the most accurate user reporting in Analytics.
 
 Interestingly enough, Google states in their documentation the following:
 
-> “If you send user-provided data without also sending user IDs, collected user-provided data will be pseudonymized and used to recognize unique users for user deduplication and reporting purposes. When multiple types of user-provided data are provided, Analytics will prioritize them in the following order: email, phone, name, and address. Note that if user IDs are later provided for previously measured users with only user-provided data (no user ID), Analytics will recognize these as separate users for reporting purposes.." (s. [here](https://support.google.com/analytics/answer/14077171?hl=en))
+> "If you send user-provided data without also sending user IDs, collected user-provided data will be pseudonymized and used to **recognize unique users for user deduplication and reporting purposes.** When multiple types of user-provided data are provided, Analytics will prioritize them in the following order: email, phone, name, and address. Note that if user IDs are later provided for previously measured users with only user-provided data (no user ID), Analytics will **recognize these as separate users for reporting purposes.**" (s. [here](https://support.google.com/analytics/answer/14077171?hl=en))
 
-So, although it's not part of the officially listed reporting identities, user-provided data appears to be used for user deduplication and reporting purposes, rendering it a **de facto identity space**. Since it’s quite a new feature, I am currently working together with my clients on understanding this feature even better, but have added it to this overview already.
+So, although it's not part of the officially listed reporting identities, user-provided data appears to be used for user deduplication and reporting purposes, rendering it a _de facto identity space_. Since it’s quite a new feature, I am currently working together with my clients on understanding this feature even better, but have added it to this overview already.
 
 ### Device ID - Good ol’ cookies
 
-GA4 can also use the device ID (also known as client ID or user pseudo ID) as an identity space. The device ID method is the least accurate because it only recognizes a device as the name suggests (not a user). At the same time, it is likely the most widely used method to identify users, as almost all analytics tools use it.
+GA4 can also use the device ID (also known as client ID or user pseudo ID) as an identity space. The device ID method is the least accurate because it only recognizes a device as the name suggests (not a user). At the same time, it is likely the most widely used method to identify users, as almost all analytics tools out there use it.
 
 Coming back to the device ID, though:
 
@@ -56,25 +55,30 @@ Coming back to the device ID, though:
 
 ### Behavioural Modelling - The black box
 
-When users decline GA4 identifiers like cookies, behavioural data for those users is unavailable. GA4 fills this gap by using the data of similar users who do accept cookies from the same property to model the behaviour of the users who decline cookies. For modelling to be working, the website needs to have Google Consent Mode implemented and the associated GA4 property [needs to have sufficient data](https://support.google.com/analytics/answer/11161109?hl=en#:~:text=and%20customer%20behavior.-,Prerequisites,-Because%20the%20model) to be eligible for behavioural modelling.
+When users decline GA4 identifiers like cookies, behavioural data for those users is unavailable. GA4 fills this gap by using the data of users who do accept cookies from the same property to model the behaviour of the users who decline cookies. For modelling to be working, the website needs to have Google Consent Mode implemented and the associated GA4 property [needs to have sufficient data](https://support.google.com/analytics/answer/11161109?hl=en#:~:text=and%20customer%20behavior.-,Prerequisites,-Because%20the%20model) to be eligible for behavioural modelling.
 
 ### Reporting Identity Options in GA4
 
-In your GA4's property settings, you decide which identity spaces you want to use. The options in your setting then determine which of the available identity spaces GA4 will take into account if you make the required data available to GA4. The setting options are:
+In your GA4's property settings, you decide which identity spaces you want to use. The options in your settings then determine which of the available identity spaces GA4 will take into account if you make the required data available to GA4. The setting options are:
 
 - **Blended**: Uses the User-ID, Device ID, then Modelling, in that order of preference.
 - **Observed**: It uses the User-ID, Google Signals, and then Device ID, ignoring Modelling.
 - **Device-based**: Only the device ID is used, and all other collected IDs are ignored.
 
-![Available reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png)
-_Available Reporting Identities in GA4_
+So, we could say that GA4 is a user-centric analytics tool (not necessarily an end user-centric one though), as it always tries to use the User ID first, then the Device ID, and only then the Modelling data.
+
+![Usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png)
+_Usage of identity spaces for Blended & Observed reporting identity_
 
 **Adjusting the Reporting Identity** for a GA4 property requires you to navigate to the **Admin section**, select the correct account and property, click on Reporting Identity in the Property column, select the Reporting Identity you want to use, and click _Save_.
 The reporting identity option you choose does **not** affect data collection or processing. Hence, you can switch between the options at any time without making any permanent impact on data. This is pretty neat, as you can directly assess within the interface what the impact on different identity spaces is on your data. Be aware that in order to get the full benefit of the Blended and Observed Reporting Identity, you need to collect user IDs.
 
+![Available reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png)
+_Available Reporting Identities in GA4_
+
 ## Implementation of Identity Spaces
 
-So far, so good. Now, let’s have a look at how to implement the different identity spaces to unlock them for your reporting in GA4.
+So far, so good. Now, let’s get a tad more hands-on and have a look at how to implement the different identity spaces to unlock them for your reporting in GA4.
 
 ### User ID - Take advantage of the dataLayer
 
@@ -117,56 +121,139 @@ _Exemplary GA4 settings variable for the user id key_
 
 The variable above should then be associated with all GA4 tags. That way, we ensure that if the user ID is available in the dataLayer, we send it to GA4 - allowing for it to be used as an identity space.
 
+> **Important**: I advise you to actually use the `user_id` field in your GA4 tags, as it is the field that GA4 expects to receive the user ID in. If you use a user property or event parameter to store the user ID (e.g., for analysis purposes or custom joins) and register these as a custom dimension in the interface, you [risk introducing a high-cardinality dimension](https://support.google.com/analytics/answer/14240153?sjid=14128691986949363561-EU&visit_id=638600919631579779-1410746499&rd=1#best-practices) that can lead to you seeing the `(other)` row in your reports.
+
 ### Device-based - Cookies for the masses
 
-As mentioned above, cookies are the “default" method to identify users in analytics tools like GA4.
+As mentioned above, cookies are the "default" method to identify users in analytics tools like GA4.
 
-In a standard client-side measurement scenario, firing a Google or GA4 tag will result in the `_ga` cookie being placed in the user’s browser via the JavaScript `document.cookie` API. The cookie’s value is the user’s device ID. The gtag.js tracking library then reads and updates the cookie value as specified in the script and attaches the value to all outgoing network requests to the GA4 servers (`cid` query parameter). GA4 uses the device ID to connect the event data points into a coherent user profile on which you can eventually report.
+In a standard client-side measurement scenario, firing a Google or GA4 tag will result in the `_ga` cookie being placed in the user’s browser via the JavaScript `document.cookie` API. The cookie’s value is what GA4 titles the user’s device ID. The gtag.js tracking library then reads and updates the cookie value as specified in the script and attaches the value to all outgoing network requests to the GA4 servers (`cid` query parameter). GA4 uses the device ID to connect the event data points into a coherent user profile on which you can eventually report.
 
 ![GA4 client settings FPID cookie](/assets/img/ga4-reporting-identity/gtm-ss-fpid-cookie.png)
 _GA4 client settings to manage FPID cookies_
 
-If you add GTM Server-Side (GTM SS) to your measurement stack, you can gain even more control over the cookie that determines your users’ Device IDs. In your GTM SS container, you’ll find that the standard GA4 client comes with additional configuration possibilities for _Cookies and Client Identification_. The client allows you to use your “own" first-party HTTP cookies (default name is `FPID`) to store the device ID. If you now route your GA4 requests through GTM SS and use the GA4 client to parse the event data, your GA4 tags will use the device ID stored in the FPID cookie instead of the one from the `_ga` cookie.
+If you add GTM Server-Side (GTM SS) to your measurement stack, you can [gain even more control](https://gunnargriese.com/posts/gtm-server-side/) over the cookie that determines your users’ Device IDs. In your GTM SS container, you’ll find that the standard GA4 client comes with additional configuration possibilities for _Cookies and Client Identification_. The client allows you to use your "own" first-party HTTP cookies (default name is `FPID`) to store the device ID. If you now route your GA4 requests through GTM SS and use the GA4 client to parse the event data, your GA4 tags will use the device ID stored in the FPID cookie instead of the one from the `_ga` cookie.
 
-In the current digital landscape, which includes browser tracking prevention and ad blockers, cookies are often considered one of the less reliable user identifiers. They are easily deleted or expired, leading to potential overcounting of “users" on our website. However, they remain the primary identifier for the majority of our website users. While we can exert more control over cookies, overcoming the limitations of the technology itself is a complex task.
+In the current digital landscape, which includes browser tracking prevention and ad blockers, cookies are often considered one of the less reliable user identifiers. They are easily deleted or expired, leading to potential overcounting of "users" on our website. However, they remain the primary identifier for the majority of our website users. While we can exert more control over cookies, overcoming the limitations of the technology itself is a complex task. So, should you embark on this journey to improve the reliability of your device ID, make sure you have a good reason (and a business case) to do so.
 
 ### Modelling - Let Google handle it
 
 To unlock the _Modelling_ identity space you must leverage an Advanced Consent Mode implementation. In short, this means that you will execute your GA4 tags regardless of the users’ consent choices (e.g., no blocking of tags in case of missing consent). Additionally, you must ensure that you have Google’s Consent Mode correctly installed on your website or in your app to control the tags’ (cookie setting) behavior based on the users’ consent decisions.
 
-Once Consent Mode is correctly installed on your website, GA4 tags will function as usual for consent users. In contrast, in the case of missing consent, the GA4 tags will send only so-called cookieless pings to GA4 servers without placing cookies in the users’ browsers. Using machine learning, Google will derive patterns from the consented or observed users and apply them to the unconsented or unobserved users, modeling their user journeys and derived metrics. Google phrases the process as Behavioral Modeling, which eventually allows insights into your website users' behavior and not only the consented subset.  
-One interesting side fact is that the User ID will be available in the BigQuery raw data export, even if the user denies cookie consent and GA4 collects only "cookieless pings".
+Once Consent Mode is correctly installed on your website, GA4 tags will function as usual for consent users. In contrast, in the case of missing consent, the GA4 tags will send only so-called cookieless pings to GA4 servers without placing cookies in the users’ browsers. Using machine learning, Google will derive patterns from the consented or observed users and apply them to the unconsented or unobserved users, modeling their user journeys and derived metrics. Google phrases the process as Behavioral Modeling, which eventually allows insights into your website users' behavior and not only the consented subset.
 
-Since Consent Mode and its implementation are vast subjects with quite a few nitty-gritty details, I’d like to refer you to [my in-depth guide](https://gunnargriese.com/posts/consent-mode-v2/), which I published earlier this year. I’m sure it will serve you well!
+> One interesting side fact is that the User ID will be available in the BigQuery raw data export, even if the user denies cookie consent and GA4 collects only "cookieless pings".
 
-## Implications on Reporting
+Since Consent Mode and its implementation are vast subjects with quite a few nitty-gritty details, I’d like to refer you to [my in-depth guide](https://gunnargriese.com/posts/consent-mode-v2/), which I published earlier this year. I’m sure it will serve you well in navigating that topic!
 
-### The Wonders of Retroactive User ID Attribution
+## Identity Space Implications on Reporting
+
+Depending on which Reporting Identity you choose in your GA4 settings, the data you see in the GA4 interface will be different. The selected Reporting Identity influences how GA4 associates events with users and sessions, affecting the way GA4 reports on user and session counts and associated metrics. In the following paragraphs, I will focus on the implications related to the _User ID_ and _Modelling_ identity space since these require special attention (and are somewhat out of the ordinary).
+
+### User ID features in the GA4 interface
+
+Let's prioritize the User ID, as it is the most powerful identifier in GA4 and should be treated equally in this blog post. So, here it goes!
+
+#### Retroactive User ID Attribution
 
 Suppose a user initially accesses a website without being logged in and logging in mid-session, transmitting a User ID during later events. In that case, GA4 uses the "User Pseudo ID" / client ID and the session ID to associate that session and all its events with the user ID provided when the user signs in.
 
 ![Retroactive User ID attribution in GA4](/assets/img/ga4-reporting-identity/ga4-retroactive-user-id-attribution.png)
 
-In the example above, the User Explorer report will only display one "Effective User ID" (which is the User ID) set to `abc-567` for both of these events if Blended or Observed are used as the Reporting Identity. If the Device-based Reporting Identity has been chosen, the User Explorer report will also only display one "Effective User ID" (which is the User Pseudo ID) set to `123.456` for both of these events.
+In the example above, the User Explorer report will only display one "Effective User ID" (the User ID) set to `abc-567` for both events if _Blended_ or _Observed_ are used as the Reporting Identity. Suppose the _Device-based_ Reporting Identity has been chosen. In that case, the User Explorer report will only display one "Effective User ID" (the User Pseudo ID) set to `123.456` for both events. Furthermore, GA4 will report only one session for the two events, regardless of the Reporting Identity chosen.
 
 ![User ID in User Explorer report in GA4](/assets/img/ga4-reporting-identity/ga4-user-explorer.png)
 _Retroactive User ID Attribution in BQ raw data, User Explorer, and Traffic Acquisition Report_
 
-In the screenshots above, you can see how a mid-session login affects the raw data and the reporting in the User Interface (UI). While on event-level in the raw data, the user_id column is only populated from the time it's been collected, we can clearly see (e.g., based on the event count) that it's being retroactively applied in the UI. Hence, it allows us to report on the "true" users and their associated sessions in the UI.
+The screenshots above show how a mid-session login affects the raw data and the reporting in the User Interface (UI). While on the event level in the raw data, the `user_id` column is only populated from the time it's been collected, we can see (e.g., based on the event count) that it's being retroactively applied in the UI. Hence, it allows us to report on the "true" user journey and their associated sessions in the UI.
 
-### What about proactive User ID Attribution?
+I consider this a pretty cool feature of GA4, especially since it is seamlessly integrated into the UI and doesn't require any additional effort to use.
 
-A limitation of the User ID is, if more events are detected by the same User Pseudo ID without the User ID set then these will not be attributed to the User ID. So, once a user signs out and the uid parameter is not associated with the events anymore, GA4 stops associating any subsequent events with that user ID.
+#### What about proactive User ID Attribution?
+
+A limitation of the User ID is that if GA4 detects subsequent events without the User ID set for the same User Pseudo ID, these will not be attributed to the User ID. So, once a user signs out and the `uid` parameter is no longer associated with the events, GA4 stops associating subsequent events with that user ID. See the visual below for a better understanding.
 
 ![Proactive User ID attribution in GA4](/assets/img/ga4-reporting-identity/user-id-proactive.png)
 _Retroactive User ID Attribution Limitations_
 
-In the scenario above, the User Explorer report will display two distinct Effective User IDs, signifying two users: `123.456` (cookie ID) and `abc-567` (user ID).
+In the scenario above, the User Explorer report in GA4 will display two distinct Effective User IDs, signifying two users: `123.456` (cookie ID) and `abc-567` (user ID).
 
-As we have seen earlier, the initial three events will be associated with the `user_id`. The event number 4 will then be assigned to the cookie ID `123.456` only - and not the `user_id`.
+As we have seen earlier, the initial three events will be associated with the `user_id`. Event number 4 will then be assigned to the cookie ID `123.456` only—and not the `user_id`. Additionally, it will also come with its own session. This behavior might "inflate" the user and session count in your reports, as the same user is counted twice.
 
-Proactive user ID attribution does not exist in GA4, although it would be easy to implement from a technical perspective. At the same time, it makes sense from an analytics and privacy perspective that ...
+Proactive user ID attribution does not exist in GA4, although it would be easy to implement from a technical perspective. This also means that it is of the utmost importance to ensure that the `user_id` field is populated when a deterministic identifier is available. Otherwise, your reports will contain fragmented user journeys and sessions.
 
-![Benefits of using BigQuery with GA4](/assets/img/ga4-reporting-identity/ga4-bq-benefits.png)
+#### Distinguish between signed-in and non-signed-in users
 
-WORK FROM HERE: https://docs.google.com/document/d/1NyZhY76iSPgUdtOKi9Xvz0qzOsh2f4Wz6KBBo2F2fj0/edit
+When you enable the User ID feature, you can compare _signed-in_ and _non-signed-in_ users in GA4. This is especially useful when you want to understand the behavior of users signed in to your website or app versus those not signed in. Below you can see a comparison between signed-in and non-signed-in users in GA4 utilizing GA4's _Comparison_ feature in combination with the dimension `Signed in with User ID`. This allows us to easily distinguish between these two groups of users.
+
+![Signed in vs. non-signed in users in GA4](/assets/img/ga4-reporting-identity/ga4-signed-in-vs-not-signed-in.png)
+_Comparison between signed-in and non-signed-in users in GA4_
+
+> (Please ignore the high _Unassigned_ traffic share. I am still fine-tuning my synthetic user generator. 🧪🤖)
+
+#### Replication of User ID in BigQuery
+
+When you export your GA4 data to BigQuery, you will notice that both the `user_id` and the `user_pseudo_id` columns are available for analysis. Most likely, though, the `user_id` column will not be populated for most of your users. The `user_id` field is only populated when the User ID is collected. If the User ID is not collected, the `user_id` field will contain a `NULL` value, while GA4 will always populate the `user_pseudo_id` field with the Device ID. This is important to remember when you are querying your GA4 data in BigQuery and trying to match it to the interface.
+
+If you seek to replicate the interface's reports in BigQuery, you can use the following query to calculate the effective user ID and session ID based on the `user_id` and `user_pseudo_id` fields. This query will allow you to see the same user journey in BigQuery as you would see in the GA4 interface - taking into account retroactive User ID association as outlined above.
+
+```sql
+-- Add temporary function to easily access ga4EventParams
+SELECT
+  event_timestamp,
+  event_name,
+  user_id,
+  user_pseudo_id,
+  COALESCE( FIRST_VALUE(user_id IGNORE NULLS) OVER (PARTITION BY CONCAT(user_pseudo_id, ga4EventParams('ga_session_id', event_params).value)
+    ORDER BY
+      event_timestamp ROWS BETWEEN CURRENT ROW
+      AND UNBOUNDED FOLLOWING), user_pseudo_id) AS effective_user_id,
+  ga4EventParams('ga_session_id',
+    event_params).value AS raw_session_id,
+  CONCAT( COALESCE( FIRST_VALUE(user_id IGNORE NULLS) OVER (PARTITION BY CONCAT(user_pseudo_id, ga4EventParams('ga_session_id', event_params).value)
+      ORDER BY
+        event_timestamp ROWS BETWEEN CURRENT ROW
+        AND UNBOUNDED FOLLOWING), user_pseudo_id ), ga4EventParams('ga_session_id',
+      event_params).value ) AS effective_session_id
+FROM
+  `<your-project-id>.analytics_<your-property-id>.events_*`
+WHERE
+  _TABLE_SUFFIX BETWEEN '<your-start-date>'
+  AND '<your-end-date>'
+  AND user_pseudo_id = '2030451950.1721832151' -- select a specific user for testing
+ORDER BY
+  event_timestamp ASC
+```
+
+The `effective_user_id` is calculated using a window function that partitions the data by a combination of `user_pseudo_id` and `session_id`. The `ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING` ensures that the `FIRST_VALUE` window function captures the first non-null `user_id` from the current row onward within the partition. This logic stops populating `effective_user_id` with the `user_id` once the user logs out because, after the logout event, the subsequent rows no longer have a valid `user_id` within the remaining partition, causing the `COALESCE` function to revert to `user_pseudo_id`, effectively resetting the default cookie-based identifier for the rest of the session. You can inspect the result of the query in the screenshot below to see how the query effectively resolves the available identity spaces:
+
+![Calculate effective user and session id in BigQuery](/assets/img/ga4-reporting-identity/ga4-bq-effective-user-session-id.png)
+_Calculate effective user and session id in BigQuery for User IDs_
+
+### (Behavioral) Modeling features in the GA4 interface
+
+When enabling the Behavioral Modeling identity space, GA4 will use their proprietary Machine Learning algorithm to model the behavior of users who have not consented to cookies (but for which cookieless pings are collected) based on the behavior of users who have consented to cookies. This means that the user journey data you see in the GA4 interface for these users is not the actual data but a model of the data. While from my experience, the model is quite accurate, it is important to remember that it is an estimate - not more, not less. So, while it is a good feature to assess high-level trends, like overall user and session counts, you should always take the results with a grain of salt.
+
+![Behavioral Modeling in GA4](/assets/img/ga4-reporting-identity/behavioral-modeling-data-quality-card.png)
+
+Luckily, GA4 provides you with a **data-quality icon** that indicates whether or not the data you are looking at is modeled or not and if so, when the _Modeling_ identity space was unlocked. This is especially helpful when you include date ranges into your analysis when the Modeling identity space was not yet enabled.
+
+## Data Activation
+
+Biggest benefits are associated with implementing the User ID feature. This is because the User ID is the most accurate and robust identity space, as it uses data from self-authenticated users that you collect to identify your users. Since these identifiers are the most stable and long-lasting identifiers and can especially be used for activation use cases, having a login functionality and nudging your users to use it is of great value for your business.
+Read my article: https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/
+
+### Offline Event Import
+
+https://support.google.com/analytics/answer/10325025?sjid=16908703168626095380-EU
+
+### Audience Segmentation
+
+User ID can be used to create more personalised experiences for users.For example, you can use the User ID to link a user's behaviour on your website or app to their profile in your CRM system, allowing you to tailor their experience based on their past behaviour. Streaming this information into several systems in real-time by taking advantage of GTM Server-Side’s integration with the Google Cloud, can unlock use cases of high business value.
+
+## Conclusion
+
+Phew - let's take a deep breath together! That was a lot of information to digest, but I hope I managed to convey it in a way that is easy to understand and follow. Furthermore, I hope you now better understand the Reporting Identity in GA4, its intricacies, and how to implement the different identity spaces.
+Blending all the identities together into one overview makes it sometimes hard to see the true impact
+
+If you have any questions or need further clarification, please don't hesitate to reach out to me. I am always happy to help!

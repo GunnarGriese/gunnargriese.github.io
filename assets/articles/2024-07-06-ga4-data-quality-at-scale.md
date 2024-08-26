@@ -7,7 +7,7 @@ tags: [ga4, bigquery, sql]
 comments: true
 ---
 
-> Disclaimer: This post of mine was first published on [IIH Nordic's website](https://iihnordic.com/news ensuring-data-quality-for-ga4-at-scale-with-google-cloud-platform/).
+> Disclaimer: This post of mine was first published on [IIH Nordic's website](https://iihnordic.com/news ensuring-data-quality-for-ga4-at-scale-with-google-cloud-platform/). Head over there to read it in its original form.
 
 Businesses no longer collect clickstream data with Google Analytics 4 (GA4) exclusively to enable data-informed decision-making by inspecting and analyzing the captured user data, assessing marketing campaign performance, or reporting on the most valuable landing pages. Companies that want to drive tangible business value use it as a data collection tool that feeds their marketing platforms with conversions and valuable audiences.
 
