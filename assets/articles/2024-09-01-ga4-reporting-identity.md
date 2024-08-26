@@ -9,11 +9,11 @@ comments: true
 
 Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users' interactions with your business and eventually allows you to report on user and session counts as well as associated metrics.
 
-This blog post provides an overview of the Reporting Identity functionality with a special focus on logged in users, its quirks in GA4, its usage for your business, and its implications for reporting. Eventually, I will try to help you answer the question: "Who are my website users? And if so how many?"
+This blog post provides an overview of the Reporting Identity functionality with a special focus on logged in users, its quirks in GA4, its usage for your business, and its implications for reporting. Eventually, I will try to help you answer the (somewhat philisophical) question: "Who are my website users? And if so how many?"
 
 ## What is the Reporting Identity in GA4?
 
-I hate to hold you off, but before we can dive deeper into the topic, we have to establish some common ground and get the definitions straight:
+I know you're eager to cut to the chase, and I hate to hold you off, but before we can dive deeper into the topic, we have to establish some common ground and get the definitions straight:
 
 1. The identifiers GA4 uses to unify a user's journey are collectively referred to as **identity spaces**.
 2. The identity space(s) used by your GA4 property is called its **reporting identity**.
@@ -150,7 +150,7 @@ Since Consent Mode and its implementation are vast subjects with quite a few nit
 
 Depending on which Reporting Identity you choose in your GA4 settings, the data you see in the GA4 interface will be different. The selected Reporting Identity influences how GA4 associates events with users and sessions, affecting the way GA4 reports on user and session counts and associated metrics. In the following paragraphs, I will focus on the implications related to the _User ID_ and _Modelling_ identity space since these require special attention (and are somewhat out of the ordinary).
 
-### User ID features in the GA4 interface
+### User ID in the GA4 interface
 
 Let's prioritize the User ID, as it is the most powerful identifier in GA4 and should be treated equally in this blog post. So, here it goes!
 
@@ -230,26 +230,78 @@ The `effective_user_id` is calculated using a window function that partitions th
 ![Calculate effective user and session id in BigQuery](/assets/img/ga4-reporting-identity/ga4-bq-effective-user-session-id.png)
 _Calculate effective user and session id in BigQuery for User IDs_
 
-### (Behavioral) Modeling features in the GA4 interface
+### (Behavioral) Modeling in the GA4 interface
 
-When enabling the Behavioral Modeling identity space, GA4 will use their proprietary Machine Learning algorithm to model the behavior of users who have not consented to cookies (but for which cookieless pings are collected) based on the behavior of users who have consented to cookies. This means that the user journey data you see in the GA4 interface for these users is not the actual data but a model of the data. While from my experience, the model is quite accurate, it is important to remember that it is an estimate - not more, not less. So, while it is a good feature to assess high-level trends, like overall user and session counts, you should always take the results with a grain of salt.
+When enabling the Behavioral Modeling identity space, GA4 will use their proprietary Machine Learning algorithm to model the behavior of users who have not consented to cookies (but for which you collect cookieless pings) based on the behavior of users who have consented to cookies. This means that the user journey data you see in the GA4 interface for these users is not the actual data but a model of the data. While the model is quite accurate from my experiences and tests, it is essential to remember that it is an estimate - not more, not less.
 
 ![Behavioral Modeling in GA4](/assets/img/ga4-reporting-identity/behavioral-modeling-data-quality-card.png)
 
-Luckily, GA4 provides you with a **data-quality icon** that indicates whether or not the data you are looking at is modeled or not and if so, when the _Modeling_ identity space was unlocked. This is especially helpful when you include date ranges into your analysis when the Modeling identity space was not yet enabled.
+Luckily, GA4 provides you with a **data-quality icon** that indicates whether the data you are looking at is modeled and, if so, when the _Modeling_ identity space was unlocked. This is especially helpful when you include date ranges in your analysis when the Modeling identity space has yet to be enabled. So, while it is a good feature to help you assess high-level trends, like overall user and session counts, you should always take the results with a grain of salt.
 
-## Data Activation
+## Advanced Use Cases for User IDs in GA4
 
-Biggest benefits are associated with implementing the User ID feature. This is because the User ID is the most accurate and robust identity space, as it uses data from self-authenticated users that you collect to identify your users. Since these identifiers are the most stable and long-lasting identifiers and can especially be used for activation use cases, having a login functionality and nudging your users to use it is of great value for your business.
-Read my article: https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/
+As mentioned before, the User ID identity space is the most beneficial one. Not only because it is the most accurate and robust identity space but mainly because it sets you up with a solid foundation for more advanced use cases. Namely, enriching your website and app data with CRM or other data from other business-relevant applications and using it to build meaningful audiences. You can use the User ID to create more personalized experiences for users. For example, you can use the User ID to link a user's behavior on your website or app to their profile in your CRM system, allowing you to tweak their experience based on their past behavior.
 
-### Offline Event Import
+Let's have a look at the various methods for using first-party data in GA4.
 
-https://support.google.com/analytics/answer/10325025?sjid=16908703168626095380-EU
+### Using the Measurement Protocol
 
-### Audience Segmentation
+The Measurement Protocol (MP) is a method for sending data to GA4 server-to-server. Accordingly, it allows you to send data to GA4 from any internet-connected device, such as a CRM. This method is especially useful for augmenting your GA4 data with data points unavailable client-side—exactly what we need for our User ID use case.
 
-User ID can be used to create more personalised experiences for users.For example, you can use the User ID to link a user's behaviour on your website or app to their profile in your CRM system, allowing you to tailor their experience based on their past behaviour. Streaming this information into several systems in real-time by taking advantage of GTM Server-Side’s integration with the Google Cloud, can unlock use cases of high business value.
+To send data to GA4 using the MP, you need to send a POST request from our system to the GA4 endpoint with the required parameters. The following example shows how to send a user property along with an event:
+
+```javascript
+const measurementId = "<your-stream-id>";
+const apiSecret = "<your-api-secret-value>";
+
+// Function to request a user's customer score from the CRM.
+const customerScore = getCustomerScore(userId);
+
+const queryParams = `?measurement_id=${measurementId}&api_secret=${apiSecret}`;
+fetch(`https://www.google-analytics.com/mp/collect${queryParams}`, {
+  method: "POST",
+  body: JSON.stringify({
+    user_id: userId, // The unique identifier for a user.
+    user_properties: {
+      customer_score: {
+        value: customerScore, // The user's customer score.
+      },
+    },
+    events: [
+      {
+        name: "customer_score_enrichment", // The event name.
+      },
+    ],
+  }),
+});
+```
+
+In the snippet above, we "fetch" a customer score for a given User ID from our CRM system and send it to GA4 using the Measurement Protocol. The request includes the User ID, the user property `customer_score`, and an event named `customer_score_enrichment`.
+
+> Note: The sample above showcases how to send a user property along with an event, but sending a request that only contains user properties works just as fine.
+
+While the MP is a powerful tool, it can be challenging to fine-tune as it is easy to inflate the session count or fail to attribute events correctly to their session source. Hence, it requires a bit more technical know-how to set up and maintain—it's a good idea to get your developers involved as well. If you want to learn more about the Measurement Protocol, I recommend checking out the [official documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
+
+### Using GTM Server-Side and Firestore
+
+To simplify the retrieval of first-party data, GTM Server-Side (GTM SS) comes with a _Firestore Lookup variable_, allowing you to pull values from specific keys or fields in a Firestore document to enrich data streams routed through GTM SS.
+
+![gtm-ss-firestore](/assets/img/ga4-cdp/gtm-ss-firestore.png)
+_GTM SS Firestore Variable_
+
+In the context of this blog post, we want to use the Firestore Lookup variable to enrich GA4 data with the customer score from the MP example. Our lookup key in this case is the User ID and we use the Firestore Lookup variable to retrieve a user’s respective score from a Firestore document and then send it to GA4 via a server-side event. Obviously, this requires that you have set up a Firestore database and populate it frequently with the users' latest score values to ensure you feed GA4 with relevant data.
+
+### Using GA4 Data Import
+
+![ga4-data-import](/assets/img/ga4-reporting-identity/ga4-data-import.png)
+_GA4 Data Import Interface_
+
+Read more about GA4 Data Import based on User IDs in the [official documentation](https://support.google.com/analytics/answer/10071143?hl=en&ref_topic=10054560&sjid=5542917637782379063-EU#).
+
+> Note: If you don't have a user ID available, GA4 also allows you perform the import based on the device ID. This comes in especially handy for lead generation websites or websites that don't have a login functionality.
+
+Since these identifiers are the most stable and long-lasting identifiers and can especially be used for activation use cases, having a login functionality and nudging your users to use it is of great value for your business.
+If you found this section interesting, I can recommend hoping over to my article [GA4 - the CDP You Didn't Know You Had](https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/) for more food for thought.
 
 ## Conclusion
 
