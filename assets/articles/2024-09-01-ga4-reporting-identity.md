@@ -121,7 +121,7 @@ _Exemplary GA4 settings variable for the user id key_
 
 The variable above should then be associated with all GA4 tags. That way, we ensure that if the user ID is available in the dataLayer, we send it to GA4 - allowing for it to be used as an identity space.
 
-> **Important**: I advise you to actually use the `user_id` field in your GA4 tags, as it is the field that GA4 expects to receive the user ID in. If you use a user property or event parameter to store the user ID (e.g., for analysis purposes or custom joins) and register these as a custom dimension in the interface, you [risk introducing a high-cardinality dimension](https://support.google.com/analytics/answer/14240153?sjid=14128691986949363561-EU&visit_id=638600919631579779-1410746499&rd=1#best-practices) that can lead to you seeing the `(other)` row in your reports.
+> **Important**: I advise you to actually use the `user_id` field in your GA4 tags, as it is the field that GA4 expects to receive the user ID in. If you use a user property or event parameter to store the user ID (e.g., for analysis purposes or custom joins) and register these as a custom dimension in the interface, you [risk introducing a high-cardinality dimension](https://support.google.com/analytics/answer/14240153?#best-practices) that can lead to you seeing the `(other)` row in your reports.
 
 ### Device-based - Cookies for the masses
 
@@ -244,9 +244,9 @@ As mentioned before, the User ID identity space is the most beneficial one. Not 
 
 Let's have a look at the various methods for using first-party data in GA4.
 
-### Using the Measurement Protocol
+### Using the GA4 Measurement Protocol
 
-The Measurement Protocol (MP) is a method for sending data to GA4 server-to-server. Accordingly, it allows you to send data to GA4 from any internet-connected device, such as a CRM. This method is especially useful for augmenting your GA4 data with data points unavailable client-side—exactly what we need for our User ID use case.
+The _Measurement Protocol (MP)_ is a method for sending data to GA4 server-to-server. Accordingly, it allows you to send data to GA4 from any internet-connected device, such as a CRM. This method is especially useful for augmenting your GA4 data with data points unavailable client-side—exactly what we need for our User ID use case.
 
 To send data to GA4 using the MP, you need to send a POST request from our system to the GA4 endpoint with the required parameters. The following example shows how to send a user property along with an event:
 
@@ -280,7 +280,7 @@ In the snippet above, we "fetch" a customer score for a given User ID from our C
 
 > Note: The sample above showcases how to send a user property along with an event, but sending a request that only contains user properties works just as fine.
 
-While the MP is a powerful tool, it can be challenging to fine-tune as it is easy to inflate the session count or fail to attribute events correctly to their session source. Hence, it requires a bit more technical know-how to set up and maintain—it's a good idea to get your developers involved as well. If you want to learn more about the Measurement Protocol, I recommend checking out the [official documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
+While the MP is a powerful tool, it can be challenging to fine-tune as it is easy to inflate the session count or fail to attribute events correctly to their session source. Hence, it requires a bit more technical know-how to set up and maintain—it's a good idea to get technical support. If you want to learn more about the MP, I recommend checking out the [official documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
 
 ### Using GTM Server-Side and Firestore
 
@@ -289,23 +289,33 @@ To simplify the retrieval of first-party data, GTM Server-Side (GTM SS) comes wi
 ![gtm-ss-firestore](/assets/img/ga4-cdp/gtm-ss-firestore.png)
 _GTM SS Firestore Variable_
 
-In the context of this blog post, we want to use the Firestore Lookup variable to enrich GA4 data with the customer score from the MP example. Our lookup key in this case is the User ID and we use the Firestore Lookup variable to retrieve a user’s respective score from a Firestore document and then send it to GA4 via a server-side event. Obviously, this requires that you have set up a Firestore database and populate it frequently with the users' latest score values to ensure you feed GA4 with relevant data.
+In the context of this blog post, we want to use the Firestore Lookup variable to enrich GA4 data with the customer score from the MP example. Our lookup key in this case is the User ID and we use the Firestore Lookup variable to retrieve a user’s respective score from a Firestore document and then send it to GA4 via a server-side event. This comes with the advantage that you can integrate the enrichment process directly into your existing measurement stack, making it easier to maintain and manage.
+
+> Note: Obviously, this requires that you have set up a Firestore database and populate it frequently with the users' latest score values to ensure you feed GA4 with relevant data.
 
 ### Using GA4 Data Import
+
+The last method for data enrichment I want to introduce to you is _GA4 Data Import_. This feature allows you to perform a wide range of imports, such as cost data for your marketing campaigns, item data for your e-commerce events, offline events, and user data. The latter is especially interesting for us, as it allows us to import user data based on User IDs.
 
 ![ga4-data-import](/assets/img/ga4-reporting-identity/ga4-data-import.png)
 _GA4 Data Import Interface_
 
-Read more about GA4 Data Import based on User IDs in the [official documentation](https://support.google.com/analytics/answer/10071143?hl=en&ref_topic=10054560&sjid=5542917637782379063-EU#).
+To import user data based on User IDs, you must create a data set in GA4 and upload a CSV file containing the User IDs and the respective data you want to import. Alternatively, you can spin up an SFTP server and automate the upload of fresh import data that way.
 
-> Note: If you don't have a user ID available, GA4 also allows you perform the import based on the device ID. This comes in especially handy for lead generation websites or websites that don't have a login functionality.
+The data you upload will then be associated with the User IDs in GA4, allowing you to use it for analysis and audience building. For user data, the imported data is joined with the GA4 data upon _collection/processing time_, meaning that GA4 treats the imported data as if you collected it with the user's event data from the beginning. The shortcoming of this approach is that the join doesn't work retroactively, and GA4 will not join the imported with any of the historical data in your property.
 
-Since these identifiers are the most stable and long-lasting identifiers and can especially be used for activation use cases, having a login functionality and nudging your users to use it is of great value for your business.
-If you found this section interesting, I can recommend hoping over to my article [GA4 - the CDP You Didn't Know You Had](https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/) for more food for thought.
+> Note: If you don't use user IDs, GA4 also allows you to perform the import based on the device ID. This is especially handy for lead generation websites or websites that don't have a login functionality.
+
+While the Data Import in its current state is a neat feature, adopting it could be more convenient. For example, manual uploads are suitable for one-off tests but otherwise impractical. The SFTP option comes with challenges and takes some time to set up correctly. I'm sure we'll be able to use the Admin API to automate the import process in the future (like it was the case for Universal Analytics). Then, we could use serverless solutions (e.g., Cloud Run) to build simple, API-based applications that automatically upload the data to GA4.
+
+If you feel like you need more information about GA4 Data Import based on User IDs, I recommend the [official documentation](https://support.google.com/analytics/answer/10071143) to get started.
 
 ## Conclusion
 
-Phew - let's take a deep breath together! That was a lot of information to digest, but I hope I managed to convey it in a way that is easy to understand and follow. Furthermore, I hope you now better understand the Reporting Identity in GA4, its intricacies, and how to implement the different identity spaces.
-Blending all the identities together into one overview makes it sometimes hard to see the true impact
+Phew—let's take a deep breath together! That was a lot of information to digest, but I hope I conveyed it in a way that is easy to understand and follow. Furthermore, I hope you now better understand the Reporting Identity in GA4—especially the User ID—its intricacies and how to get started implementing the different identity spaces.
 
-If you have any questions or need further clarification, please don't hesitate to reach out to me. I am always happy to help!
+Blending all the identities together into one aggregated overview can sometimes make it hard to get a clear picture of your users. However, understanding how the numbers you see in the GA4 interface come into existence is crucial before you report them to your stakeholders. This knowledge will keep you informed and confident in your reporting.
+
+Hopefully, I've managed to pique your interest in GA4's User ID feature. This feature, along with a solid understanding of the GA4 interface, can unlock more advanced activation use cases for your business. If you're eager to learn more about the role GA4 can play in your data activation efforts, I encourage you to explore my article [GA4 - the CDP You Didn't Know You Had](https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/) for more insights and empowerment.
+
+If you have any questions or need further clarification, please don't hesitate to contact me. I am always happy to help!
