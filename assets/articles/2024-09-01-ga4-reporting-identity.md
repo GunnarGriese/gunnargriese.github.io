@@ -18,7 +18,10 @@ I know you're eager to cut to the chase, and I hate to hold you off, but before 
 1. The identifiers GA4 uses to unify a user's journey are collectively referred to as **identity spaces**.
 2. The identity space(s) used by your GA4 property is called its **reporting identity**.
 
-In the following sections you’ll find a description of each of the available identity spaces.
+In the following sections you’ll find a description of each of the available identity spaces and how they are used in GA4.
+
+![Usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png)
+_Usage of identity spaces for Blended & Observed reporting identity_
 
 ### User ID - Get to truly know your customers
 
@@ -64,11 +67,6 @@ In your GA4's property settings, you decide which identity spaces you want to us
 - **Blended**: Uses the User-ID, Device ID, then Modelling, in that order of preference.
 - **Observed**: It uses the User-ID, Google Signals, and then Device ID, ignoring Modelling.
 - **Device-based**: Only the device ID is used, and all other collected IDs are ignored.
-
-So, we could say that GA4 is a user-centric analytics tool (not necessarily an end user-centric one though), as it always tries to use the User ID first, then the Device ID, and only then the Modelling data.
-
-![Usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png)
-_Usage of identity spaces for Blended & Observed reporting identity_
 
 **Adjusting the Reporting Identity** for a GA4 property requires you to navigate to the **Admin section**, select the correct account and property, click on Reporting Identity in the Property column, select the Reporting Identity you want to use, and click _Save_.
 The reporting identity option you choose does **not** affect data collection or processing. Hence, you can switch between the options at any time without making any permanent impact on data. This is pretty neat, as you can directly assess within the interface what the impact on different identity spaces is on your data. Be aware that in order to get the full benefit of the Blended and Observed Reporting Identity, you need to collect user IDs.
