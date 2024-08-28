@@ -252,26 +252,32 @@ To send data to GA4 using the MP, you need to send a `POST` request from our sys
 ```javascript
 const measurementId = "<your-stream-id>";
 const apiSecret = "<your-api-secret-value>";
-
-// Exemplary use of a function to request a user's customer score from the CRM.
-const customerScore = getCustomerScore(userId);
+const userId = "<user-id>"; // Ensure userId is defined
+const customerScore = getCustomerScore(userId); // Function to get user's customer score
 
 const queryParams = `?measurement_id=${measurementId}&api_secret=${apiSecret}`;
-fetch(`https://www.google-analytics.com/mp/collect${queryParams}`, {
-  method: "POST",
-  body: JSON.stringify({
-    user_id: userId, // The unique identifier for a user.
-    user_properties: {
-      customer_score: {
-        value: customerScore, // The user's customer score as a user property.
-      },
+const url = `https://www.google-analytics.com/mp/collect${queryParams}`;
+
+const payload = {
+  user_id: userId, // The unique identifier for a user.
+  user_properties: {
+    customer_score: {
+      value: customerScore, // The user's customer score as a user property.
     },
-    events: [
-      {
-        name: "customer_score_enrichment", // The event name.
-      },
-    ],
-  }),
+  },
+  events: [
+    {
+      name: "customer_score_enrichment", // The event name.
+    },
+  ],
+};
+
+fetch(url, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(payload),
 });
 ```
 
