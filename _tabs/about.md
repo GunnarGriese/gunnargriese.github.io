@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 1
 ---
 
-Hi, I'm Gunnar Griese, a self-employed Digital Analytics Consultant and Analytics Engineer dedicated to helping businesses harness the full potential of their data. With a strong background from leading digital analytics agencies in Germany (TRKKN) and Denmark (IIH Nordic) consulting large enterprises and brands, I specialize in Google Analytics (GA), Google Tag Manager (GTM), and the Google Cloud Platform (GCP). My proficiency in JavaScript, SQL, and Python allows me to optimize the Google tech stack, build custom solutions on top of it, and drive impactful results for my clients.
+Hi, I'm Gunnar Griese, a self-employed Digital Analytics Consultant and Analytics Engineer dedicated to helping businesses harness the full potential of their data. With a strong background from the leading digital analytics agencies in Germany (TRKKN) and Denmark (IIH Nordic) consulting large enterprises and brands, I specialize in Google Analytics (GA), Google Tag Manager (GTM), and the Google Cloud Platform (GCP). My proficiency in JavaScript, SQL, and Python allows me to optimize the Google tech stack, build custom solutions on top of it, and drive impactful results for my clients.
 
 ![Gunnar Griese](/assets/img/avatar/google-event.jpeg){: width="400" height="300" }
 
