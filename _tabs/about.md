@@ -10,7 +10,7 @@ Hi, I'm Gunnar Griese, a self-employed Digital Analytics Consultant and Analytic
 
 Now based in Copenhagen, I'm passionate about sharing my expertise with businesses of all sizes to help them activate their data efficiently. I also continue to teach "Technical Digital Analytics" at IHM Business School in Malmö, where I introduce students to the intricacies of GA and GTM. My personal website is a hub for insightful content that simplifies complex digital analytics, marketing strategies, web development, and cloud solutions.
 
-![Gunnar Griese Speaker](/assets/img/avatar/conversion-boost.jpeg){: width="400" height="533" }
+![Gunnar Griese Speaker](/assets/img/avatar/conversion-boost.jpeg){: width="400" height="300" }
 
 Whether you're looking for expert advice on Google Analytics and Google Tag Manager, seeking to improve your digital marketing strategies by harnessing your data, or curious about the latest trends in the industry, you're in the right place. I'm open for business and ready to help you achieve your goals. Feel free to contact me through the various channels listed on my website.
 
