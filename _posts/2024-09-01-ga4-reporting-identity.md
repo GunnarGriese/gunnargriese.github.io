@@ -71,7 +71,7 @@ In your GA4's property settings, you decide which identity spaces you want to us
 **Adjusting the Reporting Identity** for a GA4 property requires you to navigate to the **Admin section**, select the correct account and property, click on Reporting Identity in the Property column, select the Reporting Identity you want to use, and click _Save_.
 The reporting identity option you choose does **not** affect data collection or processing. Hence, you can switch between the options at any time without making any permanent impact on data. This is pretty neat, as you can directly assess within the interface what the impact on different identity spaces is on your data. Be aware that in order to get the full benefit of the Blended and Observed Reporting Identity, you need to collect user IDs.
 
-![Available reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png) {: width="400" height="300" }
+![Available reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png)
 _Available Reporting Identities in GA4_
 
 ## Implementation of Identity Spaces
