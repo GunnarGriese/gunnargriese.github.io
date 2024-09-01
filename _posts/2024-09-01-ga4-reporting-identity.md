@@ -1,5 +1,5 @@
 ---
-title: Who are my website users? And if so how many? - User IDs & Reporting Identities in GA4
+title: Who are my website users? And if so how many? - User IDs in GA4
 author: gunnar
 date: 2024-09-01 00:00:01 +0200
 categories: [GA4]
@@ -20,7 +20,7 @@ I know you're eager to cut to the chase, and I hate to hold you off, but before 
 
 In the following sections you’ll find a description of each of the available identity spaces and how they are used in GA4.
 
-![Usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png) {: width="400"}
+![Usage of reporting identies in GA4](/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png)
 _Usage of identity spaces for Blended & Observed reporting identity_
 
 ### User ID - Get to truly know your customers
