@@ -252,6 +252,7 @@ To send data to GA4 using the MP, you need to send a `POST` request from our sys
 ```javascript
 const measurementId = "<your-stream-id>";
 const apiSecret = "<your-api-secret-value>";
+const clientId = "<client-id>"; // Needs to match the client-side identifier
 const userId = "<user-id>"; // Ensure userId is defined
 const customerScore = getCustomerScore(userId); // Function to get user's customer score
 
@@ -259,6 +260,7 @@ const queryParams = `?measurement_id=${measurementId}&api_secret=${apiSecret}`;
 const url = `https://www.google-analytics.com/mp/collect${queryParams}`;
 
 const payload = {
+  client_id: clientId, // The unique device identifier for a user.
   user_id: userId, // The unique identifier for a user.
   user_properties: {
     customer_score: {
