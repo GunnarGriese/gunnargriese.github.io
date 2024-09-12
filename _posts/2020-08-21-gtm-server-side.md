@@ -68,6 +68,8 @@ Furthermore, because the GTM container is executed in Google’s cloud integrati
 
 Once this new GTM feature moves out of the beta phase after being improved based on feature requests and active community members’ contributions, even more possibilities will be available, significantly changing tracking implementations based on GTM.
 
+> **Note**: You can read more about the possibilities of integrating GCP services into GTM Server-Side to unlock powerful use cases in the future in [my latest blog post series](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/).
+
 ## Closing Thoughts
 
 The GTM server-side container’s release continues a general trend that can be observed for many Google Marketing Platform tools: Strengthen tool integration and push towards GCP. By pursuing this strategy, Google ensures a smooth data flow between systems and, at the same time, increases each tool’s functionality to cope with the ever-changing adtech environment.
