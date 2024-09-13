@@ -26,6 +26,9 @@ Since the release of sGTM, we have come a long way, and more and more companies 
 
 While many companies have migrated their GA4 data collection to sGTM and might even use it to send data to other vendors, the technology's potential is still not fully exploited. As is often the case in our line of work, most businesses have been focusing on the data collection part and have not yet fully embraced the possibilities for data enrichment and activation that are at their fingertips.
 
+![State of GTM Server-Side](/assets/img/gtm-ss-pantheon/state-of-sgtm.png)
+_Drivers for GTM Server-Side adoption_
+
 The true power of an intermediary collection endpoint like sGTM lies in its ability to act as a data hub, where data from various, business-relevant sources can be transformed, combined, and sent to other systems in real time. In other words, you can _gather_ different kinds of data (and combine them) and then _send_ the widened data to the marketing vendors' or your own systems as you see fit.
 
 ## Overview of the GTM Server-Side Pantheon
