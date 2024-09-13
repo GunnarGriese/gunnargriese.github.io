@@ -31,7 +31,7 @@ _Drivers for GTM Server-Side adoption_
 
 The true power of an intermediary collection endpoint like sGTM lies in its ability to act as a data hub, where data from various, business-relevant sources can be transformed, combined, and sent to other systems in real time. In other words, you can _gather_ different kinds of data (and combine them) and then _send_ the widened data to the marketing vendors' or your own systems as you see fit.
 
-## Overview of the GTM Server-Side Pantheon
+## Standing of the Shoulders of Gods - The GTM Server-Side Pantheon
 
 This is where the [_sGTM Pantheon_](https://github.com/google-marketing-solutions/gps-sgtm-pantheon) comes into play. The Pantheon is a collection of (technical) solutions provided by Google, which allows one to easily get data from external services into sGTM via API calls or send data to external (GCP) destinations. The idea is to enhance sGTM's native capabilities to allow businesses "to improve their reporting, bidding, audience management, and data pipeline management and processes" (s. Google's documentation).
 
