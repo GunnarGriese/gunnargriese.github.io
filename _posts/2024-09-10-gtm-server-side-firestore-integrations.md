@@ -113,9 +113,9 @@ In my example, the second variable template would extract the `customer_score` v
 
 With Artemis, you can seamlessly integrate Firestore with sGTM to power tailored marketing strategies using first-party data stored in the cloud. Artemis allows you to hunt for data like its namesake, making it a valuable asset in your sGTM data integration stack.
 
-### Sorteria - The Safeguard of Data
+### Soteria - The Safeguard of Data
 
-Sorteria, the goddess of safety, deliverance, and protection, is for sure one of the lesser-known Greek deities. But, the [Sorteria solution](https://github.com/google-marketing-solutions/gps_soteria/tree/main) shouldn't suffer the same fate, as I see it as a crucial part of the GTM Server-Side Pantheon that can help you get more out of your marketing spend in GMP.
+Soteria, the goddess of safety, deliverance, and protection, is for sure one of the lesser-known Greek deities. But, the [Soteria solution](https://github.com/google-marketing-solutions/gps_soteria/tree/main) shouldn't suffer the same fate, as I see it as a crucial part of the GTM Server-Side Pantheon that can help you get more out of your marketing spend in GMP.
 
 [Value-based bidding (VBB)](https://support.google.com/google-ads/answer/14792795?hl=en) is one of the most powerful tools in the GMP, as it allows you to optimize your bids based on the value that each conversion brings to your business. However, to use VBB effectively, you need to provide Google Ads with the conversion value for each conversion event. Obviously, the closer the conversion value is to the actual contribution to your business goals, the more you get out of marketing efforts.
 
@@ -123,10 +123,10 @@ Traditionally, most companies calculate this value based on the revenue generate
 
 Before the advent of sGTM, it was pretty challenging to calculate the conversion value dynamically and send it to GMP in real-time. Hence, I've seen companies going down one of two paths: either they retrieved sensitive data like profit margins (e.g., by requesting that data through an open API) and exposed it to the dataLayer, or they reverted to adjusting the conversion value in batch using the GMP APIs. Both approaches have their downsides: the first **exposes sensitive data to the browser**, while the second is **not real-time and might negatively impact bidding** due to the delay in updating the value.
 
-![Sorteria Data Flow](/assets/img/gtm-ss-pantheon/sorteria-architecture.png)
-_Sorteria Architecture and Data Flow diagram_
+![Soteria Data Flow](/assets/img/gtm-ss-pantheon/Soteria-architecture.png)
+_Soteria Architecture and Data Flow diagram_
 
-Sorteria, the goddess of **safety**, solves this problem. She allows you to calculate the conversion value dynamically in sGTM and send it to GMP, GA4, or other vendors in real time without exposing sensitive data to the browser. Once again, the solution is based on the `Firestore.read` and `Promise` APIs and comes with its own variable template to fetch the necessary data from Firestore.
+Soteria, the goddess of **safety**, solves this problem. She allows you to calculate the conversion value dynamically in sGTM and send it to GMP, GA4, or other vendors in real time without exposing sensitive data to the browser. Once again, the solution is based on the `Firestore.read` and `Promise` APIs and comes with its own variable template to fetch the necessary data from Firestore.
 
 The solution is designed to work out of the box with the incoming GA4 purchase event data, which contains the `item_id` for each product in the transaction. The variable looks up the profit value for each product and calculates the total profit-based conversion value. The newly computed conversion value is then passed to the `Conversion Value` or `Revenue` setting in the respective Google Ads or Floodlight Sales tags.
 
@@ -134,17 +134,17 @@ Now, don't all Google Ads and Floodlight tags triggered in sGTM result in a clie
 
 Well, the answer is simple: Both tag types actually encrypt the conversion value before passing it back to the browser, so the data is never exposed to the user. This is a crucial point to understand, as it allows you to send sensitive data to GMP without compromising control over your data.
 
-![Sorteria Firestore Setup](/assets/img/gtm-ss-pantheon/sorteria-firestore-setup.png)
-_Exemplary Firestore Database Setup for Sorteria_
+![Soteria Firestore Setup](/assets/img/gtm-ss-pantheon/Soteria-firestore-setup.png)
+_Exemplary Firestore Database Setup for Soteria_
 
 The technical requirements for the Firestore database are fairly straightforward. All you need is a collection with the `item_id` as the document ID and the `profit` value (or others like `return_rate`) as an attribute. The `item_id` is then used to look up the profit value for each product in the transaction.
 
 Let's examine the actual variable template and its functionalities to "connect" it to the exemplary "items" database.
 
-![Sorteria Variable](/assets/img/gtm-ss-pantheon/sorteria-variable.png)
-_Sorteria Variable Template in GTM Server-Side_
+![Soteria Variable](/assets/img/gtm-ss-pantheon/Soteria-variable.png)
+_Soteria Variable Template in GTM Server-Side_
 
-As you can see, the Sorteria solution supports three different calculation methods:
+As you can see, the Soteria solution supports three different calculation methods:
 
 - Value
 - Return rate
@@ -170,7 +170,7 @@ conversion_value = price * quantity; // "Revenue" setting
 conversion_value = price * percent * quantity; // "Percent" setting, with the variable being the custom "FallBack Percentage"
 ```
 
-If you haven't already, you should definitely consider using Sorteria or at least test it out—summoning her is well worth it!
+If you haven't already, you should definitely consider using Soteria or at least test it out—summoning her is well worth it!
 
 Based on numerous Google case studies and from experience with my own clients, I've seen it significantly improve the performance of their GMP campaigns, simply because the conversion value is now more closely aligned with the actual business value. As always, the results can be impressive when operating at the sweet spot of data, tech, and actual business use cases.
 
@@ -200,7 +200,7 @@ As I mentioned before, the principles used for these Google solutions have been 
 
 ## Conclusion
 
-Yes, I know... This is another lengthy blog post, but I hope you enjoyed the journey through the Greek Pantheon of GTM Server-Side solutions. Midway through the post, I realized that cramping all the solutions into one post would be too much, so I split it into five parts. In this first part, we explored the possibilities of integrating Firestore into sGTM using the Artemis, Sorteria, and Hephaestus solutions.
+Yes, I know... This is another lengthy blog post, but I hope you enjoyed the journey through the Greek Pantheon of GTM Server-Side solutions. Midway through the post, I realized that cramping all the solutions into one post would be too much, so I split it into five parts. In this first part, we explored the possibilities of integrating Firestore into sGTM using the Artemis, Soteria, and Hephaestus solutions.
 
 We learned how to fetch entire documents, extract specific values, and write data to Firestore, enabling businesses to enrich their data streams and enhance their marketing strategies. In the next part of this series, I'll discuss how to integrate BigQuery with sGTM.
 
