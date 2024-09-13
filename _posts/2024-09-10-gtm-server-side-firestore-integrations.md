@@ -14,7 +14,7 @@ For those who have been following the evolution of GTM Server-Side (sGTM) and Go
 
 Obviously, a lot has changed since then. Cloud functions are now Cloud **Run** functions, ML Engine as such doesn't exist anymore and has been integrated into the Vertex AI platform, and GTM Server-Side has been officially released out of beta.
 
-However, the vision of enriching the clickstream collected by GA4 with data provided by GCP services or feeding a company's downstream systems in real time is still valid. In this series of blog posts, I want to invite you to join me on a mythological journey exploring the possibilities of integrating first-party data or triggering processes from sGTM using Firestore (this one), BigQuery (part 2), Pub/Sub (part 3), Google Sheets (part 4), and even Predictive Analytics & GenAI (part 5).
+However, the vision of enriching the clickstream collected by GA4 with data provided by GCP services or feeding a company's downstream systems in real time is still valid. In this series of blog posts, I want to invite you to join me on a mythological journey exploring the possibilities of integrating first-party data or triggering processes from sGTM using Firestore (this one), Pub/Sub (part 2), BigQuery (part 3), Google Sheets (part 4), and even Predictive Analytics & GenAI (part 5).
 
 ## The state of GTM Server-Side
 
