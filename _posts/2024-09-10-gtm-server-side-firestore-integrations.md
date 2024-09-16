@@ -123,7 +123,7 @@ Traditionally, most companies calculate this value based on the revenue generate
 
 Before the advent of sGTM, it was pretty challenging to calculate the conversion value dynamically and send it to GMP in real-time. Hence, I've seen companies going down one of two paths: either they retrieved sensitive data like profit margins (e.g., by requesting that data through an open API) and exposed it to the dataLayer, or they reverted to adjusting the conversion value in batch using the GMP APIs. Both approaches have their downsides: the first **exposes sensitive data to the browser**, while the second is **not real-time and might negatively impact bidding** due to the delay in updating the value.
 
-![Soteria Data Flow](/assets/img/gtm-ss-pantheon/Soteria-architecture.png)
+![Soteria Data Flow](/assets/img/gtm-ss-pantheon/sorteria-architecture.png)
 _Soteria Architecture and Data Flow diagram_
 
 Soteria, the goddess of **safety**, solves this problem. She allows you to calculate the conversion value dynamically in sGTM and send it to GMP, GA4, or other vendors in real time without exposing sensitive data to the browser. Once again, the solution is based on the `Firestore.read` and `Promise` APIs and comes with its own variable template to fetch the necessary data from Firestore.
@@ -134,14 +134,14 @@ Now, don't all Google Ads and Floodlight tags triggered in sGTM result in a clie
 
 Well, the answer is simple: Both tag types actually encrypt the conversion value before passing it back to the browser, so the data is never exposed to the user. This is a crucial point to understand, as it allows you to send sensitive data to GMP without compromising control over your data.
 
-![Soteria Firestore Setup](/assets/img/gtm-ss-pantheon/Soteria-firestore-setup.png)
+![Soteria Firestore Setup](/assets/img/gtm-ss-pantheon/sorteria-firestore-setup.png)
 _Exemplary Firestore Database Setup for Soteria_
 
 The technical requirements for the Firestore database are fairly straightforward. All you need is a collection with the `item_id` as the document ID and the `profit` value (or others like `return_rate`) as an attribute. The `item_id` is then used to look up the profit value for each product in the transaction.
 
 Let's examine the actual variable template and its functionalities to "connect" it to the exemplary "items" database.
 
-![Soteria Variable](/assets/img/gtm-ss-pantheon/Soteria-variable.png)
+![Soteria Variable](/assets/img/gtm-ss-pantheon/sorteria-variable.png)
 _Soteria Variable Template in GTM Server-Side_
 
 As you can see, the Soteria solution supports three different calculation methods:
