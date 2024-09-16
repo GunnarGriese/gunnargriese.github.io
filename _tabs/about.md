@@ -12,6 +12,8 @@ Now based in Copenhagen, I'm passionate about sharing my expertise with business
 
 ![Gunnar Griese Speaker](/assets/img/avatar/conversion-boost.jpeg){: width="400" height="300" }
 
-Whether you're looking for expert advice on Google Analytics and Google Tag Manager, seeking to improve your digital marketing strategies by harnessing your data, or curious about the latest trends in the industry, you're in the right place. I'm open for business and ready to help you achieve your goals. As German-native speaker, fluent in English, and basic working proficiency in Danish, I'm happy to accommodate your needs in any of these languages. Feel free to contact me through the various channels listed on my website.
+Whether you're looking for expert advice on Google Analytics and Google Tag Manager, seeking to improve your digital marketing strategies by harnessing your data, or curious about the latest trends in the industry, you're in the right place.
+
+I'm open for business and ready to help you achieve your goals. As German-native speaker, fluent in English, and basic working proficiency in Danish, I'm happy to accommodate your needs in any of these languages. Feel free to contact me through the various channels listed on my website.
 
 I'm also available for speaking engagements at conferences and seminars. If you need a knowledgeable speaker in digital analytics, don't hesitate to contact me.
