@@ -1,21 +1,29 @@
 ---
-title: Confidential Matching - Smokebomb or Salvation for Advertisers?
+title: Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?
 author: gunnar
-date: 2024-09-19 00:00:01 +0200
+date: 2024-09-17 00:00:01 +0200
 categories: [Privacy]
 tags: [privacy]
 comments: true
 ---
 
-On September 12, 2024, Google announced a new privacy-focused feature called **Confidential Matching** for their Customer Match tooling in the Google Marketing Platform (GMP) and mentioned applying the same mechanism to Enhanced Conversions. But is this a true breakthrough for privacy-conscious advertisers, or does it obscure deeper concerns? In this blog post, I'll explore Confidential Matching, explain the underlying technical components, how it fits into your digital marketing stack, and critically assess whether this technology is a genuine solution or just another smokescreen in digital advertising. So, let's take it step by step.
+On September 12, 2024, Google announced a new privacy-focused feature called **Confidential Matching** aimed at advertisers using their Customer Match and Enhanced Conversions tools within the Google Marketing Platform (GMP). This announcement comes amid the ever-rising concerns over privacy regulations in the EU (e.g., GDPR) and also increasingly in the the US (e.g., CCPA), which push advertisers to handle customer data more securely. But is it truly a breakthrough, or does it merely obscure underlying concerns about data sharing?
+
+In this post, I’ll explain how Confidential Matching works, its role in Google's marketing ecosystem, and critically assess whether it provides a real solution for privacy-focused advertisers. By the end, you'll have a clearer understanding of whether this new feature is a significant step forward or just another method to maintain data control under the guise of privacy protection.
 
 ## What is Confidential Matching?
 
-As privacy regulations like GDPR and CCPA grow stricter and are adopted more and more over the world, advertisers face increasing challenges when securely using customer data for ad targeting and measurement. Traditionally, tools like Customer Match and Enhanced Conversions required advertisers to share sensitive personal data with Google, raising concerns about data privacy and potential misuse. Confidential Matching offers a solution that allows advertisers to match customer data with Google's records in a way that "preserves privacy". By using Trusted Execution Environments (TEEs), Confidential Matching ensures that data is processed securely without exposing raw information, trying to address privacy concerns while maintaining advertising effectiveness.
+As privacy regulations like GDPR and CCPA are enforced more and more, advertisers face increasing challenges when using customer data for ad targeting and measurement. Traditionally, tools like **Customer Match** and **Enhanced Conversions** required advertisers to share sensitive personal data, such as email addresses or phone numbers, with Google. Confidential Matching offers a new solution by allowing advertisers to match customer data with Google's records without directly sharing that raw information.
+
+This is achieved using a technology called Trusted Execution Environments (TEEs), which act as secure "digital vaults". Think of a TEE as a locked, isolated chamber where data can be processed without external access. According to Google, TEEs ensure that customer data remains secure while still allowing advertisers to gain insights and maintain advertising effectiveness.
+
+In short, Confidential Matching allows advertisers to benefit from matching their data with Google's datasets without directly sharing private information—aiming to balance privacy with performance.
 
 ## What are Customer Match and Enhanced Conversions?
 
-Customer Match and Enhanced Conversions are two powerful tools in Google's advertising suite that rely on an advertiser's customer data to improve targeting and measurement. Customer Match allows advertisers to upload customer information, such as email addresses or phone numbers, which Google matches with its user base to create highly targeted ad audiences. On the other hand, Enhanced Conversions focuses on accurately attributing ad performance by linking conversions to specific users through shared data. Both tools depend heavily on advertisers providing customer data, which Google uses to match users across its platforms, making data privacy a central concern for businesses.
+Customer Match and Enhanced Conversions are two powerful tools in Google's advertising suite, both relying on customer data to improve targeting and measurement. **Confidential Matching** is set to enhance these tools by allowing advertisers to match customer data with Google's user base more securely, thanks to TEEs.
+
+But before we have a closer look at Confidential Matching, let’s first uncover what each of these tools does and why customer data is so crucial to their effectiveness.
 
 ### Customer Match - Target users that you know
 
@@ -36,7 +44,7 @@ A pretty powerful tool, don't you agree? Unfortunately, there's a catch. To use 
 
 ### Enhanced Conversions - Get better insights into your campaign performance
 
-While Customer Match is a tool for delivering targeted advertising messaging, **Enhanced Conversions** is primarily concerned with enhancing the measurement your GMP campaign and ad performance. Both Enhanced Conversions and Customer Match share a common characteristic, though: They rely on the advertiser sharing customer contact data with Google, which Google then matches against its own database entries.
+While Customer Match is a tool for delivering targeted advertising messaging, **Enhanced Conversions** is primarily concerned with enhancing the measurement of GMP campaign and ad performance. Both Enhanced Conversions and Customer Match share a common characteristic, though: They rely on the advertiser sharing customer contact data with Google, which Google then matches against its own database entries.
 
 ![Enhanced Conversions](/assets/img/confidential-match/enhanced-conversions.png)
 _Enhanced Conversions - Basic Process_
@@ -57,7 +65,7 @@ Before Confidential Matching, advertisers had to share all their customer data r
 
 ## What are Trusted Execution Environments (TEEs)?
 
-A TEE—also referred to as "Confidential computing"—is an environment for executing code and processing data in a secure and isolated manner. You can think of it like a [clean room](https://digiday.com/marketing/data-clean-room/) where sensitive (or any other) data is processed in a way that the TEE operator (in this case, Google) cannot access. One or multiple data owners send data to the system. The data is encrypted before it enters the TEE and finally decrypted within the TEE.
+A TEE—also referred to as "Confidential computing"—is an environment for executing code and processing data in a secure and isolated manner. Think of TEEs like a [clean room](https://digiday.com/marketing/data-clean-room/) where sensitive (or any other) data is processed in a way that the TEE operator (in this case, Google) cannot access it. One or multiple data owners send data to the system. The data is encrypted before it enters the TEE and finally decrypted within the TEE.
 
 The TEE ensures that the data is processed securely and that the results are only accessible to authorized parties. Furthermore, the TEE can provide attestation, which is cryptographic proof that the code running in the TEE is genuine and has not been tampered with. At the same time, the TEE is auditable, meaning that the data owner (or a third party) can verify that the data has been processed according to the requirements.
 
@@ -84,11 +92,13 @@ As you can see from the illustration above, both the advertiser and Google uploa
 
 ## Conclusion
 
-From my perspective (and please keep in mind that I am not a lawyer), Confidential matching seems to solve the issue of excessive data sharing—a data security measure in that sense. What the technology doesn't solve for is the guarantee of purpose limitation, though, once the matched data is in the Google systems.
+Confidential Matching seems to address a key issue: _excessive data sharing_. It offers a solution where only necessary, matched data is exposed, helping advertisers meet growing privacy requirements. By leveraging Trusted Execution Environments, advertisers can trust that Google won’t see or store their raw customer data.
 
-Now, one might argue that since Google had access to this data all along and (ideally) obtained user consent for their own usage purposes, the advertiser shouldn't be concerned with this. However, assessing this and the general legal compliance of this new approach is beyond my abilities. The future (and people far more intelligent than me) will have to tell if this new approach to sharing PII is a viable approach or just another smoke bomb by Google to eventually circumvent privacy regulations and keep the data kraken alive.
+Now, one might argue that since Google had access to this data all along and (ideally) obtained user consent for their own usage purposes, the advertiser shouldn't be concerned with this. However, while this technical solution tackles data security, it doesn’t fully address **purpose limitation**—that is, whether Google might still use this matched data for purposes beyond retargeting or measurement. E.g., even if the advertiser ensures user consent for retargeting, once the data is in Google's system, it's unclear whether Google might utilize this data in ways the advertiser's users haven't explicitly agreed to. Given Google’s vast ecosystem, this remains a valid concern for businesses mindful of privacy compliance.
 
-I am happy that Google seems to be investing in technologies that try to balance business needs and user privacy. Regardless, I am not sure that technical solutions alone will be able to solve the underlying issues and concerns of how companies share and handle their customers' data. Hence, my advice if you are considering adopting Confidential Matching is to critically assess its implications on your legal risk profile. For this to be done efficiently, make sure to involve your legal team and conduct a proper risk assessment before adopting this new feature.
+Moreover, advertisers using Confidential Matching still bear the legal and reputational risks if privacy regulations evolve or if regulators decide that these technical solutions aren’t compliant. For instance, privacy watchdogs (e.g., NYOB) might as well demand more guarantees about how matched data is used downstream.
+
+In light of these concerns, Confidential Matching is a step forward—but not a solution that should lead advertisers to easily adopt it. It addresses data security but leaves room for doubt regarding the actual handling of data post-match. As privacy is top of mind for many users, businesses will still need to carefully evaluate their legal obligations, privacy risk profiles, and trust in Google's systems.
 
 I hope you found this article insightful and that you have a better understanding of Confidential Matching. If you have any further questions or need help handling the discussions internally, feel free to contact me via one of the channels listed on this website. Happy tracking!
 
