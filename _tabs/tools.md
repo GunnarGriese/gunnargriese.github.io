@@ -7,6 +7,6 @@ order: 2
 <!-- markdownlint-disable -->
 
 > Working on a set of tools. Stay tuned!
-{: .prompt-tip }
+{: .prompt-info }
 
 <!-- markdownlint-restore -->
