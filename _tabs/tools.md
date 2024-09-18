@@ -1,5 +1,5 @@
 ---
-icon: fas fa-info-circle
+icon: fas fa-tools
 order: 2
 ---
 
@@ -7,6 +7,6 @@ order: 2
 <!-- markdownlint-disable -->
 
 > Working on a set of tools. Stay tuned!
-{: .prompt-info }
+> {: .prompt-info }
 
 <!-- markdownlint-restore -->
