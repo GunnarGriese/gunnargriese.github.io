@@ -1,11 +1,13 @@
 ---
-title: GTM Server-Side Pantheon - Part 2 - Integrate Pub/Sub into GTM Server-Side
+title: GTM Server-Side Pantheon - Part 2 - Supercharge Your Setup with Pub/Sub
 author: gunnar
-date: 2024-09-14 00:00:01 +0200
+date: 2024-11-14 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
 comments: true
 ---
+
+In [part 1](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/) of this series _GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore_ we explored how to integrate Firestore into GTM Server-Side (sGTM) to store and enrich GA4 event data. In this post, we will dive into another powerful Google Cloud service: Pub/Sub. While Firestore helps enrich event data, Pub/Sub takes us a step further by enabling real-time, event-driven architectures and seamless cross-system communication.
 
 ## What is Pub/Sub?
 At its core, Pub/Sub (short for Publish/Subscribe) is a messaging service provided by Google Cloud that facilitates the asynchronous exchange of messages between different systems. It’s designed to be highly scalable, reliable, and low-latency, enabling real-time communication between applications across various environments.
@@ -22,6 +24,12 @@ Here’s how Pub/Sub works:
 * **Subscribers** are entities that are interested in receiving messages from a topic. They listen to the topic and can act on incoming data as needed, triggering various processes. This can be anything from storing data in a database to triggering a Cloud Function - your imagination is the only limitation here.
 
 For example, an e-commerce website might use Pub/Sub to trigger different actions: a "purchase" event could be published by one part of the system and consumed by several subscribers, such as inventory management, email marketing, and analytics systems, without needing these components to directly interact with each other.
+
+
+----
+This section is well-explained and covers the essentials in a simple way. The "high-level flow" diagram is a great touch to visually explain the concept. You might add one or two real-world examples at the end of this section to further contextualize Pub/Sub for readers, such as using it in IoT environments or e-commerce systems for real-time alerts.
+Suggestion: Try to link the reliability guarantee (at-least-once delivery) back to why it's important for analytics and data integrity, e.g., "Pub/Sub's at-least-once delivery ensures that even in complex multi-system setups, no data event gets lost, which is crucial for maintaining accurate analytics."
+----
 
 **But I wonder if they will be as reliable as Pub/Sub, which guarantees at least once delivery.**
 
@@ -43,6 +51,8 @@ Enriching GA4 data with other data (such as 1st or 2nd party data)
 Hermes is the messenger of the gods in Greek mythology. How fitting that Google decided to name their Pub/Sub GTM Server-Side custom template after him. The [Hermes solution](https://github.com/google-marketing-solutions/gps-sgtm-pantheon/blob/main/sgtm/hermes/README.md) is a sGTM custom **tag template** that allows you to send event data to Pub/Sub. 
 
 ![Hermes Tag Template](/assets/img/gtm-ss-pubsub/hermes-tag-template.png)
+
+Head over to Google's Github repo for further instructions on how to get started with it.
 
 `getGoogleAuth` authenticates the sGTM instance with Pub/Sub. It uses the service account running the container to get the necessary credentials for making authenticated requests to GCP services. So, make sure to grant this service account `roles/pubsub.publisher` rights.
 Does some type conversion based on the key (key with suffix `_int` is converted to integer, key with `_num` is converted to number, otherwise it's a string).
@@ -67,10 +77,23 @@ Hermes tag writes item data to Pub/Sub `items-realtime` topic, the subscription 
 The outcome is a Firestore collection that holds a document for each item. Each item has a `counter` attribute that is increased by the quantity of the item in the event and additional product information (e.g., price, item_category, profit, etc):
 ![Firestore Document](/assets/img/gtm-ss-pubsub/firestore-document.png)
 
+The dashboard applications attaches a listener to the Firestore collection and updates the dashboard in real-time whenever a new item is added to the collection. The dashboard itself is built with Streamlit and Altair and displays the total profit, the number of items sold, and a table with detailed information about each item.
+
+
 > Add video here
 > ADD PROFIT TO THE DASHBOARD
 
 Find the code for the processing service and the dashboard in this [GitHub repository](https://github.com/GunnarGriese/firestore-realtime-dashboard).
+
+----------
+The real-time dashboard example is excellent and provides a clear use case for integrating sGTM with Pub/Sub. However, I would suggest you break the section into:
+Use Case Overview: Why a real-time dashboard is useful for analytics teams.
+Technical Breakdown: How the data flows from sGTM to Pub/Sub to Cloud Run and Firestore.
+Visualization: A short description of how Streamlit and Altair work in this case to visualize real-time data.
+Addition: Consider adding a note about scalability and performance, such as how Pub/Sub’s scalability ensures that no matter how much data is flowing through the system, your real-time dashboard will remain responsive.
+
+Suggestion: You can also add a "bonus tip" about setting up alerts via Pub/Sub (e.g., in Slack or email) when certain key metrics are reached or data anomalies are detected, expanding the use case beyond just a dashboard.
+----------
 
 ### Conclusion
 
