@@ -6,6 +6,7 @@ categories: [GA4]
 tags: [ga4, gtm, gtm-server-side, consent-mode, firebase-analytics]
 comments: true
 lang: en
+permalink: /posts/consent-mode-v2/
 ---
 
 In fall 2023, the EU has deemed [Google as a gatekeeper](https://blog.google/outreach-initiatives/public-policy/building-for-compliance-with-the-digital-markets-act/) in the digital space under the Digital Markets Act (DMA), placing it under heightened legal scrutiny. In response to this assessment and to meet the DMA enforcement deadline in March 2024, Google is adjusting its advertising solutions. One aspect of this change is the latest update to Google Consent Mode. Starting in March 2024, Consent Mode will become mandatory for all advertisers operating in the EEA and wanting to use all of Google’s GMP advertising features. This shift, which includes [phasing out certain features in the remaining UA360 properties](https://support.google.com/analytics/answer/11583528?hl=en#:~:text=before%20this%20date.-,For%20Google%20Analytics%20360%20customers,-Universal%20Analytics%20360) while at the same time providing insufficient documentation on the new feature's functionality and behavior, left the community with a lot of open questions.

@@ -6,6 +6,7 @@ categories: [GA4]
 tags: [ga4, bigquery]
 comments: true
 lang: en
+permalink: /posts/ga4-time-travel-bridging-utc-and-local-timezones/
 ---
 
 Navigating the intricacies of data in GA4’s raw-data has its own hurdles. A good example is the `event_timestamp` which is logged in microseconds and set in Coordinated Universal Time (UTC). While this standardized approach ensures consistency, it does not always align with the real-world context of events, especially when trying to make the BQ data match the data obtained from the GA4 UI. Hence, converting this timestamp to a property's respective timezone becomes an important step for analysts. Without this conversion, analysts might misinterpret the timing of user interactions, leading to potential inaccuracies in data-driven decision-making.

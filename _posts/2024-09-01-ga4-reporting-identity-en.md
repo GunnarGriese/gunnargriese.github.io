@@ -6,6 +6,7 @@ categories: [GA4]
 tags: [ga4]
 comments: true
 lang: en
+permalink: /posts/ga4-reporting-identity/
 ---
 
 Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users' interactions with your business and eventually allows you to report on user and session counts as well as associated metrics.

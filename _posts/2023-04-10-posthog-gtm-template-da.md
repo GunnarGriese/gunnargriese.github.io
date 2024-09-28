@@ -5,7 +5,7 @@ date: 2023-04-10 08:24:15 +0200
 categories: [GTM]
 tags: [gtm, custom-templates, posthog]
 comments: false
-lang: en
+lang: da
 permalink: /posts/posthog-gtm-template/
 ---
 

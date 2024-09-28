@@ -6,6 +6,7 @@ categories: [GTM]
 tags: [gtm-server-side]
 comments: true
 lang: en
+permalink: /posts/gtm-server-side-firestore-integrations/
 ---
 
 For those who have been following the evolution of GTM Server-Side (sGTM) and Google Cloud Platform (GCP) services, you might recall my early enthusiasm about the potential integrations. In a previous [blog post about GTM Server-Side](https://gunnargriese.com/posts/gtm-server-side/#smooth-integration-to-the-google-cloud-platform), I highlighted the prospect of enriching the clickstream data collected by GA4 with the help of other GCP services. Here is what I wrote about this way back in August 2020:
