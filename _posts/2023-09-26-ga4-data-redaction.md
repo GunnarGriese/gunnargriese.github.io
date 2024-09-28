@@ -5,6 +5,7 @@ date: 2023-09-26 06:21:15 +0200
 categories: [GA4]
 tags: [ga4]
 comments: true
+lang: en
 ---
 
 In my recent article, I explored the potential of GA4 as a core component in crafting a [lightweight Composable CDP](/posts/ga4-the-cdp-you-didnt-know-you-had/). One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4's capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4's data collection ensues.

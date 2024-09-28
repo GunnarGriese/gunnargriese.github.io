@@ -5,6 +5,7 @@ date: 2023-08-12 12:14:15 +0200
 categories: [GA4]
 tags: [ga4, bigquery, gtm-server-side]
 comments: true
+lang: en
 ---
 
 This article is a write-up of my talk at MeasureCamp Czechia in Prague in September 2023 - thanks to everyone who attended the session and provided feedback.

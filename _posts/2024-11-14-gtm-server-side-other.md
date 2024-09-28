@@ -5,6 +5,7 @@ date: 2024-11-14 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
 comments: true
+lang: en
 ---
 
 ## Integrate BigQuery into GTM SS - A void waiting to be filled

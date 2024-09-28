@@ -7,10 +7,30 @@ theme: jekyll-theme-chirpy
 # and doesn't have a custom domain.
 baseurl: "/gunnargriese.github.io"
 
+# Plugins
+plugins:
+  - jekyll-multiple-languages-plugin
+
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+# lang: en
+languages: 
+  - en
+  - de
+  - da
+
+# Exclude from localization - remove if needed
+exclude_from_localization:
+  - assets
+  - _data
+  - _includes
+  - _layouts
+  - _plugins
+  - _site
+  - Gemfile
+  - Gemfile.lock
+  - _config.yml
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Europe/Copenhagen
@@ -144,6 +164,7 @@ defaults:
       path: "" # An empty string here means all files in the project
       type: posts
     values:
+      lang: en # Default language for posts - remove if you don't need it
       layout: post
       comments: true # Enable comments in posts.
       toc: true # Display TOC column in posts.

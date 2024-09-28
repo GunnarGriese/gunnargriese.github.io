@@ -5,9 +5,12 @@ date: 2024-11-14 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
 comments: true
+lang: en
 ---
 
-In [part 1](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/) of this series _GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore_ we explored how to integrate Firestore into GTM Server-Side (sGTM) to store and enrich GA4 event data. In this post, we will dive into another powerful Google Cloud service: Pub/Sub. While Firestore helps enrich event data, Pub/Sub takes us a step further by enabling real-time, event-driven architectures and seamless cross-system communication.
+In [part 1](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/) of this series about Google's _GTM Server-Side Pantheon_ I took you on a journey, during which we'll discover how to integrate a variety of Google Cloud Platform (GCP) services into GTM Server-Side (sGTM). Sprinkled with references to Greek mythology, we explored how to integrate **Firestore into GTM Server-Side** (sGTM) and how businesses can enrich their data streams and, thereby, enhance their marketing strategies. 
+
+In this post, I'd like to continue the journey and give another powerful Google Cloud service a closer look: **Pub/Sub**. As you know, Firestore is great to gather and store data in real-time, but Pub/Sub takes us a step further by enabling event-driven architectures and seamless cross-system communication. After we've covered the basics of Pub/Sub, I'll show you how to integrate it with GTM Server-Side and how you can use this setup to power a real-time dashboard based on a GA4 data stream.
 
 ## What is Pub/Sub?
 At its core, Pub/Sub (short for Publish/Subscribe) is a messaging service provided by Google Cloud that facilitates the asynchronous exchange of messages between different systems. It’s designed to be highly scalable, reliable, and low-latency, enabling real-time communication between applications across various environments.

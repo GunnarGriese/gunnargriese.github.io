@@ -5,6 +5,7 @@ date: 2020-08-21 15:24:15 +0200
 categories: [GTM]
 tags: [ga4, gtm-server-side]
 comments: false
+lang: en
 ---
 
 Over the last many months we have been running a series of beta tests and projects for a group of selected clients to get both practical experience and to help optimize the recently released Google Tag Manager (GTM) server-side tagging setup.

@@ -5,6 +5,7 @@ date: 2024-07-06 00:00:01 +0200
 categories: [GA4, BigQuery, GCP]
 tags: [ga4, bigquery, sql]
 comments: true
+lang: en
 ---
 
 > Disclaimer: This post of mine was first published on [IIH Nordic's website](https://iihnordic.com/news ensuring-data-quality-for-ga4-at-scale-with-google-cloud-platform/) and has been slightly modified here. Head over there to read it in its original form.
