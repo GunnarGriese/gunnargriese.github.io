@@ -6,6 +6,7 @@ categories: [Privacy]
 tags: [privacy]
 comments: true
 lang: en
+permalink: /posts/confidential-matching/
 ---
 
 On September 12, 2024, Google announced a new privacy-focused feature called **Confidential Matching** aimed at advertisers using their Customer Match and Enhanced Conversions tools within the Google Marketing Platform (GMP). This announcement comes amid the ever-rising concerns over privacy regulations in the EU (e.g., GDPR) and also increasingly in the US (e.g., CCPA), which push advertisers to handle customer data more securely. But is it truly a breakthrough, or does it merely obscure underlying concerns about data sharing?
