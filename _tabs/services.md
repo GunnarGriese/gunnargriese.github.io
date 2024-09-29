@@ -1,5 +1,5 @@
 ---
 layout: services
 icon: fas fa-archive
-order: 6
+order: 1
 ---
