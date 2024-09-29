@@ -121,21 +121,32 @@ title: Services
             </div>
         </div>
     </div>
-    <!--- MAKE CONTACT FORM WORK 
+    <!--- MAKE CONTACT FORM WORK -->
     <div id="contact" class="row mb-5">
         <div class="col-md-6">
             <h3 class="mb-4">Let's work together</h3>
-            <form id="contact-form">
+            <form id="contact-form" action="https://your-custom-endpoint.com/submit" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="John Doe">
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="john.doe@example.com">
+                    <input type="email" class="form-control" id="email" placeholder="your.name@example.com" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Send</button>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" placeholder="Your Message." rows="3"
+                        required></textarea>
+                    <button type="submit" class="btn btn-primary">Send</button>
             </form>
+
+            <div id="form-success-message" class="alert alert-success" style="display:none;" role="alert">
+                Your message has been sent successfully!
+            </div>
+            <div id="form-error-message" class="alert alert-danger" style="display:none;" role="alert">
+                There was an error sending your message. Please try again.
+            </div>
         </div>
         <div class="col-md-6">
             <h4>Working with me you'll get:</h4>
@@ -154,5 +165,52 @@ title: Services
             </ul>
         </div>
     </div>
-    -->
+    <!---->
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", async function (event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Gather form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Create the form data object to be sent
+            const formData = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            try {
+                // Send the POST request using fetch
+                const response = await fetch("https://your-custom-endpoint.com/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                // Check if the request was successful (status code 200-299)
+                if (response.ok) {
+                    // Show the success message
+                    document.getElementById("form-success-message").style.display = "block";
+                    document.getElementById("form-error-message").style.display = "none";
+
+                    // Optionally clear the form fields
+                    document.getElementById("contact-form").reset();
+                } else {
+                    // Show error message if the response status is not ok
+                    document.getElementById("form-error-message").style.display = "block";
+                    document.getElementById("form-success-message").style.display = "none";
+                }
+            } catch (error) {
+                // Show error message in case of any network or other errors
+                document.getElementById("form-error-message").style.display = "block";
+                document.getElementById("form-success-message").style.display = "none";
+                console.error("Error submitting the form:", error);
+            }
+        });
+    </script>
 </div>
