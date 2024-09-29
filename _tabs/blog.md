@@ -1,5 +1,4 @@
 ---
 layout: home
-order: 6
-
+order: 7
 ---
