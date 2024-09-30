@@ -1,5 +1,5 @@
 .DS_Store
 .vscode
-_site
+_site/
 .jekyll-cache
 Gemfilelocal.lock
