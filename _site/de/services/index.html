@@ -78,12 +78,12 @@
 <meta property="og:url" content="http://localhost:4000/gunnargriese.github.io/services/" />
 <meta property="og:site_name" content="Gunnar Griese" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-09-30T18:22:13+02:00" />
+<meta property="article:published_time" content="2024-09-30T18:34:35+02:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Services" />
 <meta name="twitter:site" content="@GeezerGunner" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-09-30T18:22:13+02:00","datePublished":"2024-09-30T18:22:13+02:00","description":"Gunnar Griese - Independent Digital Analytics Consultant.","headline":"Services","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/services/"},"url":"http://localhost:4000/gunnargriese.github.io/services/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-09-30T18:34:35+02:00","datePublished":"2024-09-30T18:34:35+02:00","description":"Gunnar Griese - Independent Digital Analytics Consultant.","headline":"Services","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/services/"},"url":"http://localhost:4000/gunnargriese.github.io/services/"}</script>
 <!-- End Jekyll SEO tag -->
  
 
@@ -266,7 +266,7 @@
                 layout: 'services',
                 page_title: document.title,
                 page_location: document.URL,
-                published_at: '2024-09-30T18:22:13+02:00',
+                published_at: '2024-09-30T18:34:35+02:00',
             },
             author: {
                 name: '',
@@ -700,55 +700,7 @@
         </div>
     </div>
     <!---->
-    <script>
-        document.getElementById("contact-form").addEventListener("submit", async function (event) {
-            event.preventDefault();  // Prevent default form submission
-
-            // Gather form data
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
-
-            // Create the form data object to be sent
-            const formData = {
-                name: name,
-                email: email,
-                message: message
-            };
-
-            try {
-                // cloud function endpoint
-                const customEndpoint = "https://europe-west1-nlp-api-test-260216.cloudfunctions.net/website-form-to-bq"
-                // Send the POST request using fetch
-                const response = await fetch(customEndpoint, {
-                    method: "POST", // Use the POST method
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                // Check if the request was successful (status code 200-299)
-                if (response.ok) {
-                    // Show the success message
-                    document.getElementById("form-success-message").style.display = "block";
-                    document.getElementById("form-error-message").style.display = "none";
-
-                    // Optionally clear the form fields
-                    document.getElementById("contact-form").reset();
-                } else {
-                    // Show error message if the response status is not ok
-                    document.getElementById("form-error-message").style.display = "block";
-                    document.getElementById("form-success-message").style.display = "none";
-                }
-            } catch (error) {
-                // Show error message in case of any network or other errors
-                document.getElementById("form-error-message").style.display = "block";
-                document.getElementById("form-success-message").style.display = "none";
-                console.error("Error submitting the form:", error);
-            }
-        });
-    </script>
+    <script type="text/javascript" async defer src="/assets/js/form-to-clf.js"></script>
 </div>
       </div>
 
