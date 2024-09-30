@@ -17,10 +17,6 @@ const resource = [
     
         '/gunnargriese.github.io/tools/',
     
-        '/gunnargriese.github.io/categories/',
-    
-        '/gunnargriese.github.io/tags/',
-    
         '/gunnargriese.github.io/archives/',
     
 
