@@ -1,6 +1,6 @@
 self.importScripts('/gunnargriese.github.io/assets/js/data/swcache.js');
 
-const cacheName = 'chirpy-20240930.183436';
+const cacheName = 'chirpy-20240930.184014';
 
 function verifyDomain(url) {
     for (const domain of allowedDomains) {
