@@ -3,8 +3,6 @@ layout: page
 # The Home page layout
 ---
 
-<div>this works</div>
-
 {% assign pinned = site.posts | where: 'pin', 'true' %}
 {% assign default = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
 
@@ -33,9 +31,6 @@ layout: page
   {% assign posts = posts | push: default[i] %}
   {% endfor %}
   {% endif %}
-  {% for post in posts %}
-  <div>{{ post.title }}</div>
-  {% endfor %}
   <div id="post-list">
     {% for post in posts %}
     <div class="card post-preview">
