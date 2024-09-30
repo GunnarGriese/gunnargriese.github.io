@@ -1,0 +1,2833 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="" 
+  
+>
+  <!-- The Head -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://trakker.gunnargriese.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager - GA4 Lite Tester 
+        
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" type="text/javascript" async></script>
+
+    
+
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PZV75QZ');
+    </script>
+    End Google Tag Manager -->
+
+           <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager" />
+<meta name="author" content="Gunnar Griese" />
+<meta property="og:locale" content="de" />
+<meta name="description" content="In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiesen, um Einblicke darüber zu gewinnen, wie Nutzer mit Ihrer Website oder App interagieren. In diesem Blogbeitrag werden wir die PostHog Analytics-Plattform, ihre SDKs, insbesondere das JavaScript-SDK, Google Tag Manager Tag-Vorlagen und wie Du PostHog mit Google Tag Manager mithilfe einer benutzerdefinierten Tag-Vorlage integrieren kannst, näher betrachten." />
+<meta property="og:description" content="In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiesen, um Einblicke darüber zu gewinnen, wie Nutzer mit Ihrer Website oder App interagieren. In diesem Blogbeitrag werden wir die PostHog Analytics-Plattform, ihre SDKs, insbesondere das JavaScript-SDK, Google Tag Manager Tag-Vorlagen und wie Du PostHog mit Google Tag Manager mithilfe einer benutzerdefinierten Tag-Vorlage integrieren kannst, näher betrachten." />
+<link rel="canonical" href="http://localhost:4000/gunnargriese.github.io/de/posts/posthog-gtm-template/" />
+<meta property="og:url" content="http://localhost:4000/gunnargriese.github.io/posts/posthog-gtm-template/" />
+<meta property="og:site_name" content="Gunnar Griese" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-10T08:24:15+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager" />
+<meta name="twitter:site" content="@GeezerGunner" />
+<meta name="twitter:creator" content="@Gunnar Griese" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gunnar Griese","url":"https://gunnargriese.com"},"dateModified":"2024-09-28T18:30:00+02:00","datePublished":"2023-04-10T08:24:15+02:00","description":"In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiesen, um Einblicke darüber zu gewinnen, wie Nutzer mit Ihrer Website oder App interagieren. In diesem Blogbeitrag werden wir die PostHog Analytics-Plattform, ihre SDKs, insbesondere das JavaScript-SDK, Google Tag Manager Tag-Vorlagen und wie Du PostHog mit Google Tag Manager mithilfe einer benutzerdefinierten Tag-Vorlage integrieren kannst, näher betrachten.","headline":"Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/posts/posthog-gtm-template/"},"url":"http://localhost:4000/gunnargriese.github.io/posts/posthog-gtm-template/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <title>Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager | Gunnar Griese
+    </title>
+
+    <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/gunnargriese.github.io/de/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/gunnargriese.github.io/de/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/gunnargriese.github.io/de/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/gunnargriese.github.io/de/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/gunnargriese.github.io/de/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Gunnar Griese">
+<meta name="application-name" content="Gunnar Griese">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/gunnargriese.github.io/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" > 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"> 
+
+    <!-- GA -->
+    
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/gunnargriese.github.io/de/assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css">  
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> 
+
+    <!-- JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+     <!--
+  Switch the mode between dark and light.
+-->
+
+<script type="text/javascript">
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get MODE_ATTR() { return "data-mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+    static get ID() { return "mode-toggle"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage({
+        direction: ModeToggle.ID,
+        message: this.modeStatus
+      }, "*");
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+  <!-- A placeholder to allow defining custom metadata -->
+
+
+    <!-- Page Metadata for DL -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'page_view',
+            page_meta: {
+                layout: 'post',
+                page_title: document.title,
+                page_location: document.URL,
+                published_at: '2023-04-10T08:24:15+02:00',
+            },
+            author: {
+                name: 'gunnar',
+                url: '',
+            },
+            environment: 'development',
+        })
+    </script>
+    <!-- End Page Metadata for DL -->
+
+</head>
+
+  <body data-topbar-visible="true">
+    <!-- The Side Bar -->
+
+<div id="sidebar" class="d-flex flex-column align-items-end">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="/gunnargriese.github.io/de/" class="mx-auto">
+        
+          
+          <img src="/gunnargriese.github.io/assets/img/avatar/gunnar-speaking-resized.jpg" alt="avatar" onerror="this.style.display='none'">
+        
+      </a>
+    </div>
+
+    <div class="site-title">
+      <a href="/gunnargriese.github.io/de/">Gunnar Griese</a>
+    </div>
+    <div class="site-subtitle font-italic">Self-employed analytics consultant & tech enthusiast.</div>
+  </div>
+  <!-- .profile-wrapper -->
+
+  <ul class="w-100">
+    <!-- home -->
+    <li class="nav-item">
+      <a href="/gunnargriese.github.io/de/" class="nav-link">
+        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>HOME</span>
+      </a>
+    </li>
+    <!-- the real tabs -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/de/services/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>SERVICES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/de/about/" class="nav-link">
+          <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ABOUT</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tools/" class="nav-link">
+          <i class="fa-fw fas fa-tools ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TOOLS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/de/categories/" class="nav-link">
+          <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>CATEGORIES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/de/tags/" class="nav-link">
+          <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TAGS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/de/archives/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ARCHIVES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+  </ul>
+  <!-- ul.nav.flex-column -->
+
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+    
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/GunnarGriese"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/GeezerGunner"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['gunnar.griese.gg','gmail.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://www.linkedin.com/in/gunnar-griese/"
+          aria-label="linkedin"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</div>
+<!-- #sidebar -->
+
+
+    <!-- The Top Bar -->
+
+<div id="topbar-wrapper">
+  <div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4">
+    <span id="breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/gunnargriese.github.io/de/">
+                Home
+              </a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager</span>
+            
+
+          
+        
+      
+    </span>
+    <!-- endof #breadcrumb -->
+
+    <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <i id="search-trigger" class="fas fa-search fa-fw"></i>
+    <span id="search-wrapper" class="align-items-center">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </span>
+    <span id="search-cancel">Cancel</span>
+  </div>
+</div>
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+      
+
+      
+        
+      
+        <!--
+  Refactor the HTML structure.
+-->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+<!-- images -->
+
+
+
+
+  
+  
+
+  <!-- CDN URL -->
+  
+
+  <!-- Add image path -->
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+
+  
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+<h1 data-toc-skip>Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      Posted
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class=""
+  data-ts="1681107855"
+  data-df="ll"
+  
+    data-toggle="tooltip" data-placement="bottom"
+  
+>
+  Apr 10, 2023
+</em>
+
+    </span>
+
+    <!-- lastmod date -->
+    
+    <span>
+      Updated
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class=""
+  data-ts="1727541000"
+  data-df="ll"
+  
+    data-toggle="tooltip" data-placement="bottom"
+  
+>
+  Sep 28, 2024
+</em>
+
+    </span>
+    
+
+  
+
+  <div class="d-flex justify-content-between">
+    <!-- author(s) -->
+    <span>
+      
+
+      By
+
+      <em>
+      
+        
+          <a href="https://gunnargriese.com">Gunnar Griese</a>
+          
+        
+      
+      </em>
+    </span>
+
+    <div>
+      <!-- page views -->
+      
+
+      <!-- read time -->
+      <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-toggle="tooltip"
+  data-placement="bottom"
+  title="1092 words"
+>
+  <em>6 min</em> read</span>
+
+    </div>
+
+  </div> <!-- .d-flex -->
+
+</div> <!-- .post-meta -->
+
+<div class="post-content">
+  <p>In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiesen, um Einblicke darüber zu gewinnen, wie Nutzer mit Ihrer Website oder App interagieren. In diesem Blogbeitrag werden wir die PostHog Analytics-Plattform, ihre SDKs, insbesondere das JavaScript-SDK, Google Tag Manager Tag-Vorlagen und wie Du PostHog mit Google Tag Manager mithilfe einer benutzerdefinierten Tag-Vorlage integrieren kannst, näher betrachten.</p>
+
+<h2 id="einführung-in-die-posthog-analytics-plattform"><span class="mr-2">Einführung in die PostHog Analytics-Plattform</span><a href="#einführung-in-die-posthog-analytics-plattform" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p><a href="https://posthog.com/">PostHog</a> ist eine Open-Source-Produktanalyseplattform, die Dir hilft, das Nutzerverhalten auf Ihrer Website oder App zu analysieren. Sie bietet ereignisbasiertes Tracking, Trichteranalyse, Nutzersegmentierung und andere wesentliche Funktionen, um zu verstehen, wie Nutzer mit dem Produkt interagieren, für das Du verantwortlich sind. Posthog hat einen ähnlichen Fokus wie Tools wie Mixpanel, Heap und Amplitude, die sich alle darauf spezialisiert haben, Produktmanagern und -analysten die erforderlichen Erkenntnisse zu liefern, um ihre Plattform auf die Bedürfnisse ihrer Nutzer zu optimieren.</p>
+
+<p>Wenn Du nach einer tiefgreifenden Analyse suchen, wie sich Produktanalyse von Marketing-Analyse unterscheidet, empfehle ich Dir, <a href="https://amplitude.com/blog/marketing-analytics-vs-product-analytics-part-1">Adam Grecos Blogserie</a> zu diesem Thema zu lesen.</p>
+
+<h2 id="posthog-sdks-für-die-datenerfassung"><span class="mr-2">PostHog SDKs für die Datenerfassung</span><a href="#posthog-sdks-für-die-datenerfassung" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>PostHog selbst bietet eine Vielzahl von SDKs (Software Development Kits), um Dir die Datenerfassung von verschiedenen Plattformen zu erleichtern:</p>
+
+<ul>
+  <li>JavaScript: Zum Tracking von Nutzerinteraktionen auf Websites.</li>
+  <li>Python: Für Backend-Anwendungen oder Datenpipelines.</li>
+  <li>Ruby: Für Ruby on Rails-Anwendungen.</li>
+  <li>PHP: Für PHP-basierte Anwendungen.</li>
+  <li>Go: Für Anwendungen, die in Go geschrieben sind.</li>
+  <li>Node.js: Für serverseitige JavaScript-Anwendungen.</li>
+  <li>Android: Für Android-Apps.</li>
+  <li>iOS: Für iOS-Apps.</li>
+</ul>
+
+<p>Diese SDKs ermöglichen es Dir, PostHog-Tracking in Ihrer Anwendung oder Website zu implementieren, unabhängig von dem verwendeten Technologie-Stack.</p>
+
+<h2 id="details-zum-javascript-sdk"><span class="mr-2">Details zum JavaScript-SDK</span><a href="#details-zum-javascript-sdk" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Das <a href="https://posthog.com/docs/libraries/js">PostHog JavaScript-SDK</a> ist das am häufigsten verwendete SDK zum Tracking von Nutzerinteraktionen auf Websites. Es bietet eine einfache API zum Senden von Ereignissen, Identifizieren von Nutzern und Verwalten von Nutzereigenschaften. Du kannst damit benutzerdefinierte Ereignisse, Seitenaufrufe, Klicks, Formularübermittlungen und mehr mit minimalem Code erfassen.</p>
+
+<p>Das SDK unterstützt auch fortgeschrittene Funktionen wie Autocapture, das automatisch Nutzerinteraktionen mit Deiner Website verfolgt, ohne dass zusätzlicher Code erforderlich ist. Du kannst  das SDK nach Deinen Bedürfnissen konfigurieren, wie zum Beispiel das Deaktivieren bestimmter Funktionen oder das Anpassen der Datenerfassung.</p>
+
+<h2 id="google-tag-manager-benutzerdefinierte-vorlagen"><span class="mr-2">Google Tag Manager Benutzerdefinierte Vorlagen</span><a href="#google-tag-manager-benutzerdefinierte-vorlagen" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Da ich persönlich die meiste Zeit mit Google Tag Manager (GTM) und Google Analytics (GA) arbeite, ist GTM tatsächlich mein bevorzugtes Tool, wenn es darum geht, JS-Tracking-Code auf Websites oder Web-Apps zu implementieren, und es wird weit verbreitet eingesetzt. Wenn Deine Organisation nicht nur Produktanalyse betreibt, sondern auch aktiv digitale Marketingkampagnen durchführt, besteht eine hohe Wahrscheinlichkeit, dass dein Produkt bereits GTM eingebettet hat.</p>
+
+<p>Google Tag Manager (GTM) ist ein leistungsstarkes Tool, mit dem Du Marketing-Tags, Analytics-Tracking und andere Code-Snippets auf Deiner Website verwalten und bereitstellen kannst, ohne dass manuelle Code-Aktualisierungen erforderlich sind. GTM verwendet Tag-Vorlagen, die vorgefertigte Code-Snippets sind, die an Ihre spezifischen Tracking-Anforderungen angepasst werden können.</p>
+
+<p>Tag-Vorlagen helfen dabei, den Prozess der Implementierung von Tracking-Skripten von Drittanbietern, wie PostHog, auf Deiner Website zu optimieren. Sie ermöglichen es Dir, Tracking-Einstellungen zu konfigurieren, ohne direkt Code zu bearbeiten, was die Verwaltung und Pflege Deiner Tracking-Implementierungen erleichtert. Diese Vorlagen können in die GTM-Vorlagengalerie eingereicht werden und stehen dann allen zur Verfügung, die sie nutzen möchten.</p>
+
+<p>Der Haken ist, dass PostHog noch keine offizielle Vorlage veröffentlicht hat, um ihr JS-SDK über GTM auszuführen. Deshalb habe ich mich daran gemacht, (die meisten) Funktionalitäten des PostHog JS-SDK in GTM zu bringen, ohne dass <a href="https://web.dev/tag-best-practices/#be-careful-with-custom-html-tags:~:text=Be%20careful%20with%20Custom%20HTML%20tags%20%23">(potenziell schädliche)</a> benutzerdefinierte HTML-Tags bereitgestellt werden müssen.</p>
+
+<h2 id="integration-von-posthog-mit-google-tag-manager-mithilfe-der-bereitgestellten-vorlage"><span class="mr-2">Integration von PostHog mit Google Tag Manager mithilfe der bereitgestellten Vorlage</span><a href="#integration-von-posthog-mit-google-tag-manager-mithilfe-der-bereitgestellten-vorlage" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Die bereitgestellte PostHog GTM-Tag-Vorlage macht es einfach, PostHog-Tracking in Ihren GTM-Container zu integrieren.</p>
+
+<p><a href="/gunnargriese.github.io/de/assets/img/posthog/posthog-custom-event.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/posthog/posthog-custom-event.png" alt="posthog-event-template" class="lazyload" data-proofer-ignore></a>
+<em>Implementierung eines benutzerdefinierten Ereignisses mit Ereignisparametern mithilfe der GTM-Vorlage</em></p>
+
+<p>Mit dieser Vorlage kannst Du Ereignisse, Nutzereigenschaften und Konfigurationseinstellungen direkt von Deinem GTM-Arbeitsbereich aus verwalten. Hier ist, was Du mit der Vorlage tun kannst:</p>
+
+<ul>
+  <li>Initialisiere PostHog mit verschiedenen Konfigurationsoptionen.</li>
+  <li>Erfasse Ereignisse und virtuelle Seitenaufrufe mit benutzerdefinierten Eigenschaften.</li>
+  <li>Identifiziere Nutzer mit Nutzereigenschaften.</li>
+</ul>
+
+<p>Weiter unten habe ich einige Beispiele für die Funktionalitäten der GTM-Vorlage gelistet.</p>
+
+<h3 id="initialisierung--grundkonfiguration"><span class="mr-2">Initialisierung — Grundkonfiguration</span><a href="#initialisierung--grundkonfiguration" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/gunnargriese.github.io/de/assets/img/posthog/posthog-config.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/posthog/posthog-config.png" alt="posthog-config-tag" class="lazyload" data-proofer-ignore></a>
+<em>Beispielhafte Konfiguration des Initialisierungs-Tags</em></p>
+
+<p>Siehe detaillierte Dokumentation für jede der Konfigurationsoptionen hier. Die in der Tag-Vorlage repräsentierten Konfigurationsoptionen sind:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">apiHost</code>: Die Domain Ihrer PostHog-Instanz (z.B. <code class="language-plaintext highlighter-rouge">https://app.posthog.com</code>). Das Tag wird <code class="language-plaintext highlighter-rouge">/static/array.js</code> an diesen Wert anhängen, um die tatsächliche Anfrage-URL zu erstellen.</li>
+  <li><code class="language-plaintext highlighter-rouge">apiKey</code>: PostHog-Projekt-API-Schlüssel</li>
+  <li><code class="language-plaintext highlighter-rouge">autocapture_tuning</code>: Benutzerdefinierte Allowlist-Einstellungen für Autocapture.</li>
+  <li><code class="language-plaintext highlighter-rouge">autocapture_off</code>: Deaktiviere Autocapture vollständig.</li>
+  <li><code class="language-plaintext highlighter-rouge">capture_pageview</code>: Aktiviere/Deaktiviere die Erfassung von Seitenaufrufen.</li>
+  <li><code class="language-plaintext highlighter-rouge">capture_pageleave</code>: Aktiviere/Deaktiviere die Erfassung von Seitenverlassensereignissen.</li>
+  <li><code class="language-plaintext highlighter-rouge">cross_subdomain_cookie</code>: Aktiviere/Deaktiviere Subdomain-übergreifendes Cookie-Tracking.</li>
+  <li><code class="language-plaintext highlighter-rouge">disable_persistence</code>: Aktiviere/Deaktiviere die Cookie/LocalStorage-Persistenz.</li>
+  <li><code class="language-plaintext highlighter-rouge">disable_session_recording</code>: Aktiviere/Deaktiviere  die Sitzungsaufzeichnung.</li>
+  <li><code class="language-plaintext highlighter-rouge">enable_recording_console_log</code>: Aktiviere/Deaktiviere die Aufzeichnung von Konsolenprotokollen.</li>
+  <li><code class="language-plaintext highlighter-rouge">mask_all_text</code>: Aktiviere/Deaktiviere die Maskierung allen Textes.</li>
+</ul>
+
+<h3 id="initialisierung--erweiterte-tracker-konfiguration"><span class="mr-2">Initialisierung — Erweiterte Tracker-Konfiguration</span><a href="#initialisierung--erweiterte-tracker-konfiguration" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/gunnargriese.github.io/de/assets/img/posthog/posthog-callback.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/posthog/posthog-callback.png" alt="posthog-callback" class="lazyload" data-proofer-ignore></a>
+<em>Beispielhafte Callback-Funktion</em></p>
+
+<p>Die PostHog-Bibliothek kann mit einem <em>Callback</em> initiiert werden (z.B. Aufruf von <code class="language-plaintext highlighter-rouge">identify</code>), der ausgeführt wird, sobald die Bibliothek geladen wurde.</p>
+
+<p>Damit die Callback-Funktion in der GTM-Vorlagenversion funktioniert, musst Du eine benutzerdefinierte JS-Variable im Feld <code class="language-plaintext highlighter-rouge">loaded</code> referenzieren (s. Screenshot im Abschnitt Grundkonfiguration), die eine Funktion zurückgibt.</p>
+
+<p>Sobald die PostHog-Skripte verarbeitet und der Tracker initiiert ist, wird diese Funktion ausgeführt.</p>
+
+<h3 id="benutzerdefinierte-ereignisse-nutzereigenschaften-und-ereignisparameter"><span class="mr-2">Benutzerdefinierte Ereignisse, Nutzereigenschaften und Ereignisparameter</span><a href="#benutzerdefinierte-ereignisse-nutzereigenschaften-und-ereignisparameter" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/gunnargriese.github.io/de/assets/img/posthog/posthog-event-params.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/posthog/posthog-event-params.png" alt="posthog-event-params" class="lazyload" data-proofer-ignore></a>
+<em>Beispielhafte Implementierung eines benutzerdefinierten Ereignis-Tags</em></p>
+
+<p>Mit der GTM-Vorlage kannst Du mühelos benutzerdefinierte Ereignisse (sowie virtuelle Seitenaufrufe) verfolgen und sie mit fein abgestimmten Ereignisparametern anreichern, was ein umfassendes Verständnis der Nutzerengagement-Muster ermöglicht. Darüber hinaus hat die Vorlage die Funktionalität des JavaScript-SDK übernommen, die es Dir ermöglicht, Nutzereigenschaften sowohl mit den Methoden <code class="language-plaintext highlighter-rouge">$set</code> als auch <code class="language-plaintext highlighter-rouge">$set_once</code> festzulegen, was Dir die Flexibilität gibt, zwischen dem Aktualisieren von Werten oder dem Bewahren der ursprünglichen Nutzerattribute zu wählen.</p>
+
+<h2 id="wie-fange-ich-an"><span class="mr-2">Wie fange ich an?</span><a href="#wie-fange-ich-an" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Bitte zögere nicht, <a href="https://github.com/GunnarGriese/gtm-template-posthog">die Vorlage herunterzuladen</a> von meinem GitHub und sie auszuprobieren. Ich freue mich über jedes Feedback, um die Vorlage zu verbessern, mehr Funktionalitäten aus dem Original-SDK einzubeziehen und potenzielle Fehler zu beheben, wenn sie auftreten.</p>
+
+<p>Um die Vorlage zu verwenden, importiere sie einfach in deinen GTM-Arbeitsbereich, erstelle ein neues Tag mit der Vorlage und konfiguriere die Einstellungen basierend auf deinen Bedürfnissen. Diese Integration stellt sicher, dass Du sowohl PostHog als auch Google Tag Manager voll ausnutzen kannst, um Einblicke in das Nutzerverhalten auf deiner Website oder App zu gewinnen.</p>
+
+<p>Während dieser Artikel einen Ansatz skizziert, wie man PostHog über GTM implementiert, möchtest Du vielleicht auf PostHog’s großartige und leicht zu befolgende <a href="https://posthog.com/docs/getting-started/start-here">Dokumentation</a> zurückgreifen, um deine Arbeit mit der Plattform zu beginnen.</p>
+
+<h2 id="zusammenfassung"><span class="mr-2">Zusammenfassung</span><a href="#zusammenfassung" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Zusammenfassend lässt sich sagen, dass PostHog eine leistungsstarke Analyseplattform ist, die Dir helfen kann, deine Nutzer besser zu verstehen. Durch die Integration mit Google Tag Manager mithilfe der bereitgestellten Tag-Vorlage kannst Du den Implementierungsprozess optimieren und dein Tracking-Setup effizient verwalten. Diese Kombination von PostHog und Google Tag Manager wird hoffentlich dazu beitragen, Implementierungsprojekte zu beschleunigen und dich in die Lage versetzen, noch schneller datengesteuerte Entscheidungen treffen zu können. Also los, erforsche das Potenzial der PostHog-Analyseplattform und der Google Tag Manager-Integration und erschließe neue Erkenntnisse über das Verhalten deiner Nutzer. Happy tracking!</p>
+
+</div>
+
+<div class="post-tail-wrapper text-muted">
+
+  <!-- categories -->
+  
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    
+      <a href='/gunnargriese.github.io/categories/gtm/'>GTM</a>
+  </div>
+  
+
+  <!-- tags -->
+  
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw mr-1"></i>
+      
+      <a href="/gunnargriese.github.io/de/tags/gtm/"
+          class="post-tag no-text-decoration" >gtm</a>
+      
+      <a href="/gunnargriese.github.io/de/tags/custom-templates/"
+          class="post-tag no-text-decoration" >custom-templates</a>
+      
+      <a href="/gunnargriese.github.io/de/tags/posthog/"
+          class="post-tag no-text-decoration" >posthog</a>
+      
+  </div>
+  
+
+  <div class="post-tail-bottom
+    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+    <div class="license-wrapper">
+
+      
+
+        
+
+        This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+
+      
+    </div>
+
+    <!-- Post sharing snippet -->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+      
+      <a
+        href="https://twitter.com/intent/tweet?text=Entfesseln%20Sie%20das%20Potenzial%20der%20PostHog%20Analytics-Plattform%20mit%20Google%20Tag%20Manager%20-%20Gunnar%20Griese&url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fposthog-gtm-template%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Twitter"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <i class="fa-fw fab fa-twitter"></i>
+      </a>
+    
+      
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?title=Entfesseln%20Sie%20das%20Potenzial%20der%20PostHog%20Analytics-Plattform%20mit%20Google%20Tag%20Manager%20-%20Gunnar%20Griese&u=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fposthog-gtm-template%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Facebook"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+      
+      <a
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fposthog-gtm-template%2F&text=Entfesseln%20Sie%20das%20Potenzial%20der%20PostHog%20Analytics-Plattform%20mit%20Google%20Tag%20Manager%20-%20Gunnar%20Griese"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Telegram"
+        target="_blank"
+        rel="noopener"
+        aria-label="Telegram"
+      >
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <i
+      id="copy-link"
+      class="fa-fw fas fa-link small"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+    </i>
+  </span>
+</div>
+
+
+  </div><!-- .post-tail-bottom -->
+
+</div><!-- div.post-tail-wrapper -->
+
+
+      
+    
+      
+    </div>
+  </div>
+  <!-- #core-wrapper -->
+
+  <!-- panel -->
+  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+    <div class="access">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">Recently Updated</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/de/posts/firebase-analytics-debugging/">Debugging von Google Analytics Tracking für Mobile Apps - Ein Leitfaden für Anfänger</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/de/posts/posthog-gtm-template/">Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/de/posts/bigquery-path-exploration/">Wie repliziere ich den GA4 Path Exploration-Bericht mit BigQuery SQL?</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/de/posts/gtm-server-side/">GTM Server-Side Tagging – Bessere Daten & Mehr Kontrolle</a>
+        </li>
+      
+    </ul>
+  </div>
+  <!-- #access-lastmod -->
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+
+    
+      
+      
+
+
+
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <div class="panel-heading pl-3 pt-2 mb-2">Contents</div>
+    <nav id="toc"></nav>
+  </div>
+
+  <!-- toc.js will be loaded at medium priority -->
+  <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+
+
+    
+  </div>
+</div>
+
+<!-- tail -->
+
+  <div class="row">
+    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
+      
+        
+        <!--
+  Recommend the other 3 posts according to the tags and categories of the current post,
+  if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<!-- Fill with the other newlest posts -->
+
+
+
+
+
+  <div id="related-posts" class="mb-2 mb-sm-4">
+    <h3
+      class="pt-2 mb-4 ml-1"
+      data-toc-skip
+    >
+      Further Reading
+    </h3>
+    <div class="card-deck mb-4">
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/de/posts/firebase-analytics-debugging/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1683278655"
+  data-df="DD/MM/YYYY"
+  
+>
+  05/05/2023
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Debugging von Google Analytics Tracking für Mobile Apps - Ein Leitfaden für Anfänger</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Bist du ein digitaler Analyst, der Google Analytics Tracking über Firebase für deine mobilen iOS-Apps implementieren und debuggen möchte und keine Ahnung hat, wo du anfangen sollst? Dieser Blogbeit...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/de/posts/consent-mode-v2/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1706652001"
+  data-df="DD/MM/YYYY"
+  
+>
+  30/01/2024
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Consent Mode v2 - A Comprehensive Technical Guide</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  TBD
+
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/de/posts/gtm-server-side/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1598016255"
+  data-df="DD/MM/YYYY"
+  
+>
+  21/08/2020
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>GTM Server-Side Tagging – Bessere Daten & Mehr Kontrolle</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  In den letzten Monaten habe ich eine Reihe von Beta-Tests und Projekten für eine ausgewählte Gruppe von Kunden durchgeführt, um sowohl praktische Erfahrungen zu sammeln als auch die kürzlich veröff...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+    <!-- .card-deck -->
+  </div>
+  <!-- #related-posts -->
+
+
+      
+        
+        <!-- Navigation buttons at the bottom of the post. -->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+    <a
+      href="/gunnargriese.github.io/de/posts/bigquery-path-exploration/"
+      class="btn btn-outline-primary"
+      prompt="Older"
+    >
+      <p>Wie repliziere ich den GA4 Path Exploration-Bericht mit BigQuery SQL?</p>
+    </a>
+  
+
+  
+    <a
+      href="/gunnargriese.github.io/de/posts/firebase-analytics-debugging/"
+      class="btn btn-outline-primary"
+      prompt="Newer"
+    >
+      <p>Debugging von Google Analytics Tracking für Mobile Apps - Ein Leitfaden für Anfänger</p>
+    </a>
+  
+</div>
+
+      
+        
+        <!--  The comments switcher -->
+
+
+      
+    </div>
+  </div>
+
+
+      </div>
+
+      <!--
+  The Search results
+-->
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+  <div class="col-12 col-sm-11 post-content">
+    <div id="search-hints">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/de/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+    </div>
+    <!-- #main-wrapper -->
+
+    <!-- The Footer -->
+
+<footer>
+    <div class="container pl-lg-4 pr-lg-4">
+        <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
+            <div class="footer-left">
+                <p class="mb-0">
+                    © 2024
+                    <a href="https://github.com/GunnarGriese">Gunnar Griese</a>. 
+                    <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span> 
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <p class="mb-0"><!-- 
+          Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.
+          -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('search-results'),
+  json: '/gunnargriese.github.io/assets/js/data/search.json',
+  searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0">  <a href="{url}">{title}</a>  <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">    {categories}    {tags}  </div>  <p>{snippet}</p></div>',
+  noResultsText: '<p class="mt-5"></p>',
+  templateMiddleware: function(prop, value, template) {
+    if (prop === 'categories') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+      }
+    }
+
+    if (prop === 'tags') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+      }
+    }
+  }
+});
+</script>
+
+
+    <!-- JS selector for site. -->
+
+<!-- layout specified -->
+
+
+  
+
+
+
+  <!-- image lazy-loading & popup & clipboard -->
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/gunnargriese.github.io/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  </body>
+</html>
+

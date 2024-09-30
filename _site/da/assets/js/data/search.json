@@ -1,0 +1,225 @@
+[
+  
+  {
+    "title": "Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?",
+    "url": "/gunnargriese.github.io/posts/confidential-matching/",
+    "categories": "Privacy",
+    "tags": "privacy",
+    "date": "2024-09-17 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore",
+    "url": "/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/",
+    "categories": "GTM",
+    "tags": "gtm-server-side",
+    "date": "2024-09-10 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Who are my website users? And if so how many? - User IDs in GA4",
+    "url": "/gunnargriese.github.io/posts/ga4-reporting-identity/",
+    "categories": "GA4",
+    "tags": "ga4",
+    "date": "2024-09-01 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Ensuring Data Quality for GA4 at Scale with Google Cloud Platform",
+    "url": "/gunnargriese.github.io/posts/ga4-data-quality-at-scale/",
+    "categories": "GA4, BigQuery, GCP",
+    "tags": "ga4, bigquery, sql",
+    "date": "2024-07-06 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Mapping GA4 Conversions in BigQuery for Comprehensive Dashboarding",
+    "url": "/gunnargriese.github.io/posts/ga4-conversions-to-bigquery/",
+    "categories": "GA4, BigQuery",
+    "tags": "ga4, bigquery, sql",
+    "date": "2024-02-07 23:00:01 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Consent Mode v2 - A Comprehensive Technical Guide",
+    "url": "/gunnargriese.github.io/posts/consent-mode-v2/",
+    "categories": "GA4",
+    "tags": "ga4, gtm, gtm-server-side, consent-mode, firebase-analytics",
+    "date": "2024-01-30 23:00:01 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it",
+    "url": "/gunnargriese.github.io/posts/ga4-data-redaction/",
+    "categories": "GA4",
+    "tags": "ga4",
+    "date": "2023-09-26 06:21:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 - The CDP You Didn't Know You Had",
+    "url": "/gunnargriese.github.io/posts/ga4-the-cdp-you-didnt-know-you-had/",
+    "categories": "GA4",
+    "tags": "ga4, bigquery, gtm-server-side",
+    "date": "2023-08-12 12:14:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 Time Travel - Bridging UTC and Local Timezones",
+    "url": "/gunnargriese.github.io/posts/ga4-time-travel-bridging-utc-and-local-timezones/",
+    "categories": "GA4",
+    "tags": "ga4, bigquery",
+    "date": "2023-08-09 09:14:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners",
+    "url": "/gunnargriese.github.io/posts/firebase-analytics-debugging/",
+    "categories": "Firebase Analytics",
+    "tags": "ga4, firebase-analytics, charles-proxy, gtm, ios-debugger",
+    "date": "2023-05-05 11:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Udnyt potentialet i PostHog Analytics-platformen med Google Tag Manager",
+    "url": "/gunnargriese.github.io/posts/posthog-gtm-template/",
+    "categories": "GTM",
+    "tags": "gtm, custom-templates, posthog",
+    "date": "2023-04-10 08:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "I dagens datadrevne verden er forståelse af brugeradfærd afgørende for enhver virksomhed. Produktanalyseplat forme som PostHog er blevet essentielle værktøjer til at få indsigt i, hvordan brugere i...",
+    "content": "I dagens datadrevne verden er forståelse af brugeradfærd afgørende for enhver virksomhed. Produktanalyseplat forme som PostHog er blevet essentielle værktøjer til at få indsigt i, hvordan brugere interagerer med dit websted eller app. I dette blogindlæg vil vi udforske PostHog analytics-platformen, dens SDK’er, særligt JavaScript SDK’et, Google Tag Manager tag-skabeloner, og hvordan du kan integrere PostHog med Google Tag Manager ved hjælp af en brugerdefineret tag-skabelon.Introduktion til PostHog Analytics PlatformPostHog er en open-source produktanalyseplat form, der hjælper dig med at analysere brugeradfærd på dit websted eller app. Den tilbyder begivenhedsbaseret sporing, tragtanalyse, brugersegmentering og andre essentielle funktioner til at forstå, hvordan brugere engagerer sig med det produkt, du er ansvarlig for. Den befinder sig i samme rum som værktøjer som Mixpanel, Heap og Amplitude, som alle specialiserer sig i at give produktchefer og analytikere de nødvendige indsigter til at optimere deres platform mod brugernes behov.Hvis du leder efter en dybtgående gennemgang af, hvordan produktanalyse adskiller sig fra marketing-analyse, anbefaler jeg at tjekke Adam Grecos blogserie om emnet.PostHog SDK’er til dataindsamlingPostHog tilbyder selv en række SDK’er (Software Development Kits) for at gøre det let for dig at indsamle data fra forskellige platforme:  JavaScript: Til sporing af brugerinteraktioner på websteder.  Python: Til backend-applikationer eller datalinjer.  Ruby: Til Ruby on Rails-applikationer.  PHP: Til PHP-baserede applikationer.  Go: Til applikationer skrevet i Go.  Node.js: Til server-side JavaScript-applikationer.  Android: Til Android-apps.  iOS: Til iOS-apps.Disse SDK’er gør det muligt for dig at implementere PostHog-sporing i din applikation eller på dit websted, uanset hvilken teknologistak du bruger.Detaljer om JavaScript SDK’etPostHog JavaScript SDK’et er det mest anvendte SDK til sporing af brugerinteraktioner på websteder. Det giver en simpel API til at sende begivenheder, identificere brugere og administrere brugereg enskaber. Du kan spore brugerdefinerede begivenheder, sidevisninger, klik, formularindsendelser og mere med minimal kode.SDK’et understøtter også avancerede funktioner som autocapture, der automatisk sporer brugerinteraktioner med dit websted uden at kræve yderligere kode. Du kan konfigurere SDK’et til at passe til dine behov, såsom at deaktivere visse funktioner eller tilpasse, hvordan data indfanges.Google Tag Manager Brugerdefinerede SkabelonerDa jeg personligt bruger det meste af min tid på at arbejde med Google Tag Manager (GTM) og Google Analytics (GA), er GTM faktisk mit foretrukne værktøj, når det kommer til at implementere JS-sporingskode på websteder eller web-apps, og det bruges bredt. Hvis din organisation ikke kun beskæftiger sig med produktanalyse, men også aktivt kører digitale marketingkampagner, er der en stor chance for, at dit produkt allerede har GTM indlejret.Google Tag Manager (GTM) er et kraftfuldt værktøj, der giver dig mulighed for at administrere og implementere marketing-tags, analyticssporing og andre kodestykker på dit websted uden behov for manuelle kodeopdateringer. GTM bruger tag-skabeloner, som er forudbyggede kodestykker, der kan tilpasses til at passe til dine specifikke sporingskrav.Tag-skabeloner hjælper med at strømline processen med at implementere tredjeparts sporingsskripter, som PostHog, på dit websted. De giver dig mulighed for at konfigurere sporingsindstillinger uden at redigere kode direkte, hvilket gør det lettere at administrere og vedligeholde dine sporingsimplementeringer. Disse skabeloner kan indsendes til GTM Template Gallery og er derefter tilgængelige for alle, der ønsker at bruge dem.Udfordringen er, at PostHog endnu ikke har udgivet en officiel skabelon til at køre deres JS SDK gennem GTM. Det er derfor, jeg satte mig for at bringe (de fleste af) funktionaliteterne fra PostHog’s JS SDK til GTM uden behov for at implementere nogen (potentielt skadelige) brugerdefinerede HTML-tags.Integration af PostHog med Google Tag Manager ved hjælp af den medfølgende skabelonDen medfølgende PostHog GTM tag-skabelon gør det enkelt at integrere PostHog-sporing i din GTM-container.Implementering af brugerdefineret begivenhed med begivenhedsparametre ved hjælp af GTM-skabelonenMed denne skabelon kan du administrere begivenheder, brugereg enskaber og konfigurationsindstillinger direkte fra dit GTM-arbejdsområde. Her er, hvad du kan gøre med skabelonen:  Initialisere PostHog med forskellige konfigurationsmuligheder.  Indfange begivenheder og virtuelle sidevisninger med brugerdefinerede egenskaber.  Identificere brugere med brugereg enskaber.Se nedenfor for nogle eksempler på GTM-skabelonens funktionaliteter.Initialisering — Grundlæggende konfigurationEksemplarisk konfiguration af initialiseringstaggetSe detaljeret dokumentation for hver af konfigurationsmulighederne her. Konfigurationsmulighederne repræsenteret i tag-skabelonen er:  apiHost: Domænet for din PostHog-instans (f.eks. https://app.posthog.com). Tagget vil tilføje /static/array.js til denne værdi for at opbygge den faktiske anmodnings-URL.  apiKey: Din PostHog-projekt API-nøgle  autocapture_tuning: Brugerdefinerede allowlist-indstillinger for autocapture.  autocapture_off: Deaktiver autocapture fuldstændigt.  capture_pageview: Aktivér/deaktiver indfangning af sidevisninger.  capture_pageleave: Aktivér/deaktiver indfangning af side-forladelsesbegivenheder.  cross_subdomain_cookie: Aktivér/deaktiver cookie-sporing på tværs af subdomæner.  disable_persistence: Aktivér/deaktiver cookie/localStorage persistens.  disable_session_recording: Aktivér/deaktiver sessionsoptagelse.  enable_recording_console_log: Aktivér/deaktiver optagelse af konsollog.  mask_all_text: Aktivér/deaktiver maskering af al tekst.Initialisering — Avanceret tracker-konfigurationEksemplarisk callback-funktionPostHog-biblioteket kan initialiseres med en callback (f.eks. kald identify), der udføres, når biblioteket er indlæst.For at callback-funktionen kan fungere i GTM-skabelonversionen, skal du henvise til en brugerdefineret JS-variabel i feltet loaded (se screenshot i afsnittet Grundlæggende konfiguration), der returnerer en funktion.Så snart PostHog-scriptsene er håndteret, og trackeren er initialiseret, vil denne funktion blive udført.Brugerdefinerede begivenheder, brugereg enskaber og begivenhedsparametreEksemplarisk implementering af brugerdefineret begivenhedstagVed hjælp af GTM-skabelonen kan du uden besvær spore brugerdefinerede begivenheder (såvel som virtuelle sidevisninger) og berige dem med finkornede begivenhedsparametre, hvilket giver en omfattende forståelse af brugeren gagement mønstre. Desuden har skabelonen adopteret JavaScript SDK-funktionaliteten, som giver dig mulighed for at indstille brugereg enskaber ved hjælp af både $set og $set_once metoder, hvilket giver dig fleksibiliteten til at vælge mellem at opdatere værdier eller bevare de oprindelige brugerattributter.Hvordan kommer jeg i gang?Du er velkommen til at downloade skabelonen fra min GitHub og give den et forsøg. Jeg er glad for enhver feedback til at forbedre skabelonen, inkludere flere funktionaliteter fra det originale SDK og rette potentielle fejl, efterhånden som de opstår.For at bruge skabelonen skal du blot importere den til dit GTM-arbejdsområde, oprette et nyt tag ved hjælp af skabelonen og konfigurere indstillingerne baseret på dine behov. Denne integration sikrer, at du kan udnytte både PostHog og Google Tag Manager fuldt ud for at få indsigt i brugeradfærd på dit websted eller app.Mens denne artikel skitserer en tilgang til, hvordan man implementerer PostHog gennem GTM, vil du måske henvise til PostHogs fremragende og letforståelige dokumentation om, hvordan du kommer i gang med deres platform.SammenfatningAfslutningsvis er PostHog en kraftfuld analyseplat form, der kan hjælpe dig med at forstå dine brugere bedre. Ved at integrere den med Google Tag Manager ved hjælp af den medfølgende tag-skabelon kan du strømline implementeringsprocessen og effektivt administrere din sporingsopsætning. Denne kombination af PostHog og Google Tag Manager vil forhåbentlig hjælpe med at accelerere implementeringsprojekter og give dig mulighed for at træffe datadrevne beslutninger endnu hurtigere. Så kom i gang, udforsk potentialet i PostHog analytics-platformen og Google Tag Manager-integrationen, og lås op for nye indsigter i dine brugeres adfærd."
+  },
+  
+  {
+    "title": "Hvordan replikerer man GA4 Path Exploration-rapporten med BigQuery SQL?",
+    "url": "/gunnargriese.github.io/posts/bigquery-path-exploration/",
+    "categories": "BigQuery",
+    "tags": "ga4, bigquery, sql",
+    "date": "2022-10-23 11:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "Det nye Google Analytics (GA4) kommer med en ny Exploration-funktion (eller Udforskninger), som giver GA-brugere mulighed for at dykke dybt ned i deres data - ud over mulighederne i de indbyggede s...",
+    "content": "Det nye Google Analytics (GA4) kommer med en ny Exploration-funktion (eller Udforskninger), som giver GA-brugere mulighed for at dykke dybt ned i deres data - ud over mulighederne i de indbyggede standardrapporter. Mens standardrapporterne tillader overvågning af nøgleforretningsmetrikker, gør Exploration-sektionen avancerede analytiske teknikker tilgængelige for hurtigt at generere ad hoc-indsigter.De tilgængelige analytiske teknikker er følgende:  Udforskning i frit format  Kohorte-udforskning  Tragt-udforskning  Segmentoverlap  Brugerudforskning  Brugerlevetid  Sti-udforskningTjek den officielle Google dokumentation for en mere detaljeret introduktion til GA4’s kraftfulde Explorations-funktion.Sti-udforskning i GA4Sti-udforskningsrapporten lader dig visualisere brugerinteraktioner fra en specifik begivenhed/side fremad (startpunkt) eller bagud (slutpunkt) på en samlet måde. Analytikere, der bruger denne teknik, kan besvare spørgsmål som:  Hvilke topsider åbner nye brugere efter at have besøgt hjemmesiden?  Hvad er effekten af en begivenhed på efterfølgende brugerhandlinger?  Hvilke sider har ødelagte links til 404-sider?Elementer i Sti-udforskning (https://support.google.com/analytics/answer/9317498?hl=en&amp;ref_topic=9266525)Visualiseringen er et Sankey-diagram, hvor hver node repræsenterer en begivenhed eller side. Analytikere kan vilkårligt tilføje noder for at afsløre flere sekvenselementerer og anvende segmenter, filtre og nedbrydningsdimensioner for at skræddersy rapporten til deres behov.Vende sig mod BigQuery for at udtrække dataMens denne analyseteknik er kraftfuld, er den ikke altid det ideelle værktøj til at dele disse indsigter med interessenter - især ikke til dem, der ikke er fortrolige med GA. Heldigvis har alle brugere med GA4 mulighed for at eksportere deres GA4-data til BigQuery (Googles cloud-baserede, fuldt administrerede database designet til analytiske arbejdsbelastninger).For konstant at overvåge kritiske brugerflows og indlejre dem i dine standard rapporteringsværktøjer (f.eks. Looker Studio, Power BI eller Tableau), er det at vende sig mod GA4 rådata i BigQuery og udtrække dataene vejen frem. Men…Hvordan replikerer man en grundlæggende GA4 Sti-udforskningsrapport i BigQuery?Vi kan udnytte vinduesfunktioner i BigQuery til at aggregere page_location-sekvenser på tværs af alle sessioner målt med GA4 med en forespørgsel som denne:Forespørgselseksempel for sti-udforskning med et startpunktOvenstående forespørgsel vil returnere én række for hver sti og antallet af forekomster inden for den forespurgte tabel:Forespørgselsresultat for sti-udforskning med startpunktForespørgslens kernekomponenter er følgende:  ga4EventParams funktion  LEAD() funktion over en sessions WINDOW  Midlertidig tabel specificeret i en WITH klausulBrugerdefinerede funktioner for at øge læsbarhedenDa vi er interesserede i at opnå page_location for hver tilknyttet page_view begivenhed, er page_location den nøgle, vi giver som input til funktionen. Funktionen ga4EventParams returnerer den respektive værdi for input-nøglen fra event_params RECORD. For flere detaljer, tjek Alejandros indlæg om, hvordan man bruger en BigQuery-funktion.Vinduesfunktioner til forespørgsel af sekvenserNavigationsfunktionen LEAD() giver os mulighed for at forespørge efterfølgende rækker fra et specificeret vindue. Ændring af forskydningsværdien ændrer, hvilken efterfølgende række der returneres; standardværdien er 1, hvilket indikerer den næste række i vinduesrammen. Du kan bruge forskydningsværdien til at tilføje flere noder til din forespørgsel, afhængigt af din analyse. I ovenstående eksempel er der inkluderet 3 yderligere noder (ud over startpunktet).WINDOW-klausulen ovenfor vil resultere i, at vinduet spænder over en brugers session. For at gøre vinduet bruger-omfangsbestemt, fjern ga_session_id referencen.Midlertidige tabeller til at gemme mellemresultaterDen midlertidige tabel giver os mulighed for at gemme den resulterende tabel - 1 række pr. page_view begivenhed med de efterfølgende page_locations som kolonner - som et mellemliggende forespørgselsresultat i hukommelsen (data) og gøre det tilgængeligt for en senere del af forespørgslen. Datatabellen bruges derefter i den endelige FROM-klausul til at tælle forekomsterne af hver sekvens på tværs af alle sessioner.Hvordan ser man tilbage i tiden?  Alt fint og godt, men hvordan starter man sekvensen med dens afslutning og arbejder sig tilbage derfra?Et fair spørgsmål, især fordi det at specificere slutpunktet og analysere, hvordan brugere endte der, er en afgørende funktion i GA4’s Sti-udforskingsteknik.Heldigvis ville dette kun kræve et par mindre justeringer inden for vores midlertidige tabel, som så:Forespørgselseksempel for sti-udforskning med et slutpunktVed simpelthen at erstatte LEAD() med LAG(), returnerer vi værdien af page_location på en foregående række. Altså den forrige page_view begivenhed i en session.Hvordan starter man sekvensen med den faktiske landingsside?For at opnå dette skal vi endnu engang vende os mod vores velkendte LEAD() funktion og tilføje en kolonne til vores midlertidige tabel - parameteren for entrances begivenheden. Det vil indikere, hvorvidt en bestemt page_view begivenhed var den første inden for en session og derfor er landingssiden.Filtrering af sekvenser, der starter på landingssiden, vil returnere det ønskede resultat:Forespørgselseksempel for sti-udforskning med landingssiden som startpunktAfsluttende bemærkningerJeg håber, at dette stykke kontekst var nyttigt for dig og opmuntrer dig til at dykke dybere ned i GA4’s BigQuery rådata. Fra mit perspektiv er det at have adgang til rådataene en af de væsentlige gevinster, du får ved at migrere fra Universal Analytics til GA4.Jeg har til hensigt at identificere andre use cases for at udforske mulighederne og begrænsningerne ved GA4 og BigQuery.Så hvis du opdager fejl i forespørgslerne, har bemærkninger eller finder noget uklart, så kontakt mig venligst. Jeg er altid glad for at tale om analyse!"
+  },
+  
+  {
+    "title": "GTM Server-Side Tagging – Bedre Data & Mere Kontrol",
+    "url": "/gunnargriese.github.io/posts/gtm-server-side/",
+    "categories": "GTM",
+    "tags": "ga4, gtm-server-side",
+    "date": "2020-08-21 15:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "I de seneste måneder har jeg gennemført en række beta-tests og projekter for en udvalgt gruppe af kunder for at få både praktisk erfaring og for at hjælpe med at optimere den nyligt lancerede Googl...",
+    "content": "I de seneste måneder har jeg gennemført en række beta-tests og projekter for en udvalgt gruppe af kunder for at få både praktisk erfaring og for at hjælpe med at optimere den nyligt lancerede Google Tag Manager (GTM) server-side tagging opsætning.Mit mål er at levere både baggrundsinformation og kontekst for, hvorfor jeg mener, at de fleste virksomheder seriøst bør overveje at implementere dette for bedre at støtte markedsføring. Derudover vil du få et overblik over funktionaliteten og mulige brugsscenarier for denne funktion, der vil hjælpe dig med at bevæge dig hen imod en fremtidssikret, first-party tracking opsætning, forbedre den overordnede kundeoplevelse og få fuld kontrol over dine data.Den vigtigste pointe er, at GTM server-side øger fleksibiliteten og kontrollen over dine data og forbedrer løsningens holdbarhed og direkte forretningsværdi langt ud over, hvad der er muligt med en traditionel Google Tag Manager opsætning.Privacy First og 1st Party AnalyticsVirksomheder står i dag over for mange udfordringer, der kræver, at de gentænker den måde, de udfører website- og app-tracking på. Heldigvis åbner disse udfordringer med GTM server-side også op for mange agile muligheder for virksomheder, der er villige til at tilpasse sig og ændre sig. Traditionel tracking står imidlertid over for mange udfordringer, der vil gøre det teknisk umuligt at fortsætte med at “tracke som vanligt”.En af disse udfordringer er det nye “Privacy first”-paradigme, der pålægges os af regulativer som GDPR (EU) og CCPA (Californien). Browserudbydere er også blevet langt mere opmærksomme på privatlivets fred inden for de seneste par år og søger at beskytte deres brugeres data mod alt for datahungrende adtech-værktøjer.Ligeledes begrænser initiativer som Safaris “Intelligent Tracking Prevention” (ITP) og Firefox’ “Enhanced Tracking Prevention” (ETP) kraftigt adgangen til ofte brugte browserlagringsmuligheder (især cookies og lokal lagring). Google annoncerede også for nylig, at de vil udfase tredjepartscookies fuldstændigt inden for de næste to år for deres Chrome-browser (en såkaldt “privacy sandbox” vil erstatte tredjepartscookies).Alt for ofte har annoncører også implementeret JavaScript-snippets på deres websites uden at være klar over deres fulde funktionalitet, hvilket resulterer i, at de overdrager kontrollen over deres brugeres data til ukendte tredjeparter, hvilket har gjort massive databrud mulige.Derfor bør vi hilse denne generelle retning velkommen, da det hjælper med at sikre vores personlige data, modne branchen og genvinde den længe tabte troværdighed – med det mål at stoppe tvivlsomme “wild west”-tracking praksisser.Den største ulempe ved denne bevægelse er dog, at den også påvirker og skaber bias i forretningskritisk datainsamling baseret på brugerens samtykke: Det tekniske og lovgivningsmæssige miljø, som traditionel website- og app-tracking er indlejret i, gør det svært for os at holde styr på specifik brugeradfærd – hvilket øger vores blinde vinkel i forståelsen af brugernes behov.GTM Server-Side Tagging til undsætningGoogle Tag Manager (GTM) har nu en ny funktion (i beta-status i øjeblikket), der vil give virksomheder mulighed for at skabe en first-party analytics opsætning. GTM server-side tagging er her for at ændre måden, hvorpå website- og app-tracking implementeres, og hvordan data deles med tredjeparter. Læs videre for at forstå, hvordan denne funktion vil hjælpe dig med at forbedre brugeroplevelsen på websitet, øge sikkerheden for dine brugeres data og styrke kontrollen over din datainsamling.Hvordan fungerer det?Mens GTM server-side containeren giver nye værktøjer og funktioner til at måle brugeraktivitet, forbliver den generelle model af tags, triggere og variabler uændret.Kilde: https://developers.google.com/tag-platform/tag-manager/server-side/introGTM Server-Side Tagging betyder, at en ny “Server” container kører på en App Engine instans – (ideelt set) mappet til dit domænes namespace – i dit eget Google Cloud Platform (GCP) projekt. Det er derefter muligt at sende HTTP-anmodninger til serveren fra brugerens enhed eller en hvilken som helst anden internetforbundet enhed. GTM-serveren omdanner disse anmodninger til hændelser, som behandles af containerens tags, triggere og variabler.Mens det velkendte koncept med tags, triggere og variabler fungerer som de plejer i client-side GTM containere, er den nyligt introducerede “klient” forbindelsen mellem de enheder, der sender anmodninger, og containerens logik. Klienten kan modtage og kræve anmodninger (og data sendt med den), analysere dem til en eller flere hændelser, dirigere data til at blive behandlet i containeren (tags, triggere og variabler) og returnere et HTTP-svar til den anmodende enhed.Få datakontrol og fleksibilitetDet, der adskiller denne tilgang fra tracking baseret på client-side JavaScript og pixels, er, at du har fuld kontrol og opnår fleksibilitet over, hvordan dataene behandles, indtil du sender dem til tredjepartsværktøjer (hvilket muliggør hitvalidering, PII-kontroller osv.). Faktisk, da GTM-serveren (https://gtm.example.com) er forbundet med det samme domæne som dit website (https://example.com), betragtes enhver interaktion mellem dem som en first-party dataudveksling af brugerens browser.Reducer virkningen af browser-tracking forhindringer og adblockereMed denne ændring af konteksten vil betydelige restriktioner pålagt os af browser-tracking-forhindringer blive omgået, fordi du får mulighed for at sætte first-party HTTP-cookies (f.eks. introducerer GTM server-side en ny FPID-cookie). For eksempel vil Safaris ITP ikke længere begrænse levetiden for cookies forbundet med Google Analytics, når de placeres fra server-siden, hvilket resulterer i bedre datakvalitet til rapportering og analyse (især relevant for virksomheder med en ung og teknologikyndig brugerbase). Husk, at denne magt kommer med et stort ansvar, og du bør altid være opmærksom på de juridiske og etiske konsekvenser af at sætte cookies og de data, du indsamler.Hvilke brugsscenarier kan afsløres?GTM Server-Side tracking genopretter gennemsigtighed i brugen af tredjepartsværktøjer og websites, men ud over det er der et par andre fordele ved at tracke hændelser på server-siden, der kan føre til stærke brugsscenarier for virksomheden.Forbedret datanøjagtighed og kontrolDatanøjagtigheden kan forbedres yderligere, når virksomheder beslutter at udnytte server-til-server kommunikation til forretningskritiske hændelser som transaktioner. Vi har alle oplevet uoverensstemmelser mellem antallet af transaktioner i Google Analytics (GA) og CRM-systemer på grund af adblockere og andre sideeffekter, når vi er afhængige af client-side tracking (sidegenindlæsninger osv.). Dette kan afhjælpes ved at fjerne client-side tracking af transaktioner og sende de nødvendige datapunkter direkte fra dine CRM-systemer til GTM-serveren og sende dem videre til GA til analyse.Forbedret sideindlæsningstid og datasikkerhedGenerelt kan server-side tracking fjerne behandlingsbyrden fra en given browser og flytte den til skyen. Da én HTTP-anmodning er nok til at udløse en hændelse i server-side containeren, kan den udløse flere tags i server-side miljøet. For eksempel kunne klienten sende én HTTP-anmodning ved hver sideindlæsning, der udløser en sidevisningshændelse for GA og Facebook på samme tid. Da der ikke ville være behov for at udføre JavaScript skrevet af Facebook i brugerens browser, kunne server-side tracking øge sideindlæsningstiden. Da dette vil påvirke den overordnede brugeroplevelse positivt, har det potentialet til at øge dine konverteringsrater.Glat integration i Google Cloud PlatformDerudover, fordi GTM-containeren udføres i Googles cloud-integrationer, vil andre GCP-ressourcer som BigQuery, ML Engine og Cloud Functions sandsynligvis blive integreret snart. Dette vil åbne op for mange muligheder for avancerede brugsscenarier, der involverer maskinlæring og hændelsesbaseret analyse.Når denne nye GTM-funktion bevæger sig ud af betafasen og bliver forbedret baseret på funktionsanmodninger og bidrag fra aktive community-medlemmer, vil endnu flere muligheder være tilgængelige, hvilket betydeligt vil ændre tracking-implementeringer baseret på GTM.  Bemærk: Du kan læse mere om mulighederne for at integrere GCP-tjenester i GTM Server-Side for at låse op for kraftfulde brugsscenarier i fremtiden i min nyeste blogserie.Afsluttende tankerUdgivelsen af GTM Server-Side containeren fortsætter en generel trend, der kan observeres i mange Google Marketing Platform-værktøjer: Styrkelse af værktøjsintegration og skub mod GCP. Ved at følge denne strategi sikrer Google en glat dataflow mellem systemer og øger samtidig hvert værktøjs funktionalitet for at kunne følge med det konstant skiftende adtech-miljø."
+  }
+  
+]
+

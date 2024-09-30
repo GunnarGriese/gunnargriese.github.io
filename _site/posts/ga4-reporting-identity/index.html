@@ -1,0 +1,3954 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="" 
+  
+>
+  <!-- The Head -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://trakker.gunnargriese.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager - GA4 Lite Tester 
+        
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" type="text/javascript" async></script>
+
+    
+
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PZV75QZ');
+    </script>
+    End Google Tag Manager -->
+
+           <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Who are my website users? And if so how many? - User IDs in GA4" />
+<meta name="author" content="Gunnar Griese" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users’ interactions with your business and eventually allows you to report on user and session counts as well as associated metrics." />
+<meta property="og:description" content="Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users’ interactions with your business and eventually allows you to report on user and session counts as well as associated metrics." />
+<link rel="canonical" href="http://localhost:4000/gunnargriese.github.io/posts/ga4-reporting-identity/" />
+<meta property="og:url" content="http://localhost:4000/gunnargriese.github.io/posts/ga4-reporting-identity/" />
+<meta property="og:site_name" content="Gunnar Griese" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-09-01T00:00:01+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Who are my website users? And if so how many? - User IDs in GA4" />
+<meta name="twitter:site" content="@GeezerGunner" />
+<meta name="twitter:creator" content="@Gunnar Griese" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gunnar Griese","url":"https://gunnargriese.com"},"dateModified":"2024-09-01T00:00:01+02:00","datePublished":"2024-09-01T00:00:01+02:00","description":"Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users’ interactions with your business and eventually allows you to report on user and session counts as well as associated metrics.","headline":"Who are my website users? And if so how many? - User IDs in GA4","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/posts/ga4-reporting-identity/"},"url":"http://localhost:4000/gunnargriese.github.io/posts/ga4-reporting-identity/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <title>Who are my website users? And if so how many? - User IDs in GA4 | Gunnar Griese
+    </title>
+
+    <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/gunnargriese.github.io/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/gunnargriese.github.io/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/gunnargriese.github.io/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/gunnargriese.github.io/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/gunnargriese.github.io/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Gunnar Griese">
+<meta name="application-name" content="Gunnar Griese">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/gunnargriese.github.io/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" > 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"> 
+
+    <!-- GA -->
+    
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/gunnargriese.github.io/assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css">  
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> 
+
+    <!-- JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+     <!--
+  Switch the mode between dark and light.
+-->
+
+<script type="text/javascript">
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get MODE_ATTR() { return "data-mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+    static get ID() { return "mode-toggle"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage({
+        direction: ModeToggle.ID,
+        message: this.modeStatus
+      }, "*");
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+  <!-- A placeholder to allow defining custom metadata -->
+
+
+    <!-- Page Metadata for DL -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'page_view',
+            page_meta: {
+                layout: 'post',
+                page_title: document.title,
+                page_location: document.URL,
+                published_at: '2024-09-01T00:00:01+02:00',
+            },
+            author: {
+                name: 'gunnar',
+                url: '',
+            },
+            environment: 'development',
+        })
+    </script>
+    <!-- End Page Metadata for DL -->
+
+</head>
+
+  <body data-topbar-visible="true">
+    <!-- The Side Bar -->
+
+<div id="sidebar" class="d-flex flex-column align-items-end">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="/gunnargriese.github.io/" class="mx-auto">
+        
+          
+          <img src="/gunnargriese.github.io/assets/img/avatar/gunnar-speaking-resized.jpg" alt="avatar" onerror="this.style.display='none'">
+        
+      </a>
+    </div>
+
+    <div class="site-title">
+      <a href="/gunnargriese.github.io/">Gunnar Griese</a>
+    </div>
+    <div class="site-subtitle font-italic">Self-employed analytics consultant & tech enthusiast.</div>
+  </div>
+  <!-- .profile-wrapper -->
+
+  <ul class="w-100">
+    <!-- home -->
+    <li class="nav-item">
+      <a href="/gunnargriese.github.io/" class="nav-link">
+        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>HOME</span>
+      </a>
+    </li>
+    <!-- the real tabs -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/services/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>SERVICES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/about/" class="nav-link">
+          <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ABOUT</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tools/" class="nav-link">
+          <i class="fa-fw fas fa-tools ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TOOLS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/categories/" class="nav-link">
+          <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>CATEGORIES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tags/" class="nav-link">
+          <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TAGS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/archives/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ARCHIVES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+  </ul>
+  <!-- ul.nav.flex-column -->
+
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+    
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/GunnarGriese"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/GeezerGunner"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['gunnar.griese.gg','gmail.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://www.linkedin.com/in/gunnar-griese/"
+          aria-label="linkedin"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</div>
+<!-- #sidebar -->
+
+
+    <!-- The Top Bar -->
+
+<div id="topbar-wrapper">
+  <div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4">
+    <span id="breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/gunnargriese.github.io/">
+                Home
+              </a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>Who are my website users? And if so how many? - User IDs in GA4</span>
+            
+
+          
+        
+      
+    </span>
+    <!-- endof #breadcrumb -->
+
+    <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <i id="search-trigger" class="fas fa-search fa-fw"></i>
+    <span id="search-wrapper" class="align-items-center">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </span>
+    <span id="search-cancel">Cancel</span>
+  </div>
+</div>
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+      
+
+      
+        
+      
+        <!--
+  Refactor the HTML structure.
+-->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+<!-- images -->
+
+
+
+
+  
+  
+
+  <!-- CDN URL -->
+  
+
+  <!-- Add image path -->
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+
+  
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+<h1 data-toc-skip>Who are my website users? And if so how many? - User IDs in GA4</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      Posted
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class=""
+  data-ts="1725141601"
+  data-df="ll"
+  
+    data-toggle="tooltip" data-placement="bottom"
+  
+>
+  Sep  1, 2024
+</em>
+
+    </span>
+
+    <!-- lastmod date -->
+    
+
+  
+
+  <div class="d-flex justify-content-between">
+    <!-- author(s) -->
+    <span>
+      
+
+      By
+
+      <em>
+      
+        
+          <a href="https://gunnargriese.com">Gunnar Griese</a>
+          
+        
+      
+      </em>
+    </span>
+
+    <div>
+      <!-- page views -->
+      
+
+      <!-- read time -->
+      <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-toggle="tooltip"
+  data-placement="bottom"
+  title="4874 words"
+>
+  <em>27 min</em> read</span>
+
+    </div>
+
+  </div> <!-- .d-flex -->
+
+</div> <!-- .post-meta -->
+
+<div class="post-content">
+  <p>Google Analytics 4 (GA4) can unify your users’ journeys using various methods, like User ID, Device ID, and Modeling. These methods allow GA4 to create a single user journey from all the event data associated with the same identity, visualizing it in the interface without any further setup. This enables a more unified, holistic history of users’ interactions with your business and eventually allows you to report on user and session counts as well as associated metrics.</p>
+
+<p>This blog post provides an overview of the Reporting Identity functionality with a special focus on logged in users, its quirks in GA4, its usage for your business, and its implications for reporting. Eventually, I will try to help you answer the (somewhat philosophical) question: “Who are my website users? And if so how many?”</p>
+
+<h2 id="what-is-the-reporting-identity-in-ga4"><span class="mr-2">What is the Reporting Identity in GA4?</span><a href="#what-is-the-reporting-identity-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>I know you’re eager to cut to the chase, and I hate to hold you off, but before we can dive deeper into the topic, we have to establish some common ground and get the definitions straight:</p>
+
+<ol>
+  <li>The identifiers GA4 uses to unify a user’s journey are collectively referred to as <strong>identity spaces</strong>.</li>
+  <li>The identity space(s) used by your GA4 property is called its <strong>reporting identity</strong>.</li>
+</ol>
+
+<p>In the following sections you’ll find a description of each of the available identity spaces and how they are used in GA4.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-identity-spaces-order.png" alt="Usage of reporting identies in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Usage of identity spaces for Blended &amp; Observed reporting identity</em></p>
+
+<h3 id="user-id---get-to-truly-know-your-customers"><span class="mr-2">User ID - Get to truly know your customers</span><a href="#user-id---get-to-truly-know-your-customers" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>If you create your own persistent IDs for signed-in users (e.g., CRM IDs), you can use these IDs to <strong>measure user journeys across devices and browsers</strong>. This requires consistently assigning IDs to your users and including the IDs along with the data you send to GA4 whenever they are browsing your website while logged in. The user ID is the most accurate and robust identity space because it uses the self-authenticated users’ ID that you then collect in GA4. Since these identifiers are the most stable and long-lasting identifiers and can especially be used for activation use cases, having a login functionality and nudging your users to use it is of great value for your business.</p>
+
+<blockquote>
+  <p>The user IDs that you establish must adhere to GA4’s Terms of Service. This necessitates that you transparently communicate to your users the manner in which identifiers are utilized, as outlined in your Privacy Policy. Furthermore, the ID you assign should not encompass information that could potentially enable a third party to ascertain the identity of an individual user, such as an email address.</p>
+</blockquote>
+
+<h3 id="google-signals---googles-data-about-your-users"><span class="mr-2">Google Signals - Google’s data about your users</span><a href="#google-signals---googles-data-about-your-users" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Google Signals is data from <strong>users signed in to their Google account on their Chrome browser or Android device</strong>. When Google Signals data is available, GA4 associates event data it collects from users with the Google accounts of signed-in users who have consented to share this information (<a href="https://myadcenter.google.com/personalizationoff?sasb=true&amp;ref=ad-settings">ads personalization consent is given in Google account settings</a>).</p>
+
+<blockquote>
+  <p><strong>Google stopped using Google Signals as an identity space in February 2024</strong>, as it came with the significant drawback that its usage resulted in data points being withheld from the GA4 user interface, reducing the tool’s value for actual analytics work. I have decided to include it here anyway because, in the past, it has been a heavily debated identity space.</p>
+</blockquote>
+
+<h3 id="user-provided-data---3rd-party-cookie-alternative"><span class="mr-2">User-Provided Data - 3rd-party cookie alternative</span><a href="#user-provided-data---3rd-party-cookie-alternative" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>One of the most recently added functionalities in GA4 is “User-provided data collection”. This allows you to send “consented, first-party data from your website to Google Analytics” (s. <a href="https://support.google.com/analytics/answer/14077171?hl=en">here</a>). Google allows for hashed email addresses, phone numbers, names, and addresses to be sent to their platform. The data you send is then matched with other Google data (primarily browser data from logged-in Chrome users) to improve the accuracy of your measurement data and power capabilities like Enhanced Conversions and Demographics and Interests. I like to think of this method as replacing Google Signals for when Google will eventually phase out 3rd-party cookies - but on steroids.</p>
+
+<p>Implementing the User-ID feature may not be possible for some websites (e.g., if your website doesn’t have a login section). But for other websites, especially e-commerce sites, Google recommends that you set up the User-ID feature along with user-provided data collection to provide the most accurate user reporting in Analytics.</p>
+
+<p>Interestingly enough, Google states in their documentation the following:</p>
+
+<blockquote>
+  <p>“If you send user-provided data without also sending user IDs, collected user-provided data will be pseudonymized and used to <strong>recognize unique users for user deduplication and reporting purposes.</strong> When multiple types of user-provided data are provided, Analytics will prioritize them in the following order: email, phone, name, and address. Note that if user IDs are later provided for previously measured users with only user-provided data (no user ID), Analytics will <strong>recognize these as separate users for reporting purposes.</strong>” (s. <a href="https://support.google.com/analytics/answer/14077171?hl=en">here</a>)</p>
+</blockquote>
+
+<p>So, although it’s not part of the officially listed reporting identities, user-provided data appears to be used for user deduplication and reporting purposes, rendering it a <em>de facto identity space</em>. Since it’s quite a new feature, I am currently working together with my clients on understanding this feature even better, but have added it to this overview already.</p>
+
+<h3 id="device-id---good-ol-cookies"><span class="mr-2">Device ID - Good ol’ cookies</span><a href="#device-id---good-ol-cookies" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>GA4 can also use the device ID (also known as client ID or user pseudo ID) as an identity space. The device ID method is the least accurate because it only recognizes a device as the name suggests (not a user). At the same time, it is likely the most widely used method to identify users, as almost all analytics tools out there use it.</p>
+
+<ul>
+  <li><strong>For apps</strong>: This is set to the App-Instance ID, which is unique to each app instance downloaded on a device.</li>
+  <li><strong>For websites</strong>: This is set by first-party cookies (<code class="language-plaintext highlighter-rouge">_ga</code> cookie for JS-managed or <code class="language-plaintext highlighter-rouge">FPID</code> cookie (or another custom cookie name) for GTM Server Side-managed cookies). You can inspect a user’s cookie ID in the “User Explorer” report, but be aware that it is called “Effective user ID” regardless if it was collected from a website or mobile app.</li>
+</ul>
+
+<blockquote>
+  <p>If - for whatever reason - you want to rename the <code class="language-plaintext highlighter-rouge">_ga</code> cookie to something else, you can do so by adding a prefix using the <code class="language-plaintext highlighter-rouge">cookie_prefix</code> field in the GA4 configuration in GTM.</p>
+</blockquote>
+
+<h3 id="behavioural-modelling---the-black-box"><span class="mr-2">Behavioural Modelling - The black box</span><a href="#behavioural-modelling---the-black-box" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>When users decline GA4 identifiers like cookies, behavioural data for those users is unavailable. GA4 fills this gap by using the data of users who do accept cookies from the same property to model the behaviour of the users who decline cookies. For modelling to be working, the website needs to have Google Consent Mode implemented and the associated GA4 property <a href="https://support.google.com/analytics/answer/11161109?hl=en#:~:text=and%20customer%20behavior.-,Prerequisites,-Because%20the%20model">needs to have sufficient data</a> to be eligible for behavioural modelling.</p>
+
+<h3 id="reporting-identity-options-in-ga4"><span class="mr-2">Reporting Identity Options in GA4</span><a href="#reporting-identity-options-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>In your GA4’s property settings, you decide which identity spaces you want to use. The options in your settings then determine which of the available identity spaces GA4 will take into account if you make the required data available to GA4. The setting options are:</p>
+
+<ul>
+  <li><strong>Blended</strong>: Uses the User-ID, Device ID, then Modelling, in that order of preference.</li>
+  <li><strong>Observed</strong>: It uses the User-ID, Google Signals, and then Device ID, ignoring Modelling.</li>
+  <li><strong>Device-based</strong>: Only the device ID is used, and all other collected IDs are ignored.</li>
+</ul>
+
+<p><strong>Adjusting the Reporting Identity</strong> for a GA4 property requires you to navigate to the <strong>Admin section</strong>, select the correct account and property, click on Reporting Identity in the Property column, select the Reporting Identity you want to use, and click <em>Save</em>.
+The reporting identity option you choose does <strong>not</strong> affect data collection or processing. Hence, you can switch between the options at any time without making any permanent impact on data. This is pretty neat, as you can directly assess within the interface what the impact on different identity spaces is on your data. Be aware that in order to get the full benefit of the Blended and Observed Reporting Identity, you need to collect user IDs.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-available-reporting-identities.png" alt="Available reporting identies in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Available Reporting Identities in GA4</em></p>
+
+<h2 id="implementation-of-identity-spaces"><span class="mr-2">Implementation of Identity Spaces</span><a href="#implementation-of-identity-spaces" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>So far, so good. Now, let’s get a tad more hands-on and have a look at how to implement the different identity spaces to unlock them for your reporting in GA4.</p>
+
+<h3 id="user-id---take-advantage-of-the-datalayer"><span class="mr-2">User ID - Take advantage of the dataLayer</span><a href="#user-id---take-advantage-of-the-datalayer" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>To enable the User ID as an identity space for GA4, a user’s internal ID needs to be actively sent to the analytics platform. For the GA4 tags in GTM being able to pick up the user ID, your developers will usually expose the user ID to the dataLayer whenever a user initially logs in. A respective dataLayer object could be structured as follows and sent with the <code class="language-plaintext highlighter-rouge">dataLayer.push()</code> method:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+  <span class="na">event</span><span class="p">:</span> <span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="p">,</span>
+  <span class="c1">// other event data</span>
+  <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">76588c85-b7a5-4967-9de7-695788e7a6f6</span><span class="dl">"</span><span class="p">,</span>
+    <span class="c1">// other user data</span>
+  <span class="p">},</span>
+  <span class="na">status</span><span class="p">:</span> <span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>From the moment on that a user has logged in, it is crucial that we enrich all GA4 events with the user’s ID. Therefore, we also need the developers to expose the ID on all of the following pages as early as possible, e.g., on <code class="language-plaintext highlighter-rouge">page_view</code> events.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+  <span class="na">event</span><span class="p">:</span> <span class="dl">"</span><span class="s2">page_view</span><span class="dl">"</span><span class="p">,</span>
+  <span class="c1">// other event data</span>
+  <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">76588c85-b7a5-4967-9de7-695788e7a6f6</span><span class="dl">"</span><span class="p">,</span>
+    <span class="c1">// other user data</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>If the value of the user ID key is populated, it can be read by a dataLayer variable in GTM.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-user-id-dlv.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-user-id-dlv.png" alt="user-id-datalayer-vairable" class="lazyload" data-proofer-ignore></a>
+<em>Exemplary GTM dataLayer variable for the user id key</em></p>
+
+<p>The value of the dataLayer variable is then included in all GA4 events as the value for the <code class="language-plaintext highlighter-rouge">user_id</code> field and sent with every outgoing GA4 request (via the <code class="language-plaintext highlighter-rouge">uid</code> query parameter).</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-user-id-settings-variable.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-user-id-settings-variable.png" alt="User ID in GA4 settings variable" class="lazyload" data-proofer-ignore></a>
+<em>Exemplary GA4 settings variable for the user id key</em></p>
+
+<p>The variable above should then be associated with all GA4 tags. That way, we ensure that if the user ID is available in the dataLayer, we send it to GA4 - allowing for it to be used as an identity space.</p>
+
+<blockquote>
+  <p><strong>Important</strong>: I advise you to actually use the <code class="language-plaintext highlighter-rouge">user_id</code> field in your GA4 tags, as it is the field that GA4 expects to receive the user ID in. If you use a user property or event parameter to store the user ID (e.g., for analysis purposes or custom joins) and register these as a custom dimension in the interface, you <a href="https://support.google.com/analytics/answer/14240153?#best-practices">risk introducing a high-cardinality dimension</a> that can lead to you seeing the <code class="language-plaintext highlighter-rouge">(other)</code> row in your reports.</p>
+</blockquote>
+
+<h3 id="device-based---cookies-for-the-masses"><span class="mr-2">Device-based - Cookies for the masses</span><a href="#device-based---cookies-for-the-masses" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>As mentioned above, cookies are the “default” method to identify users in analytics tools like GA4.</p>
+
+<p>In a standard client-side measurement scenario, firing a Google or GA4 tag will result in the <code class="language-plaintext highlighter-rouge">_ga</code> cookie being placed in the user’s browser via the JavaScript <code class="language-plaintext highlighter-rouge">document.cookie</code> API. The cookie’s value is what GA4 titles the user’s device ID. The gtag.js tracking library then reads and updates the cookie value as specified in the script and attaches the value to all outgoing network requests to the GA4 servers (<code class="language-plaintext highlighter-rouge">cid</code> query parameter). GA4 uses the device ID to connect the event data points into a coherent user profile on which you can eventually report.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-ss-fpid-cookie.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/gtm-ss-fpid-cookie.png" alt="GA4 client settings FPID cookie" class="lazyload" data-proofer-ignore></a>
+<em>GA4 client settings to manage FPID cookies</em></p>
+
+<p>If you add GTM Server-Side (GTM SS) to your measurement stack, you can <a href="https://gunnargriese.com/posts/gtm-server-side/">gain even more control</a> over the cookie that determines your users’ Device IDs. In your GTM SS container, you’ll find that the standard GA4 client comes with additional configuration possibilities for <em>Cookies and Client Identification</em>. The client allows you to use your “own” first-party HTTP cookies (default name is <code class="language-plaintext highlighter-rouge">FPID</code>, but can be customized) to store the device ID. If you now route your GA4 requests through GTM SS and use the GA4 client to parse the event data, your GA4 tags will use the device ID stored in the FPID cookie instead of the one from the <code class="language-plaintext highlighter-rouge">_ga</code> cookie.</p>
+
+<p>In the current digital landscape, which includes browser tracking prevention and ad blockers, cookies are often considered one of the less reliable user identifiers. They are easily deleted or expired, leading to potential overcounting of “users” on our website. However, they remain the primary identifier for the majority of our website users. While we can exert more control over cookies, overcoming the limitations of the technology itself is a complex task. So, should you embark on this journey to improve the reliability of your device ID, make sure you have a good reason (and a business case) to do so.</p>
+
+<h3 id="modelling---let-google-handle-it"><span class="mr-2">Modelling - Let Google handle it</span><a href="#modelling---let-google-handle-it" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>To unlock the <em>Modelling</em> identity space you must leverage an <strong>Advanced Consent Mode</strong> implementation. In short, this means that you will execute your GA4 tags regardless of the users’ consent choices (e.g., no blocking of tags in case of missing consent). Additionally, you must ensure that you have Google’s Consent Mode correctly integrated with your website’s Cookie Management Platform (CMP) or in your app to control the tags’ (cookie setting) behavior based on the users’ consent decisions.</p>
+
+<p>Once Advanced Consent Mode is configured on your website, GA4 tags will function as usual for consented users. In contrast, in the case of missing consent, the GA4 tags will send only so-called cookieless pings to GA4 servers without placing cookies in the users’ browsers. Using machine learning, Google will derive patterns from the consented (or as Google calls it “observed”) users and apply them to the unconsented or unobserved users, modeling their user journeys and derived metrics. Google phrases the process as Behavioral Modeling, which eventually allows insights into your website users’ behavior and not only the consented subset.</p>
+
+<blockquote>
+  <p>One interesting side fact is that the User ID will be available in the BigQuery raw data export, even if the user denies cookie consent and GA4 collects only “cookieless pings”.</p>
+</blockquote>
+
+<p>Since Consent Mode and its implementation are vast subjects with quite a few nitty-gritty details, I’d like to refer you to <a href="https://gunnargriese.com/posts/consent-mode-v2/">my in-depth guide</a>, which I published earlier this year. I’m sure it will serve you well in navigating that topic!</p>
+
+<h2 id="identity-space-implications-on-reporting"><span class="mr-2">Identity Space Implications on Reporting</span><a href="#identity-space-implications-on-reporting" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Depending on which Reporting Identity you choose in your GA4 settings, the data you see in the GA4 interface will be different. The selected Reporting Identity influences how GA4 associates events with users and sessions, affecting the way GA4 reports on user and session counts and associated metrics. In the following paragraphs, I will focus on the implications related to the <em>User ID</em> and <em>Modelling</em> identity space since these require special attention (and are somewhat out of the ordinary).</p>
+
+<h3 id="user-id-in-the-ga4-interface"><span class="mr-2">User ID in the GA4 interface</span><a href="#user-id-in-the-ga4-interface" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Let’s prioritize the User ID, as it is the most powerful identifier in GA4 and will be treated equally in this blog post. So, here it goes!</p>
+
+<h4 id="retroactive-user-id-assignment"><span class="mr-2">Retroactive User ID Assignment</span><a href="#retroactive-user-id-assignment" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>Suppose a user initially accesses a website without being logged in and logging in mid-session, transmitting a User ID during later events. In that case, GA4 uses the “User Pseudo ID” / client ID and the session ID to associate that session and all its events with the user ID provided when the user signs in.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-retroactive-user-id-attribution.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-retroactive-user-id-attribution.png" alt="Retroactive User ID assignment in GA4" class="lazyload" data-proofer-ignore></a><em>Retroactive User ID Attribution</em></p>
+
+<p>In the example above, the User Explorer report will only display one “Effective User ID” (the User ID) set to <code class="language-plaintext highlighter-rouge">abc-567</code> for both events if <em>Blended</em> or <em>Observed</em> are used as the Reporting Identity. Suppose the <em>Device-based</em> Reporting Identity has been chosen. In that case, the User Explorer report will only display one “Effective User ID” (the User Pseudo ID) set to <code class="language-plaintext highlighter-rouge">123.456</code> for both events. Furthermore, GA4 will report only one session for the two events, regardless of the Reporting Identity chosen.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-user-explorer.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-user-explorer.png" alt="User ID in User Explorer report in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Retroactive User ID Assignment in BQ raw data, User Explorer, and Traffic Acquisition Report</em></p>
+
+<p>The screenshots above show how a mid-session login affects the raw data and the reporting in the User Interface (UI). While on the event level in the raw data, the <code class="language-plaintext highlighter-rouge">user_id</code> column is only populated from the time it’s been collected, we can see (e.g., based on the event count) that it’s being retroactively applied in the UI. Hence, it allows us to report on the “true” user journey and their associated sessions in the UI.</p>
+
+<p>I consider this a helpful feature of GA4, especially since it is seamlessly integrated into the UI and doesn’t require any additional effort to use.</p>
+
+<h4 id="what-about-proactive-user-id-assignment"><span class="mr-2">What about proactive User ID assignment?</span><a href="#what-about-proactive-user-id-assignment" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>A limitation of the User ID is that if GA4 detects subsequent events without the User ID set for the same User Pseudo ID, these will not be assigned to the User ID. So, once a user signs out and the <code class="language-plaintext highlighter-rouge">uid</code> parameter is no longer associated with the events, GA4 stops associating subsequent events with that user ID. See the visual below for a better understanding.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/user-id-proactive.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/user-id-proactive.png" alt="Proactive User ID attribution in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Retroactive User ID Assignment Limitations</em></p>
+
+<p>In the scenario above, the User Explorer report in GA4 will display two distinct Effective User IDs, signifying two users: <code class="language-plaintext highlighter-rouge">123.456</code> (cookie ID) and <code class="language-plaintext highlighter-rouge">abc-567</code> (user ID).</p>
+
+<p>As we have seen earlier, the initial three events will be associated with the <code class="language-plaintext highlighter-rouge">user_id</code>. Event number 4 will then be assigned to the cookie ID <code class="language-plaintext highlighter-rouge">123.456</code> only—and not the <code class="language-plaintext highlighter-rouge">user_id</code>. Additionally, it will also come with its own session. This behavior might “inflate” the user and session count in your reports, as the same user is counted twice.</p>
+
+<p>This also means that it is of the utmost importance to ensure that the <code class="language-plaintext highlighter-rouge">user_id</code> field is populated when a deterministic identifier is available. Otherwise, your reports will contain fragmented user journeys and sessions.</p>
+
+<h4 id="distinguish-between-signed-in-and-non-signed-in-users"><span class="mr-2">Distinguish between signed-in and non-signed-in users</span><a href="#distinguish-between-signed-in-and-non-signed-in-users" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>When you enable the User ID feature, you can compare <em>signed-in</em> and <em>non-signed-in</em> users in GA4. This is especially useful when you want to understand the behavior of users signed in to your website or app versus those not signed in. Below you can see a comparison between signed-in and non-signed-in users in GA4 utilizing GA4’s <em>Comparison</em> feature in combination with the dimension <code class="language-plaintext highlighter-rouge">Signed in with User ID</code>. This allows us to easily distinguish between these two groups of users.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-signed-in-vs-not-signed-in.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-signed-in-vs-not-signed-in.png" alt="Signed in vs. non-signed in users in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Comparison between signed-in and non-signed-in users in GA4</em></p>
+
+<blockquote>
+  <p>(Please ignore the high <em>Unassigned</em> traffic share. I am still fine-tuning my synthetic user generator. 🧪🤖)</p>
+</blockquote>
+
+<h4 id="replication-of-user-id-in-bigquery"><span class="mr-2">Replication of User ID in BigQuery</span><a href="#replication-of-user-id-in-bigquery" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+
+<p>When you export your GA4 data to BigQuery, you will notice that both the <code class="language-plaintext highlighter-rouge">user_id</code> and the <code class="language-plaintext highlighter-rouge">user_pseudo_id</code> columns are available for analysis. Most likely, though, the <code class="language-plaintext highlighter-rouge">user_id</code> column will not be populated for most of your users. The <code class="language-plaintext highlighter-rouge">user_id</code> field is only populated when the User ID is collected via your on-site measurement. If the User ID is not collected, the <code class="language-plaintext highlighter-rouge">user_id</code> field will contain a <code class="language-plaintext highlighter-rouge">NULL</code> value, while GA4 will always populate the <code class="language-plaintext highlighter-rouge">user_pseudo_id</code> field with the Device ID. This is important to remember when you are querying your GA4 data in BigQuery and trying to match it to the interface.</p>
+
+<p>If you seek to replicate the interface’s reports in BigQuery, you can use the following query to calculate the effective user ID and session ID based on the <code class="language-plaintext highlighter-rouge">user_id</code> and <code class="language-plaintext highlighter-rouge">user_pseudo_id</code> fields. This query will allow you to see the same user journey in BigQuery as you would see in the GA4 interface - taking into account retroactive User ID association as outlined above.</p>
+
+<div class="language-sql highlighter-rouge"><div class="code-header">
+        <span data-label-text="Sql"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="c1">-- Add temporary function to easily access ga4EventParams</span>
+<span class="k">SELECT</span>
+  <span class="n">event_timestamp</span><span class="p">,</span>
+  <span class="n">event_name</span><span class="p">,</span>
+  <span class="n">user_id</span><span class="p">,</span>
+  <span class="n">user_pseudo_id</span><span class="p">,</span>
+  <span class="n">COALESCE</span><span class="p">(</span> <span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">user_id</span> <span class="k">IGNORE</span> <span class="n">NULLS</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">user_pseudo_id</span><span class="p">,</span> <span class="n">ga4EventParams</span><span class="p">(</span><span class="s1">'ga_session_id'</span><span class="p">,</span> <span class="n">event_params</span><span class="p">).</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">ORDER</span> <span class="k">BY</span>
+      <span class="n">event_timestamp</span> <span class="k">ROWS</span> <span class="k">BETWEEN</span> <span class="k">CURRENT</span> <span class="k">ROW</span>
+      <span class="k">AND</span> <span class="n">UNBOUNDED</span> <span class="k">FOLLOWING</span><span class="p">),</span> <span class="n">user_pseudo_id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">effective_user_id</span><span class="p">,</span>
+  <span class="n">ga4EventParams</span><span class="p">(</span><span class="s1">'ga_session_id'</span><span class="p">,</span>
+    <span class="n">event_params</span><span class="p">).</span><span class="n">value</span> <span class="k">AS</span> <span class="n">raw_session_id</span><span class="p">,</span>
+  <span class="n">CONCAT</span><span class="p">(</span> <span class="n">COALESCE</span><span class="p">(</span> <span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">user_id</span> <span class="k">IGNORE</span> <span class="n">NULLS</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">user_pseudo_id</span><span class="p">,</span> <span class="n">ga4EventParams</span><span class="p">(</span><span class="s1">'ga_session_id'</span><span class="p">,</span> <span class="n">event_params</span><span class="p">).</span><span class="n">value</span><span class="p">)</span>
+      <span class="k">ORDER</span> <span class="k">BY</span>
+        <span class="n">event_timestamp</span> <span class="k">ROWS</span> <span class="k">BETWEEN</span> <span class="k">CURRENT</span> <span class="k">ROW</span>
+        <span class="k">AND</span> <span class="n">UNBOUNDED</span> <span class="k">FOLLOWING</span><span class="p">),</span> <span class="n">user_pseudo_id</span> <span class="p">),</span> <span class="n">ga4EventParams</span><span class="p">(</span><span class="s1">'ga_session_id'</span><span class="p">,</span>
+      <span class="n">event_params</span><span class="p">).</span><span class="n">value</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">effective_session_id</span>
+<span class="k">FROM</span>
+  <span class="nv">`&lt;your-project-id&gt;.analytics_&lt;your-property-id&gt;.events_*`</span>
+<span class="k">WHERE</span>
+  <span class="n">_TABLE_SUFFIX</span> <span class="k">BETWEEN</span> <span class="s1">'&lt;your-start-date&gt;'</span>
+  <span class="k">AND</span> <span class="s1">'&lt;your-end-date&gt;'</span>
+  <span class="k">AND</span> <span class="n">user_pseudo_id</span> <span class="o">=</span> <span class="s1">'2030451950.1721832151'</span> <span class="c1">-- select a specific user for testing</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+  <span class="n">event_timestamp</span> <span class="k">ASC</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">effective_user_id</code> is calculated using a window function that partitions the data by a combination of <code class="language-plaintext highlighter-rouge">user_pseudo_id</code> and <code class="language-plaintext highlighter-rouge">session_id</code>. The <code class="language-plaintext highlighter-rouge">ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING</code> ensures that the <code class="language-plaintext highlighter-rouge">FIRST_VALUE</code> window function captures the first non-null <code class="language-plaintext highlighter-rouge">user_id</code> from the current row onward within the partition. This logic stops populating <code class="language-plaintext highlighter-rouge">effective_user_id</code> with the <code class="language-plaintext highlighter-rouge">user_id</code> once the user logs out because, after the logout event, the subsequent rows no longer have a valid <code class="language-plaintext highlighter-rouge">user_id</code> within the remaining partition, causing the <code class="language-plaintext highlighter-rouge">COALESCE</code> function to revert to <code class="language-plaintext highlighter-rouge">user_pseudo_id</code>, effectively resetting the default cookie-based identifier for the rest of the session. You can inspect the result of the query in the screenshot below to see how the query effectively resolves the available identity spaces:</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-bq-effective-user-session-id.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-bq-effective-user-session-id.png" alt="Calculate effective user and session id in BigQuery" class="lazyload" data-proofer-ignore></a>
+<em>Calculate effective user and session id in BigQuery for User IDs</em></p>
+
+<h3 id="behavioral-modeling-in-the-ga4-interface"><span class="mr-2">(Behavioral) Modeling in the GA4 interface</span><a href="#behavioral-modeling-in-the-ga4-interface" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>When enabling the Behavioral Modeling identity space, GA4 will use their proprietary Machine Learning algorithm to model the behavior of users who have not consented to cookies (but for which you collect cookieless pings) based on the behavior of users who have consented to cookies. This means that the user journey data you see in the GA4 interface for these users is not the actual data but a model of the data. While the model is quite accurate from my experiences and tests, it is essential to remember that it is an estimate - not more, not less.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/behavioral-modeling-data-quality-card.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/behavioral-modeling-data-quality-card.png" alt="Behavioral Modeling in GA4" class="lazyload" data-proofer-ignore></a>
+<em>Behavioral Modeling Data Quality Card in GA4</em></p>
+
+<p>Luckily, GA4 provides you with a <strong>data-quality icon</strong> (s. above) that indicates whether the data you are looking at is modeled and, if so, when the <em>Modeling</em> identity space was unlocked. This is especially helpful when you include date ranges in your analysis when the Modeling identity space has yet to be enabled. So, while it is a good feature to help you assess high-level trends, like overall user and session counts, you should always take the results with a grain of salt.</p>
+
+<h2 id="advanced-use-cases-for-user-ids-in-ga4"><span class="mr-2">Advanced Use Cases for User IDs in GA4</span><a href="#advanced-use-cases-for-user-ids-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>As mentioned before, the User ID identity space is the most beneficial one. Not only because it is the most accurate and robust identity space but mainly because it sets you up with a solid foundation for more advanced use cases. Namely, enriching your website and app data with CRM or other data from other business-relevant applications and using it to build meaningful audiences. You can use the User ID to create more personalized experiences for users. For example, you can use the User ID to link a user’s behavior on your website or app to their profile in your CRM system, allowing you to tweak their experience based on their past behavior.</p>
+
+<p>Let’s have a look at the various methods for enriching first-party data in GA4.</p>
+
+<h3 id="using-the-ga4-measurement-protocol"><span class="mr-2">Using the GA4 Measurement Protocol</span><a href="#using-the-ga4-measurement-protocol" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>The <em>Measurement Protocol (MP)</em> is a method for sending data to GA4 server-to-server. Accordingly, it allows you to send data to GA4 from any internet-connected device, such as a CRM. This method is especially useful for augmenting your GA4 data with data points unavailable client-side—exactly what we need for our User ID use case.</p>
+
+<p>To send data to GA4 using the MP, you need to send a <code class="language-plaintext highlighter-rouge">POST</code> request from our system to the GA4 endpoint with the required parameters. The following example shows how to send a user property along with an event:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">measurementId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&lt;your-stream-id&gt;</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">apiSecret</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&lt;your-api-secret-value&gt;</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&lt;client-id&gt;</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Needs to match the client-side identifier</span>
+<span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&lt;user-id&gt;</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Ensure userId is defined</span>
+<span class="kd">const</span> <span class="nx">customerScore</span> <span class="o">=</span> <span class="nf">getCustomerScore</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span> <span class="c1">// Function to get user's customer score</span>
+
+<span class="kd">const</span> <span class="nx">queryParams</span> <span class="o">=</span> <span class="s2">`?measurement_id=</span><span class="p">${</span><span class="nx">measurementId</span><span class="p">}</span><span class="s2">&amp;api_secret=</span><span class="p">${</span><span class="nx">apiSecret</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`https://www.google-analytics.com/mp/collect</span><span class="p">${</span><span class="nx">queryParams</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">client_id</span><span class="p">:</span> <span class="nx">clientId</span><span class="p">,</span> <span class="c1">// The unique device identifier for a user.</span>
+  <span class="na">user_id</span><span class="p">:</span> <span class="nx">userId</span><span class="p">,</span> <span class="c1">// The unique identifier for a user.</span>
+  <span class="na">user_properties</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">customer_score</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">value</span><span class="p">:</span> <span class="nx">customerScore</span><span class="p">,</span> <span class="c1">// The user's customer score as a user property.</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">events</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">customer_score_enrichment</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The event name.</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+
+<span class="nf">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>In the snippet above, we “fetch” a customer score for a given User ID from our CRM system and send it to GA4 using the Measurement Protocol. The request includes the User ID, the user property <code class="language-plaintext highlighter-rouge">customer_score</code>, and an event named <code class="language-plaintext highlighter-rouge">customer_score_enrichment</code>.</p>
+
+<blockquote>
+  <p>Note: The sample above showcases how to send a user property along with an event, but sending a request that only contains user properties works just as fine.</p>
+</blockquote>
+
+<p>While the MP is a powerful tool, it can be challenging to fine-tune as it is easy to inflate the session count or fail to attribute events correctly to their session source. Hence, it requires a bit more technical know-how to set up and maintain—it’s a good idea to get technical support. If you want to learn more about the MP, I recommend checking out the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4">official documentation</a>.</p>
+
+<h3 id="using-gtm-server-side-and-firestore"><span class="mr-2">Using GTM Server-Side and Firestore</span><a href="#using-gtm-server-side-and-firestore" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>To simplify the retrieval of first-party data, GTM Server-Side (GTM SS) comes with a <em>Firestore Lookup variable</em>, allowing you to pull values from specific keys or fields in a Firestore document to enrich data streams routed through GTM SS.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-cdp/gtm-ss-firestore.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-cdp/gtm-ss-firestore.png" alt="gtm-ss-firestore" class="lazyload" data-proofer-ignore></a>
+<em>GTM SS Firestore Variable</em></p>
+
+<p>In the context of this blog post, we want to use the Firestore Lookup variable to enrich GA4 data with the customer score from the MP example. Our lookup key in this case is the User ID and we use the Firestore Lookup variable to retrieve a user’s respective score from a Firestore document and then send it to GA4 via a server-side event. This comes with the advantage that you can integrate the enrichment process directly into your existing measurement stack, making it easier to maintain and manage.</p>
+
+<blockquote>
+  <p>Note: Obviously, this requires that you have set up a Firestore database and populate it frequently with the users’ latest score values to ensure you feed GA4 with relevant data.</p>
+</blockquote>
+
+<h3 id="using-ga4-data-import"><span class="mr-2">Using GA4 Data Import</span><a href="#using-ga4-data-import" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>The last method for data enrichment I want to introduce to you is <em>GA4 Data Import</em>. This feature allows you to perform a wide range of imports, such as cost data for your marketing campaigns, item data for your e-commerce events, offline events, and user data. The latter is especially interesting for us, as it allows us to import user data based on User IDs.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-data-import.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-reporting-identity/ga4-data-import.png" alt="ga4-data-import" class="lazyload" data-proofer-ignore></a>
+<em>GA4 Data Import Interface</em></p>
+
+<p>To import user data based on User IDs, you must create a data set in GA4 and upload a CSV file containing the User IDs and the respective data you want to import. Alternatively, you can spin up an SFTP server and automate the upload of fresh import data that way.</p>
+
+<p>The data you upload will then be associated with the User IDs in GA4, allowing you to use it for analysis and audience building. For user data, the imported data is joined with the GA4 data upon <em>collection/processing time</em>, meaning that GA4 treats the imported data as if you collected it with the user’s event data from the beginning. The shortcoming of this approach is that the join doesn’t work retroactively, and GA4 will not join the imported with any of the historical data in your property.</p>
+
+<blockquote>
+  <p>Note: If you don’t use user IDs, GA4 also allows you to perform the import based on the device ID. This is especially handy for lead generation websites or websites that don’t have a login functionality.</p>
+</blockquote>
+
+<p>While the Data Import in its current state is a neat feature, adopting it could be more convenient. For example, manual uploads are suitable for one-off tests but otherwise impractical. The SFTP option comes with challenges and takes some time to set up correctly. I’m sure we’ll be able to use the Admin API to automate the import process in the future (like it was the case for Universal Analytics). Then, we could use serverless solutions (e.g., Cloud Run) to build simple, easy-to-maintain applications that automatically upload the data to GA4.</p>
+
+<p>If you feel like you need more information about GA4 Data Import based on User IDs, I recommend the <a href="https://support.google.com/analytics/answer/10071143">official documentation</a> to get started.</p>
+
+<h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Phew—let’s take a deep breath together! That was a lot of information to digest, but I hope I conveyed it in a way that is easy to understand and follow. Furthermore, I hope you now better understand the Reporting Identity in GA4—especially the User ID—its intricacies and how to get started implementing the different identity spaces.</p>
+
+<p>Blending all the identities together into one aggregated overview can sometimes make it hard to get a clear picture of your users. However, understanding how the numbers you see in the GA4 interface come into existence is crucial before you report them to your stakeholders. This knowledge will keep you informed and confident in your reporting.</p>
+
+<p>Hopefully, I’ve managed to pique your interest in GA4’s User ID feature. This feature, along with a solid understanding of the GA4 interface, can unlock more advanced activation use cases for your business. If you’re eager to learn more about the role GA4 can play in your data activation efforts, I encourage you to explore my article <a href="https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/">GA4 - the CDP You Didn’t Know You Had</a> for more insights and empowerment.</p>
+
+<p>If you have any questions or need further clarification, please don’t hesitate to contact me. I am always happy to help!</p>
+
+</div>
+
+<div class="post-tail-wrapper text-muted">
+
+  <!-- categories -->
+  
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    
+      <a href='/gunnargriese.github.io/categories/ga4/'>GA4</a>
+  </div>
+  
+
+  <!-- tags -->
+  
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw mr-1"></i>
+      
+      <a href="/gunnargriese.github.io/tags/ga4/"
+          class="post-tag no-text-decoration" >ga4</a>
+      
+  </div>
+  
+
+  <div class="post-tail-bottom
+    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+    <div class="license-wrapper">
+
+      
+
+        
+
+        This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+
+      
+    </div>
+
+    <!-- Post sharing snippet -->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+      
+      <a
+        href="https://twitter.com/intent/tweet?text=Who%20are%20my%20website%20users?%20And%20if%20so%20how%20many?%20-%20User%20IDs%20in%20GA4%20-%20Gunnar%20Griese&url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-reporting-identity%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Twitter"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <i class="fa-fw fab fa-twitter"></i>
+      </a>
+    
+      
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?title=Who%20are%20my%20website%20users?%20And%20if%20so%20how%20many?%20-%20User%20IDs%20in%20GA4%20-%20Gunnar%20Griese&u=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-reporting-identity%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Facebook"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+      
+      <a
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-reporting-identity%2F&text=Who%20are%20my%20website%20users?%20And%20if%20so%20how%20many?%20-%20User%20IDs%20in%20GA4%20-%20Gunnar%20Griese"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Telegram"
+        target="_blank"
+        rel="noopener"
+        aria-label="Telegram"
+      >
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <i
+      id="copy-link"
+      class="fa-fw fas fa-link small"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+    </i>
+  </span>
+</div>
+
+
+  </div><!-- .post-tail-bottom -->
+
+</div><!-- div.post-tail-wrapper -->
+
+
+      
+    
+      
+    </div>
+  </div>
+  <!-- #core-wrapper -->
+
+  <!-- panel -->
+  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+    <div class="access">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">Recently Updated</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/confidential-matching/">Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/firebase-analytics-debugging/">Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/ga4-time-travel-bridging-utc-and-local-timezones/">GA4 Time Travel - Bridging UTC and Local Timezones</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/posthog-gtm-template/">Unleash the Potential of PostHog Analytics Platform with Google Tag Manager</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/bigquery-path-exploration/">How to replicate the GA4 Path Exploration report with BigQuery SQL?</a>
+        </li>
+      
+    </ul>
+  </div>
+  <!-- #access-lastmod -->
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+
+    
+      
+      
+
+
+
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <div class="panel-heading pl-3 pt-2 mb-2">Contents</div>
+    <nav id="toc"></nav>
+  </div>
+
+  <!-- toc.js will be loaded at medium priority -->
+  <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+
+
+    
+  </div>
+</div>
+
+<!-- tail -->
+
+  <div class="row">
+    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
+      
+        
+        <!--
+  Recommend the other 3 posts according to the tags and categories of the current post,
+  if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<!-- Fill with the other newlest posts -->
+
+
+
+
+
+  <div id="related-posts" class="mb-2 mb-sm-4">
+    <h3
+      class="pt-2 mb-4 ml-1"
+      data-toc-skip
+    >
+      Further Reading
+    </h3>
+    <div class="card-deck mb-4">
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/firebase-analytics-debugging/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1683278655"
+  data-df="DD/MM/YYYY"
+  
+>
+  05/05/2023
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Are you a digital analyst looking to implement and debug Google Analytics tracking via Firebase for your mobile iOS apps and have no clue where to start? This blog post is for you! I’ll briefly wal...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/gtm-server-side/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1598016255"
+  data-df="DD/MM/YYYY"
+  
+>
+  21/08/2020
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>GTM Server-Side Tagging – Better Data & More Control</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Over the last many months we have been running a series of beta tests and projects for a group of selected clients to get both practical experience and to help optimize the recently released Google...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/bigquery-path-exploration/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1666517055"
+  data-df="DD/MM/YYYY"
+  
+>
+  23/10/2022
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>How to replicate the GA4 Path Exploration report with BigQuery SQL?</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  The New Google Analytics (GA4) comes with a new Exploration feature, which allows GA users to deep-dive into their data — beyond the capabilities of the built-in standard reports. While the standar...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+    <!-- .card-deck -->
+  </div>
+  <!-- #related-posts -->
+
+
+      
+        
+        <!-- Navigation buttons at the bottom of the post. -->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+    <a
+      href="/gunnargriese.github.io/posts/ga4-data-quality-at-scale/"
+      class="btn btn-outline-primary"
+      prompt="Older"
+    >
+      <p>Ensuring Data Quality for GA4 at Scale with Google Cloud Platform</p>
+    </a>
+  
+
+  
+    <a
+      href="/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/"
+      class="btn btn-outline-primary"
+      prompt="Newer"
+    >
+      <p>GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore</p>
+    </a>
+  
+</div>
+
+      
+        
+        <!--  The comments switcher -->
+
+  
+  <!-- The Disqus lazy loading. -->
+<div id="disqus_thread" class="pt-2 pb-2">
+  <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
+</div>
+
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/gunnargriese.github.io/posts/ga4-reporting-identity/';
+    this.page.identifier = '/posts/ga4-reporting-identity/';
+  };
+
+  /* Lazy loading */
+  var disqus_observer = new IntersectionObserver(
+    function (entries) {
+      if (entries[0].isIntersecting) {
+        (function () {
+          var d = document,
+            s = d.createElement('script');
+          s.src = 'https://gunnargriese-com.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+
+        disqus_observer.disconnect();
+      }
+    },
+    { threshold: [0] }
+  );
+
+  disqus_observer.observe(document.querySelector('#disqus_thread'));
+
+  /* Auto switch theme */
+  function reloadDisqus() {
+    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+      /* Disqus hasn't been loaded */
+      if (typeof DISQUS === 'undefined') {
+        return;
+      }
+
+      if (document.readyState == 'complete') {
+        DISQUS.reset({ reload: true, config: disqus_config });
+      }
+    }
+  }
+
+  if (document.querySelector('.mode-toggle')) {
+    window.addEventListener('message', reloadDisqus);
+  }
+</script>
+
+
+
+      
+    </div>
+  </div>
+
+
+      </div>
+
+      <!--
+  The Search results
+-->
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+  <div class="col-12 col-sm-11 post-content">
+    <div id="search-hints">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+    </div>
+    <!-- #main-wrapper -->
+
+    <!-- The Footer -->
+
+<footer>
+    <div class="container pl-lg-4 pr-lg-4">
+        <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
+            <div class="footer-left">
+                <p class="mb-0">
+                    © 2024
+                    <a href="https://github.com/GunnarGriese">Gunnar Griese</a>. 
+                    <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span> 
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <p class="mb-0"><!-- 
+          Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.
+          -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('search-results'),
+  json: '/gunnargriese.github.io/assets/js/data/search.json',
+  searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0">  <a href="{url}">{title}</a>  <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">    {categories}    {tags}  </div>  <p>{snippet}</p></div>',
+  noResultsText: '<p class="mt-5"></p>',
+  templateMiddleware: function(prop, value, template) {
+    if (prop === 'categories') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+      }
+    }
+
+    if (prop === 'tags') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+      }
+    }
+  }
+});
+</script>
+
+
+    <!-- JS selector for site. -->
+
+<!-- layout specified -->
+
+
+  
+
+
+
+  <!-- image lazy-loading & popup & clipboard -->
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/gunnargriese.github.io/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  </body>
+</html>
+

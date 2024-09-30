@@ -1,0 +1,225 @@
+[
+  
+  {
+    "title": "Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?",
+    "url": "/gunnargriese.github.io/posts/confidential-matching/",
+    "categories": "Privacy",
+    "tags": "privacy",
+    "date": "2024-09-17 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore",
+    "url": "/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/",
+    "categories": "GTM",
+    "tags": "gtm-server-side",
+    "date": "2024-09-10 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Who are my website users? And if so how many? - User IDs in GA4",
+    "url": "/gunnargriese.github.io/posts/ga4-reporting-identity/",
+    "categories": "GA4",
+    "tags": "ga4",
+    "date": "2024-09-01 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Ensuring Data Quality for GA4 at Scale with Google Cloud Platform",
+    "url": "/gunnargriese.github.io/posts/ga4-data-quality-at-scale/",
+    "categories": "GA4, BigQuery, GCP",
+    "tags": "ga4, bigquery, sql",
+    "date": "2024-07-06 00:00:01 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "tBD",
+    "content": "tBD"
+  },
+  
+  {
+    "title": "Mapping GA4 Conversions in BigQuery for Comprehensive Dashboarding",
+    "url": "/gunnargriese.github.io/posts/ga4-conversions-to-bigquery/",
+    "categories": "GA4, BigQuery",
+    "tags": "ga4, bigquery, sql",
+    "date": "2024-02-07 23:00:01 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Consent Mode v2 - A Comprehensive Technical Guide",
+    "url": "/gunnargriese.github.io/posts/consent-mode-v2/",
+    "categories": "GA4",
+    "tags": "ga4, gtm, gtm-server-side, consent-mode, firebase-analytics",
+    "date": "2024-01-30 23:00:01 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it",
+    "url": "/gunnargriese.github.io/posts/ga4-data-redaction/",
+    "categories": "GA4",
+    "tags": "ga4",
+    "date": "2023-09-26 06:21:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 - The CDP You Didn't Know You Had",
+    "url": "/gunnargriese.github.io/posts/ga4-the-cdp-you-didnt-know-you-had/",
+    "categories": "GA4",
+    "tags": "ga4, bigquery, gtm-server-side",
+    "date": "2023-08-12 12:14:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "GA4 Time Travel - Bridging UTC and Local Timezones",
+    "url": "/gunnargriese.github.io/posts/ga4-time-travel-bridging-utc-and-local-timezones/",
+    "categories": "GA4",
+    "tags": "ga4, bigquery",
+    "date": "2023-08-09 09:14:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "TBD",
+    "content": "TBD"
+  },
+  
+  {
+    "title": "Debugging von Google Analytics Tracking für Mobile Apps - Ein Leitfaden für Anfänger",
+    "url": "/gunnargriese.github.io/posts/firebase-analytics-debugging/",
+    "categories": "Firebase Analytics",
+    "tags": "ga4, firebase-analytics, charles-proxy, gtm, ios-debugger",
+    "date": "2023-05-05 11:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "Bist du ein digitaler Analyst, der Google Analytics Tracking über Firebase für deine mobilen iOS-Apps implementieren und debuggen möchte und keine Ahnung hat, wo du anfangen sollst? Dieser Blogbeit...",
+    "content": "Bist du ein digitaler Analyst, der Google Analytics Tracking über Firebase für deine mobilen iOS-Apps implementieren und debuggen möchte und keine Ahnung hat, wo du anfangen sollst? Dieser Blogbeitrag ist für dich! Ich werde dich kurz durch den Prozess der Einrichtung von Google Analytics Tracking mit dem Firebase SDK und Google Tag Manager (GTM) führen. Vor allem werde ich die effektivsten Debugging-Tools vorstellen, einschließlich Charles Proxy und David Vallejos iOS/Android Debugger, um dir zu helfen, eine genaue und zuverlässige Datenerfassung zu erreichen.Einführung in Google Analytics Tracking für AppsGoogle Analytics 4 (GA4) markiert das Debüt einer einheitlichen Plattform für das Tracking von Web- und Mobile-App-Daten in Googles Analytics-Suite. Diese Änderung erkennt den zunehmenden Trend an, dass Unternehmen ihre Websites und mobilen Apps als miteinander verbunden betrachten, anstatt als separate Verkaufskanäle. GA4 wurde entwickelt, um ein umfassenderes Verständnis der Benutzerinteraktionen über verschiedene Plattformen hinweg zu ermöglichen.Da GA4 Web- und App-Analysen enger integriert, müssen digitale Analysten ihr Wissen über App-Tracking erweitern, um das volle Potenzial von GA4 auszuschöpfen. Traditionell konzentrierten sich die meisten digitalen Analysten hauptsächlich auf Website-Messungen, die über Google Tag Manager (GTM) oder gtag.js implementiert wurden.Quelle: https://developers.google.com/analytics/devguides/collection/protocol/ga4Die Implementierung und das Debugging von GA4 für Apps unterscheidet sich jedoch erheblich vom webbasierten Ansatz und ist aufwändiger.Es gibt zwei Hauptmethoden, um GA4-Tracking in deinen mobilen Apps zu aktivieren:  Ausschließliche Verwendung des Firebase SDK  Verwendung des Firebase SDK in Verbindung mit GTM für Android/iOSFirebase SDKFirebase ist eine umfassende App-Entwicklungsplattform, die verschiedene Tools und Dienste anbietet, um Entwicklern beim Erstellen, Verbessern und Wachsen ihrer Apps zu helfen. Mit einer direkten Integration in GA4 über das Analytics Software Development Kit (SDK) bietet Firebase wertvolle Einblicke in das Benutzerverhalten und die App-Leistung.Durch die Integration des Firebase Analytics SDK in deine App kannst du die Leistungsfähigkeit von Google Analytics 4 (GA4) nutzen, um Benutzerinteraktionen, E-Commerce-Aktionen und andere wichtige Metriken zu verfolgen. Entwickler bevorzugen oft diesen Ansatz, da er fortschrittliche Datenerfassungs- und Analysefähigkeiten sowie zusätzliche Firebase-Funktionen wie Cloud Messaging und Crashlytics bietet.Google Tag Manager für AppsGTM bietet zwei Container-Typen für native App-Tagging-Setups: Android und iOS, die speziell für ihre jeweiligen App-Typen entwickelt wurden. Beide Container verfügen über mehrere Tag-Typen (hauptsächlich Google-spezifisch) sowie begrenzte Trigger- und Variablenmöglichkeiten im Vergleich zum GTM-Web-Container.Tag-Optionen im GTM iOS-ContainerObwohl GTM für Websites ein leistungsstarkes und praktisches Tool ist, um Messungen ohne notwendige Änderungen am Quellcode zu ermöglichen, ist es für App-Tracking aus zwei Hauptgründen weniger nützlich:  Die Möglichkeiten des App-Containers sind begrenzt. Zum Beispiel gibt es keine Möglichkeit, benutzerdefinierten Code über den Container in die App einzufügen, und nur wenige Anzeigen-Pixel werden unterstützt (wie bereits erwähnt).  App-Container sind aus Sicht des Debuggings und der Bereitstellung unpraktisch. Zum Beispiel musst du jedes Mal, wenn du Änderungen an deinem Container vornimmst, diesen exportieren, die exportierte JSON in deine App einbetten und eine neue App-Version veröffentlichen, damit deine Benutzer die Änderungen sehen können.Infolgedessen müssen grundlegende Änderungen im Quellcode der App vorgenommen werden, und die meisten Spezialisten sind sich einig, dass GTM-App-Container nicht die “Standard”-Wahl für dein Tracking-Setup sein sollten - stattdessen sollte es einen triftigen Grund für ihre Verwendung geben. Da du jedoch in realen Situationen auf diese Container-Typen stoßen könntest, wurden sie in dieser Übersicht zu deiner Information aufgenommen.Google Analytics Tracking für Apps einrichtenDer folgende Abschnitt bietet einen Überblick über die Implementierung von App-Tracking über das Firebase SDK und GTM für Apps. Da sich dieser Artikel hauptsächlich auf den Debugging-Prozess konzentriert und in der Praxis die SDK-Implementierung normalerweise von App-Entwicklern übernommen wird, werden wir nicht ins Detail gehen.Trotzdem ist es sehr empfehlenswert, dass du eine eigene Test-App einrichtest. Dadurch kannst du den SDK-Implementierungsprozess aus erster Hand erleben, die Tracking-Möglichkeiten von Firebase erkunden und letztendlich dein Verständnis von GA4 App-Tracking verbessern.Es gibt zahlreiche Tutorials, aber dieses sticht durch sein gut strukturiertes und leicht zu befolgendes Format hervor:Firebase SDK installierenUm Google Analytics Tracking mit dem Firebase SDK einzurichten, befolge bitte diese Schritte (weitere Details in der offiziellen Dokumentation):  Erstelle ein Firebase-Projekt in der Firebase-Konsole.  Füge deine iOS-App zum Projekt hinzu, indem du die Bundle-ID der App angibst.  Lade das Firebase SDK herunter und integriere es in deine App, indem du der offiziellen Dokumentation folgst.  Aktiviere GA4 in deinen Firebase-Projekteinstellungen.  Füge Consent Mode v2 zu deiner App hinzu, um die volle Verfügbarkeit von Googles Audience-Funktionen zu haben.  Implementiere Event-Tracking im Code deiner App, um bestimmte Benutzeraktionen und App-Leistung zu verfolgen.Google Tag Manager hinzufügenDa GTM für Apps im Wesentlichen eine Firebase-Erweiterung ist, funktioniert es nur, wenn du auch das Firebase SDK korrekt implementiert hast. Ansonsten sieht der Setup-Ablauf wie folgt aus (weitere Details in der offiziellen Dokumentation):  Füge das Google Tag Manager Paket hinzu  Erstelle einen iOS- oder Android-GTM-Container (falls zutreffend)  Nimm Änderungen in deinem GTM-Workspace vor und veröffentliche sie  Exportiere deine Container-Version (.json-Datei)  Füge die heruntergeladene Datei zu deinem App-Projekt hinzuGA4 Event-Tracking aktivierenUm Events für GA4 zu loggen, verwende die logEvent-Methode, die vom Firebase Analytics SDK bereitgestellt wird. Diese Methode erfordert einen Event-Namen und optional ein Bündel von Parametern, um zusätzliche Informationen über das Event bereitzustellen. Zum Beispiel könntest du ein benutzerdefiniertes “purchase”-Event mit den erforderlichen Parametern wie transaction_id, Artikelname, Preis und Währung loggen.// Ein Paar Jeggingsvar jeggings: [String: Any] = [  AnalyticsParameterItemID: \"SKU_123\",  AnalyticsParameterItemName: \"jeggings\",  AnalyticsParameterItemCategory: \"pants\",  AnalyticsParameterItemVariant: \"black\",  AnalyticsParameterItemBrand: \"Google\",  AnalyticsParameterPrice: 9.99,  AnalyticsParameterQuantity = 2]// Kaufparameter vorbereitenvar purchaseParams: [String: Any] = [  AnalyticsParameterTransactionID: \"T12345\",  AnalyticsParameterAffiliation: \"Google Store\",  AnalyticsParameterCurrency: \"USD\",  AnalyticsParameterValue: 14.98,  AnalyticsParameterTax: 2.58,  AnalyticsParameterShipping: 5.34,  AnalyticsParameterCoupon: \"SUMMER_FUN\"]// Artikel hinzufügenpurchaseParams[AnalyticsParameterItems] = [jeggings]// Kauf-Event loggenAnalytics.logEvent(AnalyticsEventPurchase, parameters: purchaseParams)Dieser Code-Snippet führt dazu, dass ein Kauf-Event von deiner App gesendet wird. Dieses Event wird von deinem GTM-Container erfasst, und du kannst das “purchase”-Event verwenden, um einen anderen Tag in deinem GTM-Container auszulösen (s. unten) und auf die Event-Parameter über eingebaute Variablen zugreifen.Für eine detailliertere Beschreibung des Setup-Prozesses kann ich empfehlen, Simo Ahavas Schnellstartanleitungen für Android und iOS durchzuarbeiten.Debugging von Google Analytics Tracking für AppsDie Bedeutung des Debuggings von Google Analytics Tracking kann nicht genug betont werden, da es eine genaue und zuverlässige Datenerfassung sicherstellt, die entscheidend für den Aufbau von Vertrauen und das Treffen fundierter Entscheidungen über App-Entwicklung und Marketingstrategien ist. Durch das Identifizieren und Lösen von Problemen wie fehlenden oder ungenauen Daten, Konfigurationsfehlern und SDK-Kompatibilität können du und deine Stakeholder ein umfassendes Verständnis des Benutzerverhaltens, der App-Leistung und der Verbesserungsmöglichkeiten gewinnen.In den folgenden Abschnitten werde ich dich durch die verfügbaren Optionen führen. Je nach deinen Ressourcen und deinem Setup empfehle ich dir, die für dich effizienteste Option zum Debuggen deiner Tagging-Implementierung zu wählen."
+  },
+  
+  {
+    "title": "Entfesseln Sie das Potenzial der PostHog Analytics-Plattform mit Google Tag Manager",
+    "url": "/gunnargriese.github.io/posts/posthog-gtm-template/",
+    "categories": "GTM",
+    "tags": "gtm, custom-templates, posthog",
+    "date": "2023-04-10 08:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiese...",
+    "content": "In der heutigen datengetriebenen Welt ist das Verständnis des Nutzerverhaltens für jedes Unternehmen entscheidend. Product Analytics-Plattformen wie PostHog haben sich als essentielle Tools erwiesen, um Einblicke darüber zu gewinnen, wie Nutzer mit Ihrer Website oder App interagieren. In diesem Blogbeitrag werden wir die PostHog Analytics-Plattform, ihre SDKs, insbesondere das JavaScript-SDK, Google Tag Manager Tag-Vorlagen und wie Du PostHog mit Google Tag Manager mithilfe einer benutzerdefinierten Tag-Vorlage integrieren kannst, näher betrachten.Einführung in die PostHog Analytics-PlattformPostHog ist eine Open-Source-Produktanalyseplattform, die Dir hilft, das Nutzerverhalten auf Ihrer Website oder App zu analysieren. Sie bietet ereignisbasiertes Tracking, Trichteranalyse, Nutzersegmentierung und andere wesentliche Funktionen, um zu verstehen, wie Nutzer mit dem Produkt interagieren, für das Du verantwortlich sind. Posthog hat einen ähnlichen Fokus wie Tools wie Mixpanel, Heap und Amplitude, die sich alle darauf spezialisiert haben, Produktmanagern und -analysten die erforderlichen Erkenntnisse zu liefern, um ihre Plattform auf die Bedürfnisse ihrer Nutzer zu optimieren.Wenn Du nach einer tiefgreifenden Analyse suchen, wie sich Produktanalyse von Marketing-Analyse unterscheidet, empfehle ich Dir, Adam Grecos Blogserie zu diesem Thema zu lesen.PostHog SDKs für die DatenerfassungPostHog selbst bietet eine Vielzahl von SDKs (Software Development Kits), um Dir die Datenerfassung von verschiedenen Plattformen zu erleichtern:  JavaScript: Zum Tracking von Nutzerinteraktionen auf Websites.  Python: Für Backend-Anwendungen oder Datenpipelines.  Ruby: Für Ruby on Rails-Anwendungen.  PHP: Für PHP-basierte Anwendungen.  Go: Für Anwendungen, die in Go geschrieben sind.  Node.js: Für serverseitige JavaScript-Anwendungen.  Android: Für Android-Apps.  iOS: Für iOS-Apps.Diese SDKs ermöglichen es Dir, PostHog-Tracking in Ihrer Anwendung oder Website zu implementieren, unabhängig von dem verwendeten Technologie-Stack.Details zum JavaScript-SDKDas PostHog JavaScript-SDK ist das am häufigsten verwendete SDK zum Tracking von Nutzerinteraktionen auf Websites. Es bietet eine einfache API zum Senden von Ereignissen, Identifizieren von Nutzern und Verwalten von Nutzereigenschaften. Du kannst damit benutzerdefinierte Ereignisse, Seitenaufrufe, Klicks, Formularübermittlungen und mehr mit minimalem Code erfassen.Das SDK unterstützt auch fortgeschrittene Funktionen wie Autocapture, das automatisch Nutzerinteraktionen mit Deiner Website verfolgt, ohne dass zusätzlicher Code erforderlich ist. Du kannst  das SDK nach Deinen Bedürfnissen konfigurieren, wie zum Beispiel das Deaktivieren bestimmter Funktionen oder das Anpassen der Datenerfassung.Google Tag Manager Benutzerdefinierte VorlagenDa ich persönlich die meiste Zeit mit Google Tag Manager (GTM) und Google Analytics (GA) arbeite, ist GTM tatsächlich mein bevorzugtes Tool, wenn es darum geht, JS-Tracking-Code auf Websites oder Web-Apps zu implementieren, und es wird weit verbreitet eingesetzt. Wenn Deine Organisation nicht nur Produktanalyse betreibt, sondern auch aktiv digitale Marketingkampagnen durchführt, besteht eine hohe Wahrscheinlichkeit, dass dein Produkt bereits GTM eingebettet hat.Google Tag Manager (GTM) ist ein leistungsstarkes Tool, mit dem Du Marketing-Tags, Analytics-Tracking und andere Code-Snippets auf Deiner Website verwalten und bereitstellen kannst, ohne dass manuelle Code-Aktualisierungen erforderlich sind. GTM verwendet Tag-Vorlagen, die vorgefertigte Code-Snippets sind, die an Ihre spezifischen Tracking-Anforderungen angepasst werden können.Tag-Vorlagen helfen dabei, den Prozess der Implementierung von Tracking-Skripten von Drittanbietern, wie PostHog, auf Deiner Website zu optimieren. Sie ermöglichen es Dir, Tracking-Einstellungen zu konfigurieren, ohne direkt Code zu bearbeiten, was die Verwaltung und Pflege Deiner Tracking-Implementierungen erleichtert. Diese Vorlagen können in die GTM-Vorlagengalerie eingereicht werden und stehen dann allen zur Verfügung, die sie nutzen möchten.Der Haken ist, dass PostHog noch keine offizielle Vorlage veröffentlicht hat, um ihr JS-SDK über GTM auszuführen. Deshalb habe ich mich daran gemacht, (die meisten) Funktionalitäten des PostHog JS-SDK in GTM zu bringen, ohne dass (potenziell schädliche) benutzerdefinierte HTML-Tags bereitgestellt werden müssen.Integration von PostHog mit Google Tag Manager mithilfe der bereitgestellten VorlageDie bereitgestellte PostHog GTM-Tag-Vorlage macht es einfach, PostHog-Tracking in Ihren GTM-Container zu integrieren.Implementierung eines benutzerdefinierten Ereignisses mit Ereignisparametern mithilfe der GTM-VorlageMit dieser Vorlage kannst Du Ereignisse, Nutzereigenschaften und Konfigurationseinstellungen direkt von Deinem GTM-Arbeitsbereich aus verwalten. Hier ist, was Du mit der Vorlage tun kannst:  Initialisiere PostHog mit verschiedenen Konfigurationsoptionen.  Erfasse Ereignisse und virtuelle Seitenaufrufe mit benutzerdefinierten Eigenschaften.  Identifiziere Nutzer mit Nutzereigenschaften.Weiter unten habe ich einige Beispiele für die Funktionalitäten der GTM-Vorlage gelistet.Initialisierung — GrundkonfigurationBeispielhafte Konfiguration des Initialisierungs-TagsSiehe detaillierte Dokumentation für jede der Konfigurationsoptionen hier. Die in der Tag-Vorlage repräsentierten Konfigurationsoptionen sind:  apiHost: Die Domain Ihrer PostHog-Instanz (z.B. https://app.posthog.com). Das Tag wird /static/array.js an diesen Wert anhängen, um die tatsächliche Anfrage-URL zu erstellen.  apiKey: PostHog-Projekt-API-Schlüssel  autocapture_tuning: Benutzerdefinierte Allowlist-Einstellungen für Autocapture.  autocapture_off: Deaktiviere Autocapture vollständig.  capture_pageview: Aktiviere/Deaktiviere die Erfassung von Seitenaufrufen.  capture_pageleave: Aktiviere/Deaktiviere die Erfassung von Seitenverlassensereignissen.  cross_subdomain_cookie: Aktiviere/Deaktiviere Subdomain-übergreifendes Cookie-Tracking.  disable_persistence: Aktiviere/Deaktiviere die Cookie/LocalStorage-Persistenz.  disable_session_recording: Aktiviere/Deaktiviere  die Sitzungsaufzeichnung.  enable_recording_console_log: Aktiviere/Deaktiviere die Aufzeichnung von Konsolenprotokollen.  mask_all_text: Aktiviere/Deaktiviere die Maskierung allen Textes.Initialisierung — Erweiterte Tracker-KonfigurationBeispielhafte Callback-FunktionDie PostHog-Bibliothek kann mit einem Callback initiiert werden (z.B. Aufruf von identify), der ausgeführt wird, sobald die Bibliothek geladen wurde.Damit die Callback-Funktion in der GTM-Vorlagenversion funktioniert, musst Du eine benutzerdefinierte JS-Variable im Feld loaded referenzieren (s. Screenshot im Abschnitt Grundkonfiguration), die eine Funktion zurückgibt.Sobald die PostHog-Skripte verarbeitet und der Tracker initiiert ist, wird diese Funktion ausgeführt.Benutzerdefinierte Ereignisse, Nutzereigenschaften und EreignisparameterBeispielhafte Implementierung eines benutzerdefinierten Ereignis-TagsMit der GTM-Vorlage kannst Du mühelos benutzerdefinierte Ereignisse (sowie virtuelle Seitenaufrufe) verfolgen und sie mit fein abgestimmten Ereignisparametern anreichern, was ein umfassendes Verständnis der Nutzerengagement-Muster ermöglicht. Darüber hinaus hat die Vorlage die Funktionalität des JavaScript-SDK übernommen, die es Dir ermöglicht, Nutzereigenschaften sowohl mit den Methoden $set als auch $set_once festzulegen, was Dir die Flexibilität gibt, zwischen dem Aktualisieren von Werten oder dem Bewahren der ursprünglichen Nutzerattribute zu wählen.Wie fange ich an?Bitte zögere nicht, die Vorlage herunterzuladen von meinem GitHub und sie auszuprobieren. Ich freue mich über jedes Feedback, um die Vorlage zu verbessern, mehr Funktionalitäten aus dem Original-SDK einzubeziehen und potenzielle Fehler zu beheben, wenn sie auftreten.Um die Vorlage zu verwenden, importiere sie einfach in deinen GTM-Arbeitsbereich, erstelle ein neues Tag mit der Vorlage und konfiguriere die Einstellungen basierend auf deinen Bedürfnissen. Diese Integration stellt sicher, dass Du sowohl PostHog als auch Google Tag Manager voll ausnutzen kannst, um Einblicke in das Nutzerverhalten auf deiner Website oder App zu gewinnen.Während dieser Artikel einen Ansatz skizziert, wie man PostHog über GTM implementiert, möchtest Du vielleicht auf PostHog’s großartige und leicht zu befolgende Dokumentation zurückgreifen, um deine Arbeit mit der Plattform zu beginnen.ZusammenfassungZusammenfassend lässt sich sagen, dass PostHog eine leistungsstarke Analyseplattform ist, die Dir helfen kann, deine Nutzer besser zu verstehen. Durch die Integration mit Google Tag Manager mithilfe der bereitgestellten Tag-Vorlage kannst Du den Implementierungsprozess optimieren und dein Tracking-Setup effizient verwalten. Diese Kombination von PostHog und Google Tag Manager wird hoffentlich dazu beitragen, Implementierungsprojekte zu beschleunigen und dich in die Lage versetzen, noch schneller datengesteuerte Entscheidungen treffen zu können. Also los, erforsche das Potenzial der PostHog-Analyseplattform und der Google Tag Manager-Integration und erschließe neue Erkenntnisse über das Verhalten deiner Nutzer. Happy tracking!"
+  },
+  
+  {
+    "title": "Wie repliziere ich den GA4 Path Exploration-Bericht mit BigQuery SQL?",
+    "url": "/gunnargriese.github.io/posts/bigquery-path-exploration/",
+    "categories": "BigQuery",
+    "tags": "ga4, bigquery, sql",
+    "date": "2022-10-23 11:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "Das neue Google Analytics (GA4) bietet eine neue Explorationsfunktion, mit der GA-Nutzer tiefer in ihre Daten eintauchen können — und zwar über die Möglichkeiten der standardmäßig integrierten Beri...",
+    "content": "Das neue Google Analytics (GA4) bietet eine neue Explorationsfunktion, mit der GA-Nutzer tiefer in ihre Daten eintauchen können — und zwar über die Möglichkeiten der standardmäßig integrierten Berichte hinaus. Während die Standardberichte das Monitoring von wichtigen Geschäftskennzahlen ermöglichen, bietet der Explorationsbereich erweiterte Analysetechniken, um schnell Ad-hoc-Einblicke zu gewinnen.Die verfügbaren Analysetechniken sind die folgenden:  Explorative Datenanalyse im freien Format  Explorative Kohortenanalyse  Explorative Trichteranalyse  Segmentüberschneidung*  Explorative Nutzeranalyse  Explorative Pfadanalyse  Nutzer-LifetimeSchauen Sie sich die offizielle Google Dokumentation für eine ausführlichere Einführung in die leistungsstarke Explorationsfunktion von GA4 an.Explorative Pfadanalyse in GA4Der Pfad-Explorationsbericht ermöglicht es, Nutzerinteraktionen ab einem bestimmten Ereignis/einer bestimmten Seite vorwärts (Startpunkt) oder rückwärts (Endpunkt) aggregiert zu visualisieren. Analysten können mit dieser Technik Fragen wie die folgenden beantworten:  Welche Top-Seiten rufen neue Nutzer nach dem Besuch der Startseite auf?  Wie wirkt sich ein Ereignis auf nachfolgende Nutzeraktionen aus?  Welche Seiten enthalten defekte Links zu 404-Seiten?Elemente der Pfad-ExplorationDie Visualisierung ist ein Sankey-Diagramm, bei dem jeder Knoten ein Ereignis oder eine Seite darstellt. Analysten können nach Belieben Knoten hinzufügen, um weitere Sequenzelemente offenzulegen, und Segmente, Filter sowie Aufschlüsselungsdimensionen anwenden, um den Bericht an ihre Bedürfnisse anzupassen.Verwendung von BigQuery zur DatenextraktionObwohl diese Analysetechnik mächtig ist, ist sie nicht immer das ideale Werkzeug, um diese Einblicke mit Stakeholdern zu teilen — insbesondere nicht mit denen, die mit GA nicht vertraut sind. Glücklicherweise haben alle GA4-Nutzer die Möglichkeit, ihre GA4-Daten in BigQuery zu exportieren (Googles cloudbasierte, vollständig verwaltete Datenbank für analytische Workloads).Um kritische Nutzerflüsse kontinuierlich zu überwachen und sie in Ihre Standard-Berichtswerkzeuge (z. B. Looker Studio, Power BI oder Tableau) einzubetten, sollten Sie die GA4-Rohdaten in BigQuery nutzen und die Daten extrahieren. Aber…Wie repliziere ich einen einfachen GA4 Path Exploration-Bericht in BigQuery?Wir können Fensterfunktionen in BigQuery verwenden, um die page_location-Sequenzen über alle Sitzungen hinweg, die mit GA4 gemessen wurden, zu aggregieren. Eine Abfrage könnte so aussehen:Abfrageergebnis für Pfad-Exploration mit StartpunktDie Kernelemente der Abfrage sind die folgenden:  ga4EventParams-Funktion  LEAD()-Funktion über eine Sitzungs-WINDOW  Temporäre Tabelle, die in einer WITH-Klausel definiert istBenutzerdefinierte Funktionen zur Erhöhung der LesbarkeitDa wir daran interessiert sind, die page_location für jedes zugehörige page_view-Ereignis zu erhalten, ist page_location der Schlüssel, den wir als Eingabe für die Funktion bereitstellen. Die ga4EventParams-Funktion gibt den entsprechenden Wert für den eingegebenen Schlüssel aus dem event_params RECORD zurück. Weitere Details finden Sie in Alejandros Beiträgen zur Verwendung einer BigQuery-Funktion.Fensterfunktionen zur Abfrage von SequenzenDie LEAD()-Navigationsfunktion ermöglicht es uns, nachfolgende Zeilen aus einem angegebenen Fenster abzufragen. Das Ändern des Offset-Werts bestimmt, welche nachfolgende Zeile zurückgegeben wird; der Standardwert ist 1, was die nächste Zeile im Fensterrahmen angibt. Der Offset-Wert kann verwendet werden, um je nach Analyse mehr Knoten zu Ihrer Abfrage hinzuzufügen. Im obigen Beispiel wurden 3 zusätzliche Knoten (neben dem Startpunkt) einbezogen.Die obenstehende WINDOW-Klausel bewirkt, dass sich das Fenster über die Sitzung eines Nutzers erstreckt. Um das Fenster nutzerspezifisch zu gestalten, entfernen Sie den Verweis auf ga_session_id.Temporäre Tabellen zur Speicherung von ZwischenergebnissenDie temporäre Tabelle ermöglicht es uns, die resultierende Tabelle — eine Zeile pro page_view-Ereignis mit den nachfolgenden page_locations als Spalten — als Zwischenergebnis im Speicher (Daten) zu speichern und sie in einem späteren Teil der Abfrage verfügbar zu machen. Die Datentabelle wird dann in der abschließenden FROM-Klausel verwendet, um die Häufigkeit jeder Sequenz über alle Sitzungen hinweg zu zählen.Wie schaut man in der Zeit zurück?  Das klingt ja gut und schön, aber wie startet man die Sequenz am Ende und arbeitet sich von dort rückwärts?Gute Frage, insbesondere weil die Festlegung des Endpunkts und die Analyse, wie Nutzer dorthin gelangten, eine wesentliche Funktion der Pfad-Explorationstechnik von GA4 ist.Glücklicherweise erfordert dies nur wenige Anpassungen in unserer temporären Tabelle, wie hier:Abfragebeispiel für Pfad-Exploration mit EndpunktDurch einfaches Ersetzen von LEAD() durch LAG() geben wir den Wert der page_location in der vorherigen Zeile zurück. Also das vorherige page_view-Ereignis einer Sitzung.Wie startet man die Sequenz mit der tatsächlichen Einstiegsseite?Um dies zu erreichen, müssen wir erneut auf die uns vertraute LEAD()-Funktion zurückgreifen und eine Spalte zu unserer temporären Tabelle hinzufügen — den entrances-Ereignisparameter. Dieser zeigt an, ob ein bestimmtes page_view-Ereignis das erste innerhalb einer Sitzung war und somit die Einstiegsseite ist.Das Filtern nach Sequenzen, die auf der Einstiegsseite beginnen, liefert das gewünschte Ergebnis:Abfragebeispiel für Pfad-Exploration mit der Einstiegsseite als StartpunktAbschließende BemerkungenIch hoffe, dass dieser Post wDich hilfreich war und Dich ermutigt, tiefer in die BigQuery-Rohdaten von GA4 einzutauchen. Aus meiner Sicht ist der Zugriff auf die Rohdaten einer der größten Vorteile, die man beim Umstieg von Universal Analytics auf GA4 erhält. Ich beabsichtige, weitere Anwendungsfälle zu identifizieren, um die Möglichkeiten und Grenzen von GA4 und BigQuery zu erkunden. Falls Sie Fehler in den Abfragen entdecken, Anmerkungen haben oder etwas unklar finden, kontaktieren Sie mich gerne. Ich spreche immer gerne über Analytics!"
+  },
+  
+  {
+    "title": "GTM Server-Side Tagging – Bessere Daten & Mehr Kontrolle",
+    "url": "/gunnargriese.github.io/posts/gtm-server-side/",
+    "categories": "GTM",
+    "tags": "ga4, gtm-server-side",
+    "date": "2020-08-21 15:24:15 +0200",
+    
+
+
+
+
+
+    
+    "snippet": "In den letzten Monaten habe ich eine Reihe von Beta-Tests und Projekten für eine ausgewählte Gruppe von Kunden durchgeführt, um sowohl praktische Erfahrungen zu sammeln als auch die kürzlich veröff...",
+    "content": "In den letzten Monaten habe ich eine Reihe von Beta-Tests und Projekten für eine ausgewählte Gruppe von Kunden durchgeführt, um sowohl praktische Erfahrungen zu sammeln als auch die kürzlich veröffentlichte Technologie des Google Tag Manager (GTM) Server-Side Taggings zu optimieren.Mein Ziel mit diesem Post ist es, sowohl Hintergrundinformationen als auch den Kontext zu liefern, warum ich der Meinung bin, dass die allermeisten Unternehmen ernsthaft in Betracht ziehen sollten, GTM Server-Side Tagging zu übernehmen, um ihr Tracking besser zu unterstützen. Darüber hinaus erhältst Du einen Überblick über die Funktionalität und mögliche Anwendungsfälle dieser neuen Technologie, um sich auf ein zukunftssicheres First-Party-Tracking einzustellen, die Kundenerfahrung insgesamt zu verbessern und die volle Kontrolle über deine Daten zu erlangen.Die wichtigste Erkenntnis ist, dass GTM Server-Side die Flexibilität und Kontrolle über Ihre Daten erhöht und den langfristigen Nutzen der Lösung für das Unternehmen weit über das hinausgeht, was mit einem herkömmlichen, client-seitigem Google Tag Manager-Setup möglich ist.Nichts geht über Datenkontrolle und 1st-Party-DatenHeutzutage stehen Unternehmen vor vielen Herausforderungen, die sie dazu zwingen, die Art und Weise, wie sie Website- und App-Tracking durchführen, neu zu überdenken. Zum Glück eröffnen diese Herausforderungen mit GTM Server-Side auch viele neue Möglichkeiten für Unternehmen, die bereit sind, sich anzupassen und zu verändern. Traditionelles Tracking steht jedoch vor vielen Problemen, die es technisch unmöglich machen, “Tracking wie gewohnt” fortzusetzen.Eine dieser Herausforderungen ist das neue “Privacy first”-Paradigma, das uns durch Vorschriften wie die DSGVO (EU) und den CCPA (Kalifornien) auferlegt wird. Auch Browser-Anbieter sind in den letzten Jahren deutlich datenschutzbewusster geworden und möchten die Daten ihrer Nutzer besser vor allzu datenhungrigen Adtech-Tools schützen.Ähnlich schränken Initiativen wie Safaris “Intelligent Tracking Prevention” (ITP) und Firefox’ “Enhanced Tracking Prevention” (ETP) den Zugriff auf häufig verwendete Browser-Speicheroptionen (insbesondere Cookies und lokalen Speicher) stark ein. Google hat kürzlich ebenfalls angekündigt, dass sie Drittanbieter-Cookies in ihrem Chrome-Browser innerhalb der nächsten zwei Jahre vollständig abschaffen werden (ein sogenannter “Privacy Sandbox” wird Drittanbieter-Cookies ersetzen).Oft haben Werbetreibende auch JavaScript-Snippets auf ihren Websites implementiert, ohne sich über deren volle Funktionalität im Klaren zu sein, was dazu führt, dass sie die Kontrolle über die Daten ihrer Nutzer an unbekannte Dritte abgeben und damit massive Datenschutzverletzungen überhaupt erst ermöglichen.Daher sollten wir die allgemeine Richtung dieser Maßnahmen begrüßen, da sie dazu beitragen, unsere persönlichen Daten zu sichern, die Branche zu erwachsen werden zu lassen und verlorenes Vertrauen zurückzugewinnen – mit dem Ziel, fragwürdige “Wild-West-Tracking”-Praktiken zu beenden.Der Hauptnachteil dieser Bewegung ist jedoch, dass sie auch Auswirkungen auf geschäftskritische Datenerhebungen basierend auf Nutzerzustimmungen hat: Das technische und regulatorische Umfeld, in dem traditionelles Website- und App-Tracking eingebettet ist, macht es uns schwer, das Verhalten spezifischer Nutzer nachzuverfolgen – was unsere Fähigkeit, die Bedürfnisse der Nutzer zu verstehen, einschränkt.GTM Server-Side Tagging als LösungDer Google Tag Manager (GTM) kommt jetzt mit einer neuen Funktion (derzeit im Beta-Status), die es Unternehmen ermöglicht, ein First-Party-Analytics-Setup zu erstellen. GTM Server-Side Tagging ist da, um die Art und Weise zu verändern, wie Website- und App-Tracking implementiert wird und wie Daten mit Dritten geteilt werden. In den nachfolgenden Abschnitten erläutere ich, wie diese Funktion hilft, die Benutzererfahrung auf der Website zu verbessern, die Sicherheit der Nutzerdaten zu erhöhen und die Kontrolle über die Datenerfassung zu stärken.Wie funktioniert es?Während der GTM Server-Side Container neue Tools und Funktionen zur Messung der Nutzeraktivität bereitstellt, bleibt das allgemeine Modell von Tags, Triggern und Variablen unverändert.Quelle: https://developers.google.com/tag-platform/tag-manager/server-side/introGTM Server-Side Tagging bedeutet, dass ein neuer „Server“-Container auf einer App Engine-Instanz läuft – idealerweise der Namespace deiner Domain – in deiner eigenen Google Cloud Platform (GCP)-Projekt. Es ist dann möglich, HTTP-Anfragen vom Gerät des Nutzers oder einem anderen internetfähigen Gerät an den Server zu senden. Der GTM-Server wandelt diese Anfragen in Ereignisse um, die von den Tags, Triggern und Variablen des Containers verarbeitet werden.Während das bekannte Konzept von Tags, Triggern und Variablen wie gewohnt in clientseitigen GTM-Containern funktioniert, ist der neu eingeführte „Client“ die Brücke zwischen den Geräten, die Anfragen senden, und der Logik des Containers. Der Client kann Anfragen empfangen und beanspruchen (sowie die damit gesendeten Daten), sie in ein oder mehrere Ereignisse parsen, Daten zur Verarbeitung an den Container (Tags, Trigger und Variablen) weiterleiten und eine HTTP-Antwort an das anfragende Gerät zurücksenden.Kontrolle und Flexibilität über Daten gewinnenDer Unterschied zu einem Tracking, das auf clientseitigem JavaScript und Pixeln basiert, besteht darin, dass Sie die volle Kontrolle und Flexibilität darüber haben, wie die Daten verarbeitet werden, bevor Sie sie an Drittanbieter-Tools senden (ermöglicht Hit-Validierung, PII-Kontrollen usw.). Da der GTM-Server (https://gtm.example.com) mit der gleichen Domain wie Ihre Website (https://example.com) verbunden ist, wird jede Interaktion zwischen ihnen vom Browser des Nutzers als First-Party-Datenaustausch betrachtet.Einschränkungen durch Browser-Tracking-Prävention und Adblocker mindernDurch diesen Kontextwechsel werden erhebliche Einschränkungen durch die Browser-Tracking-Prävention umgangen, da Du die Möglichkeit erhältst, First-Party-HTTP-Cookies zu setzen (z. B. führt GTM Server-Side ein neues FPID-Cookie ein). Beispielsweise wird Safaris ITP nun nicht mehr die Lebensdauer von Cookies einschränken, die mit Google Analytics verbunden sind, wenn diese serverseitig gesetzt werden, was zu einer besseren Datenqualität für Berichte und Analysen führt (insbesondere relevant für Unternehmen mit einer jungen und technikaffinen Zielgruppe). Du solltest jedoch bedenken, dass diese neue “Macht” große Verantwortung mit sich bringt, und Du solltest sich stets der rechtlichen und ethischen Implikationen des Setzens von Cookies und der Datenerhebung bewusst sein.Welche Anwendungsfälle können sich ergeben?GTM Server-Side Tracking stellt die Transparenz bei der Nutzung von Drittanbieter-Tools und Websites wieder her, doch darüber hinaus gibt es noch einige andere Vorteile des serverseitigen Trackings, die starke Anwendungsfälle für Unternehmen schaffen können.Verbesserte Datengenauigkeit und KontrolleDie Datengenauigkeit kann noch weiter verbessert werden, wenn Unternehmen sich entscheiden, die serverseitige Kommunikation für geschäftskritische Ereignisse wie Transaktionen zu nutzen. Wir alle haben schon Diskrepanzen zwischen der Anzahl von Transaktionen in Google Analytics (GA) und CRM-Systemen erlebt, die auf Adblocker und andere Nebeneffekte des clientseitigen Trackings (Seiten-Neuladungen usw.) zurückzuführen sind. Dies kann vermieden werden, indem das clientseitige Tracking von Transaktionen entfernt und die erforderlichen Datenpunkte direkt von deinem CRM-Systemen an den GTM-Server gesendet werden, um sie an GA zur Analyse weiterzuleiten.Verbesserte Seitenladegeschwindigkeit und DatensicherheitGenerell kann serverseitiges Tracking die Verarbeitungsbelastung von einem bestimmten Browser in die Cloud verlagern. Da eine HTTP-Anfrage ausreicht, um ein Ereignis im Server-Side-Container auszulösen, kann sie mehrere Tags in der serverseitigen Umgebung auslösen. Beispielsweise könnte der Client bei jedem Seitenaufruf eine HTTP-Anfrage senden, die einen Seitenaufruf für GA und Facebook gleichzeitig auslöst. Da kein von Facebook geschriebenes JavaScript im Browser des Nutzers ausgeführt werden muss, könnte das serverseitige Tracking die Seitenladegeschwindigkeit erhöhen. Da dies die Benutzererfahrung positiv beeinflusst, kann dies deine Conversion Rates steigern.Nahtlose Integration in die Google Cloud PlatformDarüber hinaus wird es durch die Ausführung des GTM-Containers in der Google-Cloud-Integration wahrscheinlich bald möglich sein, andere GCP-Ressourcen wie BigQuery, ML Engine und Cloud Functions zu integrieren. Dies wird zahlreiche Möglichkeiten für fortgeschrittene Anwendungsfälle eröffnen, die maschinelles Lernen und eventbasierte Analysen nutzen.Sobald diese neue GTM-Funktion aus der Beta-Phase herauskommt und basierend auf Funktionsanforderungen und Beiträgen aktiver Community-Mitglieder verbessert wird, werden noch mehr Möglichkeiten verfügbar sein, was die Tracking-Implementierungen auf Basis von GTM erheblich verändern wird.  Hinweis: Mehr über die Möglichkeiten der Integration von GCP-Diensten in GTM Server-Side, um in Zukunft leistungsstarke Anwendungsfälle freizuschalten, erfährst DU in meiner neuesten Blog-Serie.Abschließende GedankenDie Veröffentlichung des GTM Server-Side Containers setzt einen allgemeinen Trend fort, der bei vielen Google Marketing Platform-Tools zu beobachten ist: die Stärkung der Tool-Integration und die Hinwendung zur GCP. Durch diese Strategie stellt Google einen reibungslosen Datenfluss zwischen den Systemen sicher und erhöht gleichzeitig die Funktionalität jedes Tools, um mit dem sich ständig ändernden Adtech-Umfeld Schritt zu halten."
+  }
+  
+]
+

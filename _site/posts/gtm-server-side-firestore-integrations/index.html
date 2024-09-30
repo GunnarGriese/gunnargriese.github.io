@@ -1,0 +1,3443 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="" 
+  
+>
+  <!-- The Head -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://trakker.gunnargriese.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager - GA4 Lite Tester 
+        
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" type="text/javascript" async></script>
+
+    
+
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PZV75QZ');
+    </script>
+    End Google Tag Manager -->
+
+           <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore" />
+<meta name="author" content="Gunnar Griese" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="For those who have been following the evolution of GTM Server-Side (sGTM) and Google Cloud Platform (GCP) services, you might recall my early enthusiasm about the potential integrations. In a previous blog post about GTM Server-Side, I highlighted the prospect of enriching the clickstream data collected by GA4 with the help of other GCP services. Here is what I wrote about this way back in August 2020:" />
+<meta property="og:description" content="For those who have been following the evolution of GTM Server-Side (sGTM) and Google Cloud Platform (GCP) services, you might recall my early enthusiasm about the potential integrations. In a previous blog post about GTM Server-Side, I highlighted the prospect of enriching the clickstream data collected by GA4 with the help of other GCP services. Here is what I wrote about this way back in August 2020:" />
+<link rel="canonical" href="http://localhost:4000/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/" />
+<meta property="og:url" content="http://localhost:4000/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/" />
+<meta property="og:site_name" content="Gunnar Griese" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-09-10T00:00:01+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore" />
+<meta name="twitter:site" content="@GeezerGunner" />
+<meta name="twitter:creator" content="@Gunnar Griese" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gunnar Griese","url":"https://gunnargriese.com"},"dateModified":"2024-09-10T00:00:01+02:00","datePublished":"2024-09-10T00:00:01+02:00","description":"For those who have been following the evolution of GTM Server-Side (sGTM) and Google Cloud Platform (GCP) services, you might recall my early enthusiasm about the potential integrations. In a previous blog post about GTM Server-Side, I highlighted the prospect of enriching the clickstream data collected by GA4 with the help of other GCP services. Here is what I wrote about this way back in August 2020:","headline":"GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/"},"url":"http://localhost:4000/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <title>GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore | Gunnar Griese
+    </title>
+
+    <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/gunnargriese.github.io/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/gunnargriese.github.io/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/gunnargriese.github.io/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/gunnargriese.github.io/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/gunnargriese.github.io/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Gunnar Griese">
+<meta name="application-name" content="Gunnar Griese">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/gunnargriese.github.io/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" > 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"> 
+
+    <!-- GA -->
+    
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/gunnargriese.github.io/assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css">  
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> 
+
+    <!-- JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+     <!--
+  Switch the mode between dark and light.
+-->
+
+<script type="text/javascript">
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get MODE_ATTR() { return "data-mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+    static get ID() { return "mode-toggle"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage({
+        direction: ModeToggle.ID,
+        message: this.modeStatus
+      }, "*");
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+  <!-- A placeholder to allow defining custom metadata -->
+
+
+    <!-- Page Metadata for DL -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'page_view',
+            page_meta: {
+                layout: 'post',
+                page_title: document.title,
+                page_location: document.URL,
+                published_at: '2024-09-10T00:00:01+02:00',
+            },
+            author: {
+                name: 'gunnar',
+                url: '',
+            },
+            environment: 'development',
+        })
+    </script>
+    <!-- End Page Metadata for DL -->
+
+</head>
+
+  <body data-topbar-visible="true">
+    <!-- The Side Bar -->
+
+<div id="sidebar" class="d-flex flex-column align-items-end">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="/gunnargriese.github.io/" class="mx-auto">
+        
+          
+          <img src="/gunnargriese.github.io/assets/img/avatar/gunnar-speaking-resized.jpg" alt="avatar" onerror="this.style.display='none'">
+        
+      </a>
+    </div>
+
+    <div class="site-title">
+      <a href="/gunnargriese.github.io/">Gunnar Griese</a>
+    </div>
+    <div class="site-subtitle font-italic">Self-employed analytics consultant & tech enthusiast.</div>
+  </div>
+  <!-- .profile-wrapper -->
+
+  <ul class="w-100">
+    <!-- home -->
+    <li class="nav-item">
+      <a href="/gunnargriese.github.io/" class="nav-link">
+        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>HOME</span>
+      </a>
+    </li>
+    <!-- the real tabs -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/services/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>SERVICES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/about/" class="nav-link">
+          <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ABOUT</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tools/" class="nav-link">
+          <i class="fa-fw fas fa-tools ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TOOLS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/categories/" class="nav-link">
+          <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>CATEGORIES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tags/" class="nav-link">
+          <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TAGS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/archives/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ARCHIVES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+  </ul>
+  <!-- ul.nav.flex-column -->
+
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+    
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/GunnarGriese"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/GeezerGunner"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['gunnar.griese.gg','gmail.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://www.linkedin.com/in/gunnar-griese/"
+          aria-label="linkedin"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</div>
+<!-- #sidebar -->
+
+
+    <!-- The Top Bar -->
+
+<div id="topbar-wrapper">
+  <div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4">
+    <span id="breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/gunnargriese.github.io/">
+                Home
+              </a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore</span>
+            
+
+          
+        
+      
+    </span>
+    <!-- endof #breadcrumb -->
+
+    <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <i id="search-trigger" class="fas fa-search fa-fw"></i>
+    <span id="search-wrapper" class="align-items-center">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </span>
+    <span id="search-cancel">Cancel</span>
+  </div>
+</div>
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+      
+
+      
+        
+      
+        <!--
+  Refactor the HTML structure.
+-->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+<!-- images -->
+
+
+
+
+  
+  
+
+  <!-- CDN URL -->
+  
+
+  <!-- Add image path -->
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+
+  
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+<h1 data-toc-skip>GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      Posted
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class=""
+  data-ts="1725919201"
+  data-df="ll"
+  
+    data-toggle="tooltip" data-placement="bottom"
+  
+>
+  Sep 10, 2024
+</em>
+
+    </span>
+
+    <!-- lastmod date -->
+    
+
+  
+
+  <div class="d-flex justify-content-between">
+    <!-- author(s) -->
+    <span>
+      
+
+      By
+
+      <em>
+      
+        
+          <a href="https://gunnargriese.com">Gunnar Griese</a>
+          
+        
+      
+      </em>
+    </span>
+
+    <div>
+      <!-- page views -->
+      
+
+      <!-- read time -->
+      <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-toggle="tooltip"
+  data-placement="bottom"
+  title="3740 words"
+>
+  <em>20 min</em> read</span>
+
+    </div>
+
+  </div> <!-- .d-flex -->
+
+</div> <!-- .post-meta -->
+
+<div class="post-content">
+  <p>For those who have been following the evolution of GTM Server-Side (sGTM) and Google Cloud Platform (GCP) services, you might recall my early enthusiasm about the potential integrations. In a previous <a href="https://gunnargriese.com/posts/gtm-server-side/#smooth-integration-to-the-google-cloud-platform">blog post about GTM Server-Side</a>, I highlighted the prospect of enriching the clickstream data collected by GA4 with the help of other GCP services. Here is what I wrote about this way back in August 2020:</p>
+
+<blockquote>
+  <p>Furthermore, because the GTM container is executed in Google’s cloud environment, other GCP resources like BigQuery, ML Engine, and Cloud Functions will most likely be integrated soon. This will open up a lot of possibilities for advanced use cases involving machine learning and event-based analytics.
+Once this new GTM feature moves out of the beta phase after being improved based on feature requests and active community members’ contributions, even more possibilities will be available, significantly changing tracking implementations based on GTM.</p>
+</blockquote>
+
+<p>Obviously, a lot has changed since then. Cloud functions are now Cloud <strong>Run</strong> functions, ML Engine as such doesn’t exist anymore and has been integrated into the Vertex AI platform, and GTM Server-Side has been officially released out of beta.</p>
+
+<p>However, the vision of enriching the clickstream collected by GA4 with data provided by GCP services or feeding a company’s downstream systems in real time is still valid. In this series of blog posts, I want to invite you to join me on a mythological journey exploring the possibilities of integrating first-party data or triggering processes from sGTM using Firestore (this one), Pub/Sub (part 2), BigQuery (part 3), Google Sheets (part 4), and even Predictive Analytics &amp; GenAI (part 5).</p>
+
+<h2 id="the-state-of-gtm-server-side"><span class="mr-2">The state of GTM Server-Side</span><a href="#the-state-of-gtm-server-side" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Since the release of sGTM, we have come a long way, and more and more companies have decided to opt into the technology to take advantage of the additional data controls for, e.g., <a href="https://gunnargriese.com/posts/ga4-data-quality-at-scale/">data quality</a> or privacy reasons. This trend has been powered by three main factors from my perspective:</p>
+
+<ol>
+  <li>Google’s commitment to the technology and the continuous improvement of the service</li>
+  <li>Companies’ and users’ increasing demand for data control and privacy compliance (especially in Europe and moving forward increasingly also in the US)</li>
+  <li>Lower barriers of entry (more documentation and community support) and decreased need for maintaining server infrastructure (driven by players like <a href="https://stape.io/">Stape</a> (first-mover), AddingWell, etc.)</li>
+</ol>
+
+<p>While many companies have migrated their GA4 data collection to sGTM and might even use it to send data to other vendors, the technology’s potential is still not fully exploited. As is often the case in our line of work, most businesses have been focusing on the data collection part and have not yet fully embraced the possibilities for data enrichment and activation that are at their fingertips.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/state-of-sgtm.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/state-of-sgtm.png" alt="State of GTM Server-Side" class="lazyload" data-proofer-ignore></a>
+<em>Drivers for GTM Server-Side adoption</em></p>
+
+<p>The true power of an intermediary collection endpoint like sGTM lies in its ability to act as a data hub, where data from various, business-relevant sources can be transformed, combined, and sent to other systems in real time. In other words, you can <em>gather</em> different kinds of data (and combine them) and then <em>send</em> the widened data to the marketing vendors’ or your own systems as you see fit.</p>
+
+<h2 id="standing-of-the-shoulders-of-gods---the-gtm-server-side-pantheon"><span class="mr-2">Standing of the Shoulders of Gods - The GTM Server-Side Pantheon</span><a href="#standing-of-the-shoulders-of-gods---the-gtm-server-side-pantheon" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>This is where the <a href="https://github.com/google-marketing-solutions/gps-sgtm-pantheon"><em>sGTM Pantheon</em></a> comes into play. The Pantheon is a collection of (technical) solutions provided by Google, which allows one to easily get data from external services into sGTM via API calls or send data to external (GCP) destinations. The idea is to enhance sGTM’s native capabilities to allow businesses “to improve their reporting, bidding, audience management, and data pipeline management and processes” (s. Google’s documentation).</p>
+
+<p>Admittedly, while not all solutions presented here are entirely new from a technical perspective, having these blueprints gathered in one place and explaining these wherever possible lowers the barrier of entry to take advantage of the full power of sGTM. So, this blog post series is my humble contribution to increasing adoption on a broader scale.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/gtm-ss-pantheon.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/gtm-ss-pantheon.png" alt="Gods of the Greek Pantheon" class="lazyload" data-proofer-ignore></a>
+<em>How Dall-E thinks the Greek Pantheon looks like</em></p>
+
+<p>Now, you might still ask yourself, why the “Greek Pantheon”? Well, Google decided to choose names from Greek mythology for each of the solutions. Just like the Greek gods, each solution has its own strengths and weaknesses, and they can be combined to create “god-like” data flows. Are you intrigued? I for sure was when I first stumbled upon the Pantheon and decided to keep the theme and mythology references for this series of posts.</p>
+
+<h2 id="integrate-firestore-into-gtm-ss---a-match-made-in-heaven"><span class="mr-2">Integrate Firestore into GTM SS - A match made in heaven</span><a href="#integrate-firestore-into-gtm-ss---a-match-made-in-heaven" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>In the first part of this series, I want to focus on a set of solutions that are concerned with integrating Firestore into sGTM. GCP’s Firestore in the context of sGTM is particularly interesting, because Firestore and sGTM are a perfect match for real-time data enrichment and gathering. Firestore’s fast, scalable NoSQL database architecture allows for dynamic data lookups, while sGTM is the intermediary for collecting and processing first-party data.</p>
+
+<p>Together, they enable businesses to enrich data streams on the fly, injecting further context into analytics, marketing, and personalization efforts. In the context of sGTM, Firestore is an additional storage option (alongside browser storage) that is fully controlled by the organization operating sGTM, that can be used to retrieve or store (potentially sensitive) first-party data, and that never exposes data to the browser (unless configured as such).</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/gtm-ss-firestore.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/gtm-ss-firestore.png" alt="Firestore" class="lazyload" data-proofer-ignore></a>
+<em>Firestore integration into sGTM</em></p>
+
+<h3 id="gtm-server-side-and-firestore---some-technical-background"><span class="mr-2">GTM Server-Side and Firestore - Some technical background</span><a href="#gtm-server-side-and-firestore---some-technical-background" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Ever since the advent of the <a href="https://developers.google.com/tag-platform/tag-manager/server-side/api#firestore"><code class="language-plaintext highlighter-rouge">Firestore</code> API for sGTM</a>, it has become possible to tap into Firestore’s capabilities from within sGTM. In particular, the API comes with a set of methods allowing for reading, writing, and querying Firestore documents (using Firestore in Native mode):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Firestore.read</code> - This function looks up data from a given Firestore document and returns a promise that resolves to an object returning the data.</li>
+  <li><code class="language-plaintext highlighter-rouge">Firestore.write</code> - This function writes whatever data you specify to a Firestore document or collection.</li>
+  <li><code class="language-plaintext highlighter-rouge">Firestore.query</code> - This function allows you to query a given collection and returns an array of Firestore documents that match specified query conditions.</li>
+  <li><code class="language-plaintext highlighter-rouge">Firestore.runTransaction</code> - This function allows reading and writing from Firestore atomatically.</li>
+</ul>
+
+<p>Combined with the <a href="https://developers.google.com/tag-platform/tag-manager/server-side/api#promise"><code class="language-plaintext highlighter-rouge">Promise</code> API</a>, these methods enable you to use these APIs asynchronously in variables (previously we had to build custom tags or clients), which can then be associated with any triggers or tags of your liking - making the integration of Firestore into sGTM a breeze (or least significantly easier).</p>
+
+<p>Now, let’s examine the gods (and one demigod) of the Greek Pantheon who are concerned with Firestore integrations and look at some actual use cases.</p>
+
+<h3 id="built-in-firestore-lookup-variable---not-so-much-a-god-but-a-demigod-nonetheless"><span class="mr-2">Built-in Firestore Lookup Variable - Not so much a god, but a demigod nonetheless</span><a href="#built-in-firestore-lookup-variable---not-so-much-a-god-but-a-demigod-nonetheless" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>The Firestore Lookup variable in sGTM may not have the full divine powers of the Greek Pantheon (and, therefore, is not part of it), but I certainly consider it a reliable demigod. It offers a powerful way to enrich your data streams, especially when you need a database with lightning-fast read/write operations to provide real-time data lookups and widen the information available to your marketing tools or other systems.</p>
+
+<p>To provide you with a practical example of how to widen the data available in GA4 with additional user data stored in Firestore, I created a simple “user database” in Firestore with the following structure and entries:</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/firestore-document.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/firestore-document.png" alt="Firestore User Database" class="lazyload" data-proofer-ignore></a>
+<em>Exemplary Firestore User Database</em></p>
+
+<p>As you can see, for each user in the database, we store the <code class="language-plaintext highlighter-rouge">user_id</code>, the <code class="language-plaintext highlighter-rouge">customer_score</code>, and the <code class="language-plaintext highlighter-rouge">order_count</code>. The <code class="language-plaintext highlighter-rouge">user_id</code> is the unique identifier for each user, while the <code class="language-plaintext highlighter-rouge">customer_score</code> and <code class="language-plaintext highlighter-rouge">order_count</code> are attributes that we want to use to enrich the data sent to GA4. The <code class="language-plaintext highlighter-rouge">customer_score</code> could be used to segment users based on their value to the business, while the <code class="language-plaintext highlighter-rouge">order_count</code> could be used to identify loyal customers or to trigger tags conditionally. In general, we unlock activation use cases in our downstream systems if we can get these data points (or similar ones) in there using the Lookup variable.</p>
+
+<p>The Firestore Lookup variable is designed to fetch data from Firestore documents, which are structured in collections (in case you’re unfamiliar with the Firestore data model, you can read more about <a href="https://firebase.google.com/docs/firestore/data-model">here</a>). Its flexibility allows for two types of lookups: <strong>direct document path</strong> or <strong>collection-based query</strong>. When using the direct path method, you can pull specific documents by providing their exact location in the database (e.g., <code class="language-plaintext highlighter-rouge">user_data/Event Data - user_id</code>). This is the fastest approach, as it immediately fetches the desired document without further filtering. In the example below, the variable would retrieve the <code class="language-plaintext highlighter-rouge">user_data</code> document with the <code class="language-plaintext highlighter-rouge">user_id</code> matching the value from the GA4 event data and return the user’s <em>customer_score</em>.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/firestore-lookup-variable.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/firestore-lookup-variable.png" alt="Firestore Lookup Variable" class="lazyload" data-proofer-ignore></a>
+<em>The Firestore Lookup Types in GTM Server-Side</em></p>
+
+<p>Furthermore, Firestore Lookup variables allow for collection-based queries. By querying collections based on document fields (e.g., <code class="language-plaintext highlighter-rouge">user_database</code> where <code class="language-plaintext highlighter-rouge">user_id == User ID</code>, which in this specific case requires that the <code class="language-plaintext highlighter-rouge">user_id</code> is a field in the document), you can dynamically search for documents that match your criteria. This approach is practical when the exact document path is unknown, but certain identifying features are available. In <strong>all</strong> cases you have to make sure that your App Engine or Cloud Run default service account has <code class="language-plaintext highlighter-rouge">Cloud Datastore User</code> permissions to read from Firestore.</p>
+
+<p>Once the correct document is found, the variable requires you to extract specific values (which can also be complex objects) by specifying a Key Path—like <code class="language-plaintext highlighter-rouge">customer_score</code>. In our case, the user’s <code class="language-plaintext highlighter-rouge">customer_score</code> value can be passed on as a user property to GA4 to unlock analysis use case or for audience building, which can then be shared within the Google Marketing Platform (GMP) for retargeting or look-alike audiences. But like with all variables, you can use the retrieved data in both tags and triggers of your sGTM setup to either fire tags conditionally or to enrich the data sent to all sorts of marketing vendors.</p>
+
+<p>Although not quite “god-like,” the Firestore Lookup variable offers an efficient tool for extending the power of sGTM with real-time data from Firestore, proving its worth as a critical component in the sGTM data integration stack.</p>
+
+<p>For those of you who are interested in a more detailed guide on how to set up the Firestore Lookup variable in sGTM, I recommend heading over to <a href="https://www.simoahava.com/analytics/enrich-server-side-data-with-cloud-firestore/">Simo Ahava’s extensive blog post</a>.</p>
+
+<h3 id="artemis---the-huntress-for-data"><span class="mr-2">Artemis - The Huntress for Data</span><a href="#artemis---the-huntress-for-data" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Just as the goddess Artemis was known for her precision and skill in the hunt, the <a href="https://github.com/google-marketing-solutions/gps-sgtm-pantheon/blob/main/sgtm/artemis/README.md">Artemis</a> solution does incredibly well in tracking down and retrieving valuable data from Firestore.</p>
+
+<p>So, what makes Artemis the goddess different from the built-in Firestore Lookup variable, which I demoted to a demigod?</p>
+
+<p>Well, unlike the built-in Firestore Lookup variable, which focuses on fetching individual document attributes (e.g., the <code class="language-plaintext highlighter-rouge">customer_score</code> value), Artemis takes it a step further by fetching entire documents and allowing you to extract multiple values from a single API call. This makes the Artemis solution an efficient tool to optimize cost and performance by <strong>reducing the number of API calls</strong> needed to retrieve data from Firestore. So, if you need to get an entire Firestore document or plan to extract multiple values from a single document - for example, multiple user or product characteristics - Artemis is the goddess you should call upon.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/artemis-variables.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/artemis-variables.png" alt="Artemis Variables" class="lazyload" data-proofer-ignore></a>
+<em>Artemis Variable Templates in GTM Server-Side</em></p>
+
+<p>From a technical perspective, the Artemis solution comes with two variable templates: The first is designed to <strong>fetch an entire Firestore document</strong>, while the second one allows you to <strong>extract specific values from that document</strong> using a Key Path.</p>
+
+<p>The first variable template uses the <code class="language-plaintext highlighter-rouge">Firestore.read</code> and the <code class="language-plaintext highlighter-rouge">Promise</code> APIs to asynchronously fetch data from Firestore. For the setup, all you have to do is provide the GCP project ID and enter the collection name and the document ID from which to retrieve the document. Eventually, the variable returns a stringified JSON object with the document’s data from a single API call. In my example, the variable <code class="language-plaintext highlighter-rouge">Artemis - user_data</code> variable would return the following JSON object for the document with the ID <code class="language-plaintext highlighter-rouge">6d193064-61ad-4f46-9780-7b6041899d7e</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="dl">'</span><span class="s1">{"user_id":"6d193064-61ad-4f46-9780-7b6041899d7e", "customer_score":"gold", "order_count":"7"}</span><span class="dl">'</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>The second variable template takes the stringified JSON object from a variable instance of the first variable template as an input and extracts a specific value using the provided key. This lets you pinpoint the needed data and pass it on to your tags or triggers in sGTM.</p>
+
+<p>In my example, the second variable template would extract the <code class="language-plaintext highlighter-rouge">customer_score</code> value from the stringified JSON object and return <code class="language-plaintext highlighter-rouge">"gold"</code>.</p>
+
+<p>With Artemis, you can seamlessly integrate Firestore with sGTM to power tailored marketing strategies using first-party data stored in the cloud. Artemis allows you to hunt for data like its namesake, making it a valuable asset in your sGTM data integration stack.</p>
+
+<h3 id="soteria---the-safeguard-of-data"><span class="mr-2">Soteria - The Safeguard of Data</span><a href="#soteria---the-safeguard-of-data" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Soteria, the goddess of safety, deliverance, and protection, is for sure one of the lesser-known Greek deities. But, the <a href="https://github.com/google-marketing-solutions/gps_soteria/tree/main">Soteria solution</a> shouldn’t suffer the same fate, as I see it as a crucial part of the GTM Server-Side Pantheon that can help you get more out of your marketing spend in GMP.</p>
+
+<p><a href="https://support.google.com/google-ads/answer/14792795?hl=en">Value-based bidding (VBB)</a> is one of the most powerful tools in the GMP, as it allows you to optimize your bids based on the value that each conversion brings to your business. However, to use VBB effectively, you need to provide Google Ads with the conversion value for each conversion event. Obviously, the closer the conversion value is to the actual contribution to your business goals, the more you get out of marketing efforts.</p>
+
+<p>Traditionally, most companies calculate this value based on the revenue generated by the conversion event, but only in some cases is the revenue the relevant conversion value. Digitally mature businesses have realized that the actual conversion value can be more complex and might depend on various factors, such as the return rate, discounts, or profit margin.</p>
+
+<p>Before the advent of sGTM, it was pretty challenging to calculate the conversion value dynamically and send it to GMP in real-time. Hence, I’ve seen companies going down one of two paths: either they retrieved sensitive data like profit margins (e.g., by requesting that data through an open API) and exposed it to the dataLayer, or they reverted to adjusting the conversion value in batch using the GMP APIs. Both approaches have their downsides: the first <strong>exposes sensitive data to the browser</strong>, while the second is <strong>not real-time and might negatively impact bidding</strong> due to the delay in updating the value.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-architecture.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-architecture.png" alt="Soteria Data Flow" class="lazyload" data-proofer-ignore></a>
+<em>Soteria Architecture and Data Flow diagram</em></p>
+
+<p>Soteria, the goddess of <strong>safety</strong>, solves this problem. She allows you to calculate the conversion value dynamically in sGTM and send it to GMP, GA4, or other vendors in real time without exposing sensitive data to the browser. Once again, the solution is based on the <code class="language-plaintext highlighter-rouge">Firestore.read</code> and <code class="language-plaintext highlighter-rouge">Promise</code> APIs and comes with its own variable template to fetch the necessary data from Firestore.</p>
+
+<p>The solution is designed to work out of the box with the incoming GA4 purchase event data, which contains the <code class="language-plaintext highlighter-rouge">item_id</code> for each product in the transaction. The variable looks up the profit value for each product and calculates the total profit-based conversion value. The newly computed conversion value is then passed to the <code class="language-plaintext highlighter-rouge">Conversion Value</code> or <code class="language-plaintext highlighter-rouge">Revenue</code> setting in the respective Google Ads or Floodlight Sales tags.</p>
+
+<p>Now, don’t all Google Ads and Floodlight tags triggered in sGTM result in a client-side request to eventually send the data to the platforms? How can you claim that the profit value (or other sensitive data) is not exposed in the user’s browser?</p>
+
+<p>Well, the answer is simple: Both tag types actually encrypt the conversion value before passing it back to the browser, so the data is never exposed to the user. This is a crucial point to understand, as it allows you to send sensitive data to GMP without compromising control over your data.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-firestore-setup.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-firestore-setup.png" alt="Soteria Firestore Setup" class="lazyload" data-proofer-ignore></a>
+<em>Exemplary Firestore Database Setup for Soteria</em></p>
+
+<p>The technical requirements for the Firestore database are fairly straightforward. All you need is a collection with the <code class="language-plaintext highlighter-rouge">item_id</code> as the document ID and the <code class="language-plaintext highlighter-rouge">profit</code> value (or others like <code class="language-plaintext highlighter-rouge">return_rate</code>) as an attribute. The <code class="language-plaintext highlighter-rouge">item_id</code> is then used to look up the profit value for each product in the transaction.</p>
+
+<p>Let’s examine the actual variable template and its functionalities to “connect” it to the exemplary “items” database.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-variable.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/sorteria-variable.png" alt="Soteria Variable" class="lazyload" data-proofer-ignore></a>
+<em>Soteria Variable Template in GTM Server-Side</em></p>
+
+<p>As you can see, the Soteria solution supports three different calculation methods:</p>
+
+<ul>
+  <li>Value</li>
+  <li>Return rate</li>
+  <li>Value with Discount</li>
+</ul>
+
+<p>Based on the chosen method, the calculations include the <code class="language-plaintext highlighter-rouge">profit</code> value (Firestore), the <code class="language-plaintext highlighter-rouge">return_rate</code> (Firestore), the <code class="language-plaintext highlighter-rouge">quantity</code> of the product sold (retrieved from GA4 purchase event’s <code class="language-plaintext highlighter-rouge">items</code> array), and the <code class="language-plaintext highlighter-rouge">discount</code>. Under the hood, the following formulas are used to calculate the conversion value based on the selected method:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">conversion_value</span> <span class="o">=</span> <span class="nx">profit</span> <span class="o">*</span> <span class="nx">quantity</span><span class="p">;</span> <span class="c1">// "Value" setting</span>
+<span class="nx">conversion_value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nx">return_rate</span><span class="p">)</span> <span class="o">*</span> <span class="nx">profit</span> <span class="o">*</span> <span class="nx">quantity</span><span class="p">;</span> <span class="c1">// "Return Rate" setting</span>
+<span class="nx">conversion_value</span> <span class="o">=</span> <span class="p">(</span><span class="nx">profit</span> <span class="o">-</span> <span class="nx">discount</span><span class="p">)</span> <span class="o">*</span> <span class="nx">quantity</span><span class="p">;</span> <span class="c1">// "Value with Discount" setting</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>In case a product cannot be found in the database, the template allows you to specify three different fallback mechanisms using values from the original purchase event data:</p>
+
+<ul>
+  <li>Zero</li>
+  <li>Revenue</li>
+  <li>Percent</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="code-header">
+        <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">conversion_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// "Zero" setting</span>
+<span class="nx">conversion_value</span> <span class="o">=</span> <span class="nx">price</span> <span class="o">*</span> <span class="nx">quantity</span><span class="p">;</span> <span class="c1">// "Revenue" setting</span>
+<span class="nx">conversion_value</span> <span class="o">=</span> <span class="nx">price</span> <span class="o">*</span> <span class="nx">percent</span> <span class="o">*</span> <span class="nx">quantity</span><span class="p">;</span> <span class="c1">// "Percent" setting, with the variable being the custom "FallBack Percentage"</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p>If you haven’t already, you should definitely consider using Soteria or at least test it out—summoning her is well worth it!</p>
+
+<p>Based on numerous Google case studies and from experience with my own clients, I’ve seen it significantly improve the performance of their GMP campaigns, simply because the conversion value is now more closely aligned with the actual business value. As always, the results can be impressive when operating at the sweet spot of data, tech, and actual business use cases.</p>
+
+<h3 id="hephaestus---the-god-of-firestore"><span class="mr-2">Hephaestus - The God of Fire(store)</span><a href="#hephaestus---the-god-of-firestore" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>As a smithing god, Hephaestus made all the weapons of the gods. He served as their blacksmith and was considered the god of craftsmen, metallurgy, and fire. Moreover, Hephaestus was the <strong>only</strong> Olympian god to do actual work, which is also fitting for the <a href="https://github.com/google-marketing-solutions/gps-sgtm-pantheon/blob/main/sgtm/hephaestus/README.md">Hephaestus solution</a>, as it allows you not only to <em>lazily</em> read data Firestore but also <em>actively</em> write to it.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/hephaestus-settings.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/hephaestus-settings.png" alt="Hephaestus Settings" class="lazyload" data-proofer-ignore></a>
+<em>Hephaestus tag template settings</em></p>
+
+<p>Unlike the previous solutions, Hephaestus comes in the form of a tag template. This template requires you to specify the GCP project ID, the collection name, the document ID, and the data you want to write to Firestore. The tag template uses the <code class="language-plaintext highlighter-rouge">Firestore.read</code>, <code class="language-plaintext highlighter-rouge">Firestore.write</code>, and the <code class="language-plaintext highlighter-rouge">Promise</code> APIs to asynchronously write data to Firestore, allowing you to store and update information in real-time.</p>
+
+<p>In the tag, you further specify which attributes (key-value pairs) you want to write to Firestore and whether you want to replace the existing document with the latest data or merge the new data with the existing one.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/hephaestus-editadd-requests.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/gtm-ss-pantheon/hephaestus-editadd-requests.png" alt="Hephaestus Request Order" class="lazyload" data-proofer-ignore></a>
+<em>Hephaestus requests for “Edit or add attributes” settings</em></p>
+
+<p>In the example above, which uses the “Edit or add attributes” setting, the tag would, therefore, first read the existing document from Firestore, then update the <code class="language-plaintext highlighter-rouge">latest_transaction_id</code> attribute with the value from the GA4 event data, and finally write the updated document back to Firestore. On the other hand, the “Replace entire document” setting would replace the entire document with the new data, which can be useful when storing only the latest user interaction data.</p>
+
+<p>Hephaestus can be a true asset if you want to maintain an up-to-date user profile in Firestore that can be edited in batch from the backend or in real-time with data from GTM. If this fits your use case, you could store the user’s last interaction with your website, the previous product they viewed, or the last page they visited and bring in fresh data from your CRM every night. Accessing an enriched user profile is valuable for all your personalization or targeting efforts and you can easily combine the <em>Hephaestus</em> solution with e.g. <em>built-in Firestore lookups</em> or <em>Artemis</em>.</p>
+
+<p>As I mentioned before, the principles used for these Google solutions have been introduced previously. Hence, if you are interested in this topic, I can also recommend checking out <a href="https://tagmanager.google.com/gallery/#/owners/stape-io/templates/firestore-writer-tag">Stape’s <em>Firestore Writer</em> tag template</a> that has similar functionality to Hephaestus but comes with more bells and whistles. For example, it allows you to write the entirety of the available event data to Firestore, can quickly add timestamps, etc. - and it’s also a great starting point for building custom tags.</p>
+
+<blockquote>
+  <p>Nice to know: I am currently working on a modified Hephaestus tag template that maintains a real-time count of, e.g., item purchases, event counts, etc., to build a simple analytics system where the server container writes the hit stream data to Firestore and a dashboard app hosted in Cloud Run reads and visualizes it. See the below video to get an idea of the putcome. Stay tuned for more on this!</p>
+</blockquote>
+
+<iframe class="embed-video youtube lazyload" src="https://www.youtube.com/embed/9v918TaTRL0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Yes, I know… This is another lengthy blog post, but I hope you enjoyed the journey through the Greek Pantheon of GTM Server-Side solutions. Midway through the post, I realized that cramping all the solutions into one post would be too much, so I split it into five parts. In this first part, we explored the possibilities of integrating Firestore into sGTM using the Artemis, Soteria, and Hephaestus solutions.</p>
+
+<p>We learned how to fetch entire documents, extract specific values, and write data to Firestore, enabling businesses to enrich their data streams and enhance their marketing strategies. In the next part of this series, I’ll discuss how to integrate BigQuery with sGTM.</p>
+
+<p>Even if the out-of-the-box templates outlined in this post do not meet your requirements 100%, they can be a great starting point for building custom tags or variables that fit your specific use case. The most important part I want to convey is how much more potential is in your data if you combine it cleverly. Firestore and sGTM are mere vehicles that allow you to do just that, giving you the power to rethink and shape your data strategy.</p>
+
+<p>If you are unsure about which use cases could help you meet your business goals, require more customized functionality, or want to implement one of the described approaches, feel free to contact me; I am always happy to help.</p>
+
+<p>I hope you enjoyed reading this blog post as much as I did writing it. If you have any questions or feedback, please get in touch with me on LinkedIn or via Email. Until next time, happy tracking!</p>
+
+</div>
+
+<div class="post-tail-wrapper text-muted">
+
+  <!-- categories -->
+  
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    
+      <a href='/gunnargriese.github.io/categories/gtm/'>GTM</a>
+  </div>
+  
+
+  <!-- tags -->
+  
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw mr-1"></i>
+      
+      <a href="/gunnargriese.github.io/tags/gtm-server-side/"
+          class="post-tag no-text-decoration" >gtm-server-side</a>
+      
+  </div>
+  
+
+  <div class="post-tail-bottom
+    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+    <div class="license-wrapper">
+
+      
+
+        
+
+        This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+
+      
+    </div>
+
+    <!-- Post sharing snippet -->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+      
+      <a
+        href="https://twitter.com/intent/tweet?text=GTM%20Server-Side%20Pantheon%20-%20Part%201%20-%20Tapping%20into%20the%20Power%20of%20Firestore%20-%20Gunnar%20Griese&url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fgtm-server-side-firestore-integrations%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Twitter"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <i class="fa-fw fab fa-twitter"></i>
+      </a>
+    
+      
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?title=GTM%20Server-Side%20Pantheon%20-%20Part%201%20-%20Tapping%20into%20the%20Power%20of%20Firestore%20-%20Gunnar%20Griese&u=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fgtm-server-side-firestore-integrations%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Facebook"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+      
+      <a
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fgtm-server-side-firestore-integrations%2F&text=GTM%20Server-Side%20Pantheon%20-%20Part%201%20-%20Tapping%20into%20the%20Power%20of%20Firestore%20-%20Gunnar%20Griese"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Telegram"
+        target="_blank"
+        rel="noopener"
+        aria-label="Telegram"
+      >
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <i
+      id="copy-link"
+      class="fa-fw fas fa-link small"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+    </i>
+  </span>
+</div>
+
+
+  </div><!-- .post-tail-bottom -->
+
+</div><!-- div.post-tail-wrapper -->
+
+
+      
+    
+      
+    </div>
+  </div>
+  <!-- #core-wrapper -->
+
+  <!-- panel -->
+  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+    <div class="access">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">Recently Updated</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/confidential-matching/">Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/firebase-analytics-debugging/">Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/ga4-time-travel-bridging-utc-and-local-timezones/">GA4 Time Travel - Bridging UTC and Local Timezones</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/posthog-gtm-template/">Unleash the Potential of PostHog Analytics Platform with Google Tag Manager</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/bigquery-path-exploration/">How to replicate the GA4 Path Exploration report with BigQuery SQL?</a>
+        </li>
+      
+    </ul>
+  </div>
+  <!-- #access-lastmod -->
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+
+    
+      
+      
+
+
+
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <div class="panel-heading pl-3 pt-2 mb-2">Contents</div>
+    <nav id="toc"></nav>
+  </div>
+
+  <!-- toc.js will be loaded at medium priority -->
+  <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+
+
+    
+  </div>
+</div>
+
+<!-- tail -->
+
+  <div class="row">
+    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
+      
+        
+        <!--
+  Recommend the other 3 posts according to the tags and categories of the current post,
+  if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<!-- Fill with the other newlest posts -->
+
+
+
+
+
+  <div id="related-posts" class="mb-2 mb-sm-4">
+    <h3
+      class="pt-2 mb-4 ml-1"
+      data-toc-skip
+    >
+      Further Reading
+    </h3>
+    <div class="card-deck mb-4">
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/ga4-the-cdp-you-didnt-know-you-had/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1691835255"
+  data-df="DD/MM/YYYY"
+  
+>
+  12/08/2023
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>GA4 - The CDP You Didn't Know You Had</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  This article is a write-up of my talk at MeasureCamp Czechia in Prague in September 2023 - thanks to everyone who attended the session and provided feedback.
+
+I’ll explore how Google Analytics 4 (G...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/consent-mode-v2/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1706652001"
+  data-df="DD/MM/YYYY"
+  
+>
+  30/01/2024
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Consent Mode v2 - A Comprehensive Technical Guide</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  In fall 2023, the EU has deemed Google as a gatekeeper in the digital space under the Digital Markets Act (DMA), placing it under heightened legal scrutiny. In response to this assessment and to me...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/gtm-server-side/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1598016255"
+  data-df="DD/MM/YYYY"
+  
+>
+  21/08/2020
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>GTM Server-Side Tagging – Better Data & More Control</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Over the last many months we have been running a series of beta tests and projects for a group of selected clients to get both practical experience and to help optimize the recently released Google...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+    <!-- .card-deck -->
+  </div>
+  <!-- #related-posts -->
+
+
+      
+        
+        <!-- Navigation buttons at the bottom of the post. -->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+    <a
+      href="/gunnargriese.github.io/posts/ga4-reporting-identity/"
+      class="btn btn-outline-primary"
+      prompt="Older"
+    >
+      <p>Who are my website users? And if so how many? - User IDs in GA4</p>
+    </a>
+  
+
+  
+    <a
+      href="/gunnargriese.github.io/posts/confidential-matching/"
+      class="btn btn-outline-primary"
+      prompt="Newer"
+    >
+      <p>Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?</p>
+    </a>
+  
+</div>
+
+      
+        
+        <!--  The comments switcher -->
+
+  
+  <!-- The Disqus lazy loading. -->
+<div id="disqus_thread" class="pt-2 pb-2">
+  <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
+</div>
+
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/gunnargriese.github.io/posts/gtm-server-side-firestore-integrations/';
+    this.page.identifier = '/posts/gtm-server-side-firestore-integrations/';
+  };
+
+  /* Lazy loading */
+  var disqus_observer = new IntersectionObserver(
+    function (entries) {
+      if (entries[0].isIntersecting) {
+        (function () {
+          var d = document,
+            s = d.createElement('script');
+          s.src = 'https://gunnargriese-com.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+
+        disqus_observer.disconnect();
+      }
+    },
+    { threshold: [0] }
+  );
+
+  disqus_observer.observe(document.querySelector('#disqus_thread'));
+
+  /* Auto switch theme */
+  function reloadDisqus() {
+    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+      /* Disqus hasn't been loaded */
+      if (typeof DISQUS === 'undefined') {
+        return;
+      }
+
+      if (document.readyState == 'complete') {
+        DISQUS.reset({ reload: true, config: disqus_config });
+      }
+    }
+  }
+
+  if (document.querySelector('.mode-toggle')) {
+    window.addEventListener('message', reloadDisqus);
+  }
+</script>
+
+
+
+      
+    </div>
+  </div>
+
+
+      </div>
+
+      <!--
+  The Search results
+-->
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+  <div class="col-12 col-sm-11 post-content">
+    <div id="search-hints">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+    </div>
+    <!-- #main-wrapper -->
+
+    <!-- The Footer -->
+
+<footer>
+    <div class="container pl-lg-4 pr-lg-4">
+        <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
+            <div class="footer-left">
+                <p class="mb-0">
+                    © 2024
+                    <a href="https://github.com/GunnarGriese">Gunnar Griese</a>. 
+                    <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span> 
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <p class="mb-0"><!-- 
+          Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.
+          -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('search-results'),
+  json: '/gunnargriese.github.io/assets/js/data/search.json',
+  searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0">  <a href="{url}">{title}</a>  <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">    {categories}    {tags}  </div>  <p>{snippet}</p></div>',
+  noResultsText: '<p class="mt-5"></p>',
+  templateMiddleware: function(prop, value, template) {
+    if (prop === 'categories') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+      }
+    }
+
+    if (prop === 'tags') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+      }
+    }
+  }
+});
+</script>
+
+
+    <!-- JS selector for site. -->
+
+<!-- layout specified -->
+
+
+  
+
+
+
+  <!-- image lazy-loading & popup & clipboard -->
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/gunnargriese.github.io/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,3259 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="" 
+  
+>
+  <!-- The Head -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://trakker.gunnargriese.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KCQ9XXH');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager - GA4 Lite Tester 
+        
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="09a47599-0e16-4560-84a1-0163e0c147ea" type="text/javascript" async></script>
+
+    
+
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PZV75QZ');
+    </script>
+    End Google Tag Manager -->
+
+           <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it" />
+<meta name="author" content="Gunnar Griese" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="In my recent article, I explored the potential of GA4 as a core component in crafting a lightweight Composable CDP. One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4’s capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4’s data collection ensues." />
+<meta property="og:description" content="In my recent article, I explored the potential of GA4 as a core component in crafting a lightweight Composable CDP. One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4’s capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4’s data collection ensues." />
+<link rel="canonical" href="http://localhost:4000/gunnargriese.github.io/posts/ga4-data-redaction/" />
+<meta property="og:url" content="http://localhost:4000/gunnargriese.github.io/posts/ga4-data-redaction/" />
+<meta property="og:site_name" content="Gunnar Griese" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-26T06:21:15+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it" />
+<meta name="twitter:site" content="@GeezerGunner" />
+<meta name="twitter:creator" content="@Gunnar Griese" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Gunnar Griese","url":"https://gunnargriese.com"},"dateModified":"2023-09-26T06:21:15+02:00","datePublished":"2023-09-26T06:21:15+02:00","description":"In my recent article, I explored the potential of GA4 as a core component in crafting a lightweight Composable CDP. One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4’s capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4’s data collection ensues.","headline":"GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/gunnargriese.github.io/posts/ga4-data-redaction/"},"url":"http://localhost:4000/gunnargriese.github.io/posts/ga4-data-redaction/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <title>GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it | Gunnar Griese
+    </title>
+
+    <!--
+  The Favicons for Web, Android, Microsoft, and iOS (iPhone and iPad) Apps
+  Generated by: https://realfavicongenerator.net/
+-->
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/gunnargriese.github.io/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/gunnargriese.github.io/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/gunnargriese.github.io/assets/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/gunnargriese.github.io/assets/img/favicons/site.webmanifest">
+<link rel="shortcut icon" href="/gunnargriese.github.io/assets/img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Gunnar Griese">
+<meta name="application-name" content="Gunnar Griese">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/gunnargriese.github.io/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" > 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" >
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" > 
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"> 
+
+    <!-- GA -->
+    
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/gunnargriese.github.io/assets/css/style.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css">  
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> 
+
+    <!-- JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+     <!--
+  Switch the mode between dark and light.
+-->
+
+<script type="text/javascript">
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get MODE_ATTR() { return "data-mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+    static get ID() { return "mode-toggle"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage({
+        direction: ModeToggle.ID,
+        message: this.modeStatus
+      }, "*");
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+  <!-- A placeholder to allow defining custom metadata -->
+
+
+    <!-- Page Metadata for DL -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'page_view',
+            page_meta: {
+                layout: 'post',
+                page_title: document.title,
+                page_location: document.URL,
+                published_at: '2023-09-26T06:21:15+02:00',
+            },
+            author: {
+                name: 'gunnar',
+                url: '',
+            },
+            environment: 'development',
+        })
+    </script>
+    <!-- End Page Metadata for DL -->
+
+</head>
+
+  <body data-topbar-visible="true">
+    <!-- The Side Bar -->
+
+<div id="sidebar" class="d-flex flex-column align-items-end">
+  <div class="profile-wrapper text-center">
+    <div id="avatar">
+      <a href="/gunnargriese.github.io/" class="mx-auto">
+        
+          
+          <img src="/gunnargriese.github.io/assets/img/avatar/gunnar-speaking-resized.jpg" alt="avatar" onerror="this.style.display='none'">
+        
+      </a>
+    </div>
+
+    <div class="site-title">
+      <a href="/gunnargriese.github.io/">Gunnar Griese</a>
+    </div>
+    <div class="site-subtitle font-italic">Self-employed analytics consultant & tech enthusiast.</div>
+  </div>
+  <!-- .profile-wrapper -->
+
+  <ul class="w-100">
+    <!-- home -->
+    <li class="nav-item">
+      <a href="/gunnargriese.github.io/" class="nav-link">
+        <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>HOME</span>
+      </a>
+    </li>
+    <!-- the real tabs -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/services/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>SERVICES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/about/" class="nav-link">
+          <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ABOUT</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tools/" class="nav-link">
+          <i class="fa-fw fas fa-tools ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TOOLS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/categories/" class="nav-link">
+          <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>CATEGORIES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/tags/" class="nav-link">
+          <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>TAGS</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+      <li class="nav-item">
+        <a href="/gunnargriese.github.io/archives/" class="nav-link">
+          <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
+          
+
+          <span>ARCHIVES</span>
+        </a>
+      </li>
+      <!-- .nav-item -->
+    
+  </ul>
+  <!-- ul.nav.flex-column -->
+
+  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+    
+      <button class="mode-toggle btn" aria-label="Switch Mode">
+        <i class="fas fa-adjust"></i>
+      </button>
+
+      
+        <span class="icon-border"></span>
+      
+    
+
+    
+      
+
+      
+        <a
+          href="https://github.com/GunnarGriese"
+          aria-label="github"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://twitter.com/GeezerGunner"
+          aria-label="twitter"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="javascript:location.href = 'mailto:' + ['gunnar.griese.gg','gmail.com'].join('@')"
+          aria-label="email"
+          
+
+          
+
+          
+
+          
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+      
+    
+      
+
+      
+        <a
+          href="https://www.linkedin.com/in/gunnar-griese/"
+          aria-label="linkedin"
+          
+
+          
+            target="_blank"
+            
+          
+
+          
+
+          
+            rel="noopener noreferrer"
+          
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      
+    
+  </div>
+  <!-- .sidebar-bottom -->
+</div>
+<!-- #sidebar -->
+
+
+    <!-- The Top Bar -->
+
+<div id="topbar-wrapper">
+  <div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4">
+    <span id="breadcrumb">
+      
+
+      
+        
+          
+            <span>
+              <a href="/gunnargriese.github.io/">
+                Home
+              </a>
+            </span>
+
+          
+        
+          
+        
+          
+            
+              <span>GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it</span>
+            
+
+          
+        
+      
+    </span>
+    <!-- endof #breadcrumb -->
+
+    <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
+
+    <div id="topbar-title">
+      Post
+    </div>
+
+    <i id="search-trigger" class="fas fa-search fa-fw"></i>
+    <span id="search-wrapper" class="align-items-center">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="Search..."
+      >
+    </span>
+    <span id="search-cancel">Cancel</span>
+  </div>
+</div>
+
+
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <!-- core -->
+  <div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4">
+    <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+      
+
+      
+        
+      
+        <!--
+  Refactor the HTML structure.
+-->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+<!-- images -->
+
+
+
+
+  
+  
+
+  <!-- CDN URL -->
+  
+
+  <!-- Add image path -->
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+      
+
+      
+
+    
+
+    <!-- take out classes -->
+    
+
+    
+
+    
+
+    
+
+    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
+    
+    
+
+    <!-- add image placeholder -->
+    
+      
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    <!-- make sure the `<img>` is wrapped by `<a>` -->
+    
+
+    
+      <!-- create the image wrapper -->
+      
+    
+
+    <!-- combine -->
+    
+
+  
+
+  
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+<h1 data-toc-skip>GA4 Client-Side Data Redaction - How to remove PII from your data before you collect it</h1>
+
+<div class="post-meta text-muted">
+    <!-- published date -->
+    <span>
+      Posted
+      <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class=""
+  data-ts="1695702075"
+  data-df="ll"
+  
+    data-toggle="tooltip" data-placement="bottom"
+  
+>
+  Sep 26, 2023
+</em>
+
+    </span>
+
+    <!-- lastmod date -->
+    
+
+  
+
+  <div class="d-flex justify-content-between">
+    <!-- author(s) -->
+    <span>
+      
+
+      By
+
+      <em>
+      
+        
+          <a href="https://gunnargriese.com">Gunnar Griese</a>
+          
+        
+      
+      </em>
+    </span>
+
+    <div>
+      <!-- page views -->
+      
+
+      <!-- read time -->
+      <!-- Calculate the post's reading time, and display the word count in tooltip -->
+
+
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-toggle="tooltip"
+  data-placement="bottom"
+  title="3541 words"
+>
+  <em>19 min</em> read</span>
+
+    </div>
+
+  </div> <!-- .d-flex -->
+
+</div> <!-- .post-meta -->
+
+<div class="post-content">
+  <p>In my recent article, I explored the potential of GA4 as a core component in crafting a <a href="/posts/ga4-the-cdp-you-didnt-know-you-had/">lightweight Composable CDP</a>. One of the capabilities for a Composable CDP is its ability to account for Data Governance and Privacy Controls. Building on that, this post zooms in on GA4’s capabilities that allow for data management in alignment with privacy standards. At the heart of our discussion is the Client-Side Data Redaction feature, designed to scrub out personally identifiable information (PII) before GA4’s data collection ensues.</p>
+
+<p>As outlined in Google Analytics’ <a href="https://marketingplatform.google.com/about/analytics/terms/us/#:~:text=and%20security%20measures.-,7.%20Privacy.,-You%20will%20not">Terms and Conditions</a>, transmitting PII, be it names, email addresses, or even credit card numbers, is a strict no-no. Through this post, I’ll walk you through the nuances of leveraging GA4’s client-side data redaction, ensuring your data remains PII-free before reaching Google Analytics. Alongside, we’ll also uncover the mechanics behind this feature and explore more methodologies to fortify your data against PII leaks to GA4.</p>
+
+<h2 id="ga4-data-collection-under-the-hood"><span class="mr-2">GA4 Data Collection under the Hood</span><a href="#ga4-data-collection-under-the-hood" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Initially, let’s dissect how GA4’s data collection functions internally. The subsequent diagram illustrates the data collection pipeline of GA4 for a typical client-side measurement setup. This pipeline encompasses three phases:</p>
+
+<ol>
+  <li>Loading the tracking library (gtag.js) and the measurement logic, often through GTM.</li>
+  <li>Dispatching the intended events along with their metadata to GA4.</li>
+  <li>Processing data on GA4’s servers, where data from users’ browsers is gathered and aggregated.</li>
+</ol>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-data-pipeline.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-data-pipeline.png" alt="ga-data-pipeline" title="GA4 Data Pipeline" class="lazyload" data-proofer-ignore></a>
+<em>GA4 Data Pipeline - Own Visualization</em></p>
+
+<p>Similar to Universal Analytics (UA), certain configurations of the platform are responsible for how data is processed before it is exposed to the analyst. For instance, for how long data is retained (Data Rentention) settings or how to reat certain traffic types (e.g., exclude it from the data set or mark it up via a dimension). Again, this just like in UA, where Property and View settings were responsible for how data is processed before it is exposed to the analyst.</p>
+
+<p>A notable change in GA4 is Google’s decision to relocate specific processing logic from its servers to the client-side. My hypothesis is that this transition was made to conserve computational resources — a reasonable shift, especially considering its free availability to most users.</p>
+
+<p>This migration implies that the users’ browsers, as part of the data collection phase, now take over some pre-transmission processing tasks. This encompasses areas like sessionization logic. Contrary to UA where sessionization was managed server-side, GA4 delegates this responsibility to the browser. Here, the browser discerns session commencements and terminations, storing session identifiers in cookies and transmitting them with events to GA4. The GA4 endpoint then uses these identifiers to classify events into new or existing sessions, bypassing the need for rolling windows in the processing pipeline. Also, other configurations like IP-based internal traffic detection, new feature implementations like event modification, and event marking as <a href="/posts/ga4-conversions-to-bigquery/">conversions</a> now occur within browsers.</p>
+
+<p>The analytics team, using the GA4 Admin panel, sets these configurations by defining the property and/or data stream settings. These configurations are then dispatched to users’ browsers through the gtag.js library, either embedded directly or via the GA4 Configuration tag/Google tag through GTM. For UA, a universal tracking library (analytics.js) was in use. The JavaScript (JS) within was uniform for every UA user. In contrast, GA4’s request to fetch the gtag.js library now carries the Data Stream’s Measurement ID (<code class="language-plaintext highlighter-rouge">/gtag/js?id=G-XXXXXX</code>). This ensures that the gtag.js library aligns specifically with your GA4 property and data stream, a logical transition considering the aforementioned.</p>
+
+<p>This paradigm shift, while presenting its own set of challenges, also allows us to get deeper insights into GA4’s internal mechanics. For example, we can now dissect the gtag.js library to understand the functionality of the newly introduced <strong>Client-Side Data Redaction</strong> feature. This exploration will be the focus of our subsequent section.</p>
+
+<h2 id="client-side-data-redaction-in-ga4"><span class="mr-2">Client-Side Data Redaction in GA4</span><a href="#client-side-data-redaction-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>In Google Analytics 4 (GA4), we now have the flexibility to configure <a href="https://support.google.com/analytics/answer/13544947">Data Redaction</a> specifically for Web Data Streams, focusing on predefined text patterns like <strong>email addresses and URL query parameters</strong>. This feature <a href="https://www.linkedin.com/posts/charlesfarina_a-new-data-redaction-feature-just-rolled-activity-7087161324031414272-YaJG/">“leaked”</a> two months ago already, when Google’s official GA4 demo property was granted access to the feature. However, it was only recently that the feature has become available to more and more GA4 users (it appears to be part of a gradual roll-out effort).</p>
+
+<p>When it comes to email redaction, this feature <strong>operates across the entire GA4 event</strong> on a best-effort basis, ensuring a layer of privacy and security. On the other hand, URL Query Parameters specifically target a select set of event parameters for which GA4 will attempt to redact values of the specified query parameters. The URL query parameter redaction is currently supported for the following event parameters (all URL-related parameters):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page_location</code></li>
+  <li><code class="language-plaintext highlighter-rouge">page_referrer</code></li>
+  <li><code class="language-plaintext highlighter-rouge">page_path</code></li>
+  <li><code class="language-plaintext highlighter-rouge">link_url</code></li>
+  <li><code class="language-plaintext highlighter-rouge">video_url</code></li>
+  <li><code class="language-plaintext highlighter-rouge">form_destination</code></li>
+</ul>
+
+<h3 id="how-to-enable-data-redaction-in-ga4"><span class="mr-2">How to enable Data Redaction in GA4</span><a href="#how-to-enable-data-redaction-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>To enable Data Redaction, navigate to the Admin panel of your GA4 property and select the desired Web Data Stream. Here, you’ll find the Data Redaction tab, where you can enable the feature and specify the parameters you’d like to redact. You can choose to redact email addresses and/or URL query parameters. For the latter, you can specify the parameters you’d like to redact. For instance, if you’d like to redact the <code class="language-plaintext highlighter-rouge">firstname</code> and <code class="language-plaintext highlighter-rouge">lastname</code> parameters, you can enter them in the text box, separated by commas.</p>
+
+<p>Activating Client-Side Data Redaction in GA4 is straightforward. Simply follow these steps:</p>
+
+<ol>
+  <li>Access the Admin panel of your GA4 property.</li>
+  <li>Choose the Web Data Stream you wish to modify.</li>
+  <li>Locate the Data Redaction tab.</li>
+  <li>Here, you can activate the Data Redaction feature and delineate the specific parameters to redact.</li>
+</ol>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-interface-data-redaction.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-interface-data-redaction.png" alt="ga4-interface-data-redaction" title="GA4 Data Redaction Interface" class="lazyload" data-proofer-ignore></a>
+<em>GA4 Data Redaction Interface</em></p>
+
+<p>Within the settings you’ll also have the ability to preview the effect of the Data Redaction settings:</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-interface-redact-preview.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-interface-redact-preview.png" alt="ga4-interface-redact-preview" title="GA4 Data Redaction Preview" class="lazyload" data-proofer-ignore></a>
+<em>GA4 Data Redaction Preview</em></p>
+
+<p>It’s important to note, however, that this feature is exclusive to Web Data Streams and is not available for App Data Streams. Additionally, if you are using pre-existing Web Data Streams, both email and query parameter redaction features will be turned <code class="language-plaintext highlighter-rouge">OFF</code> by default. For newly created Web Data Streams, Email redaction will be enabled automatically, while Query Parameter redaction will remain <code class="language-plaintext highlighter-rouge">OFF</code>. This design provides a customizable approach to data handling, ensuring GA4 users can adeptly navigate between utility and privacy.</p>
+
+<h3 id="effect-of-data-redaction-on-data-collection"><span class="mr-2">Effect of Data Redaction on Data Collection</span><a href="#effect-of-data-redaction-on-data-collection" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Let’s have a look at how the Data Redaction feature affects data collection. To do so, we’ll use the following example, where I have configured the Data Redaction feature to redact email addresses. I’ve also configured a GA4 Configuration tag in GTM to send a <code class="language-plaintext highlighter-rouge">page_view</code> event to GA4. The tag is configured to send the following values for some custom event parameters:</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/gtm-test-values.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/gtm-test-values.png" alt="gtm-test-values" title="GTM Data Redaction test" class="lazyload" data-proofer-ignore></a>
+<em>GTM Test Configuration</em></p>
+
+<p>As you can see, the values represent various combinations of email addresses and strings. The following table shows the values that are sent to GA4, along with the redacted values:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Original Value</th>
+      <th>Redacted Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>testmail@gunnar.com</td>
+      <td>(redacted)</td>
+    </tr>
+    <tr>
+      <td>separate_str testmail@gunnar.com</td>
+      <td>separate_str (redacted)</td>
+    </tr>
+    <tr>
+      <td>joined_strtestmail@gunnar.com</td>
+      <td>(redacted)</td>
+    </tr>
+    <tr>
+      <td>testmail@gunnar.comjoined_strtest</td>
+      <td>(redacted)_strtest</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>The data redaction logic replaces email addresses with the string <code class="language-plaintext highlighter-rouge">(redacted)</code>. It’s important to note that the redaction logic for email addresses is applied to the entire event and all of its parameters. For instance, an email address detected in the <code class="language-plaintext highlighter-rouge">search_term</code> parameter will be redacted, even if the <code class="language-plaintext highlighter-rouge">search_term</code> parameter is not specified in the Data Redaction settings. Search terms containing PII like email addresses is something I’ve seen very often, having a simple to configure “global” setting preventing is a nice addition. This scope does <strong>not</strong> apply for the URL query parameter redaction feature though. If you specify a query parameter to be redacted, the redaction logic will be applied to only the previously mentioned URL-related event parameters, even though they are not explicitly specified in the Data Redaction settings.</p>
+
+<h3 id="components-of-the-data-redaction-feature"><span class="mr-2">Components of the Data Redaction Feature</span><a href="#components-of-the-data-redaction-feature" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Let’s have a closer look at what Google means by “best-effort basis”. As mentioned earlier, we can expect this logic to present in gtag.js and when searching my specific instance of the code, we indeed find the following part of the code that holds the specifications from my web data stream:</p>
+
+<div class="language-json highlighter-rouge"><div class="code-header">
+        <span data-label-text="JSON"><i class="fas fa-code small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"__ccd_auto_redact"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vtp_redactEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vtp_redactQueryParams"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zipcode,creditcarddetails,password,firstname,lastname"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vtp_instanceDestinationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G-XXXXXXXXXX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></div></div>
+
+<p>Furthermore, we find two regular expressions (regex) in the gtag.js-file that appear to be linked to the data redaction feature:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}</code> (case insensitive)</li>
+  <li><code class="language-plaintext highlighter-rouge">[A-Z0-9._-]|%25|%2B)+%40[A-Z0-9.-]</code> (case insensitive)</li>
+</ul>
+
+<p>Let’s break down the regex to understand what it does:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[A-Z0-9._%+-]+</code>: This matches one or more occurrences (+) of uppercase letters (A-Z), digits (0-9), dots (.), underscores (_), percent signs (%), plus (+), or hyphens (-). It corresponds to the “user” part of an email address (e.g., the john.doe in john.doe@example.com).</li>
+  <li><code class="language-plaintext highlighter-rouge">@</code>: This matches the “@” symbol, which is a required part of an email address.</li>
+  <li><code class="language-plaintext highlighter-rouge">[A-Z0-9.-]+</code>: This matches one or more occurrences (+) of uppercase letters (A-Z), digits (0-9), dots (.), or hyphens (-). It corresponds to the “domain” part of the email address (e.g., the example in john.doe@example.com).</li>
+  <li><code class="language-plaintext highlighter-rouge">\\.</code>: This matches a single dot (.). The backslashes are used to escape the dot, as it is a special character in regex.</li>
+  <li><code class="language-plaintext highlighter-rouge">[A-Z]{2,}</code>: This matches two or more occurrences ({2,}) of uppercase letters (A-Z). It corresponds to the “top-level domain” (e.g., com, org, net) part of an email address (e.g., the com in john.doe@example.com).</li>
+</ul>
+
+<p>The purpose of this regular expression is to match email addresses that follow a specific pattern. It only matches email addresses that consist of letters, numbers, and certain special characters. It expects the top-level domain to have at least two characters. It also expects the email address to have a “user” part, an “@” symbol, a “domain” part, and a “top-level domain” part.</p>
+
+<p>GA4’s data redaction treats percent-encoded URL query parameters as well, including Unicode characters accepted by browsers. This is what the second regex is for. It’s a variation of the first regex, but it matches percent-encoded characters. The percent-encoded characters are represented by the <code class="language-plaintext highlighter-rouge">%25</code> and <code class="language-plaintext highlighter-rouge">%2B</code> parts of the regex.</p>
+
+<h3 id="caveats"><span class="mr-2">Caveats</span><a href="#caveats" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>In terms of operation, Data Redaction kicks in <strong>after</strong> Event Modification &amp; Creation. This means that any rules you’ve set to modify or create events will be executed on the website before the Data Redaction process starts. It’s also important to be cautious, as there is a risk of unintended data redaction. For instance, certain parts of the URL or user configurations provided in tags could be mistakenly redacted if they resemble email addresses:</p>
+
+<blockquote>
+  <p>Data redaction may incorrectly interpret text as an email address and redact the text; for example, if the text includes “@” followed by a top-level domain name (e.g., example.com) it may be incorrectly removed.</p>
+</blockquote>
+
+<p>Historically, similar data manipulation could be achieved in your GTM web container by tweaking the <code class="language-plaintext highlighter-rouge">page_location</code> or leveraging GTM Server-Side (sGTM) transformations. Still, remember that sensitive parameters dispatched via HTTP headers, like IP addresses, referers, and user-agents, demand special attention and handling within sGTM.</p>
+
+<p>While the Data Redaction feature in GA4 offers you greater control over the data collected, it’s crucial to understand that this is not a one-size-fits-all solution for ensuring compliance with all laws and regulations. For a comprehensive understanding of best practices and controls for safeguarding data, I strongly recommend working together with your legal department.</p>
+
+<p>Lastly, it’s worth noting that this feature will not prevent data collection via other methods like Measurement Protocol (MP) or Data Import. Therefore, while Data Redaction is a useful tool, it should be part of a broader data management and compliance strategy.</p>
+
+<h2 id="other-privacy-controls-in-ga4"><span class="mr-2">Other Privacy Controls in GA4</span><a href="#other-privacy-controls-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Hence, let’s have a look at additional approaches that you can use to ensure that you do not send any PII to GA4.</p>
+
+<h3 id="regional-data-controls-in-ga4"><span class="mr-2">Regional Data Controls in GA4</span><a href="#regional-data-controls-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>While Client-Side Data Redaction is great to control what data is sent with the GA4 event, other metadata of the request to GA4, e.g. IP addresses and user-agents, might require further treatment as well. Furthermore, the usage of Google Signals might be something that you want use only under specific circumstances.</p>
+
+<p>With GA4, you’re empowered with <strong>Regional Data Controls</strong> that allow you to define the specificity of location and device data you collect from your website users. Opting to disable this collection ensures that city-level location insights (derived from IP addresses) and certain device metadata (dervied from user-agent headers) are redacted even before they reach GA4’s servers. For a deep-dive into these controls, visit the official documentation on <a href="https://support.google.com/analytics/answer/12017362?hl=en#:~:text=analytics.google.com-,Regional%20controls,-Google%20signals">Regional Controls &amp; Google Signals</a>.</p>
+
+<p>Moreover, GA4 offers advanced configurations, both in gtag.js &amp; GTM web containers, to fine-tune ad personalization and the usage of Google Signals: <code class="language-plaintext highlighter-rouge">allow_google_signals</code> &amp; <code class="language-plaintext highlighter-rouge">allow_ad_personalization_signals</code>.</p>
+
+<p>Within the Property Settings, you can harness these advanced configurations to either enable or disable ad personalization for users from specific countries or US states. It’s important to note that these settings are forward-looking, meaning they won’t alter previously collected data. Opting to turn off ad personalization doesn’t inhibit your capability to use the analytics data from that property for other purposes, like A/B testing in tools like Optimizely, AB Tasty, etc. or Firebase.</p>
+
+<p>Should you decide to disable ad personalization for any region, all events harvested from that area will be flagged as ineligible for ad personalization (NPA). This ensures that conversions from these regions remain untouched for ad personalization, even when transferred to linked ad accounts. Furthermore, users from a deactivated region won’t be added to any lists designated for export to your linked ad accounts. However, previously exported lists remain unchanged.</p>
+
+<h3 id="transformations-in-gtm-server-side"><span class="mr-2">Transformations in GTM Server-Side</span><a href="#transformations-in-gtm-server-side" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>Transformations in a GTM server-side container serve as a powerful tool, granting you the capability to shape the event parameters emitted from your GA4 client before they’re channeled to GA4 (and other) tags. This not only lets you protect sensitive data but also allows you to meticulously dictate which event parameters and HTTP headers are up for subsequent processing.</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/gtm-ss-transformations.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/gtm-ss-transformations.png" alt="gtm-ss-transformations" title="GTM Server-Side Transformations" class="lazyload" data-proofer-ignore></a>
+<em>Source: <a href="https://developers.google.com/tag-platform/tag-manager/server-side/transformations">Official GTM Server-Side Documentation</a></em></p>
+
+<p>With transformations, you can:</p>
+
+<ul>
+  <li>Define Precision: Share only those event parameters with tags that you’ve explicitly marked.</li>
+  <li>Augment Data: Craft rules to modify existing event parameters or introduce new ones.</li>
+  <li>Maintain Privacy: Proactively redact information by keeping certain event parameters away from tags.</li>
+</ul>
+
+<p>The flexibility of transformations is tremendous. You can implement them across all your tags, specific tag types, or even a custom-selected group. Moreover, you can establish a series of conditions, ensuring transformations are executed only when these criteria are satisfied.</p>
+
+<p>For those keen on upholding rigorous privacy standards in data collection, routing GA4 events through sGTM is a wise strategy. Furthermore, when dealing with server-to-server events, routing MP events through sGTM can ensure that the same redaction logic applies as for events collected client-side. Therefore, I strongly recommend harnessing transformations to redact PII to ensure that no personal data inadvertently finds its way to GA4.</p>
+
+<h3 id="data-deletion-requests-in-ga4"><span class="mr-2">Data Deletion Requests in GA4</span><a href="#data-deletion-requests-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>In case sensitive data slipped through your previous safeguarding measurements, GA4 offers a convenient solution: the <strong>data-deletion request</strong>. By leveraging this feature, you can surgically remove text data accumulated through event parameters from GA4 servers after they’ve been collected. Notably, even though the original text will be replaced with “(data deleted)”, the event’s impact remains intact in your overall report metrics.</p>
+
+<p>GA4 provides you with four options to initiate data deletion requests:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Deletion Type</th>
+      <th>Effect on Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Delete all parameters on all events</td>
+      <td>This option deletes all registered and automatically collected parameters across all collected events.</td>
+    </tr>
+    <tr>
+      <td>Delete all registered parameters on selected events</td>
+      <td>This option deletes all registered parameters collected across a list of events you select in the next step.</td>
+    </tr>
+    <tr>
+      <td>Delete selected parameters on all events</td>
+      <td>This option deletes registered parameters that you select in the next step across all collected events.</td>
+    </tr>
+    <tr>
+      <td>Delete selected parameters on selected events</td>
+      <td>This option deletes registered parameters that you select in the next step across a list of events that you also select in the next step.</td>
+    </tr>
+    <tr>
+      <td>Delete selected user properties</td>
+      <td>This option deletes user properties that you select in the next step</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><em>Source: <a href="https://support.google.com/analytics/answer/9940393?hl=en#zippy=%2Cin-this-articles">Data-deletion requests documentation</a></em></p>
+
+<p>GA4 accommodates the removal of both automatically recorded parameters and those manually registered as custom dimensions. However, it refrains from erasing numeric parameters, text parameters based on trusted internal identifiers, and the preset entries “”, “(not set)”, and “(data deleted)”. <strong>Auto-collected Parameters</strong> can be removed exclusively when you opt to erase all parameters across every event. Analytics can wipe out <strong>custom parameters</strong> tagged as custom dimensions. If you can’t spot a specific parameter in the deletion list, it’s likely it was never measured initially. Double-check the parameter’s name and its registration status before deletion.</p>
+
+<p>It’s worth noting: if you’ve established a custom dimension that sources its data from an auto-collected parameter, removing the custom parameter won’t affect the auto-collected one.</p>
+
+<h3 id="ga4-user-deletion-api"><span class="mr-2">GA4 User Deletion API</span><a href="#ga4-user-deletion-api" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>A somewhat related data control in GA4, but one of the lesser known ones is the <a href="https://developers.google.com/analytics/devguides/config/userdeletion/v3">User Deletion API</a>. Its impact on your data is more rigorous than for Data Deletion requests, as this API empowers you to facilitate the removal of all data linked to specific user identifiers. So, if any of the aforementioned methods failed and unwanted data slipped through, the User Deletion API serves you as a tool to delete data related to designated user identifiers found in your properties. Initiating these deletion requests is feasible through both Firebase projects and GA properties. To initiate a User Deletion API request, you must specify the user identifier type and the user identifier itself.</p>
+
+<p>Supported user identifier types include:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CLIENT_ID</code>: Pertains to the Google Analytics Client ID.</li>
+  <li><code class="language-plaintext highlighter-rouge">USER_ID</code>: This is the Google Analytics User ID.</li>
+  <li><code class="language-plaintext highlighter-rouge">APP_INSTANCE_ID</code>: Represents the Firebase application instance ID.</li>
+</ul>
+
+<p>It’s crucial to understand that each data deletion request exclusively addresses the identifier mentioned in that particular appeal. For users linked with multiple identifiers, distinct deletion requests for every associated identifier are mandatory. If your analytics also integrates with BigQuery exports, ensure you handle deletions on that platform too.</p>
+
+<p>Post the initiation of a user deletion request, the corresponding user identifier data will vanish from the User Explorer Report within a span of 72 hours. Subsequently, the data will be purged from Analytics servers during the following deletion cycle, which typically takes place roughly bi-monthly. If you’ve moved any of this data from Google Analytics to platforms like BigQuery, you might want to consider deleting the related identifiers there as well by running data manipulation statements.</p>
+
+<p>It’s worth noting that reports generated from previously consolidated data, like user counts in the audience overview report, will remain intact and unaltered - only the granular data will be removed.</p>
+
+<h2 id="overview-of-privacy-controls-in-ga4"><span class="mr-2">Overview of Privacy Controls in GA4</span><a href="#overview-of-privacy-controls-in-ga4" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>When we look at the privacy controls in GA4, we can see that they are spread across different areas of the platform and the data flow. The following diagram provides an overview of the different privacy controls in GA4 and where in the data flow they are applied:</p>
+
+<p><a href="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-privacy-controls.png" class="popup img-link "><img data-src="/gunnargriese.github.io/assets/img/ga4-data-redaction/ga4-privacy-controls.png" alt="ga4-privacy-controls" title="Overview of GA4 Privacy Controls" class="lazyload" data-proofer-ignore></a>
+<em>Overview of GA4 Privacy Controls - Own Visualization</em></p>
+
+<ul>
+  <li>Pre-Data Collection: This is where you prevent data from being picked up client-side altogether. Here you can utilize the <strong>Data Redaction</strong> feature or apply your own redaction logic using <strong>custom variables in the GTM web container</strong>.</li>
+  <li>In Transit: This is where you scrub data from the GA4 requests before they hit GA4’s servers. Here you can configure <strong>Regional Data Controls</strong> and take advantage of <strong>sGTM’s Transformations</strong> feature.</li>
+  <li>Post-Data Collection: This is where you delete already collected data. Here you can utilize <strong>Data Deletion Requests</strong> and/or the <strong>User Deletion API</strong>.</li>
+</ul>
+
+<p>For a complete rundown of all available data controls in GA4, I recommend consulting <a href="https://support.google.com/analytics/answer/13126616?hl=en">this official Google document</a>, since it offers a central guide to GA4’s data practices and controls for protecting the confidentiality and security of data collected by GA.</p>
+
+<h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>The ever-evolving landscape of data privacy and governance has prompted platforms like Google Analytics 4 (GA4) to introduce robust measures ensuring data sanctity. GA4’s suite of privacy controls, ranging from Client-Side Data Redaction to the User Deletion API, empowers GA4 users with tools that allow for fine-grained data protection. With features like Client-Side Data Redaction and transformations in GTM Server-Side, organizations can meticulously regulate the flow and processing of data, striking a balance between actionable insights and data privacy. While I like to see Google’s effort in making compliance easier to manage and thereby more accessible to the broader public, I’d love to see more flexibility in the future. For instance, I miss the ability to define my own regular expressions to match my specific use cases - similar to the <code class="language-plaintext highlighter-rouge">customTask</code> feature we used to have for Universal Analytics. Unfortunately, limited customization possibilities appear to be a trend in GA4, as we’re seeing it in other areas as well.</p>
+
+<p>However, while these tools are incredibly powerful, they are not silver bullets. It’s imperative for businesses and analysts alike to understand their intricacies and applications, ensuring they align with legal regulations and organizational standards. The obligation falls on organizations to stay updated, as platforms, regulations, and standards continuously evolve. It’s equally vital to collaborate closely with legal and compliance departments, ensuring that the usage of these tools aligns with overarching data governance policies.</p>
+
+<p>GA4’s advancements, covered extensively in this blog post, are steps forward. They reflect a broader industry shift towards transparency, accountability, and user-centricity. By leveraging these controls effectively and responsibly, organizations can not only uphold their reputation but also foster trust among their user base, a cornerstone for long-term success in today’s digital age.</p>
+
+</div>
+
+<div class="post-tail-wrapper text-muted">
+
+  <!-- categories -->
+  
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    
+      <a href='/gunnargriese.github.io/categories/ga4/'>GA4</a>
+  </div>
+  
+
+  <!-- tags -->
+  
+  <div class="post-tags">
+    <i class="fa fa-tags fa-fw mr-1"></i>
+      
+      <a href="/gunnargriese.github.io/tags/ga4/"
+          class="post-tag no-text-decoration" >ga4</a>
+      
+  </div>
+  
+
+  <div class="post-tail-bottom
+    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+    <div class="license-wrapper">
+
+      
+
+        
+
+        This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+
+      
+    </div>
+
+    <!-- Post sharing snippet -->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+      
+      <a
+        href="https://twitter.com/intent/tweet?text=GA4%20Client-Side%20Data%20Redaction%20-%20How%20to%20remove%20PII%20from%20your%20data%20before%20you%20collect%20it%20-%20Gunnar%20Griese&url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-data-redaction%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Twitter"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <i class="fa-fw fab fa-twitter"></i>
+      </a>
+    
+      
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?title=GA4%20Client-Side%20Data%20Redaction%20-%20How%20to%20remove%20PII%20from%20your%20data%20before%20you%20collect%20it%20-%20Gunnar%20Griese&u=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-data-redaction%2F"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Facebook"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+      
+      <a
+        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fgunnargriese.github.io%2Fposts%2Fga4-data-redaction%2F&text=GA4%20Client-Side%20Data%20Redaction%20-%20How%20to%20remove%20PII%20from%20your%20data%20before%20you%20collect%20it%20-%20Gunnar%20Griese"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Telegram"
+        target="_blank"
+        rel="noopener"
+        aria-label="Telegram"
+      >
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <i
+      id="copy-link"
+      class="fa-fw fas fa-link small"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+    </i>
+  </span>
+</div>
+
+
+  </div><!-- .post-tail-bottom -->
+
+</div><!-- div.post-tail-wrapper -->
+
+
+      
+    
+      
+    </div>
+  </div>
+  <!-- #core-wrapper -->
+
+  <!-- panel -->
+  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+    <div class="access">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="access-lastmod" class="post">
+    <div class="panel-heading">Recently Updated</div>
+    <ul class="post-content pl-0 pb-1 ml-1 mt-2">
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/confidential-matching/">Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/firebase-analytics-debugging/">Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/ga4-time-travel-bridging-utc-and-local-timezones/">GA4 Time Travel - Bridging UTC and Local Timezones</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/posthog-gtm-template/">Unleash the Potential of PostHog Analytics Platform with Google Tag Manager</a>
+        </li>
+      
+        
+        
+        
+        <li>
+          <a href="/gunnargriese.github.io/posts/bigquery-path-exploration/">How to replicate the GA4 Path Exploration report with BigQuery SQL?</a>
+        </li>
+      
+    </ul>
+  </div>
+  <!-- #access-lastmod -->
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+
+    
+      
+      
+
+
+
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <div class="panel-heading pl-3 pt-2 mb-2">Contents</div>
+    <nav id="toc"></nav>
+  </div>
+
+  <!-- toc.js will be loaded at medium priority -->
+  <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+
+
+    
+  </div>
+</div>
+
+<!-- tail -->
+
+  <div class="row">
+    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
+      
+        
+        <!--
+  Recommend the other 3 posts according to the tags and categories of the current post,
+  if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<!-- Fill with the other newlest posts -->
+
+
+
+
+
+  <div id="related-posts" class="mb-2 mb-sm-4">
+    <h3
+      class="pt-2 mb-4 ml-1"
+      data-toc-skip
+    >
+      Further Reading
+    </h3>
+    <div class="card-deck mb-4">
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/firebase-analytics-debugging/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1683278655"
+  data-df="DD/MM/YYYY"
+  
+>
+  05/05/2023
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Are you a digital analyst looking to implement and debug Google Analytics tracking via Firebase for your mobile iOS apps and have no clue where to start? This blog post is for you! I’ll briefly wal...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/gtm-server-side/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1598016255"
+  data-df="DD/MM/YYYY"
+  
+>
+  21/08/2020
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>GTM Server-Side Tagging – Better Data & More Control</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Over the last many months we have been running a series of beta tests and projects for a group of selected clients to get both practical experience and to help optimize the recently released Google...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+        
+        
+        <div class="card">
+          <a href="/gunnargriese.github.io/posts/bigquery-path-exploration/">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em
+  class="small"
+  data-ts="1666517055"
+  data-df="DD/MM/YYYY"
+  
+>
+  23/10/2022
+</em>
+
+              <h3 class="pt-0 mt-1 mb-3" data-toc-skip>How to replicate the GA4 Path Exploration report with BigQuery SQL?</h3>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  The New Google Analytics (GA4) comes with a new Exploration feature, which allows GA users to deep-dive into their data — beyond the capabilities of the built-in standard reports. While the standar...
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+    <!-- .card-deck -->
+  </div>
+  <!-- #related-posts -->
+
+
+      
+        
+        <!-- Navigation buttons at the bottom of the post. -->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+    <a
+      href="/gunnargriese.github.io/posts/ga4-the-cdp-you-didnt-know-you-had/"
+      class="btn btn-outline-primary"
+      prompt="Older"
+    >
+      <p>GA4 - The CDP You Didn't Know You Had</p>
+    </a>
+  
+
+  
+    <a
+      href="/gunnargriese.github.io/posts/consent-mode-v2/"
+      class="btn btn-outline-primary"
+      prompt="Newer"
+    >
+      <p>Consent Mode v2 - A Comprehensive Technical Guide</p>
+    </a>
+  
+</div>
+
+      
+        
+        <!--  The comments switcher -->
+
+  
+  <!-- The Disqus lazy loading. -->
+<div id="disqus_thread" class="pt-2 pb-2">
+  <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
+</div>
+
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://localhost:4000/gunnargriese.github.io/posts/ga4-data-redaction/';
+    this.page.identifier = '/posts/ga4-data-redaction/';
+  };
+
+  /* Lazy loading */
+  var disqus_observer = new IntersectionObserver(
+    function (entries) {
+      if (entries[0].isIntersecting) {
+        (function () {
+          var d = document,
+            s = d.createElement('script');
+          s.src = 'https://gunnargriese-com.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+
+        disqus_observer.disconnect();
+      }
+    },
+    { threshold: [0] }
+  );
+
+  disqus_observer.observe(document.querySelector('#disqus_thread'));
+
+  /* Auto switch theme */
+  function reloadDisqus() {
+    if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+      /* Disqus hasn't been loaded */
+      if (typeof DISQUS === 'undefined') {
+        return;
+      }
+
+      if (document.readyState == 'complete') {
+        DISQUS.reset({ reload: true, config: disqus_config });
+      }
+    }
+  }
+
+  if (document.querySelector('.mode-toggle')) {
+    window.addEventListener('message', reloadDisqus);
+  }
+</script>
+
+
+
+      
+    </div>
+  </div>
+
+
+      </div>
+
+      <!--
+  The Search results
+-->
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+  <div class="col-12 col-sm-11 post-content">
+    <div id="search-hints">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+
+
+  <div id="access-tags">
+    <div class="panel-heading">Trending Tags</div>
+    <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ga4/">ga4</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/bigquery/">bigquery</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm-server-side/">gtm-server-side</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/gtm/">gtm</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/sql/">sql</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/firebase-analytics/">firebase-analytics</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/charles-proxy/">charles-proxy</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/consent-mode/">consent-mode</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/custom-templates/">custom-templates</a>
+      
+        
+        <a class="post-tag" href="/gunnargriese.github.io/tags/ios-debugger/">ios-debugger</a>
+      
+    </div>
+  </div>
+
+
+    </div>
+    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+  </div>
+</div>
+
+    </div>
+    <!-- #main-wrapper -->
+
+    <!-- The Footer -->
+
+<footer>
+    <div class="container pl-lg-4 pr-lg-4">
+        <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
+            <div class="footer-left">
+                <p class="mb-0">
+                    © 2024
+                    <a href="https://github.com/GunnarGriese">Gunnar Griese</a>. 
+                    <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span> 
+                </p>
+            </div>
+
+            <div class="footer-right">
+                <p class="mb-0"><!-- 
+          Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.
+          -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+
+    <!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('search-results'),
+  json: '/gunnargriese.github.io/assets/js/data/search.json',
+  searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0">  <a href="{url}">{title}</a>  <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">    {categories}    {tags}  </div>  <p>{snippet}</p></div>',
+  noResultsText: '<p class="mt-5"></p>',
+  templateMiddleware: function(prop, value, template) {
+    if (prop === 'categories') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+      }
+    }
+
+    if (prop === 'tags') {
+      if (value === '') {
+        return `${value}`;
+      } else {
+        return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+      }
+    }
+  }
+});
+</script>
+
+
+    <!-- JS selector for site. -->
+
+<!-- layout specified -->
+
+
+  
+
+
+
+  <!-- image lazy-loading & popup & clipboard -->
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/lazysizes@5.3.2/lazysizes.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+  
+    
+
+    
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1.11.6/dayjs.min.js,npm/dayjs@1.11.6/locale/.min.js,npm/dayjs@1.11.6/plugin/relativeTime.min.js,npm/dayjs@1.11.6/plugin/localizedFormat.min.js"></script>
+
+
+
+
+
+
+
+<script defer src="/gunnargriese.github.io/assets/js/dist/post.min.js"></script>
+
+
+
+<!-- commons -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  </body>
+</html>
+

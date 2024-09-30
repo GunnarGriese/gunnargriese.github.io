@@ -11,10 +11,25 @@ title: Services
                 Analytics Consultant and Google Cloud Certified Professional Data Engineer, I help businesses harness
                 the full potential of their data through customized
                 analytics solutions and data-driven strategies.</p>
-            <!--<div class="mb-5">
+            <div class="mb-5">
                 <a href="#contact" class="btn btn-primary mr-2" style="background-color: #235495ff;">Contact</a>
-                <a href="#services" class="btn btn-outline-primary" style="border-color: #235495ff;">Services</a>
-            </div>-->
+                <a href="#services" class="btn btn-outline-primary custom-btn-outline"
+                    style="border-color: #235495ff; color: #235495ff;">Services</a>
+                <style>
+                    .btn.btn-outline-primary.custom-btn-outline {
+                        border-color: #235495ff;
+                        color: #235495ff !important;
+                    }
+
+                    .btn.btn-outline-primary.custom-btn-outline:hover,
+                    .btn.btn-outline-primary.custom-btn-outline:focus,
+                    .btn.btn-outline-primary.custom-btn-outline:active {
+                        background-color: #235495ff !important;
+                        border-color: #235495ff !important;
+                        color: white !important;
+                    }
+                </style>
+            </div>
         </div>
     </div>
 
@@ -26,7 +41,8 @@ title: Services
                 Google Analytics, Amplitude,
                 Piwik Pro, Google Tag Manager can be challenging. Adding <strong>Customer Data Platforms</strong> like
                 Mixpanel, Heap,
-                Lytics, to the mix, combine these with working with raw data in BigQuery and you have a daunting task in
+                Lytics, to the mix, combine these with <strong>working with raw data in BigQuery</strong> and you have a
+                daunting task in
                 front of
                 you.</p>
             <p>As a <strong>Digital Analytics Consultant and Analytics Engineer</strong>, I specialize in designing and
@@ -42,29 +58,29 @@ title: Services
 
     <div class="row mb-5">
         <div class="col-md-8">
-            <h2 class="mb-4">Your Digital Analytics Implementation & Strategy - Simplified for Success</h2>
+            <h2 class="mb-4">Your Digital Analytics Implementation & Strategy - Tuned for Success</h2>
             <p>I work flexibly to meet your specific needs, whether you require end-to-end management of your analytics
                 infrastructure or ongoing support in leveraging your existing resources. My services include:</p>
             <ul style="list-style-type: none; padding: 0;">
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> <strong>Optimizing your digital analytics
+                <li><i class="fas fa-cogs" style="color:#dd973a"></i> <strong>Optimizing your digital analytics
                         setup</strong>
                     (e.g., Google Analytics
                     and Google Tag Manager) continuously for accurate data collection and insightful reporting.</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> <strong>Developing custom analytics
+                <li><i class="fas fa-code" style="color:#dd973a"></i> <strong>Developing custom analytics
                         solutions</strong>
                     using JavaScript, SQL, and
                     Python to address unique business requirements.</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> <strong>Building scalable data pipelines
+                <li><i class="fas fa-network-wired" style="color:#dd973a"></i> <strong>Building scalable data pipelines
                         and
                         advanced analytics
                         solutions</strong>
                     using GTM Server-Side and Google Cloud Platform
                     services.</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> <strong>Providing training and
+                <li><i class="fas fa-chalkboard-teacher" style="color:#dd973a"></i> <strong>Providing training and
                         support</strong> to help
                     your team maximize the
                     value of your analytics tools.</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> <strong>Offering strategic advice on
+                <li><i class="fas fa-bullseye" style="color:#dd973a"></i> <strong>Offering strategic advice on
                         digital
                         marketing strategies</strong>
                     informed by data-driven insights.</li>
@@ -87,7 +103,7 @@ title: Services
 
     <div class="row mb-5">
         <div class="col-12">
-            <h2 class="mb-4">Who am I?</h2>
+            <h2 class="mb-4">Your Consultant & Engineer - Who am I?</h2>
             <div class="row">
                 <div class="col-md-8">
                     <p>I'm Gunnar Griese, a <strong>self-employed Digital Analytics Consultant and Analytics
@@ -101,18 +117,6 @@ title: Services
                         courses "Technical Digital Analytics" and "Tag
                         Management" at IHM Business
                         School in Malmö, introducing students to the intricacies of digital analytics.</p>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Google Cloud (GCP) Certified
-                            Professional Data Engineer</li>
-                        <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Specialized in Google Analytics
-                            (GA) and Google Tag Manager (GTM)</li>
-                        <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Proficient in JavaScript, SQL, and
-                            Python</li>
-                        <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Experience with large enterprises
-                            and brands</li>
-                        <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Multilingual: German (native),
-                            English (fluent), Danish (basic working proficiency)</li>
-                    </ul>
                 </div>
                 <div class="col-md-4">
                     <img src="/assets/img/avatar/gunnar-avatar.jpg" alt="Gunnar Griese"
@@ -121,50 +125,52 @@ title: Services
             </div>
         </div>
     </div>
-    <!--- MAKE CONTACT FORM WORK 
+    <!--- MAKE CONTACT FORM WORK -->
     <div id="contact" class="row mb-5">
         <div class="col-md-6">
-            <h3 class="mb-4">Let's work together</h3>
-            <form id="contact-form" action="https://your-custom-endpoint.com/submit" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
+            <h3 class="mb-4">Let's work together:</h3>
+            <form id="contact-form">
+                <div class="form-group mb-3">
+                    <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="your.name@example.com" required>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" id="message" placeholder="Your Message." rows="3" required></textarea>
-                <button type="submit" class="btn btn-primary">Send</button>
+                <div class="form-group mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" placeholder="Your Message" rows="2" required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" style="background-color: #235495ff;">Send</button>
+                </div>
             </form>
-        
-            <div id="form-success-message" class="alert alert-success" style="display:none;" role="alert">
+            <div id="form-success-message" class="alert alert-success mt-3" style="display:none;" role="alert">
                 Your message has been sent successfully!
             </div>
-            <div id="form-error-message" class="alert alert-danger" style="display:none;" role="alert">
+            <div id="form-error-message" class="alert alert-danger mt-3" style="display:none;" role="alert">
                 There was an error sending your message. Please try again.
             </div>
         </div>
         <div class="col-md-6">
-            <h4>Working with me you'll get:</h4>
-            <ul style="list-style-type: none; padding: 0;">
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Tailored digital analytics strategies for
-                    your unique business needs</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> An experienced consultant with a track
-                    record in large enterprises and brands</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Expertise in a variety of digital
-                    analytics platforms - exceling in Google Analytics, Google Tag
-                    Manager, and Google Cloud Platform</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Custom solutions leveraging JavaScript,
-                    SQL, and Python</li>
-                <li><i class="fas fa-check-circle" style="color:#dd973a"></i> Clear communication in English, German, or
-                    Danish</li>
+            <h4 class="mb-4">Working with me you'll get:</h4>
+            <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-puzzle-piece" style="color:#dd973a"></i> Tailored digital
+                    analytics strategies for your unique business needs</li>
+                <li class="mb-2"><i class="fas fa-user-tie" style="color:#dd973a"></i> An experienced
+                    consultant with a track record in large enterprises and brands</li>
+                <li class="mb-2"><i class="fas fa-tools" style="color:#dd973a"></i> Expertise in a variety
+                    of digital analytics platforms - exceling in Google Analytics, Google Tag Manager, and Google Cloud
+                    Platform</li>
+                <li class="mb-2"><i class="fas fa-laptop-code" style="color:#dd973a"></i> Custom solutions
+                    leveraging JavaScript, SQL, and Python</li>
+                <li class="mb-2"><i class="fas fa-comments" style="color:#dd973a"></i> Clear communication in
+                    English, German, or Danish</li>
             </ul>
         </div>
     </div>
-    -->
+    <!---->
     <script>
         document.getElementById("contact-form").addEventListener("submit", async function (event) {
             event.preventDefault();  // Prevent default form submission
@@ -182,9 +188,11 @@ title: Services
             };
 
             try {
+                // cloud function endpoint
+                const customEndpoint = "https://europe-west1-nlp-api-test-260216.cloudfunctions.net/website-form-to-bq"
                 // Send the POST request using fetch
-                const response = await fetch("https://your-custom-endpoint.com/submit", {
-                    method: "POST",
+                const response = await fetch(customEndpoint, {
+                    method: "POST", // Use the POST method
                     headers: {
                         "Content-Type": "application/json",
                     },
