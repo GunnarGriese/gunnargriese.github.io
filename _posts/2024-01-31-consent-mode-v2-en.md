@@ -533,3 +533,5 @@ The two new consent types introduced with Consent Mode v2 are mainly focused on 
 However, the introduction of Consent Mode v2 is not without its complexities (as indicated by the length of this blog post). As the advertising system created by Google and its legislation grows in sophistication, the burden of understanding and correctly implementing these new settings falls heavily on those who manage them - the advertisers.
 
 MarTech providers such as Google should make it as simple as possible for advertisers to follow these standards - Google needs to give Consent Mode more love and work to do that.
+
+If you require support in implementing Consent Mode v2 or have any questions about the topic, feel free to reach out to me. I am happy to help you and your business navigate the complexities of Consent Mode v2 and ensure that your implementation is compliant and effective.

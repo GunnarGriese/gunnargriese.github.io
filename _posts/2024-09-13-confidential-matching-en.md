@@ -102,7 +102,7 @@ Moreover, advertisers using Confidential Matching still bear the legal and reput
 
 In light of these concerns, Confidential Matching is a step forward—but not a solution that should lead advertisers to blindly adopt it. It addresses data security but leaves room for doubt regarding the actual handling of data post-match. As privacy is top of mind for many users, businesses will still need to carefully evaluate their legal obligations, privacy risk profiles, and trust in Google's systems.
 
-I hope you found this article insightful and that you have a better understanding of Google's new Confidential Matching feature. If you have any further questions or need help handling the discussions internally, feel free to contact me via one of the channels listed on this website. Happy tracking!
+I hope you found this article insightful and that you have a better understanding of Google's new Confidential Matching feature. If you have any further questions or need help handling the implementation or discussions internally, feel free to contact me via one of the channels listed on this website. Happy tracking!
 
 ## References
 
