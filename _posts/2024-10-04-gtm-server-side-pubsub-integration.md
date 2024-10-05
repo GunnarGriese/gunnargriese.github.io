@@ -231,6 +231,8 @@ This is the key to realtime updates in this application. It allows the app to re
 
 After assembling all the bits and pieces, the dashboard eventually displays the total profit, the number of items sold, and a table with detailed information about each item. In the video above, you can see the dashboard in action.
 
+You can find the full code for the Cloud Run application and the Streamlit dashboard in this [GitHub repository](https://github.com/GunnarGriese/firestore-realtime-dashboard).
+
 ## Conclusion
 
 And that's it - you made it! I hope you enjoyed the second part of our journey through the sGTM Pantheon focus, which focused on integrating your client-side clickstream data with GTM Serve-Side and Pub/Sub. 
