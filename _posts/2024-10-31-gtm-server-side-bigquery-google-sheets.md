@@ -192,7 +192,12 @@ Regardless of which Chaos tag you choose, the **prerequisites** are identical. Y
 
 ### Writing Data to BigQuery with GTM Server-Side
 
-I chose a relatively uncomplicated use case for demonstration purposes: Writing purchase revenue (`value`) and profit data alongside user identifiers (`user_id` and `client_id`) to BQ. Upon successful purchase, the data is captured in the GTM web container and then dispatched to the GTM server container. The Chaos tag in the GTM server container sends the data to BQ. For this purpose, I use the _Write to BigQuery_ tag template since I also want to include profit data, which is made available through the [Soteria](/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) variable template.
+I chose a relatively uncomplicated use case for demonstration purposes: Writing purchase revenue (`value`) and profit data alongside user identifiers (`user_id` and `client_id`) to BQ. 
+
+![BigQuery Architecture](/assets/img/gtm-ss-bq/bigquery-architecture.png)
+_Exemplary GTM Server-Side Use Case with BigQuery_
+
+Upon successful purchase, the data is captured in the GTM web container and then dispatched to the GTM server container. The Chaos tag in the GTM server container sends the data to BQ. For this purpose, I use the _Write to BigQuery_ tag template since I also want to include profit data, which is made available through the [Soteria](/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) variable template.
 
 > Note: This example also shows how you can combine different Pantheon solutions, making your GTM setup even more powerful.
 
