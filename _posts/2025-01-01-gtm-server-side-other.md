@@ -1,7 +1,7 @@
 ---
 title: GTM Server-Side Pantheon - Integrating First-Party Data in Real-Time
 author: gunnar
-date: 2024-11-14 00:00:01 +0200
+date: 2025-01-14 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
 comments: true
