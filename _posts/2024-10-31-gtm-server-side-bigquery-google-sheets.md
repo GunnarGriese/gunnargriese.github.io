@@ -22,7 +22,7 @@ Google Sheets is a go-to tool for marketers and a vast amount of business-critic
 
 Using Apollo, you can do just that! From my perspective, Apollo's appeal is its simplicity and ease of use. You don't need to configure complex APIs or use cloud-native databases. Instead, you can use a tool that you and your team are already familiar with and can manage themselves without having to rely on engineers or developers.
 
-The original Apollo use case was to update conversion values or lead scores in real-time. This is particularly fitting for Google Ads campaigns, where real-time updates of the conversion values can significantly improve performance and ROI. At the end of the day, the idea behind this solution is the sames as the [Soteria](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) approach, but with Google Sheets as the data source instead of Firestore to update the conversion value in real-time. 
+The original Apollo use case was to update conversion values or lead scores in real-time. This is particularly fitting for Google Ads campaigns, where real-time updates of the conversion values can significantly improve performance and ROI. At the end of the day, the idea behind this solution is the same as the [Soteria](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) approach, but with Google Sheets as the data source instead of Firestore to update the conversion value in real-time. 
 
 To avoid repeating myself and being able to show you something new, I won't go into the setup of the original Apollo solution in detail. If you're interested in the details, you can find the instructions in the [official documentation](https://github.com/google-marketing-solutions/gps-sgtm-pantheon/tree/main/sgtm/apollo). 
 
@@ -120,12 +120,16 @@ return sendHttpRequest(url, requestOptions).then((result) => {
 
 > Note: Make sure to grant either the App Engine or the Compute Engine default service account email address read permissions to the Google Sheets document from which you want to look up the values. Which one of the two you need to grant access to depends on the environment in which your GTM server container is running.
 
-As you can see from the above, the variable compiles all the inputs and sends a `GET` request to the Google Sheets API to fetch the desired value.
+As you can see from the above, the variable compiles all the inputs and sends a `GET` request to the Google Sheets API to fetch the desired value. The entire process results in the following request that returns the desired value:
 
 ![Google Sheet Read Request](/assets/img/gtm-ss-bq/read-request.png)
 _Exemplary Google Sheets Read Request_
 
-You can now use the variable in any tag you like to pass on the value to a platform of your choice. This is a simple example to demonstrate the concept. You can easily extend this solution to include more complex data structures or additional data points. Again, the beauty of this solution is its simplicity and flexibility. The familiar interface of a spreadsheet allows everybody to easily update the document with new values or add new columns and rows without changing the sGTM setup. These characteristics make the Google Sheets reads an excellent option for real-time data enrichment.
+You can now use the variable in any tag you like to pass on the value to a platform of your choice. 
+
+Naturally, I'd like you to think about the above as a mere example to demonstrate the concept. You can easily extend this solution to include more complex data structures or additional data points. 
+
+Again, the beauty of this solution is its simplicity and flexibility. The familiar interface of a spreadsheet allows everybody to easily update the document with new values or add new columns and rows without changing the sGTM setup. These characteristics make the Google Sheets reads an excellent option for real-time data enrichment.
 
 ### Writing Data from GTM Server-Side to Google Sheets
 
@@ -182,7 +186,7 @@ Let's examine Chaos in more detail and consider how you can leverage it in your 
 The Chaos solution comes in two flavors (meaning two tags to choose from), each tailored to different use cases:
 
 1. **Write to BigQuery**: This tag allows you to send any data from sGTM—whether event data or variables (also from other Pantheon solutions)—directly to BQ. It is ideal for custom use cases where you need complete control over what's stored and analyzed.
-2. **Write Event Data to BigQuery**: This is a streamlined version that automatically pulls event data (not variables) from sGTM, offering a faster, more straightforward setup.
+2. **Write Event Data to BigQuery**: This is a streamlined version that automatically pulls data from sGTM's event data model (meaning variables ar enot available), offering a faster, more straightforward setup.
 
 Both variants can be customized within sGTM to match your unique needs, from schema setup to permissions. Eventually, this will give you full control over and offer flexibility for your data flow.
 
@@ -199,7 +203,7 @@ _Exemplary GTM Server-Side Use Case with BigQuery_
 
 Upon successful purchase, the data is captured in the GTM web container and then dispatched to the GTM server container. The Chaos tag in the GTM server container sends the data to BQ. For this purpose, I use the _Write to BigQuery_ tag template since I also want to include profit data, which is made available through the [Soteria](/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) variable template.
 
-> Note: This example also shows how you can combine different Pantheon solutions, making your GTM setup even more powerful.
+> **Note: This example also shows how you can combine different Pantheon solutions, making your GTM setup even more powerful.**
 
 The following screenshot shows the schema of my dedicated `write_to_bq`table in BQ: 
 
