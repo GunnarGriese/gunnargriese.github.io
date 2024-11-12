@@ -370,7 +370,7 @@ Now that we have covered the implementation of Consent Mode v2, it is time to va
 
 The GTM Preview Mode is a powerful tool for validating the Consent Mode v2 implementation. It allows you to inspect the consent state and the data layer, and to verify that the consent state is being updated correctly.
 
-#### GTM Web Preview
+#### Consent Mode in GTM Web Preview
 
 When using the GTM Web Preview, you can inspect the consent state in the GTM interface. The consent state is displayed in the "Consent" tab of the GTM interface, and you can see the current consent state for each consent type. Overall, the interface gives you insight into the following for every recorded dataLayer event:
 
@@ -381,9 +381,9 @@ When using the GTM Web Preview, you can inspect the consent state in the GTM int
 ![gtm-web-consent-state-preview](/assets/img/consent-mode/gtm-web-consent-state.png)
 _Source: Own GTM Setup_
 
-#### GTM Server-Side Preview
+#### Consent Mode in GTM Server-Side Preview
 
-For the GTM Server-Side Preview, we are missing a user-friendly interface like the one for the web preview. However, we can inspect the consent state once the GA4 client parses the incoming event data. The event data exposes the consent states as part of the `x-sst-system-properties` object. From here, you can use the consent state to block or allow certain tags from firing based on the user's consent preferences. Or pass the consent state to your tags for further analysis downstream.
+For the Consent Mode settings in GTM Server-Side Preview, we are missing a user-friendly interface like the one for the web preview. However, we can inspect the consent state once the server-side GA4 client parses the incoming event data from the web tag data. The event data exposes the consent states as part of the `x-sst-system-properties` object. From here, you can use the consent state to block or allow certain tags from firing based on the user's consent preferences. Or pass the consent state to your tags for further analysis downstream.
 
 ![gtm-ss-system-properties](/assets/img/consent-mode/gtm-ss-system-properties.png)
 _Source: Own GTM Setup_
