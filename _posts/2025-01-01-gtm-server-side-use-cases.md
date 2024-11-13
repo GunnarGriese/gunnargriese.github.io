@@ -64,6 +64,7 @@ Let's explore some concrete use cases that showcase how this real-time data inte
 Looking at the evolution of digital marketing optimization with **tightening budgets**, there's a clear progression from basic efficiency metrics towards more impactful business outcomes. While most marketers start with optimizing cost per click and move on to cost per conversion, the real business impact lies further up the chain - in revenue, profit, and ultimately customer lifetime value optimization.
 
 ![GTM Server-Side Bidding Metrics](/assets/img/gtm-ss-use-cases/optimization-metrics.png)
+_Overview of traditional optimization metrics_
 
 Here's where GTM Server-Side reveals one of its most powerful capabilities: enabling real-time value-based bidding with actual business metrics, while keeping sensitive data private. Think about it - wouldn't you rather have your marketing platforms optimize towards actual profit instead of just revenue? Or even better, towards predicted customer lifetime value?
 
@@ -89,6 +90,7 @@ While optimizing towards business outcomes is powerful, there's another dimensio
 "But we already segment our audiences," I often hear. Yes, but let's be honest - most businesses are barely scratching the surface of what’s possible. They're like a retail store that only remembers what a customer did during their current visit, completely ignoring their rich purchase history from previous visits.
 
 ![GTM Server-Side Audience Segmentation](/assets/img/gtm-ss-use-cases/gtm-ss-audience-enrichment.png)
+_GTM Server-Side powered Audience Segmentation_
 
 Here's where sGTM becomes your powerful ally. Instead of relying solely on current session data, you can now:
 
