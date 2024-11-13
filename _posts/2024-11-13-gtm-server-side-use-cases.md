@@ -141,6 +141,6 @@ The question isn't whether every business needs GTM Server-Side - that depends e
 
 Remember: While implementing GTM Server-Side is becoming easier and more accessible, simply having it in place isn't enough. The competitive advantage lies not in having the tool, but in how creatively and effectively you wield it.
 
-So, if you've embarked on the GTM Server-Side journey, I encourage you to take these ideas, mix them with your expertise, and start experimenting. The future of digital marketing belongs to those who can best activate their first-party data - and for those who've adopted it, GTM Server-Side might just be the key to unlocking that potential.
+So, if you've embarked on the GTM Server-Side journey, I encourage you to take these ideas, mix them with your expertise, and start experimenting. The future of digital marketing belongs to those who can best activate their first-party data - and for those who've adopted it, GTM Server-Side might just be the key to unlocking that potential. Should you be interested in the technical aspects of how to implement these use cases, feel free to check out my other blog posts on how to integrate [Firestore](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/), [Google Sheets, BigQuery](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/), and other services with GTM Server-Side.
 
-Should you be unsure on how to get started on this journey, feel free to contact me. I’m happy to support you along the way! 
+Should you be unsure on how to get started on this journey, feel free to contact me. I'm happy to support you along the way! 
