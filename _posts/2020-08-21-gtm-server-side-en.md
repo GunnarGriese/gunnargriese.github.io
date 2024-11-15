@@ -70,7 +70,7 @@ Furthermore, because the GTM container is executed in Google’s cloud integrati
 
 Once this new GTM feature moves out of the beta phase after being improved based on feature requests and active community members’ contributions, even more possibilities will be available, significantly changing tracking implementations based on GTM.
 
-> **Note**: You can read more about the possibilities of integrating GCP services into GTM Server-Side to unlock powerful use cases in the future in [my latest blog post series](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/).
+> **Note**: You can read more about the possibilities of integrating GCP services into GTM Server-Side to unlock powerful use cases in the future in [my latest blog post series](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/). If you want an up-to-date overview of GTM Server-Side use cases, you can also check out [my latest blog post](https://gunnargriese.com/posts/gtm-server-side-use-cases/).
 
 ## Closing Thoughts
 
