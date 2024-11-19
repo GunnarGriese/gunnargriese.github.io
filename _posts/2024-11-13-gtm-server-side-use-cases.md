@@ -132,7 +132,7 @@ GTM Server-Side attempts to change this narrative. By integrating with AI servic
 
 Think of it this way: instead of showing all returning customers the same generic "Welcome back!" message, you could generate truly personalized greetings like "Welcome back, Sarah! We noticed you loved our sustainable collection last time—we've just launched new eco-friendly items we think you'll love." The best part? This happens in real time, using your secure customer data that never leaves your control.
 
-This isn't just about creating clever messages - it's about scaling personalization in a previously impossible (or too expensive) way. Your marketing can now adapt instantaneously to customer behavior, preferences, and history, creating truly personal experiences while maintaining enterprise-grade security and privacy - all powered by sGTM.
+This isn't just about creating clever messages - it's about scaling personalization in a previously impossible (or too expensive) way. Your marketing can now adapt quickly to customer behavior, preferences, and history, creating truly personal experiences while maintaining enterprise-level security and privacy - all powered by sGTM.
 
 ## Conclusion
 
