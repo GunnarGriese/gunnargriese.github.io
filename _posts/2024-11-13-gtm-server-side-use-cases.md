@@ -31,7 +31,7 @@ To say it more bluntly, if you and your team have decided to pursue the sGTM rou
 
 The real cost isn't in choosing between client-side and server-side implementations; it's in not fully utilizing the server-side capabilities you've already deployed. Companies with mature server-side implementations are seeing:
 
-* 20-30% improved marketing budget efficiency through real-time value-based bidding
+* Improved marketing budget efficiency through real-time value-based bidding
 * AI-powered personalization driving measurable increases in customer engagement
 * Enhanced audience targeting through secure integration of first-party data
 
