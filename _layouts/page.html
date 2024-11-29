@@ -1,5 +1,6 @@
 ---
 layout: default
+toc: true
 ---
 
 {% include assets-origin.html %}
@@ -12,23 +13,23 @@ layout: default
     <div class="post pl-1 pr-1 pl-md-2 pr-md-2">
       {% capture _content %}
       {% if layout.refactor or page.layout == 'page' %}
-        {% include refactor-content.html content=content lang=lang %}
+      {% include refactor-content.html content=content lang=lang %}
       {% else %}
-        {{ content }}
+      {{ content }}
       {% endif %}
-    {% endcapture %}
+      {% endcapture %}
 
       {% if page.layout == 'page' or page.collection == 'tabs' %}
-        {% assign tab_key = page.title | downcase %}
-        {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
-        <h1 class="dynamic-title">
-          {{ title }}
-        </h1>
-        <div class="post-content">
-          {{ _content }}
-        </div>
-      {% else %}
+      {% assign tab_key = page.title | downcase %}
+      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+      <h1 class="dynamic-title">
+        {{ title }}
+      </h1>
+      <div class="post-content">
         {{ _content }}
+      </div>
+      {% else %}
+      {{ _content }}
       {% endif %}
     </div>
   </div>
@@ -42,20 +43,20 @@ layout: default
     </div>
 
     {% for _include in layout.panel_includes %}
-      {% assign _include_path = _include | append: '.html' %}
-      {% include {{ _include_path }} lang=lang %}
+    {% assign _include_path = _include | append: '.html' %}
+    {% include {{ _include_path }} lang=lang %}
     {% endfor %}
   </div>
 </div>
 
 <!-- tail -->
 {% if layout.tail_includes %}
-  <div class="row">
-    <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
-      {% for _include in layout.tail_includes %}
-        {% assign _include_path = _include | append: '.html' %}
-        {% include {{ _include_path }} lang=lang %}
-      {% endfor %}
-    </div>
+<div class="row">
+  <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4 mt-5">
+    {% for _include in layout.tail_includes %}
+    {% assign _include_path = _include | append: '.html' %}
+    {% include {{ _include_path }} lang=lang %}
+    {% endfor %}
   </div>
+</div>
 {% endif %}
