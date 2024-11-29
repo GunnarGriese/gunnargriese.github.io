@@ -254,3 +254,5 @@ If you’re interested in learning more about Pub/Sub and how it can be used wit
 * [Use Google Tag Manager Server-Side for Visitor Stitching by Querying a GCP Database in Real-Time](https://lukas-oldenburg.medium.com/use-google-tag-manager-server-side-for-visitor-stitching-by-querying-a-gcp-database-in-real-time-644001068a1c) by Lukas Oldenburg
 * [Activating GA4 events with GTM Server-Side and Pub/Sub for Fun and Profit](https://code.markedmondson.me/sending-ga4-events-pubsub/) by Mark Edmondson
 * [Building a Mobility Dashboard with Cloud Run and Firestore](https://cloud.google.com/blog/topics/manufacturing/building-a-mobility-dashboard-with-cloud-run-and-firestore) by Google Cloud
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

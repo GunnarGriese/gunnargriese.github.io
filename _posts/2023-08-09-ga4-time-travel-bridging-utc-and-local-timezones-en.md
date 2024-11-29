@@ -116,3 +116,5 @@ Making decisions based on the heatmap on the left could lead to incorrect conclu
 As shown in this artice, adjusting the `event_timestamp` for its property's timezone is paramount when working with GA4 raw data in BigQuery. In general, I recommend using the `event_timestamp` for all time-related analyses and making sure to adjust it to the property's timezone using the `AT TIME ZONE` clause. This will ensure that you're working with the correct time values and avoid any unexpected discrepancies.
 
 I hope you find this article useful and that it'll help you understand the GA4 timestamp conversion process a bit better and lead to more accurate analyses.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

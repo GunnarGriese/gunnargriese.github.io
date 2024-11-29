@@ -75,3 +75,5 @@ Once this new GTM feature moves out of the beta phase after being improved based
 ## Closing Thoughts
 
 The GTM server-side container’s release continues a general trend that can be observed for many Google Marketing Platform tools: Strengthen tool integration and push towards GCP. By pursuing this strategy, Google ensures a smooth data flow between systems and, at the same time, increases each tool’s functionality to cope with the ever-changing adtech environment.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

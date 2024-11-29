@@ -235,3 +235,5 @@ To summarize the reviewed approaches, the manual approach is the most straightfo
 The GA4 Admin API and GCP approach is the best way to get the conversion events into BQ. This approach is the most flexible. It's also the most reliable way to get the conversion events into BQ, but it comes at the cost of some development effort and maintenance (which should be minimal).
 
 I hope this post was helpful to you. If you have any questions or want to apply a similar approach to your business' GA4 setup, feel free to contact me.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

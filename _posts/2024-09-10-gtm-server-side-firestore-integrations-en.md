@@ -211,3 +211,5 @@ Even if the out-of-the-box templates outlined in this post do not meet your requ
 If you are unsure about which use cases could help you meet your business goals, require more customized functionality, or want to implement one of the described approaches, feel free to contact me; I am always happy to help.
 
 I hope you enjoyed reading this blog post as much as I did writing it. If you have any questions or feedback, please get in touch with me on LinkedIn or via Email. Until next time, happy tracking!
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

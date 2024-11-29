@@ -150,3 +150,5 @@ The question isn't whether you need GTM Server-Side, but how you'll use it to cr
 Ready to start experimenting? Check out my technical guides on integrating [Firestore](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/), [Google Sheets, BigQuery](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/), and other services with GTM Server-Side.
 
 If you are unsure how to start this journey, feel free to contact me. I'm happy to support you along the way! 
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

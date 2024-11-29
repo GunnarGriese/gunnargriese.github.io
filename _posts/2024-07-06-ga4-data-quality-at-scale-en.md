@@ -183,3 +183,5 @@ Proactive data quality monitoring is not just a best practice; it is a necessity
 Investing in proactive monitoring not only safeguards your data but also enhances your organization’s ability to make timely, informed, and impactful decisions.
 
 For further assistance or to discuss how I can help you ensure data quality at scale, feel free to connect with me. I am always happy to help you on your data quality journey.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

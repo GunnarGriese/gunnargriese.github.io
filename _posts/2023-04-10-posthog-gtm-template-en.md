@@ -112,3 +112,5 @@ While this article outlines an approach on how to implement PostHog through GTM,
 ## Summary
 
 In conclusion, PostHog is a powerful analytics platform that can help you understand your users better. By integrating it with Google Tag Manager using the provided tag template, you can streamline the implementation process and efficiently manage your tracking setup. This combination of PostHog and Google Tag Manager will hopefully help speeding up implementation projects and empower you to make data-driven decisions even faster. So go ahead, explore the potential of PostHog analytics platform and Google Tag Manager integration, and unlock new insights into your users’ behavior.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

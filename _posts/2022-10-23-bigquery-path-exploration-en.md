@@ -103,3 +103,5 @@ I hope this piece of context was helpful for you and encourages you to dive deep
 I intend to identify other use cases to explore the opportunities and limitations of GA4 and BigQuery.
 
 If you require support in making the above or any GA4 raw data analyses work for you, have remarks, or find anything unclear, please contact me. I am always happy to talk analytics!
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

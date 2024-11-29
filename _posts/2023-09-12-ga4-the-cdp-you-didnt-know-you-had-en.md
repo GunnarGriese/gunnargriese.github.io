@@ -149,3 +149,5 @@ As for areas of improvement, GA4 could benefit from more powerful Data Import fe
 Despite these challenges and areas for improvement, GA4's recent feature additions and deeper integration with the Google Cloud Platform signify a strategic shift towards becoming a more open and versatile platform. These features empower businesses to enrich their data and integrate GA4 with a variety of tools, enabling a wide range of data activation use cases that go beyond traditional analytics. As GA4 continues to mature, its expanding role in data activation is defnitely something to keep an eye on if your using GA4. 
 
 Feel free to reach out to me, if you want to explore GA4's CDP capabilities for your business!
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

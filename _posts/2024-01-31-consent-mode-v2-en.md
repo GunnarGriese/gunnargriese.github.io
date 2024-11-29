@@ -535,3 +535,5 @@ However, the introduction of Consent Mode v2 is not without its complexities (as
 MarTech providers such as Google should make it as simple as possible for advertisers to follow these standards - Google needs to give Consent Mode more love and work to do that.
 
 If you require support in implementing Consent Mode v2 or have any questions about the topic, feel free to reach out to me. I am happy to help you and your business navigate the complexities of Consent Mode v2 and ensure that your implementation is compliant and effective.
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**

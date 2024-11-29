@@ -112,3 +112,6 @@ Links to relevant articles for further reading on the topic:
 - [Google's GitHub Repo on TEEs](https://github.com/googleads/conf-data-processing-architecture-reference/blob/main/docs/TrustedExecutionEnvironmentsArchitecturalReference.md)
 - [Search Engine Land article](https://searchengineland.com/google-confidential-matching-launch-446503)
 - [DigiDay article](https://digiday.com/marketing/google-debuts-confidential-matching-a-move-to-quell-advertisers-concerns-around-data-leakage/)
+
+
+**Book a meeting with me: [Calendly](https://calendly.com/gunnar-griese-gg/30min)**
