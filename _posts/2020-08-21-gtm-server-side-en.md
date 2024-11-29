@@ -7,6 +7,7 @@ tags: [ga4, gtm-server-side]
 comments: false
 lang: en
 permalink: /posts/gtm-server-side/
+toc: true
 ---
 
 Over the last many months we have been running a series of beta tests and projects for a group of selected clients to get both practical experience and to help optimize the recently released Google Tag Manager (GTM) server-side tagging setup.
