@@ -9,7 +9,7 @@ lang: de
 permalink: /posts/gtm-server-side/
 ---
 
-In den letzten Monaten habe ich eine Reihe von Beta-Tests und Projekten für eine ausgewählte Gruppe von Kunden durchgeführt, um sowohl praktische Erfahrungen zu sammeln als auch die kürzlich veröffentlichte Technologie des Google Tag Manager (GTM) Server-Side Taggings zu optimieren.
+In den letzten Monaten habe ich eine ganze Reihe von Beta-Tests und Projekten für eine ausgewählte Gruppe von Kunden durchgeführt, um sowohl praktische Erfahrungen zu sammeln als auch die kürzlich veröffentlichte Technologie des Google Tag Manager (GTM) Server-Side Taggings zu optimieren.
 
 Mein Ziel mit diesem Post ist es, sowohl Hintergrundinformationen als auch den Kontext zu liefern, warum ich der Meinung bin, dass die allermeisten Unternehmen ernsthaft in Betracht ziehen sollten, GTM Server-Side Tagging zu übernehmen, um ihr Tracking besser zu unterstützen. Darüber hinaus erhältst Du einen Überblick über die Funktionalität und mögliche Anwendungsfälle dieser neuen Technologie, um sich auf ein zukunftssicheres First-Party-Tracking einzustellen, die Kundenerfahrung insgesamt zu verbessern und die volle Kontrolle über deine Daten zu erlangen.
 
