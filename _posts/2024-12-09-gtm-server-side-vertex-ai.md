@@ -126,9 +126,7 @@ Google's proposed use case is quite interesting though. Their team prompts Gemin
 
 As with all of the presented sGTM Pantheon solutions, they become even more powerful when combined. In Google's suggested use case, they use Artemis to fetch user data from Firestore and then use that data to make the model generate highly personalized messages.
 
-When I worked with the solution, I found that Gemini's models were too slow to respond to resolve the variable in time before the processing of the incoming event was completed. (Let me know if you've tried the solution and had a different experience.)
-
-To resolve this issue, I simply transferred the variable logic into a tag, which resolved the issue for me.
+Again to actually work with the APIs by myself, I transferred the variable logic into a tag, which better suited my use case. The original variable template does the job just fine, if you prefer using it!
 
 ![Dioscuri architecture](/assets/img/gtm-ss-phoebe/dioscuri-architecture.png)
 _Dioscuri High-level Architecture_
