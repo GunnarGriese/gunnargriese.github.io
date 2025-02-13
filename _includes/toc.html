@@ -1,12 +1,34 @@
 {% assign enable_toc = false %}
 {% if site.toc and page.toc %}
 {% if page.content contains '<h2' or page.content contains '<h3' %} {% assign enable_toc=true %} {% endif %} {% endif %}
-  {% if enable_toc %} <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
-  <div class="panel-heading pl-3 pt-2 mb-2">Table of Contents</div>
-  <nav id="toc"></nav>
+  {% if enable_toc %}
+  <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+    <div class="panel-heading pl-3 pt-2 mb-2">Table of Contents</div>
+    <nav id="toc">
+      <!-- TOC will be generated here by toc.js -->
+    </nav>
   </div>
 
-  <!-- toc.js will be loaded at medium priority -->
-  <script src="{{ site.data.assets[origin].toc.js | relative_url }}"></script>
+  <style>
+    .toc-list {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .toc-list ul {
+      list-style: none;
+      padding-left: 1.5rem;
+    }
+    .toc-list a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 0.2rem 0;
+      display: inline-block;
+    }
+    .toc-list a:hover {
+      color: var(--link-color);
+    }
+  </style>
 
+  <!-- Load our custom toc.js -->
+  <script src="/assets/js/toc.js"></script>
   {% endif %}
