@@ -47,7 +47,7 @@ A lesser-known method is server-side collection using the Measurement Protocol, 
 
 All these data streams ultimately converge at GA4's collection endpoint, which then distributes the information across GA4's infrastructure—powering the GA4 UI for aggregated reporting, making it available through the Data API, and exporting raw data for more granular analysis to BigQuery.
 
-## When to use server-side data enrichment for GA4
+## When to use server-side data enrichment for GA4?
 
 Now, we've established the following: Server-side data enrichment methods are great at enabling  businesses to capture a more complete picture of customer interactions by bringing additional context to your analytics data. However, knowing when to implement these methods is the key to really getting the most out of these technical abilities.
 
@@ -101,7 +101,7 @@ As illustrated in the diagram below, this becomes particularly valuable in custo
 ![An exemplary user journey with offline touchpoints](/assets/img/ga4-server-side-enrichment/user-journey.png)
 _An exemplary user journey with offline touchpoints_
 
-### How the Measurement Protocol works
+### How does the Measurement Protocol work?
 
 At its core, the Measurement Protocol functions through HTTP POST requests sent directly to GA4's collection endpoint. These requests contain structured event data and necessary identifiers to properly associate the events with the right users and sessions in your GA4 property. See an example implemented in JavaScript below:
 
