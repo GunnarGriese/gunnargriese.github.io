@@ -1,7 +1,7 @@
 ---
 title: MCP Servers in Digital Analytics - Levelling Up Your LLM Game
 author: gunnar
-date: 2026-06-27 00:00:01 +0200
+date: 2025-06-27 00:00:01 +0200
 categories: [GTM, GA4]
 tags: [gtm-server-side, ga4]
 comments: true
