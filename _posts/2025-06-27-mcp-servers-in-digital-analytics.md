@@ -287,22 +287,22 @@ Now, that I had all the tools in place the question really was: Does this actual
 
 To answer this question I put the setup to the test by tasking it with implementing GA via GTM for my test ecommerce website. I've documented the process of this POC in videos to demonstrate how Claude Desktop enhanced with the MCP servers described above and guided by my prompts navigates through each step of the implementation workflow, from initial website analysis through final verification of the tracking setup. The videos run at 4x speed, because the entire process took around 30 minutes in total. Feel free to follow along!
 
-1. Analyze the website structure using the Playwright MCP Server to identify key pages, forms, and user interaction points.
+#### 1. Analyze the website structure using the Playwright MCP Server to identify key pages, forms, and user interaction points.
 
-2. Discover existing dataLayer events by monitoring browser console output and network requests
+#### 2. Discover existing dataLayer events by monitoring browser console output and network requests
 Create a new GA4 property using the Google Analytics MCP Server with appropriate settings for the Danish market.
 
 {% include embed/youtube.html id='XQzmI7QZkZM' %}
 
-3. Create a new GA4 property and a respective data stream using the Google Analytics MCP Server.
+#### 3. Create a new GA4 property and a respective data stream using the Google Analytics MCP Server.
 
 {% include embed/youtube.html id='XCNb8t-mino' %}
 
-4. Set up the complete GTM configuration including tags for pageviews, enhanced ecommerce events, and custom conversions.
+#### 4. Set up the complete GTM configuration including tags for pageviews, enhanced ecommerce events, and custom conversions.
 
 {% include embed/youtube.html id='dZWt6ETAIOk' %}
 
-5. Implement automated testing to verify that all tracking was working correctly and generate comprehensive documentation of the entire implementation.
+#### 5. Implement automated testing to verify that all tracking was working correctly and generate comprehensive documentation of the entire implementation.
 
 {% include embed/youtube.html id='dJZeUA03EAI' %}
 
