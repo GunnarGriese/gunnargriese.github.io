@@ -17,15 +17,15 @@ Model Context Protocol (MCP) Servers might be just what we needed to make the mo
 
 In this post, I'll break down what MCP Servers are, how they work, and most importantly, how they can be used in your digital analytics workflows. I'll share the outcome of a thought experiment with you. In particular, a POC of how analytics implementations could like in the future and how it will change the role of implementation specialists.
 
-## Some Personal Reflections on the Recent AI Hype
+## Some Personal Reflections on the AI Hype
 
 While the above probably sounds like I have given in to the ever-present AI hype, I also want to be honest with you: Up until recently I've been struggling to think of groundbreaking applications for AI within my line of work - Digital Analytics.
 
-I mean, of course, I have used tools like ChatGPT, Gemini, and Claude Desktop to enhance my productivity. I have personally experienced how all of a sudden I was able to supercharge my JavaScript, Python, and SQL skills. I managed to finally wrap up (some) of my side projects that remained dormant for years, because now it didn't require me to sift through endless Stackoverflow conversations, documentations, and blog posts anymore. I turned my problem statements into prompts, iterated incredibly fast, and eventually solved (what previously seemed like) unsolvable problems.
+I mean, of course, I have used tools like ChatGPT, Gemini, and Claude Desktop to enhance my productivity. I have personally experienced how all of a sudden I was able to supercharge my JavaScript, Python, and SQL skills. I managed to finally wrap up (some) of my side projects that remained dormant for years, because now it did not require me to sift through endless Stackoverflow conversations, documentations, and blog posts anymore. I turned my problem statements into prompts, iterated incredibly fast, and eventually solved (what previously seemed like) unsolvable problems.
 
 While I embraced the enhanced productivity and overnight skills "enhancements", I could not see how this would fundamentally change the way I work. The processes and steps involved seemed to remain the same, I was simply able to achieve the desired end goal in a fraction of the time compared to pre-Large Language Model (LLM) days. At the end of the day, it was still me inspecting a website and its code, checking if dataLayer and GA4 events occur at the right time, and configuring GA4 and GTM via the interface or the API.
 
-The final step of any good implementation, turning the collected data into actionable recommendations (or ideally simply actions) seemed far-fetched to me. The believe that dumping data into ChatGPT and hoping for some business-critical insights always made me wince and to this day sounds illusory (I can recommend Juliana's [blog post](https://julianajackson.substack.com/p/language-models-cant-do-data-analysis) on this topic. I share many of her thoughts expressed in her text). 
+The final step of any good implementation, turning the collected data into actionable recommendations (or ideally simply actions) seemed far-fetched to me. The believe that dumping data into ChatGPT and hoping for some business-critical insights always made me wince and to this day sounds illusory (I can recommend Juliana's [blog post](https://julianajackson.substack.com/p/language-models-cant-do-data-analysis) on this topic. I share many of her thoughts expressed in the text). 
 
 ## What are MCP Servers?
 
@@ -313,6 +313,8 @@ While my POC demonstrates the potential of MCP servers in digital analytics work
 
 Still, I believe that this allows us to take a glimpse at how we might work in the future with digital analytics implementations. Given the rapid pace of development in the space, I am confident that similar solutions will be available sooner rather than later.
 
-For me, the most important takeaway from this is that human expertise and oversight will likely remain essential in the future. The AI agent can execute technical tasks efficiently. Still, I don’t believe that it will replace the strategic thinking, business context understanding, and quality assurance that experienced analysts bring to implementations anytime soon.
+For me, the most important takeaway from this is that human expertise and oversight will likely remain essential in the future. The AI agent can execute technical tasks efficiently. Still, I do nont believe that it will replace the strategic thinking, business context understanding, and quality assurance that experienced analysts bring to implementations anytime soon.
 
-Despite the well-defined scope of the task and the limitations I experienced, the POC demonstrates that we’re moving toward a future where AI hopefully will be able to handle more of the mechanical aspects of analytics implementation, freeing up human analysts to focus on strategy, analysis, and insight generation. The key will be to find the right balance between automation and human oversight.
+Despite the well-defined scope of the task and the limitations I experienced, the POC demonstrates that we’re moving toward a future where AI hopefully will be able to handle more of the mechanical aspects of analytics implementation at scale, freeing up human analysts to focus on strategy, analysis, and insight generation. The key will be to find the right balance between automation and human oversight.
+
+> If you are interested in the slides from my presentation, you can find them [here](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
