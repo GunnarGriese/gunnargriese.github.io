@@ -1,5 +1,5 @@
 ---
-title: Moving Beyond Basic Conversion Tracking: Engineering Signals for Sustainable Marketing Advantage
+title: Moving Beyond Basic Conversion Tracking - Engineering Signals for Sustainable Marketing Advantage
 author: gunnar
 date: 2025-09-17 00:00:01 +0200
 categories: [GTM, GA4]
