@@ -57,4 +57,4 @@ Ready to stop leaving money on the table? This article explained the strategic "
 
 As always, if you have any questions or want to discuss this topic further, feel free to reach out to me directly or leave a comment below.
 
-> Shout out to [Rick Dronkers](https://nl.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for introducing me to the term "Signal Engineering" - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them for more insights on this topic!
+> Shout out to [Rick Dronkers](https://www.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for introducing me to the term "Signal Engineering" - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them for more insights on this topic!
