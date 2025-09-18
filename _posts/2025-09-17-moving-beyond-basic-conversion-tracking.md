@@ -60,4 +60,4 @@ This article explained the strategic "why" behind advanced marketing signals. In
 
 As always, if you have any questions or want to discuss this topic further, feel free to reach out to me directly or leave a comment below.
 
-> Shout out to [Rick Dronkers](https://www.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for bringing the term "Signal Engineering" in the marketing context to my awareness - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them for more insights on this topic.
+> Shout out to [Rick Dronkers](https://www.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for bringing the term "Signal Engineering" in the marketing context to my awareness - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them to get their perspectives on this topic, too.
