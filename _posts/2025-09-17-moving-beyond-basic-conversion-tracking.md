@@ -9,19 +9,19 @@ toc: true
 lang: en
 ---
 
-In one of my [previous blog posts](https://gunnargriese.com/posts/gtm-server-side-use-cases/) on data activation use cases for GTM Server-Side, I asked the following question: "Are we leaving money lying on the floor by not acting fast enough on the data we're already collecting?"
+"What signals are you actually using to optimize your marketing campaigns?" This is the question I've started asking clients after witnessing many businesses struggle with rising ad costs while their optimization levers continue to disappear.
 
-This time, I'd like to shed some light on the question of whether we are using the correct data to inform our decision-making and data activation processes. Because when I ask businesses "What signals are you actually using to optimize your marketing campaigns?", nine out of ten times, the answers default to the expected standard: They send basic conversion events (1 lead count) or simple revenue values (€150 order revenue) to platforms like Google Ads, Meta, and the alike while at the same time wondering why their ROAS keeps declining.
+Nine out of ten times, the answers default to the expected standard: They send basic conversion events (1 lead) or simple revenue values (€100 order) to platforms like Google Ads and Meta, while at the same time wondering why their ROAS keeps declining and budgets get tightened as a result.
 
-However, it doesn't have to be like that: There are far more efficient ways to optimize a marketing budget and ensure a high ROI. From a technical perspective, these solutions have never been easier to implement, yet few are aware of them.
+However, it doesn't have to be like that: There are far more efficient ways to optimize a marketing budget and ensure a high ROI. From a technical perspective, these solutions have never been easier to implement, yet few are aware of them. 
 
-In this first article of my series, I'll outline the shift needed in how we think about marketing signals, while the following ones will focus more on the" how?" of building these systems. So, let's get started!
+In this first article of my series, I'll outline the shift needed in how we think about marketing signals. You can think of it as the overarching concept behind what I've previously explored in my [GTM Server-Side use cases post](https://gunnargriese.com/posts/gtm-server-side-use-cases/). The following posts in this series will focus more on the" how?" of building these systems. So, let's get started!
 
 ## The Optimization Playbook Has Changed
 
 The trend for marketing campaign optimization is clear. Your campaign management is becoming increasingly automated, and larger shares of marketing budgets are being optimized with "intelligent" in-platform tools, such as Performance Max (GMP) and Advantage+ (Meta). 
 
-![MCP Servers - High-level Architecture](/assets/img/signal-engineering/signal-engineering.png)
+![Inner workings of ad platforms](/assets/img/signal-engineering/signal-engineering.png)
 _Inner workings of ad platforms_
 
 Various, complex aspects of the process such as attribution modeling, bidding strategies, and incrementality measurement are already handled by the platforms themselves today. Hence, the influence you as the advertiser have over campaign performance is limited mostly to two aspects:
@@ -37,9 +37,12 @@ While businesses invest in creative design and testing, only a few are focusing 
 
 ## Value-Based Bidding: Optimizing Toward Real Business Outcomes
 
-There’s a reason why your business defaults to the standard practice, though: The last time you tried to shift away from this logic, you likely faced an impossible trilemma. You can either send sensitive profit data through browsers and risk security exposure, use generic revenue values that lead to suboptimal targeting, or upload data in batches, missing real-time optimization opportunities.
+As I’ve laid out in one of my [previous blog posts](https://gunnargriese.com/posts/gtm-server-side-use-cases/), there’s a reason why your business defaults to the standard practice, though: The last time you tried to shift away from this logic, you likely faced an impossible trilemma. You can either send sensitive profit data through browsers and risk security exposure, use generic revenue values that lead to suboptimal targeting, or upload data in batches, missing real-time optimization opportunities.
 
 This trilemma forced you and other companies down a predictable path: The suboptimal one! But what could more promising alternatives actually look like?
+
+![Exemplary Signals](/assets/img/signal-engineering/signals-examples.png)
+_Exemplary Signals_
 
 Real-time profit optimization represents the first evolution beyond generic revenue tracking. When someone makes a purchase, rather than sending the transaction amount, your system calculates the actual contribution to your bottom line. This includes factoring in product costs, shipping expenses, operational overhead, and return probabilities. The advertising platform then optimizes toward customers who generate actual profit rather than just revenue volume.
 
@@ -57,4 +60,4 @@ Ready to stop leaving money on the table? This article explained the strategic "
 
 As always, if you have any questions or want to discuss this topic further, feel free to reach out to me directly or leave a comment below.
 
-> Shout out to [Rick Dronkers](https://www.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for introducing me to the term "Signal Engineering" - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them for more insights on this topic!
+> Shout out to [Rick Dronkers](https://www.linkedin.com/in/rickdronkers) and [Eric Seufert](https://www.linkedin.com/in/ericseufert) for bringing the term "Signal Engineering" in the marketing context to my awareness - a concept that I've been tinkering with, but simply lacked the vocabulary to articulate. Make sure to follow them for more insights on this topic.
