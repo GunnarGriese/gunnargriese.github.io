@@ -318,10 +318,10 @@ For me, the most important takeaway from this is that human expertise and oversi
 
 Despite the well-defined scope of the task and the limitations I experienced, the POC demonstrates that we’re moving toward a future where AI hopefully will be able to handle more of the mechanical aspects of analytics implementation at scale, freeing up human analysts to focus on strategy, analysis, and insight generation. The key will be to find the right balance between automation and human oversight.
 
+> If you are interested in the slides from my presentation, you can find them [here](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
+
 ## Podcast Episode on the Measure Pod
 
-In this episode of The Measure Pod, I sit down with Dara and Matthew to discuss MCP Servers and their growing role in digital analytics. From server integration with LLMs to customising prompt templates and tackling authentication, they explore how MCPs are reshaping workflows and access in analytics. Along the way, they touch on related challenges like API translation, automated tracking, and the balance between AI functionality and governance. 
+Shortly after I published this blog post, I got invited to speak about MCP servers in The Measure Pod podcast. In this episode of The Measure Pod, I sit down with Dara and Matthew to discuss MCP Servers and their growing role in digital analytics. From server integration with LLMs to customising prompt templates and tackling authentication, they explore how MCPs are reshaping workflows and access in analytics. Along the way, they touch on related challenges like API translation, automated tracking, and the balance between AI functionality and governance. 
 
 {% include embed/youtube.html id='sFBo_j3cLIE' %}
-
-> If you are interested in the slides from my presentation, you can find them [here](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
