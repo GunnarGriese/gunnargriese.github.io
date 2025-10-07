@@ -307,6 +307,7 @@ To answer this question, I put the setup to the test by tasking it with implemen
 
 {% include embed/youtube.html id='dJZeUA03EAI' %}
 
+
 ## Conclusion
 
 While my POC demonstrates the potential of MCP servers in digital analytics workflows, I fully acknowledge that this is still a very experimental approach with limitations and has been applied to a very basic use case. Throughout the process, the AI also occasionally made decisions that required correction, sometimes struggled with complex dataLayer structures, and often required multiple iterations to achieve the desired GTM configuration. What you see in the compressed videos is the successful outcome after several attempts and refinements.
@@ -316,5 +317,11 @@ Still, I believe that this allows us to take a glimpse at how we might work in t
 For me, the most important takeaway from this is that human expertise and oversight will likely remain essential in the future. The AI agent can execute technical tasks efficiently. Still, I do nont believe that it will replace the strategic thinking, business context understanding, and quality assurance that experienced analysts bring to implementations anytime soon.
 
 Despite the well-defined scope of the task and the limitations I experienced, the POC demonstrates that we’re moving toward a future where AI hopefully will be able to handle more of the mechanical aspects of analytics implementation at scale, freeing up human analysts to focus on strategy, analysis, and insight generation. The key will be to find the right balance between automation and human oversight.
+
+## Podcast Episode on the Measure Pod
+
+In this episode of The Measure Pod, I sit down with Dara and Matthew to discuss MCP Servers and their growing role in digital analytics. From server integration with LLMs to customising prompt templates and tackling authentication, they explore how MCPs are reshaping workflows and access in analytics. Along the way, they touch on related challenges like API translation, automated tracking, and the balance between AI functionality and governance. 
+
+{% include embed/youtube.html id='sFBo_j3cLIE' %}
 
 > If you are interested in the slides from my presentation, you can find them [here](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
