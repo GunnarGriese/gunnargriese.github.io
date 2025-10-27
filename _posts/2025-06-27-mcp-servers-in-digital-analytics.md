@@ -293,11 +293,11 @@ To answer this question, I put the setup to the test by tasking it with implemen
 
 #### 1. & 2. Analyze the website structure using the Playwright MCP Server to identify key pages, forms, and user interaction points and collect existing dataLayer events by monitoring browser console output and network requests
 
-{% include embed/youtube.html id='XQzmI7QZkZM' %}
+<iframe src="https://drive.google.com/file/d/1C7rbHhvEYHdxSezKSL-L-35y3y_ZezZ7/preview" width="640" height="480"></iframe>
 
 #### 3. Create a new GA4 property and a respective data stream using the Google Analytics MCP Server.
 
-<iframe src="https://drive.google.com/file/d/1b3R54s_yWzDgxR-t5Ac2x8jyVIlfrsgy/preview" width="640" height="480" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1b3R54s_yWzDgxR-t5Ac2x8jyVIlfrsgy/preview" width="640" height="480"></iframe>
 
 #### 4. Set up the complete GTM configuration including tags for pageviews, enhanced ecommerce events, and custom conversions.
 
