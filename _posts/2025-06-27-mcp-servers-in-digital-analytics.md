@@ -297,7 +297,7 @@ To answer this question, I put the setup to the test by tasking it with implemen
 
 #### 3. Create a new GA4 property and a respective data stream using the Google Analytics MCP Server.
 
-{% include embed/video.html src='https://drive.google.com/uc?export=download&id=1b3R54s_yWzDgxR-t5Ac2x8jyVIlfrsgy' %}
+<iframe src="https://drive.google.com/file/d/1b3R54s_yWzDgxR-t5Ac2x8jyVIlfrsgy/preview" width="640" height="480" allow="autoplay"></iframe>
 
 #### 4. Set up the complete GTM configuration including tags for pageviews, enhanced ecommerce events, and custom conversions.
 
