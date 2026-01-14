@@ -70,9 +70,9 @@ Let's check exactly what happens when a European user triggers a GA4 event on yo
 
 * **Step 2: Request Ingress** The user's browser establishes a connection to the European IP address. Because we're using Standard Tier networking, this traffic travels over the public internet directly to the Regional External Application Load Balancer in `europe-west1`.
 
-* **Step 3: Processing** The load balancer forwards the request to the `eu-sst` Cloud Run service running in the same region. Your GTM Server-Side container processes the event, applies any transformations or enrichments you've configured, and dispatches data to your configured vendors.
+* **Step 3: Processing** The load balancer forwards the request to the `eu-sgtm` Cloud Run service running in the same region. Your GTM Server-Side container processes the event, applies any transformations or enrichments you've configured, and dispatches data to your configured vendors.
 
-* **Step 4: Preview Mode Handling** If the request includes the `X-Gtm-Server-Preview` header (indicating someone is using GTM's preview mode), the production container internally forwards the request to the `eu-sst-preview` Cloud Run service. This happens entirely within the European region.
+* **Step 4: Preview Mode Handling** If the request includes the `X-Gtm-Server-Preview` header (indicating someone is using GTM's preview mode), the production container internally forwards the request to the `eu-sgtm-preview` Cloud Run service. This happens entirely within the European region.
 
 **Result: Complete Data Residency** From the moment the DNS query resolves to the moment your container finishes processing, every GA4 event stays within European infrastructure. This is the guarantee that satisfies strict compliance requirements.
 
@@ -90,15 +90,15 @@ Each regional stack consists of the following components, all deployed within a 
 
 |           Component          |                  Purpose                  | Example (Europe) |
 |:----------------------------:|:-----------------------------------------:|:----------------:|
-| Production Cloud Run Service | Processes live tracking requests          | eu-sst           |
-| Preview Cloud Run Service    | Handles GTM preview/debug mode            | eu-sst-preview   |
-| Serverless NEG               | Connects Cloud Run to the load balancer   | sst-neg-eu       |
-| Backend Service              | Defines how traffic reaches your services | sst-backend-eu   |
-| Regional SSL Certificate     | Encrypts traffic for your domain          | sst-cert-eu      |
-| URL Map                      | Routes requests to the backend            | sst-urlmap-eu    |
-| Target HTTPS Proxy           | Terminates SSL and applies URL mapping    | sst-proxy-eu     |
-| Forwarding Rule              | Binds the external IP to the proxy        | sst-frontend-eu  |
-| Reserved External IP         | The public IP address for this region     | sst-ip-eu        |
+| Production Cloud Run Service | Processes live tracking requests          | eu-sgtm           |
+| Preview Cloud Run Service    | Handles GTM preview/debug mode            | eu-sgtm-preview   |
+| Serverless NEG               | Connects Cloud Run to the load balancer   | sgtm-neg-eu       |
+| Backend Service              | Defines how traffic reaches your services | sgtm-backend-eu   |
+| Regional SSL Certificate     | Encrypts traffic for your domain          | sgtm-cert-eu      |
+| URL Map                      | Routes requests to the backend            | sgtm-urlmap-eu    |
+| Target HTTPS Proxy           | Terminates SSL and applies URL mapping    | sgtm-proxy-eu     |
+| Forwarding Rule              | Binds the external IP to the proxy        | sgtm-frontend-eu  |
+| Reserved External IP         | The public IP address for this region     | sgtm-ip-eu        |
 
 This might look like a lot of components, and honestly, it is. GCP's load balancing architecture is modular by design, which gives you flexibility but also means more pieces to configure and maintain. The good news is that once you understand the pattern, replicating it for additional regions becomes easy (or you might event want to automate it using Terraform).
 
@@ -122,7 +122,7 @@ First, we deploy the Cloud Run services that will run your sGTM containers. Each
 
 ```bash
 # Deploy European preview server
-gcloud run deploy "eu-sst-preview" \
+gcloud run deploy "eu-sgtm-preview" \
   --region europe-west1 \
   --image gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable \
   --min-instances 0 \
@@ -135,7 +135,7 @@ gcloud run deploy "eu-sst-preview" \
     CONTAINER_CONFIG="<YOUR_CONTAINER_CONFIG>"
 
 # Deploy European production server
-gcloud run deploy "eu-sst" \
+gcloud run deploy "eu-sgtm" \
   --region europe-west1 \
   --image gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable \
   --platform managed \
@@ -146,7 +146,7 @@ gcloud run deploy "eu-sst" \
   --allow-unauthenticated \
   --no-cpu-throttling \
   --update-env-vars \
-    PREVIEW_SERVER_URL="$(gcloud run services describe eu-sst-preview \
+    PREVIEW_SERVER_URL="$(gcloud run services describe eu-sgtm-preview \
       --region europe-west1 \
       --format='value(status.url)')",\
     CONTAINER_CONFIG="<YOUR_CONTAINER_CONFIG>"
@@ -183,11 +183,11 @@ Each regional load balancer needs its own (external IP address)[https://docs.clo
 
 ```bash
 # Reserve European IP address
-gcloud compute addresses create sst-ip-eu \
+gcloud compute addresses create sgtm-ip-eu \
   --region=europe-west1 \
   --network-tier=STANDARD
 # Reserve US IP address
-gcloud compute addresses create sst-ip-us \
+gcloud compute addresses create sgtm-ip-us \
   --region=us-central1 \
   --network-tier=STANDARD
 ```
@@ -202,16 +202,16 @@ Take a note of these addresses, since you'll need them later when configuring Cl
 
 ```bash
 # Create NEG for European production server
-gcloud compute network-endpoint-groups create sst-neg-eu \
+gcloud compute network-endpoint-groups create sgtm-neg-eu \
   --region=europe-west1 \
   --network-endpoint-type=serverless \
-  --cloud-run-service=eu-sst
+  --cloud-run-service=eu-sgtm
 
 # Create NEG for US production server
-gcloud compute network-endpoint-groups create sst-neg-us \
+gcloud compute network-endpoint-groups create sgtm-neg-us \
   --region=us-central1 \
   --network-endpoint-type=serverless \
-  --cloud-run-service=us-sst
+  --cloud-run-service=us-sgtm
 ```
 
 Notice we're only creating NEGs for the production servers, not the preview servers. The preview servers are called internally by the production servers when needed, but they don't receive traffic directly from the load balancer.
@@ -222,13 +222,13 @@ Backend services define how traffic is distributed to your NEGs. For our serverl
 
 ```bash
 # Create European backend service
-gcloud compute backend-services create sst-backend-eu \
+gcloud compute backend-services create sgtm-backend-eu \
   --load-balancing-scheme=EXTERNAL_MANAGED \
   --protocol=HTTP \
   --region=europe-west1
 
 # Create US backend service
-gcloud compute backend-services create sst-backend-us \
+gcloud compute backend-services create sgtm-backend-us \
   --load-balancing-scheme=EXTERNAL_MANAGED \
   --protocol=HTTP \
   --region=us-central1
@@ -238,15 +238,15 @@ Now, let's attach the NEGs to their respective backend services:
 
 ```bash
 # Attach European NEG to backend
-gcloud compute backend-services add-backend sst-backend-eu \
+gcloud compute backend-services add-backend sgtm-backend-eu \
   --region=europe-west1 \
-  --network-endpoint-group=sst-neg-eu \
+  --network-endpoint-group=sgtm-neg-eu \
   --network-endpoint-group-region=europe-west1
 
 # Attach US NEG to backend
-gcloud compute backend-services add-backend sst-backend-us \
+gcloud compute backend-services add-backend sgtm-backend-us \
   --region=us-central1 \
-  --network-endpoint-group=sst-neg-us \
+  --network-endpoint-group=sgtm-neg-us \
   --network-endpoint-group-region=us-central1
 ```
 
@@ -259,12 +259,12 @@ First, create DNS authorizations for each region:
 ```bash
 # Create DNS authorization for Europe
 gcloud certificate-manager dns-authorizations create dns-auth-eu \
-  --domain="sgtm.yourdomain.com" \
+  --domain="sgtm.gunnargriese.com" \
   --location="europe-west1"
 
 # Create DNS authorization for US
 gcloud certificate-manager dns-authorizations create dns-auth-us \
-  --domain="sgtm.yourdomain.com" \
+  --domain="sgtm.gunnargriese.com" \
   --location="us-central1"
 ```
 
@@ -282,9 +282,9 @@ This returns output like:
 createTime: '2026-01-10T09:26:45.743951160Z'
 dnsResourceRecord:
   data: abc123.1.europe-west1.authorize.certificatemanager.goog.
-  name: _acme-challenge.sgtm.yourdomain.com.
+  name: _acme-challenge.sgtm.gunnargriese.com.
   type: CNAME
-domain: sgtm.yourdomain.com
+domain: sgtm.gunnargriese.com
 ```
 
 > Important: Add both CNAME records (EU & US) to your domain's DNS configuration. The certificate provisioning will fail if Google can't validate domain ownership. Each region generates a unique CNAME record with a different target, both you need to add.
@@ -293,14 +293,14 @@ Once the CNAME records are in place and have propagated (give it a few minutes),
 
 ```bash
 # Create European certificate
-gcloud certificate-manager certificates create sst-cert-eu \
-  --domains="sgtm.yourdomain.com" \
+gcloud certificate-manager certificates create sgtm-cert-eu \
+  --domains="sgtm.gunnargriese.com" \
   --dns-authorizations="dns-auth-eu" \
   --location="europe-west1"
 
 # Create US certificate
-gcloud certificate-manager certificates create sst-cert-us \
-  --domains="sgtm.yourdomain.com" \
+gcloud certificate-manager certificates create sgtm-cert-us \
+  --domains="sgtm.gunnargriese.com" \
   --dns-authorizations="dns-auth-us" \
   --location="us-central1"
 ```
@@ -313,13 +313,13 @@ Once you've added the CNAME records, the certificate status should turn to `ACTI
 
 ```bash
 # Create European URL map
-gcloud compute url-maps create sst-urlmap-eu \
-  --default-service=sst-backend-eu \
+gcloud compute url-maps create sgtm-urlmap-eu \
+  --default-service=sgtm-backend-eu \
   --region=europe-west1
 
 # Create US URL map
-gcloud compute url-maps create sst-urlmap-us \
-  --default-service=sst-backend-us \
+gcloud compute url-maps create sgtm-urlmap-us \
+  --default-service=sgtm-backend-us \
   --region=us-central1
 ```
 
@@ -327,15 +327,15 @@ gcloud compute url-maps create sst-urlmap-us \
 
 ```bash
 # Create European target proxy
-gcloud compute target-https-proxies create sst-proxy-eu \
-  --certificate-manager-certificates=sst-cert-eu \
-  --url-map=sst-urlmap-eu \
+gcloud compute target-https-proxies create sgtm-proxy-eu \
+  --certificate-manager-certificates=sgtm-cert-eu \
+  --url-map=sgtm-urlmap-eu \
   --region=europe-west1
 
 # Create US target proxy
-gcloud compute target-https-proxies create sst-proxy-us \
-  --certificate-manager-certificates=sst-cert-us \
-  --url-map=sst-urlmap-us \
+gcloud compute target-https-proxies create sgtm-proxy-us \
+  --certificate-manager-certificates=sgtm-cert-us \
+  --url-map=sgtm-urlmap-us \
   --region=us-central1
 ```
 
@@ -345,25 +345,25 @@ gcloud compute target-https-proxies create sst-proxy-us \
 
 ```bash
 # Create European forwarding rule
-gcloud compute forwarding-rules create sst-frontend-eu \
+gcloud compute forwarding-rules create sgtm-frontend-eu \
   --load-balancing-scheme=EXTERNAL_MANAGED \
   --network-tier=STANDARD \
   --network=load-balancer-network \
-  --target-https-proxy=sst-proxy-eu \
+  --target-https-proxy=sgtm-proxy-eu \
   --target-https-proxy-region=europe-west1 \
   --region=europe-west1 \
-  --address=sst-ip-eu \
+  --address=sgtm-ip-eu \
   --ports=443
 
 # Create US forwarding rule
-gcloud compute forwarding-rules create sst-frontend-us \
+gcloud compute forwarding-rules create sgtm-frontend-us \
   --load-balancing-scheme=EXTERNAL_MANAGED \
   --network-tier=STANDARD \
   --network=load-balancer-network \
-  --target-https-proxy=sst-proxy-us \
+  --target-https-proxy=sgtm-proxy-us \
   --target-https-proxy-region=us-central1 \
   --region=us-central1 \
-  --address=sst-ip-us \
+  --address=sgtm-ip-us \
   --ports=443
 ```
 
@@ -375,7 +375,7 @@ First, ensure you have a Cloud DNS managed zone for your domain. If you don't ha
 
 ```bash
 # Create DNS zone (if needed)
-gcloud dns managed-zones create sst-zone \
+gcloud dns managed-zones create sgtm-zone \
   --dns-name="yourdomain.com." \
   --description="Zone for GTM Server-Side endpoints"
 ```
@@ -385,7 +385,7 @@ Now create the geo-routing record. You'll need the IP addresses you reserved ear
 ```bash
 # Create geo-routed A record
 gcloud dns record-sets create sst.yourdomain.com. \
-  --zone="sst-zone" \
+  --zone="sgtm-zone" \
   --type="A" \
   --ttl="60" \
   --routing-policy-type="GEO" \
