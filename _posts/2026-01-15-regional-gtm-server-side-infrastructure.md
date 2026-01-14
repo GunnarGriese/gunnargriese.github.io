@@ -418,7 +418,7 @@ If you'd rather not use Cloud DNS, you can configure geo-routing directly at you
 
 If managing your own infrastructure feels like overkill, a managed service like (Stape's EU-hosted sGTM)[https://stape.io/eu-hosting] offering might be a viable alternative. They handle the setup and maintenance, providing a compliant European endpoint without the operational overhead.
 
-Ultimately, there's no universally correct answer. The right architecture depends on your specific regulatory environment, risk tolerance, technical capacity, and business priorities. My goal with this post is to give you the information and implementation details needed to make an informed decision—and execute on it if you choose to proceed (nad to have some fun with GCP :wink:).
+Ultimately, there's no universally correct answer. The right architecture depends on your specific regulatory environment, risk tolerance, technical capacity, and business priorities. My goal with this post is to give you the information and implementation details needed to make an informed decision and execute on it if you choose to proceed (and to have some fun with GCP :wink:).
 
 ## Conclusion
 
