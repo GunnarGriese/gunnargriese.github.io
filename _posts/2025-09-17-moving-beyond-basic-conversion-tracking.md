@@ -3,7 +3,7 @@ title: Moving Beyond Basic Conversion Tracking - Engineering Signals for Sustain
 author: gunnar
 date: 2025-09-17 00:00:01 +0200
 categories: [GTM, GA4]
-tags: [gtm-server-side, ga4]
+tags: [ga4]
 comments: true
 toc: true
 lang: en
