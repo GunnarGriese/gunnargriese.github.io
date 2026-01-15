@@ -416,7 +416,7 @@ Have this conversation with your legal and compliance stakeholders before invest
 
 If you'd rather not use Cloud DNS, you can configure geo-routing directly at your existing DNS provider—assuming they support geo-routing policies. Providers like Cloudflare offer this capability (afaik). In that case, you'd create the geo-based A records there and skip the Cloud DNS setup entirely. The regional load balancer and Cloud Run setup remains the same.
 
-If managing your own infrastructure feels like overkill, a managed service like (Stape's EU-hosted sGTM)[https://stape.io/eu-hosting] offering might be a viable alternative. They handle the setup and maintenance, providing a compliant European endpoint without the operational overhead.
+If managing your own infrastructure feels like overkill, a managed service like [Stape's EU-hosted sGTM](https://stape.io/eu-hosting) offering might be a viable alternative. They handle the setup and maintenance, providing a compliant European endpoint without the operational overhead.
 
 Ultimately, there's no universally correct answer. The right architecture depends on your specific regulatory environment, risk tolerance, technical capacity, and business priorities. My goal with this post is to give you the information and implementation details needed to make an informed decision and execute on it if you choose to proceed (and to have some fun with GCP :wink:).
 
