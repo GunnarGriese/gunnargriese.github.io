@@ -1,23 +1,47 @@
 ---
-layout: page
-# The layout for Tag page
+layout: default
 ---
 
-{% include lang.html %}
+<div class="tag-page">
+    <div class="page-header">
+        <h1 class="page-title">Posts tagged "{{ page.tag }}"</h1>
+        <p class="tag-count">{{ site.tags[page.tag].size }}
+            {% if site.tags[page.tag].size == 1 %}post{% else %}posts{% endif %}
+        </p>
+    </div>
 
-<div id="page-tag">
-  <h1 class="pl-lg-2">
-    <i class="fa fa-tag fa-fw text-muted"></i>
-    {{ page.title }}
-    <span class="lead text-muted pl-2">{{ page.posts | size }}</span>
-  </h1>
-  <ul class="post-content pl-0">
-    {% for post in page.posts %}
-      <li class="d-flex justify-content-between pl-md-3 pr-md-3">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="dash flex-grow-1"></span>
-        {% include datetime.html date=post.date wrap='span' class='text-muted small' lang=lang %}
-      </li>
-    {% endfor %}
-  </ul>
+    <div class="blog-grid">
+        {% for post in site.tags[page.tag] %}
+        <article class="blog-tile">
+            <a href="{{ post.url | relative_url }}" class="blog-tile-link">
+                {% if post.image %}
+                <div class="blog-tile-image">
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                </div>
+                {% else %}
+                <div class="blog-tile-image blog-tile-placeholder">
+                    <div class="placeholder-content">
+                        <span class="placeholder-icon">📝</span>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="blog-tile-content">
+                    <h2 class="blog-tile-title">{{ post.title }}</h2>
+                    <p class="blog-tile-excerpt">
+                        {{ post.excerpt | strip_html | truncate: 150 }}
+                    </p>
+                    <div class="blog-tile-meta">
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+                        <span class="read-time">{{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+
+    <div class="tag-navigation">
+        <a href="{{ '/tags/' | relative_url }}" class="btn btn-secondary">← View all tags</a>
+    </div>
 </div>

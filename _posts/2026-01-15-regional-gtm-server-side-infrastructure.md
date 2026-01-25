@@ -1,9 +1,11 @@
 ---
+layout: post
 title: GTM Server-Side Data Residency - Regional Load Balancers and Cloud DNS Geo-Routing
 author: gunnar
 date: 2026-01-15 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
+image: /assets/images/blog/gtm-server-side-infrastructure.png
 comments: true
 toc: true
 lang: en
@@ -57,7 +59,7 @@ Each regional stack contains its own complete GTM Server-Side environment: a pro
 
 Here's what the architecture looks like:
 
-![GTM Server-Side Architecture with Regional Load Balancers](/assets/img/regional-lb/gcp-regional-load-balancer-architecture.png)
+![GTM Server-Side Architecture with Regional Load Balancers](/assets/images/regional-lb/gcp-regional-load-balancer-architecture.png)
 _GTM Server-Side Architecture with Regional Load Balancers & Cloud DNS_
 
 The "magic" that ties these independent stacks together is [Cloud DNS](https://docs.cloud.google.com/dns/docs/overview) with geo-routing policies. When a user's browser resolves your tracking subdomain (e.g., sgtm.gunnargriese.com), Cloud DNS examines the user's geographic location and returns the IP address of the appropriate regional load balancer. A user in Germany gets the European IP. A user in California gets the US IP. From the user's perspective, they're hitting the same endpoint. Under the hood, they're being routed to a completely separate infrastructure.

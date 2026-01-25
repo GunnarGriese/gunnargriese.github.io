@@ -1,9 +1,11 @@
 ---
+layout: post
 title: GTM Server-Side Pantheon - Part 4 - Bringing AI to sGTM
 author: gunnar
 date: 2024-12-09 00:00:01 +0200
 categories: [GTM]
 tags: [gtm-server-side]
+image: /assets/images/blog/sgtm-vertex-ai.png
 comments: true
 toc: true
 lang: en
@@ -25,7 +27,7 @@ Before I walk you through the details of bringing predictive services into sGTM,
 
 Google’s platform combines various ML capabilities, from no-code solutions like AutoML (perfect for those who don't need to customize their models highly) to full-blown custom training options and MLOps for ML professionals. What makes it interesting for our sGTM context is its ability to serve predictions in real time through API endpoints—a capability we'll utilize with our Phoebe solution.
 
-![Vertex AI & sGTM](/assets/img/gtm-ss-phoebe/vertex-ai-sgtm.png)
+![Vertex AI & sGTM](/assets/images/gtm-ss-phoebe/vertex-ai-sgtm.png)
 _Vertex AI and sGTM_
 
 Vertex AI also houses Google's generative AI models (Gemini) and provides the infrastructure to tune and deploy them. This is where the Dioscuri solution comes into play.
@@ -55,7 +57,7 @@ If you want to try this out for yourself, I recommend heading over to [Google's 
 
 While Google's use case focuses on VBB, Phoebe's real power lies in its flexibility—just like with the other Pantheon templates. Think of it as your gateway to bringing any Vertex AI model's capabilities into your measurement infrastructure. By leveraging online prediction endpoints, you can supercharge your sGTM setup with predictive powers.
 
-![Phoebe architecture](/assets/img/gtm-ss-phoebe/gtm-ss-phoebe-architecture.png)
+![Phoebe architecture](/assets/images/gtm-ss-phoebe/gtm-ss-phoebe-architecture.png)
 _Phoebe High-level Architecture_
 
 As I always strive to showcase something beyond the default to you, I did the same this time around. 
@@ -68,7 +70,7 @@ In my custom implementation, the trigger for the Vertex AI real-time prediction 
 
 I'm using the Phoebe variable template for audience prediction by combining real-time event data with user-level data stored in Firestore. I fetch the user data with the help of another sGTM Pantheon solution - Artemis. The Phoebe variable template is then attached to a GA4 tag triggered by the incoming GA4 purchase event. The variable configuration holds information about the model endpoint (1); it allows us to easily fetch item data from the event data (2) (not needed in my specific case) and add features to the endpoint request (3). Finally, we can configure a default value if the prediction attempt fails.
 
-![Phoebe variable configuration](/assets/img/gtm-ss-phoebe/phoebe-variable.png)
+![Phoebe variable configuration](/assets/images/gtm-ss-phoebe/phoebe-variable.png)
 _Phoebe variable configuration_
 
 As you can see from the excerpt below from the variable template code, the variable combines the variable inputs about the model endpoint into a qualified URL to [get online predictions](https://cloud.google.com/vertex-ai/docs/predictions/get-online-predictions) and uses the request data input to build a payload. Eventually, the template uses the `getGoogleAuth` library to authenticate the outgoing HTTP request to Vertex AI.
@@ -129,12 +131,12 @@ As with all of the presented sGTM Pantheon solutions, they become even more powe
 
 Again to actually work with the APIs by myself, I transferred the variable logic into a tag, which better suited my use case. The original variable template does the job just fine, if you prefer using it!
 
-![Dioscuri architecture](/assets/img/gtm-ss-phoebe/dioscuri-architecture.png)
+![Dioscuri architecture](/assets/images/gtm-ss-phoebe/dioscuri-architecture.png)
 _Dioscuri High-level Architecture_
 
 I eventually ended up with the above high-level architecture. I used a simple custom HTML tag to dispatch a request containing the user ID to sGTM upon user login. A lightweight client parses the incoming request and runs the container, where the Dioscuri tag is fired.
 
-![Dioscuri tag configuration](/assets/img/gtm-ss-phoebe/dioscuri-tag.png)
+![Dioscuri tag configuration](/assets/images/gtm-ss-phoebe/dioscuri-tag.png)
 _Dioscuri Tag Configuration_
 
 The tag itself (as well as the original variable-based solution) requires you to provide information about the GCP project and region, the model (1), a prompt of your choice (2), and further "system instructions" (3) to tune the LLM's behavior.
@@ -143,7 +145,7 @@ In its original version the Dioscuri variable supports the 1.0 Pro as well as th
 
 In the example above, the prompts reference lookup variables from a Firestore database containing metadata about the user (e.g., first name, returning user `boolean`, address, product references, etc.). These data points allow the model to personalize the message to the user completely.
 
-![Doicuri response](/assets/img/gtm-ss-phoebe/dioscuri-response.png)
+![Doicuri response](/assets/images/gtm-ss-phoebe/dioscuri-response.png)
 _Dioscuri Model Response_
 
 The tag passes on the prompt, including the user information, to the Gemini model of your choice. The model's response contains the personalized message, which the tag then passes back to the client in the response body. Here, the custom HTML tag can extract the message and, e.g., populate a content placeholder in a pop-up banner that is shown to the user.

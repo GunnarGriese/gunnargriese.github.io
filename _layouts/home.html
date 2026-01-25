@@ -1,86 +1,113 @@
 ---
-layout: page
-# The Home page layout
+layout: default
 ---
 
-{% assign pinned = site.posts | where: 'pin', 'true' %}
-{% assign default = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
-
-{% assign posts = '' | split: '' %}
-
-<!-- Get pinned posts -->
-
-{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
-{% assign pinned_num = pinned.size | minus: offset %}
-
-{% if pinned_num > 0 %}
-{% for i in (offset..pinned.size) limit: pinned_num %}
-{% assign posts = posts | push: pinned[i] %}
-{% endfor %}
-{% else %}
-{% assign pinned_num = 0 %}
-{% endif %}
-
-<!-- Get default posts -->
-
-{% assign default_beg = offset | minus: pinned.size %}
-
-{% if default_beg < 0 %} {% assign default_beg=0 %} {% endif %} {% assign default_num=paginator.posts | size | minus:
-  pinned_num %} {% assign default_end=default_beg | plus: default_num | minus: 1 %} {% if default_num> 0 %}
-  {% for i in (default_beg..default_end) %}
-  {% assign posts = posts | push: default[i] %}
-  {% endfor %}
-  {% endif %}
-  <div id="post-list">
-    {% for post in posts %}
-    <div class="card post-preview">
-      <a href="{{ post.url | relative_url }}">
-        <div class="card-body">
-          <h1 class="card-title">
-            {{ post.title }}
-          </h1>
-
-          <div class="card-text post-content">
-            <p>
-              {% include no-linenos.html content=post.content %}
-              {{ content | markdownify | strip_html | truncate: 200 | escape }}
-            </p>
-          </div>
-
-          <div class="post-meta text-muted d-flex">
-            <div class="mr-auto">
-              <!-- posted date -->
-              <i class="far fa-calendar fa-fw"></i>
-              {% include datetime.html date=post.date %}
-
-              <!-- categories -->
-              {% if post.categories.size > 0 %}
-              <i class="far fa-folder-open fa-fw"></i>
-              <span>
-                {% for category in post.categories %}
-                {{ category }}
-                {%- unless forloop.last -%},{%- endunless -%}
-                {% endfor %}
-              </span>
-              {% endif %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ page.hero_title | default: site.title }}</h1>
+            <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
+            <div class="hero-actions">
+                <a href="{{ '/contact' | relative_url }}" class="btn btn-primary">Schedule a Call</a>
             </div>
+        </div>
+        {% if page.hero_image %}
+        <div class="hero-image">
+            <img src="{{ page.hero_image | relative_url }}" alt="{{ site.title }}">
+        </div>
+        {% endif %}
+    </div>
+</section>
 
-            {% if post.pin %}
-            <div class="pin">
-              <i class="fas fa-thumbtack fa-fw"></i>
-              <span>{{ site.data.locales[site.lang].post.pin_prompt }}</span>
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">How I Can Help</h2>
+        <div class="services-grid">
+            {% for service in page.services %}
+            <div class="service-card">
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+                {% if service.features %}
+                <ul class="service-features">
+                    {% for feature in service.features %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>{{ page.about_title | default: "About Me" }}</h2>
+                {{ content }}
+            </div>
+            {% if page.about_image %}
+            <div class="about-image">
+                <img src="{{ page.about_image | relative_url }}" alt="About {{ site.title }}">
             </div>
             {% endif %}
-          </div>
-          <!-- .post-meta -->
         </div>
-      </a>
     </div>
-    <!-- .post-review -->
-    {% endfor %}
-  </div>
-  <!-- #post-list -->
+</section>
 
-  {% if paginator.total_pages > 0 %}
-  {% include post-paginator.html %}
-  {% endif %}
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>{{ page.cta_title | default: "Ready to Work Together?" }}</h2>
+        <p>{{ page.cta_subtitle | default: "Discuss how I can help you achieve your goals." }}</p>
+        <a href="{{ '/contact' | relative_url }}" class="btn btn-primary btn-large">Get In Touch</a>
+    </div>
+</section>
+
+<!-- Recent Posts -->
+{% if site.posts.size > 0 %}
+<section class="recent-posts">
+    <div class="container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="blog-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="blog-tile">
+                <a href="{{ post.url | relative_url }}" class="blog-tile-link">
+                    {% if post.image %}
+                    <div class="blog-tile-image">
+                        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                    </div>
+                    {% else %}
+                    <div class="blog-tile-image blog-tile-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">📝</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="blog-tile-content">
+                        <h2 class="blog-tile-title">{{ post.title }}</h2>
+                        <p class="blog-tile-excerpt">
+                            {{ post.excerpt | strip_html | truncate: 150 }}
+                        </p>
+                        <div class="blog-tile-meta">
+                            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y"
+                                }}</time>
+                            <span class="read-time">{{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min
+                                read</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="section-footer">
+            <a href="{{ '/blog' | relative_url }}" class="btn btn-secondary">View All Posts</a>
+        </div>
+    </div>
+</section>
+{% endif %}

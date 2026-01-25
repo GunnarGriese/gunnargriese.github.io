@@ -1,9 +1,11 @@
 ---
+layout: post
 title: MCP Servers in Digital Analytics - Levelling Up Your LLM Game
 author: gunnar
 date: 2025-06-27 00:00:01 +0200
 categories: [GTM, GA4]
 tags: [gtm, ga4, ai]
+image: /assets/images/blog/mcp-servers.png
 comments: true
 toc: true
 lang: en
@@ -48,7 +50,7 @@ The MCP architecture follows a classic client-server architecture and is relativ
 * MCP Servers act as intermediaries between MCP clients and external services and provide the context and tools needed
 * External Services (like Google Analytics, GTM, or BigQuery) provide the actual data and functionality
 
-![MCP Servers - High-level Architecture](/assets/img/mcp-digital-analytics/mcp-high-level.png)
+![MCP Servers - High-level Architecture](/assets/images/mcp-digital-analytics/mcp-high-level.png)
 _MCP Servers - High-level Architecture (Source: [Deeplearning.ai](https://learn.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic/))_
 
 The architecture enables the host application to connect to multiple MCP servers, each designed for a specific use case and providing additional capabilities to the AI application. Moreover, what makes MCP servers particularly powerful is their reusability factor. A single MCP Server developed once can be used across multiple AI applications, and once connected, it requires little additional integration work to enhance MCP-compatible tools.
@@ -247,7 +249,7 @@ The skills and tools involved to successfully complete such a project usually re
 
 None of the tasks and skills involved are necessarily considered to be rocket science, but still require a deep understanding of the underlying technical components and can be time-consuming when you want to get it right. So, I've been trying to reimagine the process with MCP servers handling the technical execution while I focus on the strategic decisions and arrived at the following:
 
-![Digital Analytics Implementation Process](/assets/img/mcp-digital-analytics/mcp-implementation-process.png)
+![Digital Analytics Implementation Process](/assets/images/mcp-digital-analytics/mcp-implementation-process.png)
 _Own visualization_
 
 With MCP Servers, the process has the potential to become:
@@ -265,7 +267,7 @@ With MCP Servers, the process has the potential to become:
 
 After I had mapped out the process, I’ve been looking into what MCP servers would be needed to make this vision a reality. The good news for me was that most of the foundational components already existed, or building them from scratch was relatively straightforward. Here’s the toolkit I assembled for my proof of concept:
 
-![Digital Analytics MCP Server Toolkit](/assets/img/mcp-digital-analytics/mcp-server-overview.png)
+![Digital Analytics MCP Server Toolkit](/assets/images/mcp-digital-analytics/mcp-server-overview.png)
 _Own visualization_
 
 ### Customized Playwright MCP Server

@@ -1,8 +1,10 @@
 ---
+layout: post
 title: GTM Server-Side Use Cases - Building your Digital Command Center
 author: gunnar
 date: 2024-11-13 00:00:01 +0200
 categories: [GTM]
+image: /assets/images/blog/sgtm-use-cases.png
 tags: [gtm-server-side]
 comments: true
 lang: en
@@ -22,7 +24,7 @@ Having more data about your users and a better understanding of their actions, w
 
 But still, having these measures in place is no longer a competitive advantage as we see entry barriers being lowered to deploy these technical solutions (there are tons of templates and solution guides out there), and the associated costs with maintaining these solutions are going down as well (you can run a sGTM for 20 bucks/month or less these days). The trend is clear: the adoption rate of sGTM in companies will keep increasing, and your business' competitive advantage will shrink.
 
-![GTM Server-Side Adoption Drivers](/assets/img/gtm-ss-use-cases/gtm-ss-adoption.png)
+![GTM Server-Side Adoption Drivers](/assets/images/gtm-ss-use-cases/gtm-ss-adoption.png)
 _GTM Server-Side Adoption Drivers_
 
 To say it more bluntly, if you and your team have decided to pursue the sGTM route, having the above in place should be simply the first step of a longer journey during which you'll reap the benefits of your efforts.
@@ -44,7 +46,7 @@ Throughout this process of climbing up the majurity curve, I recommend coming ba
 
 Think of GTM Server-Side as your company's digital command center for data. In the traditional, client-side-only setup, your website directly sends data to various marketing and analytics platforms - think Google Analytics, Facebook, LinkedIn, and others. It's like having multiple direct phone lines from your website to each service. GTM Server-Side changes this dynamic entirely. Instead of these direct connections, you now have a central hub - your own digital measurement headquarters - where all information flows through first. It's like having a reception desk that handles all incoming and outgoing communications.
 
-![GTM Server-Side High-Level](/assets/img/gtm-ss-use-cases/gtm-ss-high-level.png)
+![GTM Server-Side High-Level](/assets/images/gtm-ss-use-cases/gtm-ss-high-level.png)
 _GTM Server-Side High-Level Architecture_
 
 Why does this matter for your business?
@@ -72,7 +74,7 @@ Let's explore some concrete use cases that showcase how this real-time data inte
 
 Looking at the evolution of digital marketing optimization with **tightening budgets**, there's a clear progression from basic efficiency metrics towards more impactful business outcomes. While most marketers start with optimizing cost per click and move on to cost per conversion, the real business impact lies further up the chain - in revenue, profit, and, ultimately, customer lifetime value optimization.
 
-![GTM Server-Side Bidding Metrics](/assets/img/gtm-ss-use-cases/optimization-metrics.png)
+![GTM Server-Side Bidding Metrics](/assets/images/gtm-ss-use-cases/optimization-metrics.png)
 _Overview of traditional optimization metrics_
 
 Here's where GTM Server-Side reveals one of its most powerful capabilities: enabling real-time value-based bidding with actual business metrics while keeping sensitive data private. Wouldn't you rather have your marketing platforms optimized for actual profit instead of just revenue? Or even better, towards predicted customer lifetime value?
@@ -99,7 +101,7 @@ While optimizing toward business outcomes is powerful, there's another dimension
 
 "But we already segment our audiences," I often hear. Yes, but let's be honest—most businesses are barely scratching the surface of what's possible. They're like a retail store that only remembers what customers did during their current visit, completely ignoring their rich purchase history from previous visits.
 
-![GTM Server-Side Audience Segmentation](/assets/img/gtm-ss-use-cases/gtm-ss-audience-enrichment.png)
+![GTM Server-Side Audience Segmentation](/assets/images/gtm-ss-use-cases/gtm-ss-audience-enrichment.png)
 _GTM Server-Side powered Audience Segmentation_
 
 Here's where sGTM becomes your powerful ally. Instead of relying solely on current session data, you can now:

@@ -1,0 +1,17 @@
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    event: "page_view",
+    page_meta: {
+        layout: "{{ page.layout | default: 'default' }}",
+        page_title: "{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}",
+        page_location: "{{ page.url | absolute_url }}",
+        published_at: "{% if page.date %}{{ page.date | date: '%Y-%m-%d' }}{% endif %}"
+    },
+    author: {
+        name: "{% if page.author %}{{ page.author | escape }}{% endif %}",
+        url: "{% if page.author_url %}{{ page.author_url | escape }}{% endif %}"
+    },
+    environment: "{% if jekyll.environment %}{{ jekyll.environment }}{% else %}development{% endif %}"
+});
+</script>

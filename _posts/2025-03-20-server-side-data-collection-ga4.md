@@ -1,9 +1,11 @@
 ---
+layout: post
 title: Server-Side Data Enrichment for GA4
 author: gunnar
 date: 2025-05-04 00:00:01 +0200
 categories: [GA4]
 tags: [ga4]
+image: /assets/images/blog/server-side-data-enrichment.png
 comments: true
 toc: true
 lang: en
@@ -15,7 +17,7 @@ Hence, providing additional context for your event data is vital to enriching it
 
 Traditionally, GA4 data captures what actions a user on your website took—a page view, a button click, or a purchase. However, these events only exist in isolation without proper context, making it difficult to understand the complete customer journey. Often, business and domain knowledge transform these isolated data points into meaningful insights by connecting online behavior with additional context from other systems and real-world business outcomes.
 
-![Additional First-Party Data Sources](/assets/img/ga4-server-side-enrichment/available-data.png)
+![Additional First-Party Data Sources](/assets/images/ga4-server-side-enrichment/available-data.png)
 _Additional First-Party Data Sources_
 
 The above overview emphasizes this need, since the datasets from web & app analytics tools only make for a fraction of the overall data points collected and available to a business. The cost data from your online marketing campaigns, stock and inventory information about your products, and weather data are just as meaningful to explain your business’ performance.
@@ -38,7 +40,7 @@ I (and many others) define "server-side data enrichment" as the process of gathe
 
 Unlike client-side tracking, where JavaScript tracking libraries or SDKs are used, server-side collection is orchestrated from within a company's own infrastructure. This allows the company to capture interactions and enrich business-relevant data points that standard client-side implementations might miss or simply cannot (or should not) access.
 
-![Server-Side Data Enrichment Options for GA4](/assets/img/ga4-server-side-enrichment/ss-enrichment-options.png)
+![Server-Side Data Enrichment Options for GA4](/assets/images/ga4-server-side-enrichment/ss-enrichment-options.png)
 _Server-Side Data Enrichment Options for GA4_
 
 Looking at the above diagram, you can see that GA4 data can be collected in many different ways before it is eventually shown to the data consumer in the interface, exposed via the API, or exported to BigQuery (BQ). We see that **traditional client-side collection from web and app clients**, captures all the event data and user identifiers directly from user devices and then sends it off to GA4's servers. Ever since the arrival of GTM Server-Side (sGTM), these client-side events can be **enriched in real-time using sGTM and Firestore** (as well as other databases/APIs), which allows adding valuable server data before sending events to GA4's collection endpoint.
@@ -69,7 +71,7 @@ In previous posts, I’ve been fairly outspoken about how excited (to put it mil
 
 sGTM moves data processing from the user's browser to a server environment you control, e.g., on Google Cloud. Unlike the traditional client-side GTM, sGTM acts as a proxy between your website and third-party analytics platforms, giving you greater control over data collection, enrichment, and distribution.
 
-![Use sGTM and Firestore to enrich GA4 data](/assets/img/ga4-server-side-enrichment/sgtm-enrichment.png)
+![Use sGTM and Firestore to enrich GA4 data](/assets/images/ga4-server-side-enrichment/sgtm-enrichment.png)
 _Use sGTM and Firestore to enrich GA4 data_
 
 Firestore is a flexible NoSQL database that integrates nicely with sGTM via several variable templates to create a "first-party data ecosystem". It serves as the connective tissue between your external data sources and your analytics and marketing tagging implementation as shown in the above figure. In the context of sGTM, you can think of Firestore as another storage mechanism (like cookies and local storage) that you can read and write user or item data from, but it is you that is in full control of it.
@@ -85,7 +87,7 @@ This combination transforms basic user interaction data into richly contextualiz
 
 The below screenshot gives you an idea of what kind of product data you could enrich, e.g., profit margins and return rates. Super relevant data points for your analysis, but probably not something you want to expose to your dataLayer for your competitors to see. With sGTM and Firestore, you can easily and securely integrate these into your measurement setup.
 
-![Exemplary Firestore collection for documents with sensitive product data](/assets/img/ga4-server-side-enrichment/items-firestore.png)
+![Exemplary Firestore collection for documents with sensitive product data](/assets/images/ga4-server-side-enrichment/items-firestore.png)
 _Exemplary Firestore collection for documents with sensitive product data_
 
 Furthermore, you can activate the enriched data across your entire analytics & marketing ecosystem - not only GA4. Rather think about optimizing your Google Ads campaigns based on profit margins, personalizing user experiences based on offline data, or creating more sophisticated audience segments for remarketing - pretty neat and not too complicated to get started with.
@@ -98,7 +100,7 @@ The GA4 Measurement Protocol serves as a powerful server-side API enabling direc
 
 As illustrated in the diagram below, this becomes particularly valuable in customer journeys that span both client-side and server-side touchpoints—notice how the first three steps (Visit Website, Research Loan Prices, Submit Loan Application) occur on a business’ website or app, while the latter three steps (Identify Applicant, Evaluate Creditworthiness, Sign Contract) happen in the real-world (e.g., customer calls, email communication, etc.), but are logged into the company’s systems.
 
-![An exemplary user journey with offline touchpoints](/assets/img/ga4-server-side-enrichment/user-journey.png)
+![An exemplary user journey with offline touchpoints](/assets/images/ga4-server-side-enrichment/user-journey.png)
 _An exemplary user journey with offline touchpoints_
 
 ### How does the Measurement Protocol work?
@@ -178,7 +180,7 @@ For advertising platform exports and [audience creation](/posts/ga4-the-cdp-you-
 
 Data Import is GA4's built-in functionality that allows you to upload external data directly into your GA4 property. Data Import is an Admin UI tool that enables non-technical marketers to upload data that cannot or is not desired to be collected by our SDKs or Measurement Protocol.
 
-![Data Import User Interface](/assets/img/ga4-server-side-enrichment/data-import-ui.png)
+![Data Import User Interface](/assets/images/ga4-server-side-enrichment/data-import-ui.png)
 _Data Import User Interface_
 
 GA4’s Data Import functionality at the moment of writing supports a handful (it’s literally five) use cases:
@@ -209,7 +211,7 @@ For the future, I am hoping to see a BQ import option emerge - similar to the [D
 
 Once you’ve created your desired data source (a CSV file or a SFTP server) and then mapped the GA4 dimensions (or "fields") to the respective columns in your data source’s CSV (s. below screenshot), you’ve completed the data import into GA4.
 
-![Data Import Mapping (item data)](/assets/img/ga4-server-side-enrichment/data-import-mapping.png)
+![Data Import Mapping (item data)](/assets/images/ga4-server-side-enrichment/data-import-mapping.png)
 _Data Import Mapping (item data)_
 
 Now, a data source has been configured defining where the imported data is coming from and where you'll find it in your GA4 property. That also means you can simply update the underlying data (like updating the data source with a CSV file with nice and fresh data) as long as the schema of the file remains intact. Only if you need to adjust the mapping (e.g., add or remove a column), you'll need to create a new data source from scratch.
@@ -242,7 +244,7 @@ As with every data join operation, the success of the GA4 data imports depends o
 
 The remaining columns of your CSV file will be imported to their mapped dimensions or metrics as specified in the previously mentioned mapping. Once imported, they are available for your use in GA4.
 
-![Data Import Match Rate](/assets/img/ga4-server-side-enrichment/data-import-match-rate.png)
+![Data Import Match Rate](/assets/images/ga4-server-side-enrichment/data-import-match-rate.png)
 _Data Import Match Rate_
 
 To give you a feeling for how well your import efforts are going, GA4 gives you quality stats telling you the share of provided rows that have actually been imported (% Imported) as well as the ratio of keys in the imported CSV file that can be found in your property within the last 90 days (match rate).

@@ -1,8 +1,10 @@
 ---
+layout: post
 title: GTM Server-Side Pantheon - Part 3 - Integrate A Marketer's Go-To Tools - Google Sheets & BigQuery
 author: gunnar
 date: 2024-10-31 00:00:01 +0200
 categories: [GTM]
+image: /assets/images/blog/sgtm-sheets.png
 tags: [gtm-server-side]
 comments: true
 lang: en
@@ -32,7 +34,7 @@ In this blog post, I'd instead focus on a customized solution to show you how ve
 
 In the following sections, I'll walk you through two exemplary use cases of using Google Sheets in combination with GTM Server-Side to enrich your data and improve your marketing efforts.
 
-![GTM Server-Side Use Case](/assets/img/gtm-ss-bq/google-sheets-architecture.png)
+![GTM Server-Side Use Case](/assets/images/gtm-ss-bq/google-sheets-architecture.png)
 _Exemplary GTM Server-Side Use Cases with Google Sheets_
 
 The first use case will show you how to read data from Google Sheets with sGTM, while the second one will demonstrate how to write data from sGTM to Google Sheets.
@@ -41,7 +43,7 @@ The first use case will show you how to read data from Google Sheets with sGTM, 
 
 In this example, we'll use a Google Sheets document to look up the conversion value for a given form and the user's age input into the form. The Google Sheets document contains the following data:
 
-![Google Sheets Data](/assets/img/gtm-ss-bq/google-sheets-read.png)
+![Google Sheets Data](/assets/images/gtm-ss-bq/google-sheets-read.png)
 _Exemplary Google Sheets Document_
 
 - Form ID: The unique identifier of the form
@@ -50,7 +52,7 @@ _Exemplary Google Sheets Document_
 
 We'll capture the form ID and the user's age input in the GTM web container upon form submission, dispatch the `form_submit` event to the GTM server container, and then use a modified Apollo variable template to look up the conversion value from the Google Sheets document. The fetched value will then be passed on to a GA4 property or any other tag of your liking.
 
-![Google Sheets Read Variable](/assets/img/gtm-ss-bq/gsheet-custom-read-var.png)
+![Google Sheets Read Variable](/assets/images/gtm-ss-bq/gsheet-custom-read-var.png)
 _Exemplary Google Sheets Read Variable_
 
 The variable uses the Google Sheets API's RESTful interface to fetch the data from the Google Sheets document. For this to work, you must provide the **Google Spreadsheet ID**, the **name of the tab** within the sheet, the **range of cells** to read, and an **API key**. The template provides input fields for the Spreadsheet ID and the tab name (see [here](https://developers.google.com/sheets/api/guides/concepts) for more information on how to obtain these values).  
@@ -122,7 +124,7 @@ return sendHttpRequest(url, requestOptions).then((result) => {
 
 As you can see from the above, the variable compiles all the inputs and sends a `GET` request to the Google Sheets API to fetch the desired value. The entire process results in the following request that returns the desired value:
 
-![Google Sheet Read Request](/assets/img/gtm-ss-bq/read-request.png)
+![Google Sheet Read Request](/assets/images/gtm-ss-bq/read-request.png)
 _Exemplary Google Sheets Read Request_
 
 You can now use the variable in any tag you like to pass on the value to a platform of your choice. 
@@ -137,19 +139,19 @@ The second use case that I brought demonstrates how to write data from sGTM to G
 
 For this purpose, I built a custom tag template that provides input fields for the **Google Spreadsheet ID**, the **name of the tab** within the sheet range of cells to write to, and the data to write. This is what the tag interface looks like:
 
-![Custom Google Sheets Write Tag](/assets/img/gtm-ss-bq/gsheet-custom-write-tag.png)
+![Custom Google Sheets Write Tag](/assets/images/gtm-ss-bq/gsheet-custom-write-tag.png)
 _Exemplary Google Sheets Write Tag_
 
 The use case for this tag is to log the user's `client_id` and the `gclid` parameter in the specified Google Sheets document upon a lead form submission. Further down the line, these data points can connect online campaign data with offline events (e.g., leads turning into customers).
 
-![Google Sheets Write Request](/assets/img/gtm-ss-bq/write-request.png)
+![Google Sheets Write Request](/assets/images/gtm-ss-bq/write-request.png)
 _Exemplary Google Sheets Write Request_
 
 Under the hood, the tag compiles the data to write into a JSON object and sends an authenticated `POST` request to the Google Sheets API to append the data to the specified range of cells. The tag uses the [`spreadsheets.values.append`](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append) method of the Google Sheets API to write the data. The input range searches for existing data and finds a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. So, every time the tag is fired, a new row will be added to the table with the data to write.
 
 > Note: The Sheets API also allows for updates. If you want to update existing data, you can use the [`spreadsheets.values.update`](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) method instead. The functionality is similar to the append method, but you need to specify the range of cells to update. 
 
-![Google Sheets Write Result](/assets/img/gtm-ss-bq/write-result.png)
+![Google Sheets Write Result](/assets/images/gtm-ss-bq/write-result.png)
 _Exemplary Google Sheets Write Result_
 
 > Note: If you're interested in trying it out yourself, you can find the code and the entire template in this [Github repo](https://github.com/GunnarGriese/google-sheets-tag/tree/master).
@@ -198,7 +200,7 @@ Regardless of which Chaos tag you choose, the **prerequisites** are identical. Y
 
 I chose a relatively uncomplicated use case for demonstration purposes: Writing purchase revenue (`value`) and profit data alongside user identifiers (`user_id` and `client_id`) to BQ. 
 
-![BigQuery Architecture](/assets/img/gtm-ss-bq/bigquery-architecture.png)
+![BigQuery Architecture](/assets/images/gtm-ss-bq/bigquery-architecture.png)
 _Exemplary GTM Server-Side Use Case with BigQuery_
 
 Upon successful purchase, the data is captured in the GTM web container and then dispatched to the GTM server container. The Chaos tag in the GTM server container sends the data to BQ. For this purpose, I use the _Write to BigQuery_ tag template since I also want to include profit data, which is made available through the [Soteria](/posts/gtm-server-side-firestore-integrations/#soteria---the-safeguard-of-data) variable template.
@@ -207,12 +209,12 @@ Upon successful purchase, the data is captured in the GTM web container and then
 
 The following screenshot shows the schema of my dedicated `write_to_bq`table in BQ: 
 
-![Write to BQ schema](/assets/img/gtm-ss-bq/write-to-bq-schema.png)
+![Write to BQ schema](/assets/images/gtm-ss-bq/write-to-bq-schema.png)
 _Exemplary BigQuery Table Schema_
 
 The tag interface provides input fields for the **Project ID**, **Dataset ID**, and **Table ID** to specify the destination table in BQ. Furthermore, you will notice that the Chaos' tags configuration matches the table schema. It is critical to use the exact same order and field names as for the column names. Otherwise, the write attempt will fail.
 
-![Write to BQ Tag](/assets/img/gtm-ss-bq/write-to-bq-tag.png)
+![Write to BQ Tag](/assets/images/gtm-ss-bq/write-to-bq-tag.png)
 _Exemplary Write to BQ Tag Configuration_
 
 > Note: The same principles apply to the _Write Event Data to BigQuery_ tag. The only difference is that the tag automatically pulls event data from sGTM and writes it to BQ. So, all you have to do is specify the field names from the event data you want to store in BQ.

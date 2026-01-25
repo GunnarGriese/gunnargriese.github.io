@@ -1,0 +1,21 @@
+<nav class="nav">
+    <div class="nav-container">
+        <a href="{{ '/' | relative_url }}" class="nav-logo">
+            {{ site.title }}
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-menu">
+            <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+            <a href="{{ '/services' | relative_url }}" class="nav-link">Services</a>
+            <a href="{{ '/blog' | relative_url }}" class="nav-link">Blog</a>
+            <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
+            <a href="{{ '/contact' | relative_url }}" class="nav-link nav-cta">Work with Me</a>
+        </div>
+    </div>
+</nav>

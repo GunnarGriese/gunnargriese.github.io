@@ -1,9 +1,11 @@
 ---
+layout: post
 title: Moving Beyond Basic Conversion Tracking - Engineering Signals for Sustainable Marketing Advantage
 author: gunnar
 date: 2025-09-17 00:00:01 +0200
 categories: [GTM, GA4]
 tags: [ga4]
+image: /assets/images/blog/signal-engineering.png
 comments: true
 toc: true
 lang: en
@@ -21,7 +23,7 @@ In this first article of my series, I'll outline the shift needed in how we thin
 
 The trend for marketing campaign optimization is clear. Your campaign management is becoming increasingly automated, and larger shares of marketing budgets are being optimized with "intelligent" in-platform tools, such as Performance Max (GMP) and Advantage+ (Meta). 
 
-![Inner workings of ad platforms](/assets/img/signal-engineering/signal-engineering.png)
+![Inner workings of ad platforms](/assets/images/signal-engineering/signal-engineering.png)
 _Inner workings of ad platforms_
 
 Various, complex aspects of the process such as attribution modeling, bidding strategies, and incrementality measurement are already handled by the platforms themselves today. Hence, the influence you as the advertiser have over campaign performance is limited mostly to two aspects:
@@ -41,7 +43,7 @@ As I’ve laid out in one of my [previous blog posts](https://gunnargriese.com/p
 
 This trilemma forced you and other companies down a predictable path: The suboptimal one! But what could more promising alternatives actually look like?
 
-![Exemplary Signals](/assets/img/signal-engineering/signals-examples.png)
+![Exemplary Signals](/assets/images/signal-engineering/signals-examples.png)
 _Exemplary Signals_
 
 Real-time profit optimization represents the first evolution beyond generic revenue tracking. When someone makes a purchase, rather than sending the transaction amount, your system calculates the actual contribution to your bottom line. This includes factoring in product costs, shipping expenses, operational overhead, and return probabilities. The advertising platform then optimizes toward customers who generate actual profit rather than just revenue volume.

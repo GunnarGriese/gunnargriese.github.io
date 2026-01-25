@@ -1,8 +1,10 @@
 ---
+layout: post
 title: GTM Server-Side Pantheon - Part 2 - Supercharge Your Setup with Pub/Sub
 author: gunnar
 date: 2024-10-04 00:00:01 +0200
 categories: [GTM]
+image: /assets/images/blog/sgtm-pub-sub.png
 tags: [gtm-server-side]
 comments: true
 lang: en
@@ -19,7 +21,7 @@ At its core, Pub/Sub (short for Publish/Subscribe) is a messaging service GCP pr
 
 Think of it as an event-driven system where different components of a more extensive architecture can send messages without directly depending on or connecting to one another. Adding Pub/Sub as an intermediary step results in decoupling these services, making it a great fit for event-driven architectures.
 
-![Pub/Sub High Level Flow](/assets/img/gtm-ss-pubsub/pubsub-high-level-flow.png)
+![Pub/Sub High Level Flow](/assets/images/gtm-ss-pubsub/pubsub-high-level-flow.png)
 _Lifetime of a Pub/Sub message_
 
 Here’s how Pub/Sub works:
@@ -67,7 +69,7 @@ Before you get started with the sGTM-Pub/Sub integration, make sure that you've 
 
 Once this is in place, you can download the Hermes tag template from the GitHub repository, import it into your sGTM container, and create an instance of the Hermes tag:
 
-![Hermes Tag Template](/assets/img/gtm-ss-pubsub/hermes-tag-template.png)
+![Hermes Tag Template](/assets/images/gtm-ss-pubsub/hermes-tag-template.png)
 _sGTM Hermes tag for Pub/Sub and sGTM integration_
 
 In the Hermes tag configuration, you need to:
@@ -119,7 +121,7 @@ The idea is to build a realtime dashboard that monitors detailed information abo
 
 This could be particularly useful for e-commerce websites, where you want to keep a close eye on your sales performance and want to make fast decisions - especially during high-traffic events like Black Friday.
 
-![Real-Time Dashboard](/assets/img/gtm-ss-pubsub/pubsub-realtime-dashboard.png)
+![Real-Time Dashboard](/assets/images/gtm-ss-pubsub/pubsub-realtime-dashboard.png)
 
 The architecture consists of the following components:
 
@@ -181,7 +183,7 @@ As you can see from the above code excerpt, the application uses batch writing t
 
 The outcome is a Firestore collection that holds a document for each item. Each item then has a `counter` attribute that is increased by the quantity of the item in the associated GA4 purchase event (using `firestore.Increment()` as shown in the above code snippet) and additional product information (e.g., price, item_category, profit, etc.):
 
-![Firestore Document](/assets/img/gtm-ss-pubsub/firestore-document.png)
+![Firestore Document](/assets/images/gtm-ss-pubsub/firestore-document.png)
 _Firestore document structure for realtime dashboard_
 
 ### Real-Time Dashboard
