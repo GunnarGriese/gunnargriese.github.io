@@ -33,7 +33,7 @@ permalink: /contact/
       </p>
     </div>
     <div class="service-footer">
-      <a href="mailto:{{ site.email }}" class="btn btn-primary">Send Email</a>
+      <a href="mailto:{{ site.email }}" class="btn btn-primary" onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'contact_click', 'click_text': 'Send Email', 'click_url': 'mailto:{{ site.email }}'});">Send Email</a>
     </div>
   </div>
 
@@ -57,7 +57,7 @@ permalink: /contact/
       </p>
     </div>
     <div class="service-footer">
-      <a href="mailto:{{ site.email }}?subject=Schedule%20a%20Discovery%20Call" class="btn btn-secondary">Request a Call</a>
+      <a href="mailto:{{ site.email }}?subject=Schedule%20a%20Discovery%20Call" class="btn btn-secondary" onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'contact_click', 'click_text': 'Request a Call', 'click_url': 'mailto:{{ site.email }}?subject=Schedule%20a%20Discovery%20Call'});">Request a Call</a>
     </div>
   </div>
 
@@ -101,7 +101,7 @@ permalink: /contact/
       </style>
     </div>
     <div class="service-footer">
-      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="btn btn-secondary">View LinkedIn Profile</a>
+      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" class="btn btn-secondary" onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'contact_click', 'click_text': 'View LinkedIn Profile', 'click_url': 'https://linkedin.com/in/{{ site.linkedin_username }}'});">View LinkedIn Profile</a>
     </div>
   </div>
 
