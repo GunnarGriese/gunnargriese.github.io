@@ -14,7 +14,7 @@ lang: en
 A few weeks ago, LinkedIn post caught my attention. An e-commerce manager voiced a frustration that I hear quite frequently: 
 > The Google Analytics (GA) user interface is hard to navigate, and not even the latest AI upgrades have made it meaningfully easier to use. 
 
-While I disagree with the general claim of the UI being unusable for various reasons, the built-in [`Analytics Advisor`](https://support.google.com/analytics/answer/16675569?hl=en) in its current state is somewhat underwhelming. And at the point of writing these lines, there's no direct Gemini integration either, which would have been the most obvious quick win I can think of.
+While I disagree with the general claim of the UI being unusable for various reasons, the built-in [Analytics Advisor](https://support.google.com/analytics/answer/16675569?hl=en) in its current state is somewhat underwhelming. And at the point of writing these lines, there's no direct Gemini integration either, which would have been the most obvious quick win I can think of.
 
 If you want to use AI-enhanced workflows with your GA data today, you're essentially forced to either export it to BigQuery (BQ) or manually pull reports and feed them into your AI tool of choice. For technical practitioners, that's manageable. But for the marketing teams who actually need to make sense of this data day-to-day? It's yet another barrier between them and the insights they're after.
 
@@ -53,7 +53,11 @@ While the chat interface in the BQ UI is a great start, it will likely be imprac
 
 The Conversational Analytics API is accessed through `geminidataanalytics.googleapis.com` to power an AI-powered chat interface. The API uses natural language to answer questions about structured data in BigQuery (and a wide variety of other Google services). With the Conversational Analytics API, you provide your data agent with business information and data (context), as well as access to tools such as SQL and visualization libraries. These agent responses are presented to the user and can be logged by the client application. Sounds familiar? It should, since this API essentially lets us (almost) recreate the Conversations feature from the BQ UI described in the previous section within our own applications.
 
-One important caveat to keep in mind: the Conversational Analytics API currently comes with some [limitations](https://docs.cloud.google.com/gemini/docs/conversational-analytics-api/known-limitations) compared to the full BQ UI experience. It supports questions that can be answered with a single visualization, such as metric trends over time, dimension breakdowns, top values by metric, or single-metric lookups. However, it doesn't **yet** support the more advanced analytical capabilities I mentioned earlier, like prediction, forecasting, correlation analysis, or anomaly detection. Those features are, for now, exclusive to the BQ interface. The fact that Google emphasizes in their documentation that these functionalities are "not yet" available makes me hopeful that they will be added in the future. For now, though, I wouldn't consider this a dealbreaker for most day-to-day marketing analytics questions. The supported question types already cover a lot of ground.
+One important caveat to keep in mind: the Conversational Analytics API currently comes with some [limitations](https://docs.cloud.google.com/gemini/docs/conversational-analytics-api/known-limitations) compared to the full BQ UI experience. It supports questions that can be answered with a single visualization, such as metric trends over time, dimension breakdowns, top values by metric, or single-metric lookups. 
+
+However, it doesn't **yet** support the more advanced analytical capabilities I mentioned earlier, like prediction, forecasting, correlation analysis, or anomaly detection. Those features are, for now, exclusive to the BQ interface. The fact that Google emphasizes in their documentation that these functionalities are "not yet" available makes me hopeful that they will be added in the future. 
+
+For now, though, I wouldn't consider this a dealbreaker for most day-to-day marketing analytics questions. The supported question types already cover a lot of ground.
 
 ## An End-to-End Implementation: Chat with your GA Data in BigQuery
 
