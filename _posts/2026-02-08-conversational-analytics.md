@@ -1,7 +1,8 @@
 ---
+layout: post
 title: Building a Conversational Analytics Interface for Your Google Analytics Data with BigQuery Data Agents
 author: gunnar
-date: 2026-02-01 00:00:01 +0200
+date: 2026-02-08 00:00:01 +0200
 categories: [GAA]
 tags: [ga4]
 image: /assets/images/blog/bq-data-agents.png
