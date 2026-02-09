@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building a Conversational Analytics Interface for Your Google Analytics Data with BigQuery Data Agents
+title: Conversational Analytics for Google Analytics Data with BigQuery Agents
 author: gunnar
 date: 2026-02-08 00:00:01 +0200
 categories: [GAA]
