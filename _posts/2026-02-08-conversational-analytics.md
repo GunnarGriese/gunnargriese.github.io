@@ -11,7 +11,7 @@ toc: true
 lang: en
 ---
 
-A few weeks ago, LinkedIn post caught my attention. An e-commerce manager voiced a frustration that I hear quite frequently: 
+A few weeks ago, a LinkedIn post caught my attention. An e-commerce manager voiced a frustration that I hear quite frequently: 
 > The Google Analytics (GA) user interface is hard to navigate, and not even the latest AI upgrades have made it meaningfully easier to use. 
 
 While I disagree with the general claim of the UI being unusable for various reasons, the built-in [Analytics Advisor](https://support.google.com/analytics/answer/16675569?hl=en) in its current state is somewhat underwhelming. And at the point of writing these lines, there's no direct Gemini integration either, which would have been the most obvious quick win I can think of.
