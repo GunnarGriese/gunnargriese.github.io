@@ -65,7 +65,7 @@ However, it doesn't **yet** support the more advanced analytical capabilities I 
 
 For now, though, I wouldn't consider this a dealbreaker for most day-to-day marketing analytics questions. The supported question types already cover a lot of ground.
 
-## How to chat with your GA Data in BigQuery
+## How to chat with your GA Data in BigQuery?
 
 Now that we've introduced the concept of BQ Agents and that they can be accessed via the Conversational Analytics API, let's pull this together into an end-to-end implementation. The goal is to create a custom conversational interface that allows users to interact with their GA data in BigQuery through natural language queries, powered by a Data Agent.
 
