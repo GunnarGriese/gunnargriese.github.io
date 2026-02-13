@@ -51,7 +51,7 @@ So, a thoughtfully configured Data Agent in combination with a well-structured d
 
 What's interesting about the Data Agents in the BQ interface is their fairly advanced analytics capabilities, which cover statistical analysis, e.g., calculating correlation coefficients using `CORR`, and anomaly detection using `AI.DETECT_ANOMALIES` (read more about the bigQuery ML support [here](https://docs.cloud.google.com/bigquery/docs/conversational-analytics#bigquery-ml-support)). These types of analysis are powerful and now at the fingertips of all your agent users without writing a single line of SQL.
 
-## Conversational Analytics API
+## What is the Conversational Analytics API?
 
 While the chat interface in the BQ UI is a great start, it will likely be impractical to invite every potential user to your GCP project. This is exactly where yet another feature of these agents comes into play: The ability to "publish" an agent. With this, you can programmatically interact with any given agent via the Conversational Analytics API and integrate the agent's capabilities in any environment of your choice. 
 
@@ -65,7 +65,7 @@ However, it doesn't **yet** support the more advanced analytical capabilities I 
 
 For now, though, I wouldn't consider this a dealbreaker for most day-to-day marketing analytics questions. The supported question types already cover a lot of ground.
 
-## An End-to-End Implementation: Chat with your GA Data in BigQuery
+## How to chat with your GA Data in BigQuery
 
 Now that we've introduced the concept of BQ Agents and that they can be accessed via the Conversational Analytics API, let's pull this together into an end-to-end implementation. The goal is to create a custom conversational interface that allows users to interact with their GA data in BigQuery through natural language queries, powered by a Data Agent.
 
