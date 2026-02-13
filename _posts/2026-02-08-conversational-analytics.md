@@ -33,7 +33,13 @@ Before we get into the technical details of this, though, let's have a glimpse a
 ![BigQuery Data Agent Interface](/assets/images/conversational-analytics/bq-agent-interface.png)
 _BigQuery Data Agent Interface_
 
-At their core, Data Agents are among GCP's many Conversational Analytics features in BQ. They act as a pre-configured layer between your data and the end user, combining several AI-powered capabilities: natural language-to-SQL translation, context retrieval from your data's metadata and custom system instructions, and chart generation for visualization. When a user asks a question, the agent orchestrates these tools to generate a response, like running queries, analyzing results, and presenting findings in a conversational format.
+Data Agents are one of GCP's Conversational Analytics features in BigQuery. They serve as a pre-configured layer between your data and the end user, combining natural language-to-SQL translation, context retrieval from metadata and custom system instructions, and chart generation for visualization.
+The agent processes requests in the following stages:
+
+1. **User input**: The user submits a natural language question, along with any additional context you have provided.
+2. **Data sources**: The agent connects to BigQuery for chat functionalities.
+3. **Reasoning engine**: The agent processes the question by orchestrating available tools, such as running queries, analyzing results, and determining the appropriate response.
+4. **Agent output**: The agent returns a stream of messages containing text, data, and/or charts. For some data sources, text messages provide step-by-step reasoning, progress updates, or simply the final answer.
 
 {% include embed/youtube.html id='Bv1twB0XWn0' %}
 
