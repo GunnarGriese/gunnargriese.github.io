@@ -38,16 +38,18 @@ The agent processes requests in the following stages:
 
 1. **User input**: The user submits a natural language question, along with any additional context you have provided.
 2. **Data sources**: The agent connects to BigQuery for data access like tables. views, and UDFs.
-3. **Reasoning engine**: The agent processes the question by orchestrating available tools, such as running queries, analyzing results, and determining the appropriate response.
+3. **Reasoning engine**: The agent processes the question by orchestrating available tools, such as running queries, analyzing results, and determining the appropriate response. You also get insights into the agent's reasoning process and the SQL queries it generates.
 4. **Agent output**: The agent returns a stream of messages containing text, data, and/or charts. For some data sources, text messages provide step-by-step reasoning, progress updates, or simply the final answer.
 
 As always with agents, the ability to add "context" is crucial. When you create a Data Agent, you shouldn't just point it at a table and hope for the best. I recommend investing the time in writing good system instructions. Take your time to define how the agent should interpret certain common questions, what specific business terminology means in the context of your data, and how to handle ambiguous requests. You should specify table and column descriptions, define relationships between fields, and even provide example question-query pairs ("golden" or verified queries) that guide the agent toward reliable responses. And lastly, make sure to control costs by limiting the number of bytes processed by agent-induced queries.
 
 {% include embed/youtube.html id='kesrUB4en6k' %}
 
-So, a thoughtfully configured Data Agent in combination with a well-structured data model (or semantic layer) is "all" it takes to start having conversations with your data. Every agent comes with the ability start a conversation right in the BQ interface. If you have a good data model and a concrete use case with clear instructions (easy, right?), the setup is plain sailing.
+So, a thoughtfully configured Data Agent in combination with a well-structured data model (or semantic layer) is "all" it takes to start having conversations with your data. Every agent comes with the ability start a conversation right in the BQ interface. If you have a good data model and a concrete use case with clear instructions (easy, right?), the setup is plain sailing. 
 
 What's interesting about the Data Agents in the BQ interface is their fairly advanced analytics capabilities, which cover statistical analysis, e.g., calculating correlation coefficients using `CORR`, and anomaly detection using `AI.DETECT_ANOMALIES` (read more about the bigQuery ML support [here](https://docs.cloud.google.com/bigquery/docs/conversational-analytics#bigquery-ml-support)). These types of analysis are powerful and now at the fingertips of all your agent users without writing a single line of SQL.
+
+Still, although this entire process sounds like it's hands-off, I can only recommend to frequently sense check the generated SQL queries and the agent's reasoning process, especially in the beginning. This is not a "set it and forget it" type of thing. You should actively monitor the agent's performance, identify any misunderstandings or misinterpretations, and iteratively refine your instructions and data context to improve accuracy over time.
 
 ## What is the Conversational Analytics API?
 
