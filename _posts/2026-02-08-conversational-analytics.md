@@ -75,7 +75,7 @@ You can watch the final result in action here:
 
 A more "behind-the-scenes" look at the app and its architecture comes here:
 
-### Layer 1: Data Ingestion
+### Layer 1: Data Source & Database Layer
 
 Obviously, the foundation for all conversation is our GA data in BQ. In this case, I'm using the BigQuery Data Transfer Service with the [Google Analytics 4 connector](https://docs.cloud.google.com/bigquery/docs/google-analytics-4-transfer). Once configured, this automatically exports aggregated GA reports into BQ on a daily basis. Essentially, we'll get access to the same data available in the GA UI, but in a more flexible format that we can query directly with SQL. The connector handles all the schema management and incremental updates, so it's a hands-off solution once set up. It also allows you to customize the export by selecting specific dimensions and metrics, helping optimize the data structure for your particular use case.
 
@@ -83,7 +83,7 @@ Alternatively, you can also use the [raw data export to BQ](https://support.goog
 
 My main point here is that there are multiple ways to get the data into BQ, enrich it with additional context (e.g., cost data, CRM data, etc.), and then make it available to the agent. But please make sure not to skip this step, because this is where you set the stage for the quality of the conversations later on.
 
-### Layer 2: Intelligence
+### Layer 2: Contextual Layer
 
 This is where the Conversational Analytics API and Data Agents come in. You create a Data Agent (as described above), assign it relevant Knowledge Sources, e.g., BQ tables, and configure it with system instructions, exemplary queries, etc. that help it understand your data's structure and business context.
 
@@ -91,7 +91,7 @@ The agent interprets a user's question and queries BQ on demand through the Stre
 
 Once again, you can heavily influence the quality of your conversations by taking the time to properly define and document your data context: Table descriptions, column-level documentation, business term definitions, and example queries all contribute to more accurate responses. Since this is the step where you "onboard" or "train" your agentic analyst, make sure to take your time here, too. Otherwise, you'll end up with a frustrating user experience later.
 
-### Layer 3: Interface
+### Layer 3: Interface Layer
 
 The final layer is the user-facing application. I've built a custom Streamlit application that provides a clean chat interface for interacting with the Data Agent. The app is based on Google's publicly available [Quickstart app](https://github.com/looker-open-source/ca-api-quickstarts) and manages conversation state, rendering responses including text, tables, and charts. But you could just as easily build this in any other framework or platform of your choice, e.g., a custom web app, a Slack bot, or even a Google Sheets add-on.
 
