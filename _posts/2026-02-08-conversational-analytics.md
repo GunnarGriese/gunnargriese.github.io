@@ -24,7 +24,7 @@ That exchange got me thinking it was time to write this up properly. Because whi
 
 In this post, I'll walk through how to combine the BQ Data Transfer Service for GA with BigQuery Data Agents and the Conversational Analytics API. The result is a chat interface where users can ask questions like "What were our top-performing campaigns last quarter?" or "Show me the conversion rate trend by device category". All of this without writing a single line of SQL. The app itself is then hosted on `Cloud Run` and protected by an `Identity-Aware Proxy`, which prevents it from being exposed to the public internet.
 
-And here's the real kicker: While I'm using GA data as the example, this approach works just as fine with any other structured data in BigQuery. Your CRM exports, advertising cost data, product catalog, or whatever else comes to mind. Your entire marketing data warehouse becomes "chatable" (is this even a word?).
+And here's the real kicker: While I'm using GA data as the example, this approach works just as fine with any other structured data in BQ. Your CRM exports, advertising cost data, product catalog, or whatever else comes to mind. Your entire marketing data warehouse becomes "chatable" (is this even a word?).
 
 ## What Are BigQuery Data Agents?
 
@@ -32,12 +32,12 @@ Before we get into the technical details of this, though, let's have a glimpse a
 
 {% include embed/youtube.html id='Bv1twB0XWn0' %}
 
-Data Agents are one of GCP's Conversational Analytics features in BigQuery. They serve as a pre-configured layer between your data and the end user, combining natural language-to-SQL translation, context retrieval from metadata and custom system instructions, and chart generation for visualization.
+Data Agents are one of GCP's Conversational Analytics features in BQ. They serve as a pre-configured layer between your data and the end user, combining natural language-to-SQL translation, context retrieval from metadata and custom system instructions, and chart generation for visualization.
 
 The agent processes requests in the following stages:
 
 1. **User input**: The user submits a natural language question, along with any additional context you have provided.
-2. **Data sources**: The agent connects to BigQuery for data access like tables. views, and UDFs.
+2. **Data sources**: The agent connects to BQ for data access like tables. views, and UDFs.
 3. **Reasoning engine**: The agent processes the question by orchestrating available tools, such as running queries, analyzing results, and determining the appropriate response. You also get insights into the agent's reasoning process and the SQL queries it generates.
 4. **Agent output**: The agent returns a stream of messages containing text, data, and/or charts. For some data sources, text messages provide step-by-step reasoning, progress updates, or simply the final answer.
 
@@ -47,9 +47,9 @@ As always with agents, the ability to add "context" is crucial. When you create 
 
 So, a thoughtfully configured Data Agent in combination with a well-structured data model (or semantic layer) is "all" it takes to start having conversations with your data. Every agent comes with the ability start a conversation right in the BQ interface. If you have a good data model and a concrete use case with clear instructions (easy, right?), the setup is plain sailing. 
 
-What's interesting about the Data Agents in the BQ interface is their fairly advanced analytics capabilities, which cover statistical analysis, e.g., calculating correlation coefficients using `CORR`, and anomaly detection using `AI.DETECT_ANOMALIES` (read more about the bigQuery ML support [here](https://docs.cloud.google.com/bigquery/docs/conversational-analytics#bigquery-ml-support)). These types of analysis are powerful and now at the fingertips of all your agent users without writing a single line of SQL.
+What's interesting about the Data Agents in the BQ interface is their fairly advanced analytics capabilities, which cover statistical analysis, e.g., calculating correlation coefficients using `CORR`, and anomaly detection using `AI.DETECT_ANOMALIES` (read more about the BQ ML support [here](https://docs.cloud.google.com/bigquery/docs/conversational-analytics#bigquery-ml-support)). These types of analysis are powerful and now at the fingertips of all your agent users without writing a single line of SQL.
 
-Still, although this entire process sounds like it's hands-off, I can only recommend to frequently sense check the generated SQL queries and the agent's reasoning process, especially in the beginning. This is not a "set it and forget it" type of thing. You should actively monitor the agent's performance, identify any misunderstandings or misinterpretations, and iteratively refine your instructions and data context to improve accuracy over time.
+Still, although this entire process appears to be hands-off at first glance, I can only recommend to frequently sense check the generated SQL queries and the agent's reasoning process, especially in the beginning. This is not a "set it and forget it" type of thing. You should actively monitor the agent's performance, review generated queries, identify any misunderstandings or misinterpretations, and iteratively refine your instructions and data context to improve accuracy over time.
 
 ## What is the Conversational Analytics API?
 
@@ -57,7 +57,7 @@ While the chat interface in the BQ UI is a great start, it will likely be imprac
 
 {% include embed/youtube.html id='c3WSg0Bpmt4' %}
 
-The Conversational Analytics API is accessed through `geminidataanalytics.googleapis.com` to power an AI-powered chat interface. The API uses natural language to answer questions about structured data in BigQuery (and a wide variety of other Google services). With the Conversational Analytics API, you provide your data agent with business information and data (context), as well as access to tools such as SQL and visualization libraries. These agent responses are presented to the user and can be logged by the client application. Sounds familiar? It should, since this API essentially lets us (almost) recreate the Conversations feature from the BQ UI described in the previous section within our own applications.
+The Conversational Analytics API is designed to build an AI-powered chat interface. The API uses natural language to answer questions about structured data in BQ (and a wide variety of other Google services). With the Conversational Analytics API, you provide your data agent with business information and data (context), as well as access to tools such as SQL and visualization libraries. These agent responses are presented to the user and can be logged by the client application. Sounds familiar? It should, since this API essentially lets us (almost) recreate the Conversations feature from the BQ UI described in the previous section within our own applications.
 
 One important caveat to keep in mind is this: The Conversational Analytics API currently comes with some [limitations](https://docs.cloud.google.com/gemini/docs/conversational-analytics-api/known-limitations) compared to the full BQ UI experience. It supports questions that can be answered with a single visualization, such as metric trends over time, dimension breakdowns, top values by metric, or single-metric lookups. 
 
@@ -69,7 +69,7 @@ For now, though, I wouldn't consider this a dealbreaker for most day-to-day mark
 
 ## How to chat with your GA Data in BigQuery?
 
-Now that we've introduced the concept of BQ Agents and that they can be accessed via the Conversational Analytics API, let's pull this together into an end-to-end implementation. The goal is to create a custom conversational interface that allows users to interact with their GA data in BigQuery through natural language queries, powered by a Data Agent.
+Now that we've introduced the concept of BQ Agents and that they can be accessed via the Conversational Analytics API, let's pull this together into an end-to-end implementation. The goal is to create a custom conversational interface that allows users to interact with their GA data in BQ through natural language queries, powered by a Data Agent.
 
 You can watch the final result in action here:
 
@@ -102,9 +102,11 @@ I decided to host the app on Cloud Run, which gives us serverless scalability wi
 ![Identity-Aware Proxy for Cloud Run](/assets/images/conversational-analytics/iap-ingress-app-cloud-run.png)
 _Identity-Aware Proxy for Cloud Run_
 
-I mean, we don't want any random person on the internet asking questions about our data, right? With IAP, only users with the appropriate Google account permissions can access the app, and all traffic is encrypted. This way, we maintain a secure environment while still providing easy access to our marketing teams.
+I mean, we don't want any random person on the internet asking questions about our data, right? With IAP, only users with the appropriate Google account permissions can access the app, and all traffic is encrypted. This way, we maintain a secure environment while still providing easy access to our marketing teams. 
 
-This setup means marketing teams get a familiar chat-style interface accessible via a simple URL. At the same time, IT maintains control over who can access it and what data they can query. No local installations, no API keys floating around in spreadsheets. All it takes is a browser and the right Google account.
+This setup means marketing teams get a familiar chat-style interface accessible via a simple URL. At the same time, IT maintains control over who can access it and what data they can query. No local installations, no API keys floating around in spreadsheets. All it takes is a browser and the right Google account. 
+
+Still, in the videos, you can see that I'm actively checking in on the agent's reasoning process and the generated SQL queries. And I can only recommend doing that as the end user, because eventually it will be you that will take the output and share it with your stakeholders. You're still responsible for the final recommendation!
 
 ## Conclusion
 
