@@ -65,12 +65,7 @@ Still, although this entire process appears to be hands-off at first glance, I c
 
 While the chat interface in the BQ UI is a great start, it will likely be impractical to invite every potential user to your GCP project. This is exactly where yet another feature of these agents comes into play: The ability to "publish" an agent. With this, you can programmatically interact with any given agent via the Conversational Analytics API and integrate the agent's capabilities in any environment of your choice. 
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-          frameborder="0"
-          allowfullscreen></iframe>
-</div>
+{% include embed/youtube.html id='c3WSg0Bpmt4' %}
 
 The Conversational Analytics API is designed to build an AI-powered chat interface. The API uses natural language to answer questions about structured data in BQ (and a wide variety of other Google services). With the Conversational Analytics API, you provide your data agent with business information and data (context), as well as access to tools such as SQL and visualization libraries. These agent responses are presented to the user and can be logged by the client application. Sounds familiar? It should, since this API essentially lets us (almost) recreate the Conversations feature from the BQ UI described in the previous section within our own applications.
 
