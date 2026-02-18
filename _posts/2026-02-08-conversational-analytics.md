@@ -49,7 +49,7 @@ The agent processes requests in the following stages:
 As always with agents, the ability to add "context" is crucial. When you create a Data Agent, you shouldn't just point it at a table and hope for the best. I recommend investing the time in writing good system instructions. Take your time to define how the agent should interpret certain common questions, what specific business terminology means in the context of your data, and how to handle ambiguous requests. You should specify table and column descriptions, define relationships between fields, and even provide example question-query pairs ("golden" or verified queries) that guide the agent toward reliable responses. And lastly, make sure to control costs by limiting the number of bytes processed by agent-induced queries.
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
+  <iframe src="https://drive.google.com/file/d/1WjU-w3UgbTYc010VNiz6cKf9Xtw5r4wJ/preview"
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           frameborder="0"
           allowfullscreen></iframe>
@@ -89,7 +89,7 @@ Now that we've introduced the concept of BQ Agents and that they can be accessed
 You can watch the final result in action here:
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
+  <iframe src="https://drive.google.com/file/d/1kXfiz-lX6oYa9Gg1mE6Kd41scMNp4EAb/preview"
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           frameborder="0"
           allowfullscreen></iframe>
