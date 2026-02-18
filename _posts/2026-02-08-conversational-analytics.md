@@ -30,7 +30,12 @@ And here's the real kicker: While I'm using GA data as the example, this approac
 
 Before we get into the technical details of this, though, let's have a glimpse at what the newly released [BigQuery Data Agents](https://docs.cloud.google.com/bigquery/docs/conversational-analytics) actually are and how they differ from simply pasting your data into ChatGPT or asking Gemini a question about a table.
 
-{% include embed/youtube.html id='Bv1twB0XWn0' %}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://drive.google.com/file/d/16lFMo7k-GtCnKcz7FoiAL_8or6P3mb28/preview" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allowfullscreen></iframe>
+</div>
 
 Data Agents are one of GCP's Conversational Analytics features in BQ. They serve as a pre-configured layer between your data and the end user, combining natural language-to-SQL translation, context retrieval from metadata and custom system instructions, and chart generation for visualization.
 
@@ -43,7 +48,12 @@ The agent processes requests in the following stages:
 
 As always with agents, the ability to add "context" is crucial. When you create a Data Agent, you shouldn't just point it at a table and hope for the best. I recommend investing the time in writing good system instructions. Take your time to define how the agent should interpret certain common questions, what specific business terminology means in the context of your data, and how to handle ambiguous requests. You should specify table and column descriptions, define relationships between fields, and even provide example question-query pairs ("golden" or verified queries) that guide the agent toward reliable responses. And lastly, make sure to control costs by limiting the number of bytes processed by agent-induced queries.
 
-{% include embed/youtube.html id='kesrUB4en6k' %}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allowfullscreen></iframe>
+</div>
 
 So, a thoughtfully configured Data Agent in combination with a well-structured data model (or semantic layer) is "all" it takes to start having conversations with your data. Every agent comes with the ability start a conversation right in the BQ interface. If you have a good data model and a concrete use case with clear instructions (easy, right?), the setup is plain sailing. 
 
@@ -55,7 +65,12 @@ Still, although this entire process appears to be hands-off at first glance, I c
 
 While the chat interface in the BQ UI is a great start, it will likely be impractical to invite every potential user to your GCP project. This is exactly where yet another feature of these agents comes into play: The ability to "publish" an agent. With this, you can programmatically interact with any given agent via the Conversational Analytics API and integrate the agent's capabilities in any environment of your choice. 
 
-{% include embed/youtube.html id='c3WSg0Bpmt4' %}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allowfullscreen></iframe>
+</div>
 
 The Conversational Analytics API is designed to build an AI-powered chat interface. The API uses natural language to answer questions about structured data in BQ (and a wide variety of other Google services). With the Conversational Analytics API, you provide your data agent with business information and data (context), as well as access to tools such as SQL and visualization libraries. These agent responses are presented to the user and can be logged by the client application. Sounds familiar? It should, since this API essentially lets us (almost) recreate the Conversations feature from the BQ UI described in the previous section within our own applications.
 
@@ -73,7 +88,12 @@ Now that we've introduced the concept of BQ Agents and that they can be accessed
 
 You can watch the final result in action here:
 
-{% include embed/youtube.html id='ZhODJ26H8Hg' %}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://drive.google.com/file/d/YOUR_VIDEO_ID_HERE/preview"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allowfullscreen></iframe>
+</div>
 
 A more "behind-the-scenes" look at the app and its architecture comes here:
 
