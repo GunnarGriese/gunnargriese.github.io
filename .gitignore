@@ -3,3 +3,7 @@
 _site/
 .jekyll-cache
 Gemfilelocal.lock
+CLAUDE.md
+.claude/
+.tmp/
+node_modules/

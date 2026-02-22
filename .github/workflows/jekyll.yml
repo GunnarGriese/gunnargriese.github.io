@@ -39,6 +39,15 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
           cache-version: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Build walkerOS bundle
+        run: npm run build:tracking
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4

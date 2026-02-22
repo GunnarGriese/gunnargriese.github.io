@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "flows": {
+    "default": {
+      "web": {
+        "windowCollector": "collector",
+        "windowElb": "elb"
+      },
+      "packages": {
+        "@walkeros/web-source-browser": {},
+        "@walkeros/web-destination-gtag": {}
+      },
+      "sources": {
+        "browser": {
+          "package": "@walkeros/web-source-browser",
+          "config": {
+            "settings": {
+              "pageview": true,
+              "session": true,
+              "elb": "elb"
+            }
+          }
+        }
+      },
+      "destinations": {
+        "gtag": {
+          "package": "@walkeros/web-destination-gtag",
+          "config": {
+            "settings": {
+              "ga4": {
+                "measurementId": "G-9H6MQML5EC",
+                "pageview": false
+              }
+            },
+            "mapping": {
+              "page": {
+                "view": {
+                  "name": "page_view",
+                  "data": {
+                    "map": {
+                      "page_location": "context.url",
+                      "page_title": "data.title",
+                      "page_referrer": "context.referrer"
+                    }
+                  }
+                }
+              },
+              "article": {
+                "view": {
+                  "name": "content_view",
+                  "data": {
+                    "map": {
+                      "content_type": {
+                        "value": "article"
+                      },
+                      "content_id": "data.id",
+                      "content_title": "data.title",
+                      "content_category": "data.category",
+                      "content_tags": "data.tags"
+                    }
+                  }
+                },
+                "read_half": {
+                  "name": "scroll",
+                  "data": {
+                    "map": {
+                      "percent_scrolled": {
+                        "value": 50
+                      },
+                      "content_type": {
+                        "value": "article"
+                      },
+                      "content_id": "data.id"
+                    }
+                  }
+                },
+                "read_complete": {
+                  "name": "scroll",
+                  "data": {
+                    "map": {
+                      "percent_scrolled": {
+                        "value": 90
+                      },
+                      "content_type": {
+                        "value": "article"
+                      },
+                      "content_id": "data.id"
+                    }
+                  }
+                }
+              },
+              "navigation": {
+                "select": {
+                  "name": "navigation_click",
+                  "data": {
+                    "map": {
+                      "link_text": "data.destination",
+                      "link_url": "data.url"
+                    }
+                  }
+                }
+              },
+              "tags": {
+                "select": {
+                  "name": "tag_click",
+                  "data": {
+                    "map": {
+                      "tag_name": "data.name"
+                    }
+                  }
+                }
+              },
+              "contact_form": {
+                "send": {
+                  "name": "form_submit",
+                  "data": {
+                    "map": {
+                      "form_name": {
+                        "value": "contact"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
