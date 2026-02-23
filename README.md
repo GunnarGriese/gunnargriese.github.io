@@ -151,13 +151,6 @@ Before launching, update these placeholder sections:
 └── README.md           # This file
 ```
 
-## To Do
-
-- [x] Add About page
-- [ ] Better transition on contact page
-- [ ] Blog intro (why should people read it?, why am I writing it?, what am I writing about?)
-- [ ] Add company logos to showcase past clients (Pyne, Sixt, Comwell, InboundCPH, Miss Mary of Sweden, Beely, Churney, DFDS, JFM, Profitmetrics, BLC, Supercell, etc.)
-
 ## License
 
 This project is open source and available under the MIT License.
