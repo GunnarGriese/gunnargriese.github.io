@@ -15,6 +15,8 @@ Recently, I found myself in a situation where I needed to use Google Analytics (
 
 The challenge was that the GA4 raw data in BQ does not contain this information, and I had to find a way to get it there. In this post, I will show you different ways to achieve this - including my favorite one.
 
+{% include newsletter-cta.html %}
+
 ## The Problem
 
 As stated above, the events in the GA4 raw data in BQ do not have an event parameter indicating whether or not they are conversion events. You don't believe me? Go ahead, feel free to pull your GA4 data from BQ and check for yourself...

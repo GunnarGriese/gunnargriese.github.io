@@ -13,6 +13,8 @@ permalink: /posts/firebase-analytics-debugging/
 
 Are you a digital analyst looking to implement and debug Google Analytics tracking via Firebase for your mobile iOS apps and have no clue where to start? This blog post is for you! I’ll briefly walk you through the process of setting up Google Analytics tracking using both the Firebase SDK and Google Tag Manager (GTM). Primarily, I’ll cover the most effective debugging tools, including Charles Proxy and David Vallejo's iOS/Android Debugger, to help you achieve accurate and reliable data collection.
 
+{% include newsletter-cta.html %}
+
 ## Introduction to Google Analytics Tracking for Apps
 
 Google Analytics 4 (GA4) marks the debut of a unified platform for tracking both web and mobile app data in Google’s analytics suite. This change acknowledges the increasing trend of businesses viewing their websites and mobile apps as interconnected, rather than separate sales channels. GA4 is designed to provide a more comprehensive understanding of user interactions across various platforms.

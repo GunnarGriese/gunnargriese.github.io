@@ -32,6 +32,8 @@ These cases are fairly common and are precisely **why** GA4 has server-side data
 
 In this blog post, I'll take a stab at how these server-side collection methods work, when to use each, and how they can turn your analytics implementation from simple data harvesting to a holistic measurement system that delivers true insights.
 
+{% include newsletter-cta.html %}
+
 ## What is server-side data enrichment?
 
 Before jumping into the details, let's first take a step back, get the definitions right, and based on that see how these methods fit into GA4's broader infrastructure.

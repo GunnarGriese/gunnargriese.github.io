@@ -1,0 +1,230 @@
+.newsletter-widget {
+  margin: 60px 0;
+  padding: 40px 20px;
+  background: #235495;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.newsletter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 20px 0;
+  border-bottom: 3px solid #dd973a;
+  padding-bottom: 15px;
+}
+
+.newsletter-widget .newsletter-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+.newsletter-form {
+  margin-top: 25px;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletter-input {
+  flex: 1 1 300px;
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: white;
+  transition: border-color 0.3s;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: #dd973a;
+  box-shadow: 0 0 0 3px rgba(221, 151, 58, 0.2);
+}
+
+.newsletter-button {
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #235495;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  white-space: nowrap;
+}
+
+.newsletter-button:hover {
+  background-color: #dd973a;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(221, 151, 58, 0.3);
+}
+
+.newsletter-button:active {
+  transform: translateY(0);
+}
+
+.newsletter-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-widget .newsletter-disclaimer {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin: 15px 0 0 0;
+}
+
+.newsletter-message {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.newsletter-message.success {
+  display: block;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.newsletter-message.error {
+  display: block;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Homepage and blog page specific styles */
+.newsletter-section {
+  padding: 40px 0;
+}
+
+.page-content .newsletter-widget {
+  margin: 60px auto;
+  max-width: 800px;
+}
+
+/* Inline CTA Styles */
+.newsletter-inline-cta {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #235495 0%, #1a3e6d 100%);
+  border-radius: 8px;
+  border-left: 4px solid #dd973a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-inline-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.newsletter-inline-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.newsletter-inline-text {
+  flex: 1 1 300px;
+  color: white;
+}
+
+.newsletter-inline-text strong {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.newsletter-inline-text p {
+  margin: 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.newsletter-inline-button {
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #235495;
+  background: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.newsletter-inline-button:hover {
+  background: #dd973a;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(221, 151, 58, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .newsletter-widget {
+    padding: 30px 15px;
+  }
+
+  .newsletter-title {
+    font-size: 26px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 16px;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .newsletter-input,
+  .newsletter-button {
+    width: 100%;
+  }
+
+  .newsletter-inline-cta {
+    padding: 20px;
+  }
+
+  .newsletter-inline-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .newsletter-inline-icon {
+    font-size: 36px;
+  }
+
+  .newsletter-inline-button {
+    width: 100%;
+  }
+}

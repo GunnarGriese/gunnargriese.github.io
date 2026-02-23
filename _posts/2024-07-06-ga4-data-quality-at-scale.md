@@ -24,6 +24,8 @@ As illustrated in the above visualization, businesses are migrating their data c
 
 While the shift to GA4 and sGTM is a positive step that can potentially enhance digital marketing performance, it also brings a new challenge that has, so far, slipped the minds of those rushing to adopt this approach. The increasing number of vendors and tools relying on a single GA4 data stream highlights the critical importance of accurate data collection. Businesses must prioritize data quality to ensure the effectiveness of their digital marketing strategies.
 
+{% include newsletter-cta.html %}
+
 ## The traditional QA flow: A recipe for losing trust
 
 The complexity and risks associated with the dominating approach become apparent when we examine the current state of data quality assurance (QA) within organizations.

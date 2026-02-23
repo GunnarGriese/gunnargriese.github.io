@@ -21,6 +21,8 @@ Now, we're (or mainly me in this case) ready to finish this series with perhaps 
 
 In this final chapter, we'll look into how to use these AI tools within your sGTM measurement hub, transforming your data collection infrastructure into an "AI-powered insights engine" (sounds cool, right?). Let's check out how the Phoebe (Vertex AI integration) and Dioscuri (Gemini integration) solutions from Google's Pantheon can be used.
 
+{% include newsletter-cta.html %}
+
 ## What is Vertex AI?
 
 Before I walk you through the details of bringing predictive services into sGTM, let's have a look at GCP's ML suite. Vertex AI is Google's centralized platform for machine learning and AI—think of it as your go-to solution for training, deploying, and managing ML models and AI applications. This is where data science meets cloud infrastructure, meaning in here you can turn your models into scalable, production-ready solutions.

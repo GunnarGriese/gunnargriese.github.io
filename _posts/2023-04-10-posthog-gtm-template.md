@@ -13,6 +13,8 @@ permalink: /posts/posthog-gtm-template/
 
 In today’s data-driven world, understanding user behavior is crucial for any business. Product analytics platforms like PostHog have emerged as essential tools for gaining insights into how users interact with your website or app. In this blog post, we will explore the PostHog analytics platform, its SDKs, the JavaScript SDK in particular, Google Tag Manager tag templates, and how you can integrate PostHog with Google Tag Manager using a custom tag template.
 
+{% include newsletter-cta.html %}
+
 ## Introduction to PostHog Analytics Platform
 
 [PostHog](https://posthog.com/) is an open-source product analytics platform that helps you analyze user behavior on your website or app. It provides event-based tracking, funnel analysis, user segmentation, and other essential features to help understand how users engage with the product you are responsible for. It sits in the same space as tools like Mixpanel, Heap, and Amplitude which are all specializing in providing product managers and analysts with the required insights to optimize their platform towards their users’ needs.

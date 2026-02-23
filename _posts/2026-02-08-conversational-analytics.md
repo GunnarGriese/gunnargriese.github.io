@@ -26,6 +26,8 @@ In this post, I'll walk through how to combine the BQ Data Transfer Service for 
 
 And here's the real kicker: While I'm using GA data as the example, this approach works just as fine with any other structured data in BQ. Your CRM exports, advertising cost data, product catalog, or whatever else comes to mind. Your entire marketing data warehouse becomes "chatable" (is this even a word?).
 
+{% include newsletter-cta.html %}
+
 ## What Are BigQuery Data Agents?
 
 Before we get into the technical details of this, though, let's have a glimpse at what the newly released [BigQuery Data Agents](https://docs.cloud.google.com/bigquery/docs/conversational-analytics) actually are and how they differ from simply pasting your data into ChatGPT or asking Gemini a question about a table.

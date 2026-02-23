@@ -25,6 +25,8 @@ The analytical techniques available are the following:
 
 Check out the official Google [documentation](https://support.google.com/analytics/answer/7579450?hl=en&ref_topic=9266525#zippy=%2Cin-this-article) for a more detailed introduction to GA4’s powerful Explorations feature.
 
+{% include newsletter-cta.html %}
+
 ## Path Exploration in GA4
 
 The Path exploration report lets you visualize user interactions from a specific event/page forward (starting point) or backward (ending point) in an aggregated manner. Analysts using this technique can answer questions like:

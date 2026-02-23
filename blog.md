@@ -35,3 +35,6 @@ permalink: /blog/
     </article>
     {% endfor %}
 </div>
+
+<!-- Newsletter Widget -->
+{% include newsletter-signup.html %}

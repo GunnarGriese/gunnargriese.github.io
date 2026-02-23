@@ -17,6 +17,8 @@ This blog post is the product of me penning down my observations and combining t
 
 This blog post can be seen as the technical counterpart of [my previous thoughts on Consent Mode v2](https://iihnordic.com/news/update-of-consent-state-and-its-impact-on-advertisers/?ref=gunnargriese.com) published on the IIH Nordic blog. If you are new to the topic, I recommend reading the previous blog post first to get a better understanding of the topic's context and the implications of Consent Mode v2.
 
+{% include newsletter-cta.html %}
+
 ## Introduction to Consent Mode v2
 
 **Google's Consent Mode v2 becomes mandatory on March 6, 2024**, for all advertisers targeting the European Economic Area (EEA), including the UK. Implementing this update is **essential for maintaining access to the Google Marketing Platform's (GMP) remarketing and targeting functionalities**, regardless of the company's location, as long as it engages EEA users. The general idea of Consent Mode is to signal user consent states (granted vs. denied) for various consent types to Google tools and generate data through additional signals (so-called pings) even in the absence of user consent.

@@ -21,6 +21,8 @@ Since I couldn't find any other content addressing this challenge, I decided to 
 
 Let's get into it!
 
+{% include newsletter-cta.html %}
+
 ## The "Problem" with Standard sGTM Deployments
 
 Before going into detail, let's understand why the standard sGTM deployment doesn't satisfy strict data residency requirements. Which isn't really a flaw in the technology, but rather a matter of how Google Cloud Platform's (GCP) networking options are designed and the trade-offs each one comes with.

@@ -20,6 +20,8 @@ Obviously, a lot has changed since then. Cloud functions are now Cloud **Run** f
 
 However, the vision of enriching the clickstream collected by GA4 with data provided by GCP services or feeding a company's downstream systems in real time is still valid. In this series of blog posts, I want to invite you to join me on a mythological journey exploring the possibilities of integrating first-party data or triggering processes from sGTM using Firestore (this one), [Pub/Sub (part 2)](https://gunnargriese.com/posts/gtm-server-side-pubsub-integration/), [BigQuery & Google Sheets (part 3)](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/), and even Predictive Analytics & GenAI (part 4).
 
+{% include newsletter-cta.html %}
+
 ## The state of GTM Server-Side
 
 Since the release of sGTM, we have come a long way, and more and more companies have decided to opt into the technology to take advantage of the additional data controls for, e.g., [data quality](https://gunnargriese.com/posts/ga4-data-quality-at-scale/) or privacy reasons. This trend has been powered by three main factors from my perspective:

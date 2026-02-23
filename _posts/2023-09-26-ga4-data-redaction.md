@@ -15,6 +15,8 @@ In my recent article, I explored the potential of GA4 as a core component in cra
 
 As outlined in Google Analytics' [Terms and Conditions](https://marketingplatform.google.com/about/analytics/terms/us/#:~:text=and%20security%20measures.-,7.%20Privacy.,-You%20will%20not), transmitting PII, be it names, email addresses, or even credit card numbers, is a strict no-no. Through this post, I'll walk you through the nuances of leveraging GA4's client-side data redaction, ensuring your data remains PII-free before reaching Google Analytics. Alongside, we'll also uncover the mechanics behind this feature and explore more methodologies to fortify your data against PII leaks to GA4.
 
+{% include newsletter-cta.html %}
+
 ## GA4 Data Collection under the Hood
 
 Initially, let's dissect how GA4's data collection functions internally. The subsequent diagram illustrates the data collection pipeline of GA4 for a typical client-side measurement setup. This pipeline encompasses three phases:

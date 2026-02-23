@@ -16,6 +16,8 @@ Today, we continue our journey in Greek mythology and tackle two of the most wid
 
 But when does it make sense to use Google Sheets and BQ in a server-side context? And how can you leverage the power of these tools in combination with sGTM? Let's find out!
 
+{% include newsletter-cta.html %}
+
 ## Standing on the Shoulders of Giants: Why Apollo and Chaos?
 As with all solutions in the sGTM Pantheon, "Apollo" and "Chaos" aren't just random names. They've been chosen from Greek mythology to represent the potential of Google Sheets and BigQuery for enhancing your GTM Server-Side workflows. Apollo, named after the god of knowledge, gives you real-time access to data stored in your Google Sheets, perfect for marketers wanting to incorporate business-relevant data on the fly. Chaos, symbolizing the vast expanse of BigQuery, allows you to store and (further down the line) analyze massive datasets effortlessly, turning raw data into insights.
 

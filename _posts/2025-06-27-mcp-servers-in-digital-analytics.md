@@ -19,6 +19,8 @@ Model Context Protocol (MCP) Servers might be just what we needed to make the mo
 
 In this post, I'll break down what MCP Servers are, how they work, and most importantly, how they can be used in your digital analytics workflows. I'll share the outcome of a thought experiment with you. In particular, a POC of how analytics implementations could like in the future and how it will change the role of implementation specialists.
 
+{% include newsletter-cta.html %}
+
 ## Some Personal Reflections on the AI Hype
 
 While the above probably sounds like I have given in to the ever-present AI hype, I also want to be honest with you: Up until recently I've been struggling to think of groundbreaking applications for AI within my line of work - Digital Analytics.

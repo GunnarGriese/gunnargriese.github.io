@@ -15,6 +15,8 @@ This article is a write-up of my talk at MeasureCamp Czechia in Prague in Septem
 
 I'll explore how Google Analytics 4 (GA4) can be used as a lightweight Customer Data Platform (CDP) and how it can be integrated with other tools to create a powerful data activation stack. Furthermore, I'll also discuss the current state of GA4 and the challenges faced by GA4 users. Lastly, I'll highlight some of the recently added powerful GA4 features like the Audience Export API and User data exports to BigQuery and how they can be used to build a use case-specific data activation stack (or "Customer Data Platform (CDP)" if we want to join the buzzword bingo).
 
+{% include newsletter-cta.html %}
+
 ## Walk Down Memory Lane - History of Google Analytics
 
 First let's take a step back to put the recent developments into perspective and look at some high-level context. Google Analytics (GA) has come a long way since its inception in 2005. Back then, GA was a simple JavaScript snippet that allowed website owners to track pageviews and gain insights into their website's performance. Over the years, GA has evolved into a sophisticated analytics platform that offers a wide range of features and capabilities.

@@ -19,6 +19,8 @@ However, it doesn't have to be like that: There are far more efficient ways to o
 
 In this first article of my series, I'll outline the shift needed in how we think about marketing signals. You can think of it as the overarching concept behind what I've previously explored in my [GTM Server-Side use cases post](https://gunnargriese.com/posts/gtm-server-side-use-cases/). The following posts in this series will focus more on the" how?" of building these systems. So, let's get started!
 
+{% include newsletter-cta.html %}
+
 ## The Optimization Playbook Has Changed
 
 The trend for marketing campaign optimization is clear. Your campaign management is becoming increasingly automated, and larger shares of marketing budgets are being optimized with "intelligent" in-platform tools, such as Performance Max (GMP) and Advantage+ (Meta). 

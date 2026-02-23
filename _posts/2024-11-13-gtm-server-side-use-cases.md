@@ -29,6 +29,8 @@ _GTM Server-Side Adoption Drivers_
 
 To say it more bluntly, if you and your team have decided to pursue the sGTM route, having the above in place should be simply the first step of a longer journey during which you'll reap the benefits of your efforts.
 
+{% include newsletter-cta.html %}
+
 ## From implementation to innovation
 
 The real cost isn't in choosing between client-side and server-side implementations; it's in not fully utilizing the server-side capabilities you've already deployed. Companies with mature server-side implementations are seeing:

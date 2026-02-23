@@ -15,6 +15,8 @@ Google Analytics 4 (GA4) can unify your users’ journeys using various methods,
 
 This blog post provides an overview of the Reporting Identity functionality with a special focus on logged in users, its quirks in GA4, its usage for your business, and its implications for reporting. Eventually, I will try to help you answer the (somewhat philosophical) question: "Who are my website users? And if so how many?"
 
+{% include newsletter-cta.html %}
+
 ## What is the Reporting Identity in GA4?
 
 I know you're eager to cut to the chase, and I hate to hold you off, but before we can dive deeper into the topic, we have to establish some common ground and get the definitions straight:

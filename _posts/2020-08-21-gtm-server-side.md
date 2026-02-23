@@ -18,6 +18,8 @@ Our ambition is to provide both background information and context to why we thi
 
 The main takeaway is that GTM server-side will increase flexibility and control over your data and enhance the durability and the direct business value of the solution far beyond what is possible with a traditional Google Tag Manager setup.
 
+{% include newsletter-cta.html %}
+
 ## Privacy First and 1st Party Analytics
 
 Nowadays businesses face many challenges that require them to rethink the way they do website and app tracking. Luckily, these challenges with GTM server-side will also open up many agile opportunities for companies willing to adapt and change. However, traditional tracking is being confronted by a lot of challenges that will make “tracking as usual” technically impossible.

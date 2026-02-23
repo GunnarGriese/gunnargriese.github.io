@@ -15,6 +15,8 @@ On September 12, 2024, Google announced a new privacy-focused feature called **C
 
 In this post, I’ll explain how Confidential Matching works, its role in Google's marketing ecosystem, and critically assess whether it provides a real solution for privacy-focused advertisers. By the end, you'll have a clearer understanding of whether this new feature is a significant step forward or "just" another method to maintain data control under the guise of privacy protection.
 
+{% include newsletter-cta.html %}
+
 ## What is Confidential Matching?
 
 As privacy regulations like GDPR and CCPA are enforced more and more, advertisers face increasing challenges when using customer data for ad targeting and measurement. Traditionally, tools like **Customer Match** and **Enhanced Conversions** required advertisers to share sensitive personal data, such as email addresses or phone numbers, with Google. Confidential Matching offers a new solution by allowing advertisers to match customer data with Google's records without directly sharing that raw information.
