@@ -218,19 +218,31 @@
   }
 
   .newsletter-inline-cta {
-    padding: 20px;
+    padding: 20px 15px;
+    margin: 30px -15px;
   }
 
   .newsletter-inline-content {
     flex-direction: column;
     text-align: center;
+    gap: 15px;
   }
 
   .newsletter-inline-icon {
-    font-size: 36px;
+    font-size: 32px;
+  }
+
+  .newsletter-inline-text strong {
+    font-size: 18px;
+  }
+
+  .newsletter-inline-text p {
+    font-size: 14px;
   }
 
   .newsletter-inline-button {
     width: 100%;
+    padding: 10px 24px;
+    font-size: 15px;
   }
 }
