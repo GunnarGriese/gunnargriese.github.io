@@ -17,11 +17,16 @@ document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = true;
     submitButton.textContent = 'Subscribing...';
 
-    // Prepare the data
+    // Get current page information
+    const pageTitle = document.title || 'Unknown Page';
+    const pageUrl = window.location.href;
+    const pagePath = window.location.pathname;
+
+    // Prepare the data with enhanced context
     const formData = {
       name: 'Newsletter Subscriber', // Default name for newsletter signups
       email: emailInput.value,
-      message: 'Newsletter signup from blog post'
+      message: `Newsletter signup from: ${pageTitle} | URL: ${pageUrl}`
     };
 
     try {
@@ -47,7 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Optional: Track with walkerOS if available
         if (window.elb) {
           window.elb('newsletter_signup', {
-            email: formData.email
+            email: formData.email,
+            page_title: pageTitle,
+            page_url: pageUrl,
+            page_path: pagePath
           });
         }
       } else {

@@ -206,7 +206,13 @@
     flex-direction: column;
   }
 
-  .newsletter-input,
+  .newsletter-input {
+    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
   .newsletter-button {
     width: 100%;
   }
