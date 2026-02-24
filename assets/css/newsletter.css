@@ -127,8 +127,8 @@
 
 /* Inline CTA Styles */
 .newsletter-inline-cta {
-  margin: 40px 0;
-  padding: 30px;
+  margin: 30px 0;
+  padding: 20px 25px;
   background: linear-gradient(135deg, #235495 0%, #1a3e6d 100%);
   border-radius: 8px;
   border-left: 4px solid #dd973a;
@@ -140,11 +140,11 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }
 
 .newsletter-inline-icon {
-  font-size: 48px;
+  font-size: 36px;
   flex-shrink: 0;
 }
 
@@ -218,33 +218,35 @@
   }
 
   .newsletter-inline-cta {
-    padding: 15px;
-    margin: 20px 0;
+    padding: 12px;
+    margin: 15px 0;
   }
 
   .newsletter-inline-content {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .newsletter-inline-icon {
-    font-size: 24px;
+    display: none;  /* Hide icon on mobile to save space */
   }
 
   .newsletter-inline-text strong {
-    font-size: 16px;
-    margin-bottom: 4px;
+    font-size: 15px;
+    margin-bottom: 2px;
   }
 
   .newsletter-inline-text p {
-    font-size: 13px;
-    line-height: 1.3;
+    font-size: 12px;
+    line-height: 1.2;
+    margin: 0;
   }
 
   .newsletter-inline-button {
     width: 100%;
-    padding: 8px 20px;
+    padding: 10px 16px;
     font-size: 14px;
+    margin-top: 4px;
   }
 }
