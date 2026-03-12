@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (response.ok && result.status === 'success') {
         // Success
         messageDiv.className = 'newsletter-message success';
-        messageDiv.textContent = 'Success! Welcome to my newsletter. Check your email for confirmation.';
+        messageDiv.textContent = "Success! Welcome to my notificatiion list. I'll ping you, once there's new posts to share.";
 
         // Clear the form
         emailInput.value = '';
