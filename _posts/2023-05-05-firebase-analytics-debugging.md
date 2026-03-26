@@ -200,16 +200,16 @@ _6. Install the certificate on your device_
 _7. Trust the certificate_
 
 ![proxy-settings-urls](/assets/images/firebase-debug/proxy-settings-urls.png)
-_8. Decrypt requests sent over SSL: Proxy > SSL Proxying Settings… > *.google-analytics.com (or your sGTM endpoint); *.app-measurement.com_
+_8. Decrypt requests sent over SSL: Proxy > SSL Proxying Settings… > *.google-analytics.com (or your sGTM endpoint); *.app-measurement.com; *.app-analytics-services.com_
 
 ![filter-requests](/assets/images/firebase-debug/filter-requests.png)
-_9. Decrypt requests sent over SSL: Proxy > SSL Proxying Settings… > *.google-analytics.com (or your sGTM endpoint); *.app-measurement.com_
+_9. Decrypt requests sent over SSL: Proxy > SSL Proxying Settings… > *.google-analytics.com (or your sGTM endpoint); *.app-measurement.com; *.app-analytics-services.com_
 
 Now you are able to intercept and analyze all outgoing requests from your mobile app.
 
 ##### Debug Native Mobile Apps
 
-The Firebase SDK sends GA4 events to its own servers (`app-measurement.com`) in a format that is challenging to interpret.
+The Firebase SDK sends GA4 events to its own servers (`app-measurement.com` or lately `app-analytics-services.com`) in a format that is challenging to interpret.
 
 ![encoded-protobuf](/assets/images/firebase-debug/encoded-protobuf.png)
 _Encoded protobuf payload_
@@ -224,7 +224,7 @@ Unfortunately, the `.proto` definitions required for decoding are not made publi
 
 Lari published the results of his research on his [GitHub repository](https://github.com/lari/firebase-ga4-app-measurement-protobuf), ready for your use in Charles Proxy.
 
-To add them to your Charles Proxy configuration, open “Viewer mappings…” from the menu and add a new mapping. Add the app-measurement.desc file from Lari’s GitHub repo to the Descriptor Registry and then create a new mapping for app-measurement.com requests with the following settings:
+To add them to your Charles Proxy configuration, open “Viewer mappings…” from the menu and add a new mapping. Add the app-measurement.desc file from Lari’s GitHub repo to the Descriptor Registry and then create a new mapping for `*app-measurement.com` and/or `*app-analytics-services.com` requests with the following settings:
 
 - Request type: Protocol Buffers
 - Message type: app_measurement.Batch
