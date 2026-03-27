@@ -197,12 +197,12 @@ The above code snippet adds a listener for consent states for `ad_storage` and `
 
 Google also included the gtag API functionalities for Consent Mode into GTM's Sandbox APIs, making it possible to build and use native community tags and variable templates in our GTM containers.
 
-Consider using Simo Ahava's template for a streamlined implementation of Consent Mode v2. Available [here](https://tagmanager.google.com/gallery/#/owners/gtm-templates-simo-ahava/templates/consent-mode), this template is ideally suited to orchestrate the Consent Mode implementation.
+Consider using Simo Ahava's template for a streamlined implementation of Consent Mode v2. Available in the [GTM Template Gallery](https://tagmanager.google.com/gallery/#/owners/gtm-templates-simo-ahava/templates/consent-mode), this template is ideally suited to orchestrate the Consent Mode implementation.
 
 ![simo-gtm-template](/assets/images/consent-mode/simo-gtm-template.png)
 _Source: Own GTM Setup_
 
-Below, we have a closer look into the specific methods employed by this template or similar ones, which are examples of their utilization. For more technical details on the APIs, see [here](https://developers.google.com/tag-platform/tag-manager/templates/consent-apis).
+Below, we have a closer look into the specific methods employed by this template or similar ones, which are examples of their utilization. For more technical details, see the [GTM Consent APIs documentation](https://developers.google.com/tag-platform/tag-manager/templates/consent-apis).
 
 #### Set default consent state
 
@@ -313,7 +313,7 @@ Analytics.setConsent([
 ])
 ```
 
-For more details on how to debug apps using Firebase Analytics, see [here](/posts/firebase-analytics-debugging/).
+For more details on how to debug apps using Firebase Analytics, see the [Firebase Analytics debugging guide](/posts/firebase-analytics-debugging/).
 
 ### Measurement Protocol
 
@@ -495,7 +495,7 @@ Furthermore, the `gcd` parameter contains information about the current state an
 
 As you can see, the `gcd`parameter is as cryptic as it gets. But having an understanding of the parameter and its values is crucial for validating the Consent Mode v2 implementation.
 
-> Huge shoutout to **Markus Baersch** for deciperhing the `gcd` parameter and making the information available to the community. For more information, see [here](https://www.markus-baersch.de/blog/consent-mode-2-0-faq/).
+> Huge shoutout to **Markus Baersch** for deciperhing the `gcd` parameter and making the information available to the community. For more information, see [Markus Baersch's Consent Mode 2.0 FAQ](https://www.markus-baersch.de/blog/consent-mode-2-0-faq/).
 
 ### Validating the Consent Mode v2 Implementation for
 

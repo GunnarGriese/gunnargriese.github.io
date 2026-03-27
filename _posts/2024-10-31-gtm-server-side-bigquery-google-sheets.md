@@ -57,7 +57,7 @@ We'll capture the form ID and the user's age input in the GTM web container upon
 ![Google Sheets Read Variable](/assets/images/gtm-ss-bq/gsheet-custom-read-var.png)
 _Exemplary Google Sheets Read Variable_
 
-The variable uses the Google Sheets API's RESTful interface to fetch the data from the Google Sheets document. For this to work, you must provide the **Google Spreadsheet ID**, the **name of the tab** within the sheet, the **range of cells** to read, and an **API key**. The template provides input fields for the Spreadsheet ID and the tab name (see [here](https://developers.google.com/sheets/api/guides/concepts) for more information on how to obtain these values).  
+The variable uses the Google Sheets API's RESTful interface to fetch the data from the Google Sheets document. For this to work, you must provide the **Google Spreadsheet ID**, the **name of the tab** within the sheet, the **range of cells** to read, and an **API key**. The template provides input fields for the Spreadsheet ID and the tab name (see the [Google Sheets API concepts documentation](https://developers.google.com/sheets/api/guides/concepts) for more information on how to obtain these values).  
 
 The range of cells is **dynamically** derived from the form ID and the user's age input. For this example, I mapped the form ID to the row number and the age group to the column number in the Google Sheets document (s. above for the sheet). The following excerpt from the variable template code shows how I implemented the mapping:
 
@@ -91,7 +91,7 @@ const ROW_NO = formIdToRowMap[data.form_id] || 11;
 
 In our case, the form ID _123_ and the age of _25_ will map to the cell `C3` in the Google Sheets document. 
 
-The last piece that needs to be added is authentication. In the past, obtaining API keys for Google services in sGTM took a lot of work (see [here](https://stape.io/blog/write-data-from-server-google-tag-manager-to-google-sheets) for Stape's approach). Luckily for us, the Google team has introduced a new template API, [`getGoogleAuth`](https://developers.google.com/tag-platform/tag-manager/server-side/api#getgoogleauth), to authenticate with various Google services.
+The last piece that needs to be added is authentication. In the past, obtaining API keys for Google services in sGTM took a lot of work (see [Stape's approach to Google Sheets authentication in sGTM](https://stape.io/blog/write-data-from-server-google-tag-manager-to-google-sheets)). Luckily for us, the Google team has introduced a new template API, [`getGoogleAuth`](https://developers.google.com/tag-platform/tag-manager/server-side/api#getgoogleauth), to authenticate with various Google services.
 
 The following code snippet shows how to use the `getGoogleAuth` function to easily obtain an access token and pass it along with the request options to authenticate to the Google Sheets API from within the variable:
 
@@ -181,7 +181,7 @@ Just as the infinite void of Greek mythology was filled by the world, Chaos fill
 
 - Real-time reports on a subset of data, e.g., for a specific campaign or product, can be generated in BQ and then visualized in Looker Studio. This will keep your query costs low and your reports up-to-date.
 - Saving `gclid`, `client_id`, and `user_id` in BQ allows you to connect online and offline data, enabling more accurate attribution models.
-- Writing tag execution data to BQ can help you identify bottlenecks in your GTM setup and optimize your tag management strategy (s. Simo's blog post on this [here](https://www.simoahava.com/analytics/write-to-google-bigquery-from-gtm-server-container/)).
+- Writing tag execution data to BQ can help you identify bottlenecks in your GTM setup and optimize your tag management strategy (s. [Simo Ahava's guide on writing to BigQuery from sGTM](https://www.simoahava.com/analytics/write-to-google-bigquery-from-gtm-server-container/)).
 
 Let's examine Chaos in more detail and consider how you can leverage it in your sGTM setup.
 

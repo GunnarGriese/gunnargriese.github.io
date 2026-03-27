@@ -183,7 +183,7 @@ In the following section, I will describe how to set up the tool to use it succe
 
 To set up Charles Proxy and enable the application to intercept requests from a mobile app on your phone, please follow these steps:
 
-1. Download Charles Proxy [here](https://www.charlesproxy.com/documentation/installation/).
+1. Download [Charles Proxy](https://www.charlesproxy.com/documentation/installation/).
 2. Ensure that your iPhone and Macbook are on the same network
 3. In Charles: Help > SSL Proxying > Install Charles Root Certificate on a Mobile Device or Remote Browser (follow the instructions on the screen)
 
@@ -220,7 +220,7 @@ Charles supports Protobuf out of the box, allowing you to right-click on the req
 
 While the data is now more readable, it is still missing substantial information. Protobuf compresses data by replacing lengthy key names with numbers, with the mapping defined in a .proto file needed for both writing and reading Protocol buffers.
 
-Unfortunately, the `.proto` definitions required for decoding are not made publicly available by Google. However, Lari Haataja did a great job by examining the encoded data and correlating information from other sources, and reverse engineering the names of most keys in the data structure. Check out his accompanying blog post [here](https://larihaataja.com/firebase-ga4-app-measurement-com-calls/).
+Unfortunately, the `.proto` definitions required for decoding are not made publicly available by Google. However, Lari Haataja did a great job by examining the encoded data and correlating information from other sources, and reverse engineering the names of most keys in the data structure. Check out his [blog post on reverse-engineering Firebase protobuf payloads](https://larihaataja.com/firebase-ga4-app-measurement-com-calls/).
 
 Lari published the results of his research on his [GitHub repository](https://github.com/lari/firebase-ga4-app-measurement-protobuf), ready for your use in Charles Proxy.
 

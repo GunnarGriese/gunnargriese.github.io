@@ -322,7 +322,7 @@ For me, the most important takeaway from this is that human expertise and oversi
 
 Despite the well-defined scope of the task and the limitations I experienced, the POC demonstrates that we’re moving toward a future where AI hopefully will be able to handle more of the mechanical aspects of analytics implementation at scale, freeing up human analysts to focus on strategy, analysis, and insight generation. The key will be to find the right balance between automation and human oversight.
 
-> If you are interested in the slides from my presentation, you can find them [here](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
+> If you are interested in the slides from my presentation, you can find the [MCP Servers in Digital Analytics presentation slides](https://docs.google.com/presentation/d/14Bq8KDHj5LswvjGentqhuTju6risRoNzLgOlQ_gybpg/edit?usp=sharing).
 
 ## Podcast Episode on the Measure Pod
 

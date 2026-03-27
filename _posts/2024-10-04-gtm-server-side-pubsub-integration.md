@@ -16,7 +16,7 @@ As you know, Firestore is excellent for gathering and storing data in real time,
 
 {% include newsletter-cta.html %}
 
-> Note: Part 3 of this series focuses on how to use BigQuery and Google Sheets to further enhance your GTM Server-Side setup. You can read it [here](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/)
+> Note: Part 3 of this series focuses on how to use BigQuery and Google Sheets to further enhance your GTM Server-Side setup. You can read [Part 3: BigQuery & Google Sheets integration](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/)
 
 ## What is Pub/Sub?
 At its core, Pub/Sub (short for Publish/Subscribe) is a messaging service GCP provides that facilitates the asynchronous exchange of messages between different systems. It's designed to be highly scalable, reliable, and low-latency, enabling realtime communication between applications across various environments.

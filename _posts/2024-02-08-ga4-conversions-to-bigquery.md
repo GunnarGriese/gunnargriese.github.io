@@ -156,7 +156,7 @@ The resulting dataset will contain the following columns:
 
 > Info: **BigQuery** is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data, which supports querying using SQL. BQ is a powerful tool for data analysis and reporting.
 
-You can find the full code for the Cloud Function [here](https://github.com/GunnarGriese/ga4-conversions-to-bq/blob/master/main.py) as well as detailed instructions on how to set it up in your environment. The Cloud Function can be triggered by a time-driven trigger to fetch the conversion events and upload them to BQ. I chose to use GCP's Cloud Scheduler to execute the Cloud Function in regular intervals.
+You can find the [full Cloud Function source code on GitHub](https://github.com/GunnarGriese/ga4-conversions-to-bq/blob/master/main.py) as well as detailed instructions on how to set it up in your environment. The Cloud Function can be triggered by a time-driven trigger to fetch the conversion events and upload them to BQ. I chose to use GCP's Cloud Scheduler to execute the Cloud Function in regular intervals.
 
 ![cloud-scheduler-config](/assets/images/ga4-conversions-to-bq/cloud-scheduler-config.png)
 _Cloud Scheduler - Example Setup_
@@ -228,7 +228,7 @@ The query above could be extended to include multiple properties, eligible perio
 
 While this last approach requires more development effort and maintenance than the previous ones, the benefits are high. With the GA4 Admin API and GCP, we get the complete context of the conversion events and can use this information to build comprehensive reports in BQ, which we can expose to our dashboarding tool of choice.
 
-You can find the complete code as well as detailed deployment instructions for the GCP infrastructure [here](https://github.com/GunnarGriese/ga4-conversions-to-bq/).
+You can find the [complete code and GCP deployment instructions on GitHub](https://github.com/GunnarGriese/ga4-conversions-to-bq/).
 
 ## Conclusion
 

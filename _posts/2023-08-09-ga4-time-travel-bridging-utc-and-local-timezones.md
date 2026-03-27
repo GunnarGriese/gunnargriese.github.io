@@ -28,7 +28,7 @@ In essence, every event is timestamped with microscopic precision (with a slight
 
 > Be aware that the `event_timestamp` in BigQuery does **not** equal the time the event occured on the user's device. It is the time the incoming event is processed by GA4 servers.
 >
-> Additionally, keep in mind that GA4's tracking library attempts to batch events together. The events in a given batch share the same `event_timestamp` and as of now there is no way to tell in which order these originally occured. Read more about this phenomenon and how to tackle it [here](https://www.teamsimmer.com/2023/01/12/how-do-i-access-the-individual-timestamp-of-a-ga4-event/).
+> Additionally, keep in mind that GA4's tracking library attempts to batch events together. The events in a given batch share the same `event_timestamp` and as of now there is no way to tell in which order these originally occured. Read more about [accessing individual GA4 event timestamps on Team Simmer](https://www.teamsimmer.com/2023/01/12/how-do-i-access-the-individual-timestamp-of-a-ga4-event/).
 
 GA4's BigQuery export schema provides the following time-related fields:
 
@@ -84,7 +84,7 @@ Luckily for us, the `EXTRACT` function allows us to adjust the `event_timestamp`
 ![ga4-timezone-settings](/assets/images/timestamp-conversions/ga4-timezone-settings.png)
 _Admin > Property Settings > Reporting time zone_
 
-Adding the timezone to the timestamp conversion process allows us to convert the `event_timestamp` to any timezone (see a list of all available time zones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), which in this case is UTC+2 (Denmark/Copenhagen).
+Adding the timezone to the timestamp conversion process allows us to convert the `event_timestamp` to any timezone (see the [full list of IANA time zones on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)), which in this case is UTC+2 (Denmark/Copenhagen).
 
 Hence, after adding the `AT TIME ZONE` clause the resulting query looks like this:
 

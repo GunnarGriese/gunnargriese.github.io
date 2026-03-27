@@ -46,7 +46,7 @@ Suppose you've read the [Firestore integration section]((https://gunnargriese.co
 
 However, there is one significant limitation: The values need to exist in Firestore before conversion happens. This static approach works well for most scenarios, but what if we need something more dynamic? Something that could calculate values on the fly based on real-time clickstream data?
 
-This is what the original Phoebe use case is about (read more about [here](https://github.com/google-marketing-solutions/gps-phoebe)). The solution variable template enables real-time predictions from Vertex AI models directly within your sGTM setup. Let's take a glance at how this works:
+This is what the original Phoebe use case is about (read more about [Phoebe on GitHub](https://github.com/google-marketing-solutions/gps-phoebe)). The solution variable template enables real-time predictions from Vertex AI models directly within your sGTM setup. Let's take a glance at how this works:
 
 1. It starts with your standard GTM web container setup, configured to capture purchase events.
 2. When a purchase occurs on your site, the e-commerce event data (including revenue and item data) gets dispatched to your sGTM container.
@@ -143,7 +143,7 @@ _Dioscuri Tag Configuration_
 
 The tag itself (as well as the original variable-based solution) requires you to provide information about the GCP project and region, the model (1), a prompt of your choice (2), and further "system instructions" (3) to tune the LLM's behavior.
 
-In its original version the Dioscuri variable supports the 1.0 Pro as well as the 1.5 Pro version, but adding another model can quickly be done by adding another field to the dropdown menu in the template editor (s. [here](https://ai.google.dev/gemini-api/docs/models/gemini) for all available Gemini versions). If you want to use LLMs from other providers, you can adjust the template code to incorporate these.
+In its original version the Dioscuri variable supports the 1.0 Pro as well as the 1.5 Pro version, but adding another model can quickly be done by adding another field to the dropdown menu in the template editor (s. the [available Gemini model versions](https://ai.google.dev/gemini-api/docs/models/gemini)). If you want to use LLMs from other providers, you can adjust the template code to incorporate these.
 
 In the example above, the prompts reference lookup variables from a Firestore database containing metadata about the user (e.g., first name, returning user `boolean`, address, product references, etc.). These data points allow the model to personalize the message to the user completely.
 
