@@ -1,0 +1,152 @@
+<!-- WebSite Schema (all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title }}",
+  "url": "{{ site.url }}",
+  "description": "{{ site.description | strip_newlines | strip }}",
+  "author": {
+    "@type": "Person",
+    "name": "Gunnar Griese"
+  }
+}
+</script>
+
+{% if page.layout == 'home' %}
+<!-- Person Schema (homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gunnar Griese",
+  "url": "{{ site.url }}",
+  "image": "{{ '/assets/images/profile.jpg' | absolute_url }}",
+  "jobTitle": "Digital Analytics Consultant",
+  "description": "{{ site.description | strip_newlines | strip }}",
+  "email": "{{ site.email }}",
+  "sameAs": [
+    "https://linkedin.com/in/{{ site.linkedin_username }}",
+    "https://github.com/{{ site.github_username }}"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "8-bit-sheep"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "IHM Business School"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Google Cloud Certified Professional Data Engineer"
+  },
+  "knowsAbout": [
+    "Google Analytics",
+    "Google Tag Manager",
+    "Google Cloud Platform",
+    "BigQuery",
+    "Amplitude",
+    "Mixpanel",
+    "Piwik Pro",
+    "Digital Analytics",
+    "Analytics Engineering",
+    "Data Engineering"
+  ]
+}
+</script>
+{% endif %}
+
+{% if page.layout == 'post' %}
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title | escape }}",
+  "description": "{% if page.description %}{{ page.description | escape }}{% else %}{{ page.excerpt | strip_html | truncate: 160 | escape }}{% endif %}",
+  "url": "{{ page.url | absolute_url }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+  {% if page.image %}"image": "{{ page.image | absolute_url }}",{% endif %}
+  "wordCount": "{{ page.content | number_of_words }}",
+  "author": {
+    "@type": "Person",
+    "name": "Gunnar Griese",
+    "url": "{{ site.url }}",
+    "jobTitle": "Digital Analytics Consultant"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Gunnar Griese",
+    "url": "{{ site.url }}",
+    "image": "{{ '/assets/images/profile.jpg' | absolute_url }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  }{% if page.tags %},
+  "keywords": "{{ page.tags | join: ', ' }}"{% endif %}
+}
+</script>
+{% endif %}
+
+{% if page.url == '/contact/' %}
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of businesses do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I work with businesses of all sizes, from ambitious startups to Fortune 500 companies. My expertise spans e-commerce, SaaS, media, finance, and more. What matters most is your commitment to becoming truly data-driven."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's your typical engagement model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I offer flexible engagement options: project-based work (2-12 weeks), ongoing retainer arrangements through 8-bit-sheep, and training workshops. We'll find the model that best fits your needs and budget."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with international clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! Based in Copenhagen, I work with clients globally. I'm experienced with remote collaboration and can adjust to different time zones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes your approach different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I combine deep technical expertise (Google Cloud Certified) with strategic business understanding from years of enterprise consulting. You get both the architect who designs the solution and the engineer who builds it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can we get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After our initial consultation, I can typically begin new projects within 1-2 months (depending on the project scope). For urgent needs, I may have availability sooner. Training workshops can be scheduled based on mutual availability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide ongoing support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Many clients start with a project and transition to ongoing support. I offer retainer arrangements for continuous optimization, monthly reviews, and on-demand expertise when you need it most."
+      }
+    }
+  ]
+}
+</script>
+{% endif %}

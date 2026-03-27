@@ -1,0 +1,45 @@
+# Gunnar Griese – Digital Analytics Consultant
+
+> Independent consultant specializing in digital analytics and analytics engineering. Based in Copenhagen, working with 8-bit-sheep. Google Cloud Certified Professional Data Engineer.
+
+## About
+
+Gunnar Griese consults large enterprises and startups on digital analytics strategy and implementation. He brings deep expertise in Google Analytics, Amplitude, Mixpanel, Piwik Pro, Google Tag Manager, and Google Cloud Platform. He also teaches Technical Digital Analytics at IHM Business School.
+
+## Key Pages
+
+- [Home](https://gunnargriese.com/): Overview of consulting services and expertise
+- [Services](https://gunnargriese.com/services/): Analytics implementation, data engineering, and training offerings
+- [About](https://gunnargriese.com/about/): Background, expertise, and credentials
+- [Blog](https://gunnargriese.com/blog/): Technical articles on digital analytics and data engineering
+- [Contact](https://gunnargriese.com/contact/): Engagement options and FAQ
+
+## Blog Posts
+
+- [Conversational Analytics for Google Analytics Data with BigQuery Agents](https://gunnargriese.com/posts/conversational-analytics/): Using BigQuery Data Agents and the Conversational Analytics API to build AI-powered chat interfaces for GA data
+- [Open-Source Server-Side Tag Management and Data Pipelines](https://gunnargriese.com/posts/open-source-tag-management/): Exploring open-source alternatives to GTM server-side
+- [GTM Server-Side Data Residency](https://gunnargriese.com/posts/regional-gtm-server-side-infrastructure/): Regional load balancers and Cloud DNS geo-routing for data residency compliance
+- [Moving Beyond Basic Conversion Tracking](https://gunnargriese.com/posts/moving-beyond-basic-conversion-tracking/): Engineering signals for sustainable marketing advantage
+- [MCP Servers in Digital Analytics](https://gunnargriese.com/posts/mcp-servers-in-digital-analytics/): Levelling up your LLM game with Model Context Protocol
+- [Server-Side Data Enrichment for GA4](https://gunnargriese.com/posts/server-side-data-collection-ga4/): Server-side data collection and enrichment patterns
+- [GTM Server-Side Pantheon Part 4 – Bringing AI to sGTM](https://gunnargriese.com/posts/gtm-server-side-vertex-ai/): Integrating Vertex AI with server-side GTM
+- [GTM Server-Side Use Cases](https://gunnargriese.com/posts/gtm-server-side-use-cases/): Building a digital command center with server-side tagging
+- [GTM Server-Side Pantheon Part 3 – Google Sheets & BigQuery](https://gunnargriese.com/posts/gtm-server-side-bigquery-google-sheets/): Integrating marketer-friendly tools with sGTM
+- [GTM Server-Side Pantheon Part 2 – Pub/Sub](https://gunnargriese.com/posts/gtm-server-side-pubsub-integration/): Supercharging GTM server-side with Pub/Sub messaging
+- [Confidential Matching](https://gunnargriese.com/posts/confidential-matching/): Privacy-conscious advertising with Google's Confidential Matching
+- [GTM Server-Side Pantheon Part 1 – Firestore](https://gunnargriese.com/posts/gtm-server-side-firestore-integrations/): Tapping into the power of Firestore for server-side tagging
+- [User IDs in GA4](https://gunnargriese.com/posts/ga4-reporting-identity/): Understanding reporting identity and user identification
+- [Ensuring Data Quality for GA4 at Scale](https://gunnargriese.com/posts/ga4-data-quality-at-scale/): Data quality monitoring with Google Cloud Platform
+- [Mapping GA4 Conversions in BigQuery](https://gunnargriese.com/posts/ga4-conversions-to-bigquery/): Comprehensive dashboarding with BigQuery
+- [Consent Mode v2](https://gunnargriese.com/posts/consent-mode-v2/): A comprehensive technical guide to Google's Consent Mode
+- [GA4 Client-Side Data Redaction](https://gunnargriese.com/posts/ga4-data-redaction/): Removing PII from data before collection
+- [GA4 – The CDP You Didn't Know You Had](https://gunnargriese.com/posts/ga4-the-cdp-you-didnt-know-you-had/): Using GA4 as a customer data platform
+- [GA4 Time Travel](https://gunnargriese.com/posts/ga4-time-travel-bridging-utc-and-local-timezones/): Bridging UTC and local timezones in GA4
+- [Debugging Firebase Analytics](https://gunnargriese.com/posts/firebase-analytics-debugging/): A guide for beginners on mobile app analytics debugging
+- [PostHog with Google Tag Manager](https://gunnargriese.com/posts/posthog-gtm-template/): Unleashing PostHog analytics through GTM
+- [BigQuery Path Exploration](https://gunnargriese.com/posts/bigquery-path-exploration/): Replicating GA4 path exploration reports with SQL
+- [GTM Server-Side Tagging](https://gunnargriese.com/posts/gtm-server-side/): Better data and more control with server-side tagging
+
+## Topics
+
+Digital analytics, Google Analytics 4, Google Tag Manager, server-side tagging, BigQuery, Google Cloud Platform, data engineering, analytics engineering, privacy, consent management, data quality, marketing analytics, conversational AI
