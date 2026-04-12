@@ -30,6 +30,7 @@ services:
       - Speaking engagements & workshops
 
 about_title: Driving Results Through Experience
+about_image: /assets/images/spwk-talk-web.jpg
 cta_title: Let's Build Something Great Together
 cta_subtitle: Whether you need strategic guidance, operational improvements, or technical expertise, I'm here to help.
 ---
