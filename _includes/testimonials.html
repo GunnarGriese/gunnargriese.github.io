@@ -1,7 +1,7 @@
 <section class="testimonials">
     <h2 class="section-title">What Clients Say</h2>
     <div class="testimonials-slider">
-        {% if site.data.testimonials.size > 2 %}
+        {% if site.data.testimonials.size > 1 %}
         <button class="testimonials-arrow testimonials-prev" aria-label="Previous testimonial">&#8592;</button>
         {% endif %}
         <div class="testimonials-viewport">
@@ -22,7 +22,7 @@
                 {% endfor %}
             </div>
         </div>
-        {% if site.data.testimonials.size > 2 %}
+        {% if site.data.testimonials.size > 1 %}
         <button class="testimonials-arrow testimonials-next" aria-label="Next testimonial">&#8594;</button>
         {% endif %}
     </div>

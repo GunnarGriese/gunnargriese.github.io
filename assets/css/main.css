@@ -1442,6 +1442,7 @@ body {
     display: flex;
     gap: 2rem;
     transition: transform 0.5s ease;
+    position: relative;
 }
 
 .testimonial-card {
@@ -1538,8 +1539,8 @@ body {
         gap: 3rem;
     }
 
-    .testimonials-page {
-        grid-template-columns: 1fr;
+    .testimonial-card {
+        flex: 0 0 100%;
     }
 
     .testimonials-arrow {
