@@ -1,0 +1,23 @@
+<section class="logo-bar">
+    <div class="container">
+        <h2 class="logo-bar-title">Companies I've Worked With</h2>
+    </div>
+    <div class="logo-bar-track">
+        <div class="logo-bar-slider">
+            <div class="logo-bar-set">
+                {% for testimonial in site.data.testimonials %}
+                <div class="logo-bar-item">
+                    <img src="{{ testimonial.logo | relative_url }}" alt="{{ testimonial.company }}" loading="lazy">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="logo-bar-set" aria-hidden="true">
+                {% for testimonial in site.data.testimonials %}
+                <div class="logo-bar-item">
+                    <img src="{{ testimonial.logo | relative_url }}" alt="{{ testimonial.company }}" loading="lazy">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

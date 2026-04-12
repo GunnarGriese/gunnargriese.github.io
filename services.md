@@ -78,6 +78,8 @@ permalink: /services/
 
 </div>
 
+{% include testimonials.html %}
+
 <!-- Full-width background section for better visual separation -->
 <div style="background-color: #f8f9fa; margin: 4rem -2rem 0; padding: 3rem 2rem;">
   <section class="engagement-section">

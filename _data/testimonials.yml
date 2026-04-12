@@ -1,0 +1,11 @@
+- name: "Thiago Pojda"
+  title: "Data Ops Director"
+  company: "SIXT"
+  logo: "/assets/images/social-proof/sixt.png"
+  quote: "We needed someone to tell us the truth about our web analytics, and Gunnar delivered it with style. His audit confirmed we'd built something solid with Exactag and Google Analytics, and the detail of his analysis made the technical complexity click. His in-depth reports gave us permission to be confident about what our data was telling us."
+
+- name: "Dennis Vesti Brorsen"
+  title: "Data & Intelligence Director"
+  company: "JFM"
+  logo: "/assets/images/social-proof/jfm.jpg"
+  quote: "As part of our transition from Universal Analytics to GA4, we worked with Gunnar Griese to run internal workshops and training sessions for both specialists and business users. Gunnar has an impressive depth of knowledge in Google Analytics and combines strong technical skills with the ability to communicate complex topics in a clear and accessible way. His contribution made a real difference to our organisation's understanding and use of GA4. I can wholeheartedly recommend Gunnar to other companies facing similar challenges."

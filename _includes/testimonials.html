@@ -1,0 +1,29 @@
+<section class="testimonials">
+    <h2 class="section-title">What Clients Say</h2>
+    <div class="testimonials-slider">
+        {% if site.data.testimonials.size > 2 %}
+        <button class="testimonials-arrow testimonials-prev" aria-label="Previous testimonial">&#8592;</button>
+        {% endif %}
+        <div class="testimonials-viewport">
+            <div class="testimonials-track">
+                {% for testimonial in site.data.testimonials %}
+                <div class="testimonial-card">
+                    <div class="testimonial-logo">
+                        <img src="{{ testimonial.logo | relative_url }}" alt="{{ testimonial.company }}" loading="lazy">
+                    </div>
+                    <blockquote class="testimonial-quote">
+                        <p>"{{ testimonial.quote }}"</p>
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">{{ testimonial.name }}</span>
+                        <span class="testimonial-role">{{ testimonial.title }} @ {{ testimonial.company }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if site.data.testimonials.size > 2 %}
+        <button class="testimonials-arrow testimonials-next" aria-label="Next testimonial">&#8594;</button>
+        {% endif %}
+    </div>
+</section>
