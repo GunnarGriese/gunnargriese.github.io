@@ -15,3 +15,9 @@
   company: "Comwell Hotels"
   logo: "/assets/images/social-proof/comwell.jpg"
   quote: "Gunnar is a 'thesis of excellence' in relation to all things Google Analytics, GTM and almost all surrounded tech. I have the utmost trust in his work as well as the structure of the same."
+
+- name: "Karri Durchmann"
+  title: "Head of Digital"
+  company: "Beely"
+  logo: "/assets/images/social-proof/beely.png"
+  quote: "Working with Gunnar has been instrumental in levelling up our data capabilities across the board. He led the implementation of our GA4 setup, trained our team to maximize its potential, and then helped us build a Marketing Data Warehouse in BigQuery using Dataform as a solid, scalable foundation for our data. The Looker Studio reporting he set up on top of that has made our data genuinely actionable for the wider team. Beyond the technical delivery, Gunnar has been a trusted sparring partner on how we think about and use data strategically. Highly recommended."
