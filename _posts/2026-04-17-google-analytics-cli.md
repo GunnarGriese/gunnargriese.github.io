@@ -1,11 +1,11 @@
 ---
 layout: post
-title: GA CLI — A Command-Line Interface for Google Analytics
+title: GA CLI - A Command-Line Interface for Google Analytics
 author: gunnar
 date: 2026-04-17 00:00:01 +0200
 categories: [GA]
 tags: [ga4]
-image: /assets/images/blog/bq-data-agents.png
+image: /assets/images/blog/ga-cli.png
 comments: true
 toc: true
 lang: en
@@ -41,13 +41,13 @@ What he means is that when a human uses a CLI, they benefit from colorful output
 
 Here's how this translates into concrete features:
 
-- **Structured output**: Every command supports `--output json`. Agents parse JSON, not pretty-printed tables. When GA CLI detects it's being piped (= non-TTY environment), it automatically switches to JSON output — no flag needed.
+- **Structured output**: Every command supports `--output json`. Agents parse JSON, not pretty-printed tables. When GA CLI detects it's being piped (= non-TTY environment), it automatically switches to JSON output which means that no flag is needed.
 - **Structured errors**: Errors are returned as JSON on stderr with classified exit codes: `0` for success, `2` for auth errors, `3` for API errors, `4` for network errors. An agent can branch on failure type programmatically instead of trying to parse a human-readable error message.
 - **Context window discipline**: Agents work with limited context windows, so responses need to be concise and predictable. The `--output compact` flag returns minimal ID+name output, keeping the token footprint small.
 - **Agent-specific documentation**: The `ga agent guide` command ships a built-in reference specifically for AI agents. Think of it as a condensed manual that encodes the invariants and conventions an agent can't intuit on its own (inspired by Poehnelt's "SKILL.md" concept).
-- **Schema introspection**: `ga --describe` outputs a JSON Schema for all 136 commands in a single call — parameter names, types, flags, aliases, defaults, required fields, plus metadata like whether a command is `mutative` or `supports_dry_run`. An agent calls this once, caches the result, and knows exactly how to construct any command. This is also the bridge to auto-generating MCP tool definitions from the CLI (more on that later).
+- **Schema introspection**: `ga --describe` outputs a JSON Schema for all 136 commands in a single call, like parameter names, types, flags, aliases, defaults, required fields, plus metadata like whether a command is `mutative` or `supports_dry_run`. An agent calls this once, caches the result, and knows exactly how to construct any command. This is also the bridge to auto-generating MCP tool definitions from the CLI (more on that later).
 - **Safe mutations / dry-run**: Every create, update, and delete command supports `--dry-run`, which previews the exact API request as JSON without executing it. Agents can verify parameters and catch mistakes before they become live changes. For example: `ga properties create --name "EU Site" --timezone Europe/Berlin --dry-run` outputs the request body and exits.
-- **Safety rails**: Destructive operations prompt for confirmation by default. In automation contexts, `--yes` skips the prompt — but the deliberate opt-in ensures that an agent (or a mistyped script) doesn't accidentally delete a property without explicit intent.
+- **Safety rails**: Destructive operations prompt for confirmation by default. In automation contexts, `--yes` skips the prompt, but the deliberate opt-in ensures that an agent (or a mistyped script) doesn't accidentally delete a property without explicit intent.
 
 The combination of `--describe` + `--dry-run` + structured errors forms what I'd call a complete **agent feedback loop**: discover: preview: execute: handle errors. An agent can go from zero knowledge of the CLI to confidently executing multi-step workflows without any external documentation or human intervention. That's the level of self-sufficiency I was aiming for.
 
@@ -60,9 +60,9 @@ To see this in action, here's a walkthrough of GA CLI working together with Clau
           allowfullscreen></iframe>
 </div>
 
-## CLI vs MCP Servers — Where Does Each Fit?
+## CLI vs MCP Servers: Where Does Each Fit?
 
-If you've been following the AI tooling space, you've likely come across the **Model Context Protocol (MCP)**, which is an open standard introduced by Anthropic that defines how AI models connect to external tools and data sources. MCP servers have gained a lot of traction, with a growing ecosystem of integrations for everything from databases to cloud services (I explored what this means for our line of work in [MCP Servers in Digital Analytics — Levelling Up Your LLM Game](https://gunnargriese.com/posts/mcp-servers-in-digital-analytics/)). So, a fair question is: why build a CLI when you could build an MCP server instead?
+If you've been following the AI tooling space, you've likely come across the **Model Context Protocol (MCP)**, which is an open standard introduced by Anthropic that defines how AI models connect to external tools and data sources. MCP servers have gained a lot of traction, with a growing ecosystem of integrations for everything from databases to cloud services (I explored what this means for our line of work in [MCP Servers in Digital Analytics - Levelling Up Your LLM Game](https://gunnargriese.com/posts/mcp-servers-in-digital-analytics/)). So, a fair question is: why build a CLI when you could build an MCP server instead?
 
 The short answer is that they serve different purposes and complement each other well. Here's how I think about the trade-offs:
 
@@ -85,7 +85,7 @@ The following table summarizes these differences:
 
 The way I see it, a CLI sits in a sweet spot: it's more opinionated than a raw API (= less boilerplate, sensible defaults, built-in auth) but more portable than an MCP server (= works everywhere, no infrastructure). And importantly, they're not mutually exclusive. A CLI can serve as the foundation that powers an MCP server under the hood. For example, the `--describe` output from GA CLI, contains everything you'd need to auto-generate MCP tool definitions. That means you get the portability of a CLI and the native agent integration of MCP without building both from scratch.
 
-## From CLI to Custom Skills — Making Agent Workflows Reliable
+## From CLI to Custom Skills: Making Agent Workflows Reliable
 
 Having a CLI or an MCP server gives your agent the ability to do things. But ability alone doesn't guarantee reliability. If you've ever watched an AI agent interact with a new tool, you know that it can be surprisingly creative in finding ways to use it incorrectly, like calling commands in the wrong order, passing parameters that are technically valid but semantically wrong, or simply taking a longer path than necessary because it doesn't understand the conventions of your specific setup.
 
@@ -97,7 +97,7 @@ From my experience building skills for analytics workflows, there are four thing
 
 1. **Structure & conventions**: Follow a consistent format. Skills in Claude Code use a `SKILL.md` file with YAML frontmatter that declares metadata like the skill name, description, and trigger conditions. This standardized structure makes skills discoverable and composable.
 
-2. **Tools**: Equip the skill with the right tool access. This is where your CLI commands, MCP servers, and APIs come in. A skill's frontmatter declares which tools it's allowed to use via `allowed-tools`, meaning you can scope an agent's capabilities precisely — give it access to GA CLI for configuration tasks but not to your production database, for instance.
+2. **Tools**: Equip the skill with the right tool access. This is where your CLI commands, MCP servers, and APIs come in. A skill's frontmatter declares which tools it's allowed to use via `allowed-tools`, meaning you can scope an agent's capabilities precisely. For instance, give it access to GA CLI for configuration tasks but not to your production database.
 
 3. **Data & context**: This is the part most people underestimate. The `SKILL.md` file itself should contain detailed instructions, reference information, and executable code snippets that teach the agent about the custom intricacies of *your* setup. What naming conventions do you use for custom dimensions? What's the standard event taxonomy across your properties? Which property is the "golden" reference? This domain knowledge is what turns a generic agent into one that actually works for your team.
 
@@ -160,7 +160,7 @@ GA CLI wraps the GA Data API with a set of report commands that cover the most c
 
 ### Access Reports
 
-For compliance and auditing needs, GA CLI can generate data access audit reports at both the account and property level via `ga access-reports run-account` and `ga access-reports run-property`. These reports tell you who accessed what data and when — useful for GDPR reviews, internal audits, or detecting unusual access patterns.
+For compliance and auditing needs, GA CLI can generate data access audit reports at both the account and property level via `ga access-reports run-account` and `ga access-reports run-property`. These reports tell you who accessed what data and when - useful for GDPR reviews, internal audits, or detecting unusual access patterns.
 
 ### Developer Experience
 
