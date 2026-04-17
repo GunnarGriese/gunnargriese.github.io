@@ -3,7 +3,7 @@ layout: post
 title: Conversational Analytics for Google Analytics Data with BigQuery Agents
 author: gunnar
 date: 2026-02-08 00:00:01 +0200
-categories: [GAA]
+categories: [GA]
 tags: [ga4]
 image: /assets/images/blog/bq-data-agents.png
 comments: true
