@@ -21,6 +21,8 @@ The inspiration for this project came from the **[GTM CLI](https://github.com/ow
 
 In this post, I'll walk you through what GA CLI can do, why CLIs are having a moment in the age of AI agents, and how you can use it to streamline everything from property audits to automated reporting pipelines. Let's get started!
 
+{% include newsletter-cta.html %}
+
 ## What Is a CLI (and Why Should You Care)?
 
 Should you be coming from a pure analytics or marketing background, the term "CLI" might not be part of your daily vocabulary. Therefore, let me briefly set the stage. A **Command-Line Interface (CLI)** is a text-based way to interact with a system. Instead of clicking buttons in a graphical interface, you type commands into a terminal. That's it. No magic, no rocket science.

@@ -709,6 +709,7 @@ body {
 
 .post-content {
     max-width: 45rem;
+    min-width: 0;
     margin: 0 auto;
     font-size: 1.125rem;
     line-height: 1.8;
@@ -894,7 +895,9 @@ body {
     margin: 2rem 0;
     font-size: 0.95rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 0.5rem;
     border: 1px solid var(--color-border);
 }
@@ -1078,6 +1081,10 @@ body {
 @media (max-width: 1280px) {
     .post-layout {
         grid-template-columns: 1fr;
+    }
+
+    .post-content {
+        width: 100%;
     }
 
     .toc-sidebar {
