@@ -51,7 +51,7 @@ Here's how this translates into concrete features:
 - **Safe mutations / dry-run**: Every create, update, and delete command supports `--dry-run`, which previews the exact API request as JSON without executing it. Agents can verify parameters and catch mistakes before they become live changes. For example: `ga properties create --name "EU Site" --timezone Europe/Berlin --dry-run` outputs the request body and exits.
 - **Safety rails**: Destructive operations prompt for confirmation by default. In automation contexts, `--yes` skips the prompt, but the deliberate opt-in ensures that an agent (or a mistyped script) doesn't accidentally delete a property without explicit intent.
 
-The combination of `--describe` + `--dry-run` + structured errors forms what I'd call a complete **agent feedback loop**: discover: preview: execute: handle errors. An agent can go from zero knowledge of the CLI to confidently executing multi-step workflows without any external documentation or human intervention. That's the level of self-sufficiency I was aiming for.
+The combination of `--describe` + `--dry-run` + structured errors forms what I'd call a complete **agent feedback loop**: discover --> preview --> execute --> handle errors. An agent can go from zero knowledge of the CLI to confidently executing multi-step workflows without any external documentation or human intervention. That's the level of self-sufficiency I was aiming for.
 
 To see this in action, here's a walkthrough of GA CLI working together with Claude as an AI agent:
 
