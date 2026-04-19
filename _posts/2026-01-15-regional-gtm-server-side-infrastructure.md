@@ -1,6 +1,7 @@
 ---
 layout: post
 title: GTM Server-Side Data Residency - Regional Load Balancers and Cloud DNS Geo-Routing
+description: Complete architecture and gcloud deployment commands for ensuring European users' GTM Server-Side data never leaves EU infrastructure, using regional load balancers and Cloud DNS geo-routing.
 author: gunnar
 date: 2026-01-15 00:00:01 +0200
 categories: [GTM]

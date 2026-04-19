@@ -1,6 +1,7 @@
 ---
 layout: post
 title: GTM Server-Side Use Cases - Building your Digital Command Center
+description: Practical GTM Server-Side use cases beyond ad blocker bypass, including data enrichment, compliance improvements, and building a centralized digital command center for marketing data.
 author: gunnar
 date: 2024-11-13 00:00:01 +0200
 categories: [GTM]

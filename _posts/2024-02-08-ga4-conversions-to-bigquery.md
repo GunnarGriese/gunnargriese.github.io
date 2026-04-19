@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mapping GA4 Conversions in BigQuery for Comprehensive Dashboarding
+description: Methods to get GA4 conversion event definitions into BigQuery for multi-property dashboards, since the raw GA4 export does not include conversion configuration data.
 author: gunnar
 date: 2024-02-08 00:00:01 +0200
 categories: [GA4, BigQuery]

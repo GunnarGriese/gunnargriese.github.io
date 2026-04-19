@@ -1,6 +1,7 @@
 ---
 layout: post
 title: GTM Server-Side Pantheon - Part 2 - Supercharge Your Setup with Pub/Sub
+description: How to integrate Google Cloud Pub/Sub with GTM Server-Side to enable event-driven architectures and power real-time dashboards from your GA4 data stream.
 author: gunnar
 date: 2024-10-04 00:00:01 +0200
 categories: [GTM]

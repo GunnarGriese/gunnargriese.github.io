@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Server-Side Data Enrichment for GA4
+description: How to enrich GA4 event data with first-party context from CRM, backend, and other business systems server-side to transform isolated data points into actionable insights.
 author: gunnar
 date: 2025-05-04 00:00:01 +0200
 categories: [GA4]

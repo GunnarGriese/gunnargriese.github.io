@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Consent Mode v2 - A Comprehensive Technical Guide
+description: A technical deep-dive into Google Consent Mode v2, covering how consent signals work under the hood, the new consent types, and what the DMA mandate means for EEA advertisers.
 author: gunnar
 date: 2024-01-31 00:00:01 +0200
 categories: [GA4]

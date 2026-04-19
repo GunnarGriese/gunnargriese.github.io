@@ -1,6 +1,7 @@
 ---
 layout: post
 title: GA CLI - A Command-Line Interface for Google Analytics
+description: GA CLI wraps the GA Admin API and Data API into a scriptable command-line tool designed for both humans and AI agents, enabling automatable, version-controllable Google Analytics management.
 author: gunnar
 date: 2026-04-17 00:00:01 +0200
 categories: [GA]

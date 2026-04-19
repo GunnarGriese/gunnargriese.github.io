@@ -1,6 +1,7 @@
 ---
 layout: post
 title: GA4 - The CDP You Didn't Know You Had
+description: GA4 can function as a lightweight Customer Data Platform by combining its Audience Export API, BigQuery user data exports, and GTM Server-Side into a use-case-specific data activation stack.
 author: gunnar
 date: 2023-08-12 12:14:15 +0200
 categories: [GA4]

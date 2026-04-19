@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Unleash the Potential of PostHog Analytics Platform with Google Tag Manager
+description: How to integrate the PostHog product analytics platform with Google Tag Manager using a custom tag template, enabling event tracking and user identification without modifying site code.
 author: gunnar
 date: 2023-04-10 08:24:15 +0200
 categories: [GTM]

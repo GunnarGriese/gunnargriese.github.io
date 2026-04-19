@@ -1,6 +1,7 @@
 ---
 layout: post
 title: MCP Servers in Digital Analytics - Levelling Up Your LLM Game
+description: Model Context Protocol (MCP) servers provide a standardized way for AI agents to interact with digital analytics tools like GA4, GTM, and BigQuery, moving from conversations to automated actions.
 author: gunnar
 date: 2025-06-27 00:00:01 +0200
 categories: [GTM, GA4]

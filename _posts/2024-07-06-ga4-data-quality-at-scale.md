@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ensuring Data Quality for GA4 at Scale with Google Cloud Platform
+description: How to use Google Cloud Platform services to monitor and ensure GA4 data quality at scale when GA4 feeds marketing platforms with conversions and audiences via GTM Server-Side.
 author: gunnar
 date: 2024-07-06 00:00:01 +0200
 categories: [GA4, BigQuery, GCP]

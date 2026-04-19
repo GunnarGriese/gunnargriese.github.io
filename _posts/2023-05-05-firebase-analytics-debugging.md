@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Debugging Google Analytics Tracking for Mobile Apps - A Guide for Beginners
+description: A practical guide to implementing and debugging GA4 tracking for iOS apps using Firebase SDK and GTM, covering tools like Charles Proxy and the iOS/Android Debugger.
 author: gunnar
 date: 2023-05-05 11:24:15 +0200
 categories: [Firebase Analytics]

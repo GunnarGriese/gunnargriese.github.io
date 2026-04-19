@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Confidential Matching – A Breakthrough for Privacy-Conscious Advertising or a Temporary Fix?
+description: A critical assessment of Google's Confidential Matching feature for Customer Match and Enhanced Conversions, examining whether it delivers real privacy benefits or maintains data control under privacy messaging.
 author: gunnar
 date: 2024-09-17 00:00:01 +0200
 categories: [Privacy]

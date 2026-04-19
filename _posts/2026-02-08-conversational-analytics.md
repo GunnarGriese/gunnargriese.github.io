@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Conversational Analytics for Google Analytics Data with BigQuery Agents
+description: How to use BigQuery Data Agents to build a conversational AI interface for querying GA4 data in natural language, bypassing the limitations of GA4's built-in Analytics Advisor.
 author: gunnar
 date: 2026-02-08 00:00:01 +0200
 categories: [GA]
