@@ -8,3 +8,4 @@ CLAUDE.md
 .tmp/
 node_modules/
 .playwright-cli/
+walkeros/
