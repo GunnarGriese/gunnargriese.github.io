@@ -4,6 +4,7 @@ title: Who are my website users? And if so how many? - User IDs in GA4
 description: How GA4's Reporting Identity unifies user journeys across devices using User ID, Device ID, and modeling, and how the chosen identity setting affects your user and session counts.
 author: gunnar
 date: 2024-09-01 00:00:01 +0200
+last_modified_at: 2026-04-19
 categories: [GA4]
 tags: [ga4]
 image: /assets/images/blog/ga-reporting-identity.png

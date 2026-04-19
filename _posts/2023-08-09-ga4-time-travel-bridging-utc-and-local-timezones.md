@@ -4,6 +4,7 @@ title: GA4 Time Travel - Bridging UTC and Local Timezones
 description: How to convert GA4's UTC-based event_timestamp in BigQuery to your property's local timezone so that your SQL query results match the GA4 UI reports.
 author: gunnar
 date: 2023-08-09 09:14:15 +0200
+last_modified_at: 2026-04-19
 categories: [GA4]
 tags: [ga4, bigquery]
 image: /assets/images/blog/bq-timezones.png

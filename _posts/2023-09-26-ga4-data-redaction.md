@@ -4,6 +4,7 @@ title: GA4 Client-Side Data Redaction - How to remove PII from your data before 
 description: GA4's client-side data redaction feature automatically strips personally identifiable information like emails and credit card numbers from collected data before it reaches Google's servers.
 author: gunnar
 date: 2023-09-26 06:21:15 +0200
+last_modified_at: 2026-04-19
 categories: [GA4]
 tags: [ga4]
 image: /assets/images/blog/ga-data-redaction.png

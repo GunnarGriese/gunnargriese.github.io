@@ -4,6 +4,7 @@ title: GTM Server-Side Pantheon - Part 1 - Tapping into the Power of Firestore
 description: How to integrate Firestore with GTM Server-Side using Google's Pantheon templates to enrich clickstream data with first-party data in real time.
 author: gunnar
 date: 2024-09-10 00:00:01 +0200
+last_modified_at: 2026-04-19
 categories: [GTM]
 tags: [gtm-server-side]
 image: /assets/images/blog/sgtm-firestore.png

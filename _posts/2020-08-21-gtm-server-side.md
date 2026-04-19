@@ -4,6 +4,7 @@ title: GTM Server-Side Tagging – Better Data & More Control
 description: GTM server-side tagging increases flexibility and control over your data, enabling first-party tracking setups that are more durable and future-proof than traditional client-side implementations.
 author: gunnar
 date: 2020-08-21 15:24:15 +0200
+last_modified_at: 2026-04-19
 categories: [GTM]
 tags: [ga4, gtm-server-side]
 image: /assets/images/blog/gtm-server-side.png

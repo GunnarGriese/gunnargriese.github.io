@@ -4,6 +4,7 @@ title: Moving Beyond Basic Conversion Tracking - Engineering Signals for Sustain
 description: Why sending basic conversion events to ad platforms is leaving money on the table, and how to engineer more efficient marketing optimization signals using GTM Server-Side and first-party data.
 author: gunnar
 date: 2025-09-17 00:00:01 +0200
+last_modified_at: 2026-04-19
 categories: [GTM, GA4]
 tags: [ga4]
 image: /assets/images/blog/signal-engineering.png

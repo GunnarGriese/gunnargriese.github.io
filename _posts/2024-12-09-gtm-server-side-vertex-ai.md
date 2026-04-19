@@ -4,6 +4,7 @@ title: GTM Server-Side Pantheon - Part 4 - Bringing AI to sGTM
 description: How to integrate Vertex AI and Gemini into GTM Server-Side using Google's Pantheon templates, bringing machine learning predictions and generative AI capabilities to your sGTM environment.
 author: gunnar
 date: 2024-12-09 00:00:01 +0200
+last_modified_at: 2026-04-19
 categories: [GTM]
 tags: [gtm-server-side]
 image: /assets/images/blog/sgtm-vertex-ai.png

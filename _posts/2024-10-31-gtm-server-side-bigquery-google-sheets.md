@@ -4,6 +4,7 @@ title: GTM Server-Side Pantheon - Part 3 - Integrate A Marketer's Go-To Tools - 
 description: How to read from and write to Google Sheets and BigQuery directly from GTM Server-Side using the Pantheon's Apollo and Chaos templates for data-driven marketing workflows.
 author: gunnar
 date: 2024-10-31 00:00:01 +0200
+last_modified_at: 2026-04-19
 categories: [GTM]
 image: /assets/images/blog/sgtm-sheets.png
 tags: [gtm-server-side]

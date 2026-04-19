@@ -4,6 +4,7 @@ title: How to replicate the GA4 Path Exploration report with BigQuery SQL?
 description: Step-by-step SQL queries to recreate GA4's Path Exploration report in BigQuery, overcoming the UI's sampling and cardinality limitations for large-scale path analysis.
 author: gunnar
 date: 2022-10-23 11:24:15 +0200
+last_modified_at: 2026-04-19
 categories: [BigQuery]
 tags: [ga4, bigquery, sql]
 image: /assets/images/blog/bq-path-exploration.jpg
