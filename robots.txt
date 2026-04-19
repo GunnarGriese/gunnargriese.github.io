@@ -6,6 +6,7 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 Disallow: /tags/
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # AI Crawlers - allow access to content
 User-agent: GPTBot
