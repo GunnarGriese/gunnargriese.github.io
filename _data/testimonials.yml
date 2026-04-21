@@ -25,7 +25,7 @@
 - name: "Brian Brost"
   title: "Co-founder & CPTO"
   company: "Churney"
-  logo: "/assets/images/social-proof/churney.jpg"
+  logo: "/assets/images/social-proof/churney.png"
   quote: "We brought Gunnar in to help us investigate a complex signal discrepancy in our LTV prediction system for one of our clients. He conducted a thorough, structured analysis of our data pipelines and API integrations, quickly getting to the bottom of what was happening. He confirmed our implementation was sound and clearly identified the root causes. His work gave us and our client the confidence we needed. Exactly the kind of specialist you want on a technically nuanced problem."
 
 - name: "Karri Durchmann"
