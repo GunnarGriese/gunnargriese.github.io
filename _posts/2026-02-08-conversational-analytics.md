@@ -4,7 +4,7 @@ title: Conversational Analytics for Google Analytics Data with BigQuery Agents
 description: How to use BigQuery Data Agents to build a conversational AI interface for querying GA4 data in natural language, bypassing the limitations of GA4's built-in Analytics Advisor.
 author: gunnar
 date: 2026-02-08 00:00:01 +0200
-last_modified_at: 2026-04-19
+last_modified_at: 2026-04-23
 categories: [GA]
 tags: [ga4]
 image: /assets/images/blog/bq-data-agents.png
@@ -126,6 +126,46 @@ I mean, we don't want any random person on the internet asking questions about o
 This setup means marketing teams get a familiar chat-style interface accessible via a simple URL. At the same time, IT maintains control over who can access it and what data they can query. No local installations, no API keys floating around in spreadsheets. All it takes is a browser and the right Google account. 
 
 Still, in the videos, you can see that I'm actively checking in on the agent's reasoning process and the generated SQL queries. And I can only recommend doing that as the end user, because eventually it will be you that will take the output and share it with your stakeholders. You're still responsible for the final recommendation!
+
+## Update: Conversational Analytics Comes to Data Studio
+
+Since I originally wrote this post, Google has shipped something that makes the custom Streamlit approach above feel a bit like building your own calculator app right before the iPhone launched: [Conversational Analytics in Data Studio](https://docs.cloud.google.com/data-studio/conversational-analytics-overview).
+
+In short, the same Data Agents you create in BigQuery can now be published directly to Data Studio. Users open the "Chat with your data" interface, pick an agent, and start asking questions — no custom app, no Cloud Run deployment, no IAP configuration. Just a browser and a Google account. Sound familiar? That's because it's essentially what we built in the previous section, but now it's a native, first-party experience.
+
+Here's a quick demo of what the interface looks like in action:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe src="https://drive.google.com/file/d/1DTceqzTV7AVcWBl54XdzerUgek4QZ5u3/preview"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          frameborder="0"
+          allowfullscreen></iframe>
+</div>
+
+### What Does It Actually Add?
+
+Beyond convenience, Data Studio's implementation introduces a few things worth highlighting:
+
+- **Code Interpreter**: This is the headline feature. Instead of being limited to SQL translation, the agent can now generate and execute Python code under the hood. That unlocks more complex analyses like driver analysis, customer lifetime value calculations, cohort analysis, and year-over-year comparisons — all from a natural language prompt. If you've been frustrated by the "single visualization" constraint of the Conversational Analytics API, this is a meaningful step forward.
+- **Fast mode vs. Thinking mode**: Users can choose between a quick, direct lookup ("What was last week's revenue?") and a deeper analytical mode that handles multi-step reasoning. Thinking mode is where the more complex questions get routed.
+- **Built-in sharing**: Agents published to Data Studio inherit its sharing model. No more managing IAP access lists or Cloud Run permissions separately. If someone has access to the Data Studio workspace, they can use the agent.
+
+### What's the Catch?
+
+A few things to keep in mind before you tear down your custom setup:
+
+- **Code Interpreter requires Data Studio Pro** with Gemini enabled. The basic Conversational Analytics experience is available to all Data Studio users, but the advanced Python-powered analysis is behind the Pro paywall.
+- **Single-table limitation**: You can still only converse with one BigQuery table at a time. If your use case requires joining across multiple sources mid-conversation, you'll need to pre-join your data or build a view.
+- **5,000 row cap** on query results for Looker data sources. For most marketing analytics questions this is plenty, but if you're doing granular event-level analysis, you might hit this ceiling.
+- **AI accuracy caveats still apply**. Google is refreshingly honest here: outputs "can generate output that seems plausible but is factually incorrect." My earlier advice about actively checking the generated queries and reasoning? That hasn't changed. If anything, it's even more relevant now that a broader audience has access to these tools.
+
+### Does This Replace the Custom App Approach?
+
+Honestly? For most teams, yes. If your goal is to give marketing users a chat interface over their GA data in BigQuery, the native Data Studio experience will be more than sufficient. It's easier to set up, easier to maintain, and doesn't require any infrastructure management on your end.
+
+Where the custom approach still makes sense is when you need full control over the UX, want to integrate the conversational interface into an existing internal tool, or have specific authentication requirements that go beyond what Data Studio offers. The Conversational Analytics API isn't going anywhere, and the Streamlit-based setup described earlier remains a valid option for those scenarios.
+
+But for the "80% use case" of getting a marketing team to self-serve their analytics questions? Data Studio just removed a lot of the friction that made the custom route necessary in the first place.
 
 ## Conclusion
 
