@@ -107,6 +107,41 @@
 </script>
 {% endif %}
 
+{% if page.url == '/services/' %}
+<!-- ProfessionalService Schema with Reviews -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Gunnar Griese - Digital Analytics Consulting",
+  "url": "{{ '/services/' | absolute_url }}",
+  "description": "Digital analytics consulting specializing in Google Analytics, Google Tag Manager, BigQuery, and data engineering.",
+  "provider": {
+    "@type": "Person",
+    "name": "Gunnar Griese",
+    "url": "{{ site.url }}",
+    "jobTitle": "Digital Analytics Consultant"
+  },
+  "areaServed": "Worldwide",
+  "review": [{% for testimonial in site.data.testimonials %}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ testimonial.name }}",
+        "jobTitle": "{{ testimonial.title }}",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "{{ testimonial.company }}"
+        }
+      },
+      "reviewBody": "{{ testimonial.quote | escape }}"
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 {% if page.url == '/contact/' %}
 <!-- FAQPage Schema -->
 <script type="application/ld+json">
