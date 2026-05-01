@@ -4,6 +4,12 @@
   logo: "/assets/images/social-proof/sixt.png"
   quote: "We needed someone to tell us the truth about our web analytics, and Gunnar delivered it with style. His audit confirmed we'd built something solid with Exactag and Google Analytics, and the detail of his analysis made the technical complexity click. His in-depth reports gave us permission to be confident about what our data was telling us."
 
+- name: "Fadrique Avalle-Arce"
+  title: "Chapter Lead MarTech"
+  company: "DFDS"
+  logo: "/assets/images/social-proof/dfds.png"
+  quote: "Gunnar joined our team as an embedded data specialist and quickly became a trusted part of our CDP efforts. He led the integration of key data sources, including Playable and Iterable, into our Segment setup and helped migrate our legacy customer database into Google Cloud. Technical, reliable, and a great collaborator throughout."
+
 - name: "Dennis Vesti Brorsen"
   title: "Data & Intelligence Director"
   company: "JFM"
