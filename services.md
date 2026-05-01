@@ -1,78 +1,83 @@
 ---
 layout: page
-title: Digital Analytics Services
-description: Transform your data into competitive advantage with expert analytics implementation, engineering, and strategic guidance
+title: Services - Signal Engineering, Measurement Infrastructure, Advisory
+description: Senior measurement work for marketing, MarTech, and analytics teams - delivered by one practitioner with skin in the game
 permalink: /services/
 ---
+
+<div class="services-intro" style="max-width: 800px; margin-bottom: 3rem;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem;">How I work with teams.</h2>
+  <p style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-light);">Three categories of engagement for marketing, MarTech, and analytics teams that need senior measurement work - delivered by one practitioner with skin in the game. No account managers, no junior staffing, no slide-deck deliverables - just measurement infrastructure that ships.</p>
+</div>
 
 <div class="services-grid">
 
   <div class="service-card">
     <div class="service-header">
-      <h2>Analytics Implementation & Optimization</h2>
+      <h2>Signal Design & Implementation</h2>
     </div>
     <div class="service-body">
-      <p>Build a robust analytics foundation that captures the insights you need. I help businesses set up and optimize their digital analytics infrastructure for accurate data collection and actionable insights.</p>
+      <p>Define what your business actually needs to measure, then build it properly. This starts with data contracts - explicit specifications of every event, parameter, and identifier - and ends with a production tracking implementation that holds up under engineering scrutiny.</p>
 
-      <p>Whether you need an initial implementation or want to enhance your existing setup, I ensure your analytics foundation is aligned with your goals.</p>
+      <p>Most "tracking projects" fail because the upstream definitions were never agreed. I run this as a Signal Engineering exercise: business question, measurable signal, implementation, validation.</p>
 
-      <h3>Core Services</h3>
+      <h3>Core deliverables</h3>
       <ul>
-        <li>Google Analytics 4, Amplitude, Mixpanel & Piwik Pro implementation</li>
-        <li>Google Tag Manager setup, optimization & governance</li>
-        <li>GTM Server-Side deployments for enhanced data quality</li>
-        <li>Consent Mode v2 implementation & GDPR/CCPA alignment</li>
-        <li>Event schemas & measurement plans tailored to your business</li>
+        <li>Event schemas and data contracts as a first-class artifact</li>
+        <li>GA4, Amplitude, or product-analytics implementation against the contract</li>
+        <li>Server-side GTM where data quality, consent, or first-party context demands it</li>
+        <li>Consent Mode v2 and privacy architecture that actually maps to your legal setup</li>
+        <li>Schema validation and monitoring so the contract stays enforced after I leave</li>
       </ul>
     </div>
     <div class="service-footer">
-      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Discuss your analytics needs</a>
+      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Start a conversation</a>
     </div>
   </div>
 
   <div class="service-card">
     <div class="service-header">
-      <h2>Analytics Engineering & Activation</h2>
+      <h2>Measurement Infrastructure</h2>
     </div>
     <div class="service-body">
-      <p>Transform raw data into scalable pipelines and actionable insights. As a Google Cloud Certified Professional Data Engineer, I build solutions that connect your data sources and enable powerful activation use cases.</p>
+      <p>Build the pipelines that move signals from collection to activation. This is where most analytics setups stall: events are flowing, but nothing useful is happening downstream. The fix is real data engineering - not Data Studio dashboards on top of GA4.</p>
 
-      <p>From BigQuery warehouses to real-time data streams, I create the infrastructure that powers data-driven decisions.</p>
+      <p>I design and build warehouse-native measurement systems on Google Cloud: BigQuery as the backbone, Dataform for transformation, server-side GTM for collection, and clean APIs into the activation surfaces (ad platforms, CDPs, ML models) that turn signals into outcomes.</p>
 
-      <h3>Technical Capabilities</h3>
+      <h3>Core deliverables</h3>
       <ul>
-        <li>BigQuery data modeling, ETL/ELT processes, real-time streaming</li>
-        <li>GTM Server-Side infrastructure (multi-region/data residency)</li>
-        <li>Custom solutions in JavaScript, SQL, Python</li>
-        <li>CDP connections, marketing platform APIs, data activation</li>
-        <li>Enhanced conversions, offline conversions, audience creation</li>
+        <li>BigQuery + Dataform pipelines for marketing and product data</li>
+        <li>GTM Server-Side infrastructure, including multi-region and data-residency setups</li>
+        <li>Custom collection and enrichment logic in JavaScript, SQL, and Python</li>
+        <li>Enhanced Conversions, offline conversions, value-based bidding signals</li>
+        <li>AI-augmented analysis tooling - conversational analytics, automated validation, agent-ready data</li>
       </ul>
     </div>
     <div class="service-footer">
-      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Start building your data pipeline</a>
+      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Start a conversation</a>
     </div>
   </div>
 
   <div class="service-card">
     <div class="service-header">
-      <h2>Strategic Advisory & Training</h2>
+      <h2>Advisory, Audits & Training</h2>
     </div>
     <div class="service-body">
-      <p>Navigate the complexities of modern measurement with expert guidance. I help you develop measurement frameworks, optimize marketing signals, and upskill your team to maximize analytics investments.</p>
+      <p>Independent technical advice for teams making big measurement decisions. I'm not a generalist strategy consultant - I'm the engineer your in-house team calls when the question is "is our setup actually doing what we think it's doing?"</p>
 
-      <p>Make confident decisions about your analytics strategy with tailored advisory services and hands-on training programs.</p>
+      <p>Audits are the most common entry point. They're structured, evidence-based, and end with a prioritized plan - not a 60-slide deck. Training engagements range from team workshops to half-year curricula, including the technical analytics course I teach at IHM Business School.</p>
 
-      <h3>Advisory & Training</h3>
+      <h3>Core deliverables</h3>
       <ul>
-        <li>Analytics audits & maturity assessments</li>
-        <li>Measurement strategy & KPI framework development</li>
-        <li>Signal engineering for marketing platforms & AI</li>
-        <li>Team training for GA4, Amplitude, Mixpanel, Piwik Pro, GTM, and BigQuery</li>
-        <li>Conference speaking & executive workshops</li>
+        <li>Measurement audits with prioritized remediation plans</li>
+        <li>Signal Engineering reviews - where are you on the maturity curve, what's the next step</li>
+        <li>KPI and measurement framework development</li>
+        <li>Team upskilling: GA4, GTM, server-side, BigQuery, modern measurement architecture</li>
+        <li>Conference talks and executive workshops</li>
       </ul>
     </div>
     <div class="service-footer">
-      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Book a strategic session</a>
+      <a href="{{ '/contact' | relative_url }}" class="btn btn-secondary">Start a conversation</a>
     </div>
   </div>
 
@@ -83,21 +88,21 @@ permalink: /services/
 <!-- Full-width background section for better visual separation -->
 <div style="background-color: #f8f9fa; margin: 4rem -2rem 0; padding: 3rem 2rem;">
   <section class="engagement-section">
-    <h2 class="section-title">How We Can Work Together</h2>
+    <h2 class="section-title">How we work together</h2>
 
   <div class="services-grid">
 
     <div class="service-card">
       <div class="service-header">
-        <h3>📋 Project-Based</h3>
+        <h3>Project-Based</h3>
       </div>
       <div class="service-body">
-        <p>Fixed-scope engagements with clear deliverables. Perfect for implementations, migrations, or audits.</p>
+        <p>Fixed-scope engagements, 2-12 weeks. Implementations, audits, infrastructure builds, migrations. Clear deliverables, fixed price where possible, embedded delivery throughout.</p>
 
         <ul>
-          <li>Analytics implementations & migrations</li>
-          <li>Technical audits & assessments</li>
-          <li>Infrastructure setup & configuration</li>
+          <li>Signal design and implementation</li>
+          <li>Technical audits and assessments</li>
+          <li>Infrastructure builds and migrations</li>
         </ul>
 
         <p class="engagement-detail"><strong>Timeline:</strong> 2-12 weeks</p>
@@ -109,15 +114,15 @@ permalink: /services/
 
     <div class="service-card">
       <div class="service-header">
-        <h3>🔄 Retainer</h3>
+        <h3>Retainer</h3>
       </div>
       <div class="service-body">
-        <p>Ongoing partnership through 8-bit-sheep for continuous optimization, support, and strategic guidance.</p>
+        <p>Ongoing measurement partnership for teams that need senior measurement work without an in-house hire. Routed through 8-bit-sheep for contracting and continuity.</p>
 
         <ul>
-          <li>Continuous optimization & support</li>
-          <li>Strategic advisory & roadmapping</li>
-          <li>Monthly performance reviews</li>
+          <li>Continuous measurement support</li>
+          <li>Strategic advisory and roadmapping</li>
+          <li>On-demand senior expertise</li>
         </ul>
 
         <p class="engagement-detail"><strong>Duration:</strong> Flexible monthly arrangements</p>
@@ -129,10 +134,10 @@ permalink: /services/
 
     <div class="service-card">
       <div class="service-header">
-        <h3>🎓 Training & Workshops</h3>
+        <h3>Training & Workshops</h3>
       </div>
       <div class="service-body">
-        <p>Knowledge transfer programs from GA4 fundamentals to advanced server-side techniques.</p>
+        <p>Half-day to multi-day programs for in-house teams. Conference speaking and executive workshops also available. Same depth as the consulting work, distilled for transfer.</p>
 
         <ul>
           <li>Half-day to multi-day programs</li>
@@ -150,10 +155,10 @@ permalink: /services/
   </div>
 
   <div class="cta-section" style="text-align: center; padding: 3rem 0;">
-    <h3 style="text-align: center;">Ready to activate your data?</h3>
-    <p style="text-align: center; margin-bottom: 2rem;">Discuss how customized analytics solutions can drive your business forward.</p>
+    <h3 style="text-align: center;">See if we're a fit</h3>
+    <p style="text-align: center; margin-bottom: 2rem;">If you're considering a measurement engagement, the fastest way to find out is a 30-minute conversation.</p>
     <div style="text-align: center;">
-      <a href="{{ '/contact' | relative_url }}" class="btn btn-primary btn-large">Schedule a Discovery Call</a>
+      <a href="{{ '/contact' | relative_url }}" class="btn btn-primary btn-large">Start a conversation</a>
     </div>
   </div>
   </section>

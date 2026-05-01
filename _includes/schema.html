@@ -22,7 +22,7 @@
   "name": "Gunnar Griese",
   "url": "{{ site.url }}",
   "image": "{{ '/assets/images/profile.jpg' | absolute_url }}",
-  "jobTitle": "Digital Analytics Consultant",
+  "jobTitle": "Independent Measurement Practitioner",
   "description": "{{ site.description | strip_newlines | strip }}",
   "email": "{{ site.email }}",
   "sameAs": [
@@ -42,16 +42,16 @@
     "name": "Google Cloud Certified Professional Data Engineer"
   },
   "knowsAbout": [
+    "Signal Engineering",
+    "Measurement Infrastructure",
     "Google Analytics",
     "Google Tag Manager",
+    "Server-Side Tagging",
     "Google Cloud Platform",
     "BigQuery",
-    "Amplitude",
-    "Mixpanel",
-    "Piwik Pro",
-    "Digital Analytics",
-    "Analytics Engineering",
-    "Data Engineering"
+    "Dataform",
+    "Data Engineering",
+    "Marketing Measurement"
   ]
 }
 </script>
@@ -74,22 +74,22 @@
     "@type": "Person",
     "name": "Gunnar Griese",
     "url": "{{ site.url }}",
-    "jobTitle": "Digital Analytics Consultant",
+    "jobTitle": "Independent Measurement Practitioner",
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
       "name": "Google Cloud Certified Professional Data Engineer"
     },
     "knowsAbout": [
+      "Signal Engineering",
+      "Measurement Infrastructure",
       "Google Analytics",
       "Google Tag Manager",
+      "Server-Side Tagging",
       "Google Cloud Platform",
       "BigQuery",
-      "Amplitude",
-      "Mixpanel",
-      "Piwik Pro",
-      "Digital Analytics",
-      "Analytics Engineering",
-      "Data Engineering"
+      "Dataform",
+      "Data Engineering",
+      "Marketing Measurement"
     ]
   },
   "publisher": {
@@ -113,14 +113,14 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Gunnar Griese - Digital Analytics Consulting",
+  "name": "Gunnar Griese - Signal Engineering & Measurement Infrastructure",
   "url": "{{ '/services/' | absolute_url }}",
-  "description": "Digital analytics consulting specializing in Google Analytics, Google Tag Manager, BigQuery, and data engineering.",
+  "description": "Independent measurement practitioner specializing in Signal Engineering, server-side tracking, warehouse-native pipelines, and measurement infrastructure for marketing, MarTech, and analytics teams.",
   "provider": {
     "@type": "Person",
     "name": "Gunnar Griese",
     "url": "{{ site.url }}",
-    "jobTitle": "Digital Analytics Consultant"
+    "jobTitle": "Independent Measurement Practitioner"
   },
   "areaServed": "Worldwide",
   "review": [{% for testimonial in site.data.testimonials %}
@@ -151,50 +151,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What types of businesses do you work with?",
+      "name": "What's the typical engagement?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "I work with businesses of all sizes, from ambitious startups to Fortune 500 companies. My expertise spans e-commerce, SaaS, media, finance, and more. What matters most is your commitment to becoming truly data-driven."
+        "text": "Most engagements are project-based, 2-12 weeks, fixed scope. Retainer arrangements are routed through 8-bit-sheep for continuity and contracting. Training and workshops are scheduled separately."
       }
     },
     {
       "@type": "Question",
-      "name": "What's your typical engagement model?",
+      "name": "How embedded is \"embedded\"?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "I offer flexible engagement options: project-based work (2-12 weeks), ongoing retainer arrangements through 8-bit-sheep, and training workshops. We'll find the model that best fits your needs and budget."
+        "text": "As embedded as your team allows. I prefer working in your Slack, your ticket system, and your repo, joining standups and design reviews where useful. The Forward Deployed Engineer model is core to how I deliver."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you work with international clients?",
+      "name": "What if our stack isn't Google?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely! Based in Copenhagen, I work with clients globally. I'm experienced with remote collaboration and can adjust to different time zones."
+        "text": "The methodology travels. Signal Engineering applies whether the warehouse is BigQuery, Snowflake, or Redshift, and whether the analytics platform is GA4, Amplitude, or something else. The Google stack is where I have the deepest production experience, but the way I think about measurement isn't tool-specific."
       }
     },
     {
       "@type": "Question",
-      "name": "What makes your approach different?",
+      "name": "How quickly can we start?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "I combine deep technical expertise (Google Cloud Certified) with strategic business understanding from years of enterprise consulting. You get both the architect who designs the solution and the engineer who builds it."
+        "text": "1-4 weeks for new projects, depending on scope and current capacity. Audits and short engagements are sometimes possible faster."
       }
     },
     {
       "@type": "Question",
-      "name": "How quickly can we get started?",
+      "name": "What happens after the engagement ends?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "After our initial consultation, I can typically begin new projects within 1-2 months (depending on the project scope). For urgent needs, I may have availability sooner. Training workshops can be scheduled based on mutual availability."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you provide ongoing support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Many clients start with a project and transition to ongoing support. I offer retainer arrangements for continuous optimization, monthly reviews, and on-demand expertise when you need it most."
+        "text": "The deliverable is always something your team can run without me — documented contracts, code in your repo, and a working knowledge transfer. Many clients move from a project to retainer support; others run the system themselves and I'm available for spot questions."
       }
     }
   ]

@@ -1,40 +1,40 @@
 ---
 layout: home
-hero_title: Digital Analytics Solutions for Data-Driven Businesses
-hero_subtitle: I help companies harness the full potential of their data through customized analytics solutions, scalable data pipelines, and actionable insights using the Google tech stack.
+hero_title: Signal Engineering for modern measurement.
+hero_subtitle: Most analytics setups collect events. I design and build the measurement infrastructure that turns those events into proprietary, decision-ready signals for ad platforms, ML models, and the operators making real decisions.
 hero_image: /assets/images/profile.jpg
 
 services:
-  - title: Analytics Implementation
-    description: Transform your digital analytics setup for accurate data collection and insightful reporting.
+  - title: The problem
+    description: Ad platforms run on ML, bidding is algorithmic, and AI agents are consuming your analytics output. Basic conversions and last-click attribution don't feed these systems well.
     features:
-      - Google Analytics 4, Amplitude, Mixpanel & Piwik Pro setup
-      - Google Tag Manager configuration
-      - Server-side tracking implementation
-      - Consent Mode & privacy compliance
+      - Signals too coarse for modern bidding
+      - No value awareness in conversion data
+      - Dashboards built for humans, not machines
+      - Growing gap between setup and activation
 
-  - title: Analytics Engineering
-    description: Build scalable data pipelines and advanced analytics solutions on Google Cloud Platform.
+  - title: The method
+    description: Signal Engineering moves teams from basic conversion tracking to a layered measurement system built for modern activation.
     features:
-      - GTM Server-Side deployments
-      - BigQuery data pipelines
-      - Custom solutions in JavaScript, SQL, Python
-      - Data activation & CDP integrations
+      - Event design with data contracts
+      - Server-side collection and enrichment
+      - Warehouse-native pipelines
+      - Value-based signals fed into activation
 
-  - title: Strategic Advisory
-    description: Align your business objectives with tailored digital analytics strategies.
+  - title: The model
+    description: I work as an embedded engineer - in your Slack, your repo, your standups - shipping production code instead of slide decks.
     features:
-      - Analytics audits & roadmaps
-      - Digital marketing measurement
-      - Team training & enablement
-      - Speaking engagements & workshops
+      - Embedded with your team throughout
+      - Most engagements are 2-12 weeks
+      - Engagement via 8-bit-sheep
+      - Code and docs you own after I leave
 
-about_title: Driving Results Through Experience
+about_title: Independent practitioner. Embedded delivery.
 about_image: /assets/images/spwk-talk-web.jpg
-cta_title: Let's Build Something Great Together
-cta_subtitle: Whether you need strategic guidance, operational improvements, or technical expertise, I'm here to help.
+cta_title: See if we're a fit
+cta_subtitle: If you're considering a measurement engagement - implementation, audit, infrastructure build, or training - the fastest way to find out is a 30-minute conversation.
 ---
 
-With experience consulting large enterprises at leading digital analytics agencies in Germany and Denmark, I bring deep expertise in Google Analytics, Amplitude, Mixpanel, Piwik Pro, Google Tag Manager, and Google Cloud Platform. As a Google Cloud Certified Professional Data Engineer, I combine strategic thinking with hands-on technical execution.
+Before going independent, I spent years at the leading digital analytics agencies in Germany (TRKKN) and Denmark (IIH Nordic), consulting enterprise clients on measurement architecture. I'm a Google Cloud Certified Professional Data Engineer with deep experience across the Google measurement stack - GA4, GTM, server-side GTM, BigQuery, Dataform.
 
-Based in Copenhagen and working with 8-bit-sheep, I also teach Technical Digital Analytics at IHM Business School. Whether you're a startup or enterprise, I tailor every engagement to your specific needs and goals.
+Based in Copenhagen and working with 8-bit-sheep, I also teach Technical Digital Analytics at IHM Business School and co-organize AnalyticsDev, a yearly practitioner meetup for analytics and AI engineers.
