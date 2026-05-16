@@ -49,6 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Clear the form
         emailInput.value = '';
 
+        // Track form success to GTM dataLayer (async, non-blocking)
+        if (typeof Analytics !== 'undefined') {
+          Analytics.trackFormSubmit('newsletter', 'success');
+        }
+
         // Optional: Track with walkerOS if available
         if (window.elb) {
           window.elb('newsletter_signup', {
@@ -67,6 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Newsletter signup error:', error);
       messageDiv.className = 'newsletter-message error';
       messageDiv.textContent = 'Oops! Something went wrong. Please try again later or contact support.';
+
+      // Track form error to GTM dataLayer (async, non-blocking)
+      if (typeof Analytics !== 'undefined') {
+        Analytics.trackFormSubmit('newsletter', 'error');
+      }
     } finally {
       // Re-enable the form
       submitButton.disabled = false;
