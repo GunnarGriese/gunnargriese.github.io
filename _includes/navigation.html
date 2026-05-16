@@ -11,11 +11,11 @@
         </button>
 
         <div class="nav-menu">
-            <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-            <a href="{{ '/services' | relative_url }}" class="nav-link">Services</a>
-            <a href="{{ '/blog' | relative_url }}" class="nav-link">Blog</a>
-            <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
-            <a href="{{ '/contact' | relative_url }}" class="nav-link nav-cta" onclick="window.dataLayer = window.dataLayer || []; window.dataLayer.push({'event': 'navbar_click', 'click_text': 'Work with Me', 'click_url': 'https://gunnargriese.com/contact'});">Work with Me</a>
+            <a href="{{ '/' | relative_url }}" class="nav-link" data-analytics-type="nav" data-analytics-category="home">Home</a>
+            <a href="{{ '/services' | relative_url }}" class="nav-link" data-analytics-type="nav" data-analytics-category="services">Services</a>
+            <a href="{{ '/blog' | relative_url }}" class="nav-link" data-analytics-type="nav" data-analytics-category="blog">Blog</a>
+            <a href="{{ '/about' | relative_url }}" class="nav-link" data-analytics-type="nav" data-analytics-category="about">About</a>
+            <a href="{{ '/contact' | relative_url }}" class="nav-link nav-cta" data-analytics-type="nav" data-analytics-category="contact-cta">Work with Me</a>
         </div>
     </div>
 </nav>
