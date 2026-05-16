@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         link.href = '#' + heading.id;
         link.textContent = heading.textContent;
         link.className = 'toc-link';
+        link.setAttribute('data-analytics-type', 'internal');
+        link.setAttribute('data-analytics-category', 'toc');
 
         link.addEventListener('click', function(e) {
             e.preventDefault();
