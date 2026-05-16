@@ -77,12 +77,22 @@ document.addEventListener('DOMContentLoaded', function () {
         if (transitioning) return;
         transitioning = true;
         setPosition(current - 1, true);
+
+        // Track carousel navigation to GTM dataLayer
+        if (typeof Analytics !== 'undefined') {
+            Analytics.trackComponentInteraction('testimonials', 'navigate', { direction: 'prev' });
+        }
     });
 
     nextBtn.addEventListener('click', function () {
         if (transitioning) return;
         transitioning = true;
         setPosition(current + 1, true);
+
+        // Track carousel navigation to GTM dataLayer
+        if (typeof Analytics !== 'undefined') {
+            Analytics.trackComponentInteraction('testimonials', 'navigate', { direction: 'next' });
+        }
     });
 
     var resizeTimer;
