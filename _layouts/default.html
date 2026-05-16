@@ -50,6 +50,8 @@
 
     {% include footer.html %}
 
+    <!-- Analytics Module (required before main.js) -->
+    <script src="{{ '/assets/js/analytics.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
     {% if page.layout == 'post' %}
     <script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
