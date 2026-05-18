@@ -3,7 +3,7 @@ layout: post
 title: From Clicks to Conversations - Measuring First-Party AI Agents
 description: How to measure and analyze 1st-party AI chatbots using the GA and BigQuery stack you already own, bridging the gap between traditional web analytics and agentic conversation data.
 author: gunnar
-date: 2026-05-06 00:00:01 +0200
+date: 2026-05-18 00:00:01 +0200
 categories: [GA]
 tags: [ga, gcp, bigquery]
 image: /assets/images/blog/tracking-chatbots.png
