@@ -230,10 +230,10 @@ One word of caution before you're getting too excited: As always, there's real c
 
 ## Where does this fit in the bigger picture?
 
-If you've been following my writing on [Signal Engineering](https://gunnargriese.com/posts/moving-beyond-basic-conversion-tracking/), you might recognize a familiar pattern here. The four-level maturity model — Collection → Architecture → Activation → Intelligence — maps cleanly onto the chatbot measurement journey.
+As you can see, your mental model for digital analytics already holds a bunch of useful tools for the measuring of first-party agents. Some data points are genuinely new though and require some extra work to extract real value from them.
 
-Most teams running AI chatbots today are stuck at **Collection**: "we have logs somewhere" or maybe not event that. The real opportunity is helping them progress to **Architecture** (structured schemas, stitching, consent) and **Activation** (feeding conversation signals back into marketing platforms and product decisions). That's where the value compounds.
+Currently, I see most teams being stuck at the **Collection** layer. Meaning they'll say "we have logs somewhere" or maybe not even that. The real opportunity is to progress to **Architecture** (structured schemas, stitching, consent) and **Activation** (feeding conversation signals back into marketing platforms and product decisions). That's where the value is actually realized.
 
-The tools changed. The thinking didn't. If you've built measurement systems for websites, you already have the skills to build them for conversational AI. The schemas are wider, the data is richer, and the signal is more direct - but the analytical discipline is the same one you've been practicing all along.
+This is how it's always been, the fundamentals didn't change really. If you've built measurement systems for websites, you already have the skills to build them for conversational AI. The schemas are wider, the data is richer, and the signal is more direct - but the analytical discipline is the same one you've been practicing all along.
 
 Feel free to reach out if you want to explore how this could work for your own AI agents. I'm always happy to chat (pun fully[!] intended).
