@@ -22,13 +22,9 @@ In this post I want to talk about what changes when your website has a conversat
 
 ## Why should marketers care about 1st-party agents (and not just engineers)?
 
-Before diving in, let's get the definitions straight. Back in February, I saw Snowplow's Jordan Peck and Jon Su present their thinking on agent analytics at Superweek in Hungary. Their piece on Sowplow's blog ["Introducing Agent Self-Tracking - A New Approach to Measuring First-Party Agent Experiences"](https://snowplow.io/blog/introducing-agent-self-tracking), appears to me a write-up of that very talk and lays out three broad categories of AI agents: **1st-party agents** (the ones you build and embed on your own properties), **3rd-party agents** (like ChatGPT or Perplexity that might surface your brand), and **back-office agents** (internal automation). In this post I'd like to exclusively focus on the first category: First-party agents. If you'r einterested in the other categories, too, I recommend checking out their blog post for the full taxonomy.
+Before diving in, let's get the definitions straight. Back in February, I saw Snowplow's Jordan Peck and Jon Su presented their thinking on agent analytics at Superweek in Hungary. Their piece on Sowplow's blog ["Introducing Agent Self-Tracking - A New Approach to Measuring First-Party Agent Experiences"](https://snowplow.io/blog/introducing-agent-self-tracking),is a write-up of that very talk and lays out three broad categories of AI agents: **1st-party agents** (the ones you build and embed on your own properties), **3rd-party agents** (like ChatGPT or Perplexity that might surface your brand), and **back-office agents** (internal automation). In this post I'd like to exclusively focus on the first category: First-party agents. If you're interested in the other categories, too, I recommend checking out their blog post for the full taxonomy.
 
 Currently, most of the existing conversation around measuring first-party AI agents is engineering-dominated. Tools like LangFuse and various observability dashboards are built for ML engineers who care about token latency, model drift, and trace debugging. That's important work, but I see the marketing-analytics conversation around these data points barely happening. What are users actually asking about? What is the users' intent? Which conversations correlate with high-value customers? These are the questions that matter to anyone responsible for revenue, and they're the gap I want to help fill.
-
-To be clear about what this post is *not* about: it's not about AI visibility and how your brand surfaces in ChatGPT. That's AIO/GEO territory, which I leave to people better equipped to talk about it. Neither is it about LLMOps concerns like token cost or latency optimization. 
-
-This post is dedicated alone to the analytics layer for the first-party agents you build and own. While the example uses Google Analytics (GA) as the final collection endpoint, the concepts and frameworks apply to alternative tools like Amplitude, Mixpanel, etc. alike.
 
 ## What didn't change: your analyst mental model still works
 
@@ -43,7 +39,7 @@ During [his talk](https://www.sunholo.com/presentations/analytics-for-ai-agents/
 | Custom dimensions | LLM-as-judge scores | Still tagging events with attributes, but the tagger is now an LLM. |
 | BigQuery | BigQuery | The warehouse didn't move (obviously doesn't have to be BQ). |
 
-The schemas widen, data becomes more unstructured, but as said the questions you ask and the tools you apply to answer them don't change at their core. Therefore, the conceptual leap is smaller than it appears at first glance.
+The schemas widen, data becomes more unstructured, but the questions you ask and the tools you apply to answer them don't change at their core. Therefore, the conceptual leap is smaller than it appears at first glance.
 
 ## What did change: prompts are intent, in plain language
 
@@ -67,7 +63,7 @@ In comparison to nicely structured events, prompts have a downside though. Text 
 
 ## How to implement it on the stack you already have
 
-Based on the above, I'd like to suggested an architecture, which takes advantage of the current setup by reusing existing components or building on top of them.
+Based on the above, I'd like to suggest an architecture, which takes advantage of an exiting GA & GCP setup by reusing existing components or building on top of them.
 
 ![Chatbot measurement architecture](/assets/images/chatbot-measurement/chatbot-measurement-architecture.png)
 _Architecture for measuring 1st-party AI agents with GA and BigQuery_
@@ -89,7 +85,7 @@ The conversation transcripts themselves, e.g. the raw prompts and responses, get
 
 **3. User intent extraction**
 
-This is where it gets interesting. The raw conversation logs from step 2 are unstructured text. These are useful for reading, but not for querying or segmenting at scale. The goal of this layer is to transform that text into structured columns that behave like custom dimensions in GA.
+This is where it gets interesting. The raw conversation logs from step 2 are unstructured text. These are useful for reading, but not for querying or segmenting at scale. The goal of this layer is to transform that text into structured columns that behave like custom dimensions in GA. In their article, JJordan and Jon had the agent sent the "aggregated" events straight to Snowplow, we'll log the the raw data first to have more flexibility analyzing these later.
 
 Two techniques do most of the heavy lifting here. First, **LLM-as-judge**: a cost-effective model (e.g., Gemini Flash) runs over each conversation and returns structured JSON, e.g., intent, sentiment, objection type, resolution status. This is your "custom-dimension factory". Second, **embedding clusters**:  instead of pre-defining segments, you generate vector embeddings for each prompt and cluster them by semantic similarity. Groups of similar prompts emerge naturally, e.g., a "delivery concerns" cluster, a "returns policy" cluster, a "size availability" cluster. All of this without any upfront labelling.
 
