@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Analytics in the Age of AI - Why Fundamentals Still Matter
-description: A write-up of the first Analytics DevNet Webcast with Simo Ahava, Steen Rasmussen and Jomar Reyes. AI makes analytics faster, but speed alone doesn't create expertise - data quality, mental models and organisational integration still decide whether measurement is trustworthy.
+description: A write-up of the first Analytics DevNet Webcast with Simo Ahava, Steen Rasmussen and Jomar Reyes. AI makes analytics faster, but speed alone doesn't create expertise. Data quality, mental models and organisational integration still decide whether measurement is trustworthy.
 author: gunnar
 date: 2026-09-01 00:00:01 +0200
 categories: [GA]
