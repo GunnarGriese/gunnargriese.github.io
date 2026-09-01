@@ -6,7 +6,7 @@ author: gunnar
 date: 2026-09-01 00:00:01 +0200
 categories: [GA]
 tags: [ga, ai, webcast]
-image: /assets/images/blog/analytics-age-of-ai.png
+image: /assets/images/blog/analyticsdev-webcast.jpg
 comments: true
 toc: true
 lang: en
