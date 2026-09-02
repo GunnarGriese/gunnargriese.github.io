@@ -70,10 +70,11 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 - [x] `pytest tests/test_subscribers.py tests/test_render.py -v` green.
 
 ### Phase 3: Delivery
-- [ ] **Task 6 — `common/email_client.py`** (M). `send_batch(brevo_client, ...) -> BatchSendResult`; injected client; chunks ≤1000; no bulk address logging. Deps: Task 5.
+- [x] **Task 6 — `common/email_client.py`** (M). `send_batch(brevo_client, ...) -> BatchSendResult`; injected client; chunks ≤1000; no bulk address logging. Deps: Task 5.
+  - Note: the installed `brevo-python==5.0.2` is the newer Fern-generated `brevo` SDK (`Brevo(api_key=...).transactional_emails`, method `send_transac_email`), not the legacy `sib_api_v3_sdk` client the original SPEC research assumed. Its own docstring now caps a single call at 2000 total recipients (99 per message version), looser than the 1000 this task already chunks at, so the ≤1000 chunking here stays valid and conservative — just noting the mismatch for Task 7/9 wiring. Errors surface as `brevo.core.api_error.ApiError` with a `status_code`.
 
 ### Checkpoint 3
-- [ ] `pytest tests/test_email_client.py -v` green; batch payload shape verified against mocks.
+- [x] `pytest tests/test_email_client.py -v` green; batch payload shape verified against mocks.
 
 ### Phase 4: Sender CLI
 - [ ] **Task 7 — `sender/main.py`** (M). `argparse` (`--content`, `--dry-run`); composition root for real BQ/Brevo clients. Deps: Task 4, 5, 6.
