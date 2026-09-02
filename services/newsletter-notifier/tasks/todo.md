@@ -10,7 +10,7 @@ See `plan.md` for full detail on each task.
 - [x] Task 3 — `common/content.py`
 
 ## Phase 2: Data + rendering
-- [ ] Task 4 — `common/subscribers.py`
+- [x] Task 4 — `common/subscribers.py`
 - [ ] Task 5 — `common/render.py`
 
 ## Phase 3: Delivery

@@ -63,7 +63,7 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 - [x] `pytest tests/test_tokens.py tests/test_content.py` green; neither module imports BQ/Brevo/network libraries.
 
 ### Phase 2: Data + rendering
-- [ ] **Task 4 — `common/subscribers.py`** (S). `Subscriber(email)` + `get_active_subscribers(bq_client, contacts_table, unsubscribes_table)` — filters by the `message LIKE` pattern, `DISTINCT`, excludes `newsletter_unsubscribes`. `bq_client` injected. Deps: Task 1.
+- [x] **Task 4 — `common/subscribers.py`** (S). `Subscriber(email)` + `get_active_subscribers(bq_client, contacts_table, unsubscribes_table)` — filters by the `message LIKE` pattern, `DISTINCT`, excludes `newsletter_unsubscribes`. `bq_client` injected. Deps: Task 1.
 - [ ] **Task 5 — `common/render.py`** (M). `render_content(announcement)` + `build_unsubscribe_params(subscriber, base_url, secret)`. Deps: Task 2, Task 3.
 
 ### Checkpoint 2
