@@ -99,10 +99,12 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 - [x] `pytest tests/test_unsubscribe_main.py -v` green; live deploy verified (human-run).
 
 ### Phase 6: Final QA
-- [ ] **Task 10 — Whole-suite QA + sign-off gate** (S). Full `pytest`/`ruff`/`black`; one real `--dry-run`, human-eyeballed, before any real send.
+- [x] **Task 10 — Whole-suite QA + sign-off gate** (S). Full `pytest`/`ruff`/`black`; one real `--dry-run`, human-eyeballed, before any real send.
+  - `pytest`: 43 passed, no real network calls (BQ/Brevo clients injected/mocked throughout). `ruff check .`: clean. `black --check .`: clean.
+  - Real `--dry-run` against live BQ (`python -m sender.main --content tests/fixtures/sample_announcement.md --dry-run`): correctly found 34 active subscribers, rendered subject/HTML/text with the unsubscribe placeholder and post link, made zero Brevo calls. Output is in this session's transcript for review — no real announcement content exists yet to send for real, so the actual first live send stays gated behind the Boundaries section's "ask first" (also still blocked on the open sending-domain/SPF/DKIM/DMARC question).
 
 ### Checkpoint 6 (Done)
-- [ ] Every SPEC.md Success Criteria bullet automatically verified or has a recorded manual step.
+- [x] Every SPEC.md Success Criteria bullet automatically verified or has a recorded manual step.
 
 ## Risks and Mitigations
 

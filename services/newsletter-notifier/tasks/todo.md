@@ -24,4 +24,4 @@ See `plan.md` for full detail on each task.
 - [x] Task 9 — Deploy + live smoke test (needs human `gcloud` auth)
 
 ## Phase 6: Final QA
-- [ ] Task 10 — Whole-suite QA + sign-off gate
+- [x] Task 10 — Whole-suite QA + sign-off gate
