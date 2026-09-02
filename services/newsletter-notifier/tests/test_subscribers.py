@@ -54,3 +54,14 @@ def test_query_selects_distinct_email_from_contacts_table():
     query = bq_client.query.call_args[0][0]
     assert "SELECT DISTINCT email" in query
     assert f"FROM `{CONTACTS_TABLE}`" in query
+
+
+def test_query_includes_a_partition_filter_on_timestamp():
+    # contact_form is day-partitioned on `timestamp` with require_partition_filter=True;
+    # an unfiltered query is rejected by BigQuery, so this must always be present.
+    bq_client = make_bq_client([])
+
+    get_active_subscribers(bq_client, CONTACTS_TABLE, UNSUBSCRIBES_TABLE)
+
+    query = bq_client.query.call_args[0][0]
+    assert "timestamp <= CURRENT_TIMESTAMP()" in query

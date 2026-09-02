@@ -16,6 +16,7 @@ def get_active_subscribers(
         FROM `{contacts_table}`
         WHERE message LIKE 'Newsletter signup from:%'
           AND email IS NOT NULL
+          AND timestamp <= CURRENT_TIMESTAMP()
           AND email NOT IN (SELECT email FROM `{unsubscribes_table}`)
     """
     rows = bq_client.query(query).result()

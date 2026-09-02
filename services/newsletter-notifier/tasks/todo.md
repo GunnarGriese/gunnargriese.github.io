@@ -21,7 +21,7 @@ See `plan.md` for full detail on each task.
 
 ## Phase 5: Unsubscribe handler + deploy
 - [x] Task 8 — `unsubscribe/main.py`
-- [ ] Task 9 — Deploy + live smoke test (needs human `gcloud` auth)
+- [x] Task 9 — Deploy + live smoke test (needs human `gcloud` auth)
 
 ## Phase 6: Final QA
 - [ ] Task 10 — Whole-suite QA + sign-off gate

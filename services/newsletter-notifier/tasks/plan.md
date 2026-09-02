@@ -87,10 +87,16 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 ### Phase 5: Unsubscribe handler + deploy
 - [x] **Task 8 — `unsubscribe/main.py`** (M). `mark_unsubscribed` (parameterized INSERT into `newsletter_unsubscribes`) + `unsubscribe(request)` functions-framework entrypoint. Deps: Task 2.
   - Correctness fix made during this task: `unsubscribe/main.py` cannot import `common/` — `gcloud functions deploy --source unsubscribe/` (Task 9) only uploads the `unsubscribe/` directory, so a `from common.tokens import verify_token` would `ImportError` at runtime in production even though it imports fine locally (tests put the repo root on `sys.path`). Token verification is duplicated locally as `_verify_token` in `unsubscribe/main.py` instead, with a static-analysis test (`test_main_does_not_import_the_sibling_common_package`) guarding against this regressing.
-- [ ] **Task 9 — Deploy + live smoke test** (S, needs human `gcloud` auth). Create `newsletter_unsubscribes` table if absent; provision `UNSUBSCRIBE_SIGNING_KEY` in Secret Manager matching `.env`; `gcloud functions deploy` per SPEC.md; curl smoke test.
+- [x] **Task 9 — Deploy + live smoke test** (S, needs human `gcloud` auth). Create `newsletter_unsubscribes` table if absent; provision `UNSUBSCRIBE_SIGNING_KEY` in Secret Manager matching `.env`; `gcloud functions deploy` per SPEC.md; curl smoke test.
+  - Table created: `nlp-api-test-260216.website_requests.newsletter_unsubscribes (email STRING, unsubscribed_at TIMESTAMP)`, no partitioning.
+  - Secret `unsub-signing-key` provisioned in Secret Manager. Pitfall hit and fixed: `echo "$KEY" | gcloud secrets create ...` silently appends a trailing newline to the stored payload, breaking the HMAC round-trip (`400` on a token known to be valid). Fixed with `printf '%s'` instead, then a redeploy — Cloud Run does not hot-reload a `:latest` secret binding on an already-running revision, a new revision has to be created. Same pitfall applies to any future manual key rotation.
+  - Deployed `newsletter-unsubscribe` (gen2, `europe-west1`, `--min-instances 0 --max-instances 1` per explicit request) at `https://europe-west1-nlp-api-test-260216.cloudfunctions.net/newsletter-unsubscribe`.
+  - Live smoke test: invalid token → 400, missing params → 400, valid token for a throwaway `smoke-test@example.com` → 200 + confirmation HTML + row written to `newsletter_unsubscribes`, verified via `bq query`, then deleted to leave the table empty.
+  - Also fixed a real bug surfaced only by live testing: `contact_form` is day-partitioned on `timestamp` with `require_partition_filter=True` — `common/subscribers.py`'s query had no filter on that column and was rejected by BigQuery outright. Added `AND timestamp <= CURRENT_TIMESTAMP()` (TDD, see `test_query_includes_a_partition_filter_on_timestamp`), then re-verified against the live table (34 active subscribers).
+  - Still needed in `.env` (human-added, same as `SENDER_EMAIL`/`SENDER_NAME`): `UNSUBSCRIBE_SIGNING_KEY` (the provisioned secret's value) and `UNSUBSCRIBE_BASE_URL` (the function URL above) — both handed to the human directly rather than committed anywhere.
 
 ### Checkpoint 5
-- [ ] `pytest tests/test_unsubscribe_main.py -v` green; live deploy verified (human-run).
+- [x] `pytest tests/test_unsubscribe_main.py -v` green; live deploy verified (human-run).
 
 ### Phase 6: Final QA
 - [ ] **Task 10 — Whole-suite QA + sign-off gate** (S). Full `pytest`/`ruff`/`black`; one real `--dry-run`, human-eyeballed, before any real send.
