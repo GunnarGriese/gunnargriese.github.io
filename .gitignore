@@ -9,3 +9,7 @@ CLAUDE.md
 node_modules/
 .playwright-cli/
 walkeros/
+.env
+.venv/
+__pycache__/
+*.pyc
