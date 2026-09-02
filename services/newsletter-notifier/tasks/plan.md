@@ -57,10 +57,10 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 
 ### Phase 1: Pure logic (no BQ/network)
 - [x] **Task 2 — `common/tokens.py`** (S). `generate_token(email, secret)` / `verify_token(email, token, secret)`, HMAC-SHA256, timing-safe compare. Deps: Task 1.
-- [ ] **Task 3 — `common/content.py`** (S). `parse_announcement(path) -> Announcement(subject, body_md, post_url)` via `python-frontmatter`; typed error if `subject` missing; real test fixtures. Deps: Task 1.
+- [x] **Task 3 — `common/content.py`** (S). `parse_announcement(path) -> Announcement(subject, body_md, post_url)` via `python-frontmatter`; typed error if `subject` missing; real test fixtures. Deps: Task 1.
 
 ### Checkpoint 1
-- [ ] `pytest tests/test_tokens.py tests/test_content.py` green; neither module imports BQ/Brevo/network libraries.
+- [x] `pytest tests/test_tokens.py tests/test_content.py` green; neither module imports BQ/Brevo/network libraries.
 
 ### Phase 2: Data + rendering
 - [ ] **Task 4 — `common/subscribers.py`** (S). `Subscriber(email)` + `get_active_subscribers(bq_client, contacts_table, unsubscribes_table)` — filters by the `message LIKE` pattern, `DISTINCT`, excludes `newsletter_unsubscribes`. `bq_client` injected. Deps: Task 1.

@@ -7,7 +7,7 @@ See `plan.md` for full detail on each task.
 
 ## Phase 1: Pure logic
 - [x] Task 2 — `common/tokens.py`
-- [ ] Task 3 — `common/content.py`
+- [x] Task 3 — `common/content.py`
 
 ## Phase 2: Data + rendering
 - [ ] Task 4 — `common/subscribers.py`
