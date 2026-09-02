@@ -20,7 +20,7 @@ See `plan.md` for full detail on each task.
 - [x] Task 7 — `sender/main.py`
 
 ## Phase 5: Unsubscribe handler + deploy
-- [ ] Task 8 — `unsubscribe/main.py`
+- [x] Task 8 — `unsubscribe/main.py`
 - [ ] Task 9 — Deploy + live smoke test (needs human `gcloud` auth)
 
 ## Phase 6: Final QA

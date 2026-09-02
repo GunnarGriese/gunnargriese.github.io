@@ -85,7 +85,8 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 - [x] `pytest tests/test_sender_main.py -v` green.
 
 ### Phase 5: Unsubscribe handler + deploy
-- [ ] **Task 8 — `unsubscribe/main.py`** (M). `mark_unsubscribed` (parameterized INSERT into `newsletter_unsubscribes`) + `unsubscribe(request)` functions-framework entrypoint. Deps: Task 2.
+- [x] **Task 8 — `unsubscribe/main.py`** (M). `mark_unsubscribed` (parameterized INSERT into `newsletter_unsubscribes`) + `unsubscribe(request)` functions-framework entrypoint. Deps: Task 2.
+  - Correctness fix made during this task: `unsubscribe/main.py` cannot import `common/` — `gcloud functions deploy --source unsubscribe/` (Task 9) only uploads the `unsubscribe/` directory, so a `from common.tokens import verify_token` would `ImportError` at runtime in production even though it imports fine locally (tests put the repo root on `sys.path`). Token verification is duplicated locally as `_verify_token` in `unsubscribe/main.py` instead, with a static-analysis test (`test_main_does_not_import_the_sibling_common_package`) guarding against this regressing.
 - [ ] **Task 9 — Deploy + live smoke test** (S, needs human `gcloud` auth). Create `newsletter_unsubscribes` table if absent; provision `UNSUBSCRIBE_SIGNING_KEY` in Secret Manager matching `.env`; `gcloud functions deploy` per SPEC.md; curl smoke test.
 
 ### Checkpoint 5
