@@ -49,14 +49,14 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 ## Task List
 
 ### Phase 0: Foundations
-- [ ] **Task 1 — Project scaffolding & config** (S). Directory tree; `pyproject.toml` (ruff/black/pytest); `requirements.txt` + `unsubscribe/requirements.txt`; `.env.example` documenting the resolved table names, the still-open sending-domain question, and the signing-key sync requirement.
+- [x] **Task 1 — Project scaffolding & config** (S). Directory tree; `pyproject.toml` (ruff/black/pytest); `requirements.txt` + `unsubscribe/requirements.txt`; `.env.example` documenting the resolved table names, the still-open sending-domain question, and the signing-key sync requirement.
   - Verify: `pip install -r requirements.txt`; `pytest` (0 tests, exit 0); `ruff check .`; `black --check .`; `git check-ignore -v services/newsletter-notifier/.env`
 
 ### Checkpoint 0
-- [ ] Skeleton installs cleanly; `pytest`/`ruff`/`black` pass on the empty tree.
+- [x] Skeleton installs cleanly; `pytest`/`ruff`/`black` pass on the empty tree.
 
 ### Phase 1: Pure logic (no BQ/network)
-- [ ] **Task 2 — `common/tokens.py`** (S). `generate_token(email, secret)` / `verify_token(email, token, secret)`, HMAC-SHA256, timing-safe compare. Deps: Task 1.
+- [x] **Task 2 — `common/tokens.py`** (S). `generate_token(email, secret)` / `verify_token(email, token, secret)`, HMAC-SHA256, timing-safe compare. Deps: Task 1.
 - [ ] **Task 3 — `common/content.py`** (S). `parse_announcement(path) -> Announcement(subject, body_md, post_url)` via `python-frontmatter`; typed error if `subject` missing; real test fixtures. Deps: Task 1.
 
 ### Checkpoint 1

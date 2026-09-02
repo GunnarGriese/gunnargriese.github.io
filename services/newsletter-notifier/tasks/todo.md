@@ -6,7 +6,7 @@ See `plan.md` for full detail on each task.
 - [x] Task 1 — Project scaffolding & config
 
 ## Phase 1: Pure logic
-- [ ] Task 2 — `common/tokens.py`
+- [x] Task 2 — `common/tokens.py`
 - [ ] Task 3 — `common/content.py`
 
 ## Phase 2: Data + rendering
