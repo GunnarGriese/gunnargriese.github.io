@@ -11,7 +11,7 @@ See `plan.md` for full detail on each task.
 
 ## Phase 2: Data + rendering
 - [x] Task 4 — `common/subscribers.py`
-- [ ] Task 5 — `common/render.py`
+- [x] Task 5 — `common/render.py`
 
 ## Phase 3: Delivery
 - [ ] Task 6 — `common/email_client.py`
