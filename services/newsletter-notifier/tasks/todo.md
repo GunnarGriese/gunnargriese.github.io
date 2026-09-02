@@ -17,7 +17,7 @@ See `plan.md` for full detail on each task.
 - [x] Task 6 — `common/email_client.py`
 
 ## Phase 4: Sender CLI
-- [ ] Task 7 — `sender/main.py`
+- [x] Task 7 — `sender/main.py`
 
 ## Phase 5: Unsubscribe handler + deploy
 - [ ] Task 8 — `unsubscribe/main.py`

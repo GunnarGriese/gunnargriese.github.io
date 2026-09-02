@@ -77,11 +77,12 @@ Task 10: whole-suite QA + human sign-off gate before first real send   Phase 6
 - [x] `pytest tests/test_email_client.py -v` green; batch payload shape verified against mocks.
 
 ### Phase 4: Sender CLI
-- [ ] **Task 7 — `sender/main.py`** (M). `argparse` (`--content`, `--dry-run`); composition root for real BQ/Brevo clients. Deps: Task 4, 5, 6.
+- [x] **Task 7 — `sender/main.py`** (M). `argparse` (`--content`, `--dry-run`); composition root for real BQ/Brevo clients. Deps: Task 4, 5, 6.
   - Manual (needs human `gcloud` auth): `python -m sender.main --content tests/fixtures/sample_announcement.md --dry-run`
+  - Note: `main()` only constructs the Brevo client and reads `BREVO_API_KEY`/`SENDER_EMAIL`/`SENDER_NAME` when `--dry-run` is absent, matching SPEC.md's success criterion that a fresh clone can `--dry-run` with only BQ read access. `SENDER_EMAIL`/`SENDER_NAME` still need adding to `.env.example` (blocked for the agent by the local `guard-sensitive-files.sh` hook — human to add).
 
 ### Checkpoint 4
-- [ ] `pytest tests/test_sender_main.py -v` green.
+- [x] `pytest tests/test_sender_main.py -v` green.
 
 ### Phase 5: Unsubscribe handler + deploy
 - [ ] **Task 8 — `unsubscribe/main.py`** (M). `mark_unsubscribed` (parameterized INSERT into `newsletter_unsubscribes`) + `unsubscribe(request)` functions-framework entrypoint. Deps: Task 2.
