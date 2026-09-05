@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The GA4 Data API Quietly Grew a Chat Endpoint - Here's What the API Watch Caught
+title: The GA4 Data API Quietly Grew a Chat Endpoint
 description: Google's GA4 Data API v1alpha discovery doc just added an undocumented chat method and a chatbot-only OAuth scope. Here's what it looks like, what's conspicuously missing from its description, and where a conversational GA4 endpoint actually fits.
 author: gunnar
 date: 2026-09-05 00:00:01 +0200
