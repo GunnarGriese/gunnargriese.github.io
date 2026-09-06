@@ -169,14 +169,14 @@ But for the "80% use case" of getting a marketing team to self-serve their analy
 
 ## Update (2026-09-06): Out-of-the-Box Monitoring for BigQuery Data Agents
 
-Earlier in this post I flagged that Data Agents aren't a "set it and forget it" tool — you need to keep an eye on adoption, answer quality, and cost. Google just shipped a feature that does exactly that: built-in monitoring for BigQuery Conversational Analytics, currently in preview.
+Earlier in this post I flagged that Data Agents aren't a "set it and forget it" tool. You still need to keep an eye on adoption, answer quality, and cost. Luckily for us, Google just shipped a feature that does exactly that: built-in monitoring for BigQuery Conversational Analytics 8currently in preview).
 
 You'll find it as a new **Monitoring** tab right next to **Agent catalog** and **Conversations** on the BigQuery Agents page. Since it runs on Cloud Monitoring, Cloud Trace, and Cloud Logging under the hood, you'll need to enable those APIs the first time you open it. Also note that it only captures data going forward, so don't expect past conversations to backfill.
 
 ![Conversational Analytics in BigQuery — Monitoring overview](/assets/images/conversational-analytics/01-bq-conversational-analytics-overview.png)
 _Monitoring overview for my "GA Data Analyzer" agent, filterable by agent, user, chat surface, and whether the request came from an agent-to-agent (A2A) call_
 
-The overview gives you the adoption numbers you'd expect: agents used, users who've asked a question, conversations created, and questions asked, each broken down into **Top agents** and **Top users** tables. The `$chat_surface` filter is worth calling out specifically — it lets you split usage between the BQ Studio chat and the Data Studio "Chat with your data" interface I described above, so you can finally see which surface your users actually prefer.
+The overview gives you the adoption numbers you'd expect: agents used, users who've asked a question, conversations created, and questions asked, each broken down into **Top agents** and **Top users** tables. The `$chat_surface` filter is worth calling out specifically, since it lets you split usage between the BQ Studio chat and the Data Studio "Chat with your data" interface I described above, so you can see which surface your users actually prefer.
 
 One level down, the dashboard also surfaces the knowledge sources each agent (or ad-hoc conversation) actually queried:
 
