@@ -4,7 +4,7 @@ title: GA CLI - A Command-Line Interface for Google Analytics
 description: GA CLI wraps the GA Admin API and Data API into a scriptable command-line tool designed for both humans and AI agents, enabling automatable, version-controllable Google Analytics management.
 author: gunnar
 date: 2026-04-17 00:00:01 +0200
-last_modified_at: 2026-04-19
+last_modified_at: 2026-09-06
 categories: [GA]
 tags: [ga4]
 image: /assets/images/blog/ga-cli.png
@@ -246,7 +246,7 @@ For the full documentation and source code, head over to the [GitHub repository]
 GA CLI is still in active development (currently at v0.2.4), and there are a few things on the roadmap that I'm working towards:
 
 - **Dedicated skills for GA CLI**: Pre-built Claude Code skills for common analytics workflows like property audits, configuration syncing, and reporting pipelines. These will ship as ready-to-use `SKILL.md` files that you can drop into your projects.
-- **Expanded API coverage**: The GA Admin API and Data API continue to evolve, and GA CLI will keep pace. The project already includes an automated API watch workflow that monitors Google's Discovery documents for changes on a weekly basis and opens a GitHub issue when something shifts. So, new API capabilities won't go unnoticed.
+- **Expanded API coverage**: The GA Admin API and Data API continue to evolve, and GA CLI will keep pace. The project already includes an automated API watch workflow that monitors Google's Discovery documents for changes on a weekly basis and opens a GitHub issue when something shifts. So, new API capabilities won't go unnoticed. This already paid off once: the watch flagged an undocumented `chat` method quietly added to the GA4 Data API, which I wrote up in [The GA4 Data API Quietly Grew a Chat Endpoint](https://gunnargriese.com/posts/ga4-chat-endpoint/).
 - **Community contributions**: GA CLI is open source under the MIT license. If there's a feature you'd like to see, a bug you've hit, or a workflow you think others would benefit from, please feel free to [open an issue](https://github.com/daidalytics/google-analytics-cli/issues) or submit a pull request.
 
 If you've made it this far, I'd genuinely appreciate it if you gave GA CLI a try and let me know what you think. Star the repo if you find it useful, file issues if you don't, and feel free to reach out to me directly if you want to discuss how it could fit into your or your team's workflows.
