@@ -4,7 +4,7 @@ title: Conversational Analytics for Google Analytics Data with BigQuery Agents
 description: How to use BigQuery Data Agents to build a conversational AI interface for querying GA4 data in natural language, bypassing the limitations of GA4's built-in Analytics Advisor.
 author: gunnar
 date: 2026-02-08 00:00:01 +0200
-last_modified_at: 2026-04-23
+last_modified_at: 2026-09-06
 categories: [GA]
 tags: [ga4]
 image: /assets/images/blog/bq-data-agents.png
@@ -166,6 +166,33 @@ Honestly? For most teams, yes. If your goal is to give marketing users a chat in
 Where the custom approach still makes sense is when you need full control over the UX, want to integrate the conversational interface into an existing internal tool, or have specific authentication requirements that go beyond what Data Studio offers. The Conversational Analytics API isn't going anywhere, and the Streamlit-based setup described earlier remains a valid option for those scenarios.
 
 But for the "80% use case" of getting a marketing team to self-serve their analytics questions? Data Studio just removed a lot of the friction that made the custom route necessary in the first place.
+
+## Update (2026-09-06): Out-of-the-Box Monitoring for BigQuery Data Agents
+
+Earlier in this post I flagged that Data Agents aren't a "set it and forget it" tool — you need to keep an eye on adoption, answer quality, and cost. Google just shipped a feature that does exactly that: built-in monitoring for BigQuery Conversational Analytics, currently in preview.
+
+You'll find it as a new **Monitoring** tab right next to **Agent catalog** and **Conversations** on the BigQuery Agents page. Since it runs on Cloud Monitoring, Cloud Trace, and Cloud Logging under the hood, you'll need to enable those APIs the first time you open it. Also note that it only captures data going forward, so don't expect past conversations to backfill.
+
+![Conversational Analytics in BigQuery — Monitoring overview](/assets/images/conversational-analytics/01-bq-conversational-analytics-overview.png)
+_Monitoring overview for my "GA Data Analyzer" agent, filterable by agent, user, chat surface, and whether the request came from an agent-to-agent (A2A) call_
+
+The overview gives you the adoption numbers you'd expect: agents used, users who've asked a question, conversations created, and questions asked, each broken down into **Top agents** and **Top users** tables. The `$chat_surface` filter is worth calling out specifically — it lets you split usage between the BQ Studio chat and the Data Studio "Chat with your data" interface I described above, so you can finally see which surface your users actually prefer.
+
+One level down, the dashboard also surfaces the knowledge sources each agent (or ad-hoc conversation) actually queried:
+
+![Top knowledge sources used by Conversational Analytics agents](/assets/images/conversational-analytics/02-bq-conversational-analytics-sources.png)
+_In my case, that's the GA4 Data Transfer Service export tables from Layer 1: Traffic Acquisition, Pages and Screens, Demographic Details, Events, and Tech Details_
+
+This is genuinely useful for debugging. If a user complains an agent "doesn't know" something, you can now check whether the table they expected was even queried, rather than guessing from the conversation transcript alone.
+
+Finally, there's a **Performance** section tracking overall and hourly answer success rates:
+
+![BigQuery Conversational Analytics performance metrics](/assets/images/conversational-analytics/03-bq-conversational-analytics-performance.png)
+_Overall and hourly answer success — the error/success split here is exactly the kind of thing you'd otherwise have to instrument yourself_
+
+None of this replaces the manual query-checking habit I recommended earlier. An agent can still return a "successful" answer that's subtly wrong, so human review still matters.
+
+But for tracking adoption, catching outright failures, and watching costs across an organization-wide rollout, this closes a real gap. What used to require building your own logging pipeline on top of the API responses is now a checkbox away.
 
 ## Conclusion
 
