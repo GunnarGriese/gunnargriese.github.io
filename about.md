@@ -30,7 +30,7 @@ permalink: /about/
       <p>Before going independent, I spent years at the leading digital analytics agencies in Germany (<strong>TRKKN</strong>) and Denmark (<strong>IIH Nordic</strong>), consulting enterprise clients on measurement architecture. I'm a <strong>Google Cloud Certified Professional Data Engineer</strong> and have expert experience across the Google measurement stack - GA4, GTM, server-side GTM, BigQuery, Dataform - with deep knowledge of Amplitude, Mixpanel, Segment, and Piwik Pro where they fit the problem better.</p>
 
       <h3>Beyond client work</h3>
-      <p>I teach <strong>Technical Digital Analytics</strong> at IHM Business School in Malmö. I co-organize <strong>Kodbyen AI Sessions</strong>, a monthly practitioner meetup in Copenhagen for analytics and AI engineers. I write here on my blog and speak regularly at international conferences.</p>
+      <p>I teach <strong>Technical Digital Analytics</strong> at IHM Business School in Malmö. I co-organize <a href="https://analyticsdev.net" target="_blank" rel="noopener"><strong>AnalyticsDev</strong></a>, a yearly conference for analytics and AI engineers. I write here on my blog and speak regularly at international conferences.</p>
     </div>
 
     <div class="content-sidebar">
